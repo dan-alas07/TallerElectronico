@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="TallerElectronico.BusinessLogic/TallerElectronico.BusinessLogic.csproj" Id="538c5c6e-439a-4f51-a115-2c6027bd2e85" />
+  <Project Path="TallerElectronico.DataAccess/TallerElectronico.DataAccess.csproj" Id="8017d4bd-fa55-40d6-8378-05239037b5ce" />
+  <Project Path="TallerElectronico.Desktop/TallerElectronico.Desktop.csproj" Id="4cecf751-4c9f-439b-bcb4-f6eb9a0e1183" />
+  <Project Path="TallerElectronico.Entities/TallerElectronico.Entities.csproj" Id="55bda8fd-25aa-4f13-9541-e94a5b5c4aef" />
+</Solution>
