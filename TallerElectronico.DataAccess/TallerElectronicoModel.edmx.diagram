@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="783c1fd9bf114ab5b2ba99e242ba0387" Name="Diagram1" ZoomLevel="106">
+        <EntityTypeShape EntityType="TallerElectronicoModel.Cliente" Width="1.5" PointX="2.875" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TallerElectronicoModel.DetalleReparacion" Width="1.5" PointX="7" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="TallerElectronicoModel.Empleado" Width="1.5" PointX="0.5" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TallerElectronicoModel.EstadoReparacion" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TallerElectronicoModel.Marca" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="TallerElectronicoModel.Producto" Width="1.5" PointX="11.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TallerElectronicoModel.Proveedor" Width="1.5" PointX="8.5" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="TallerElectronicoModel.Reparacion" Width="2.5" PointX="7.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TallerElectronicoModel.Rol" Width="1.5" PointX="0.625" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TallerElectronicoModel.TipoEquipo" Width="1.5" PointX="5.25" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TallerElectronicoModel.Usuario" Width="1.5" PointX="2.25" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__Reparacio__Clien__09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__DetalleRe__Produ__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__DetalleRe__Repar__1332DBDC" ManuallyRouted="false" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__DetalleRe__Usuar__151B244E" ManuallyRouted="false" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__DetalleRe__Usuar__160F4887" ManuallyRouted="false" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__Usuario__Emplead__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__Reparacio__Estad__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__Reparacio__Marca__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__Producto__Provee__7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__Producto__Usuari__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__Producto__Usuari__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__Reparacio__Tecni__0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__Reparacio__TipoE__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__Reparacio__Usuar__0B91BA14" ManuallyRouted="false" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__Reparacio__Usuar__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="TallerElectronicoModel.FK__Usuario__RolId__68487DD7" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

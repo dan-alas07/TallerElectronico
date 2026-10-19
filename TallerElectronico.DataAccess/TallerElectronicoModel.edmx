@@ -1,0 +1,1046 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TallerElectronicoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+          </Key>
+          <Property Name="ClienteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="100" />
+          <Property Name="TipoDocumento" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DUI" Type="varchar" MaxLength="10" />
+          <Property Name="CarnetExtranjero" Type="varchar" MaxLength="20" />
+          <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetalleReparacion">
+          <Key>
+            <PropertyRef Name="DetalleReparacionId" />
+          </Key>
+          <Property Name="DetalleReparacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReparacionId" Type="int" Nullable="false" />
+          <Property Name="ProductoId" Type="int" Nullable="false" />
+          <Property Name="CantidadUtilizada" Type="int" Nullable="false" />
+          <Property Name="PrecioUnitarioHistorico" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Subtotal" Type="decimal" Precision="21" Scale="2" StoreGeneratedPattern="Computed" />
+          <Property Name="FechaUso" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacionId" Type="int" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="EmpleadoId" />
+          </Key>
+          <Property Name="EmpleadoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DUI" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="FechaContratacion" Type="date" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadoReparacion">
+          <Key>
+            <PropertyRef Name="EstadoReparacionId" />
+          </Key>
+          <Property Name="EstadoReparacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="MarcaId" />
+          </Key>
+          <Property Name="MarcaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="ProductoId" />
+          </Key>
+          <Property Name="ProductoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+          <Property Name="CantidadStock" Type="int" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ProveedorId" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacionId" Type="int" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="ProveedorId" />
+          </Key>
+          <Property Name="ProveedorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TipoProveedor" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="DUI" Type="varchar" MaxLength="10" />
+          <Property Name="NIT" Type="varchar" MaxLength="20" />
+          <Property Name="NRC" Type="varchar" MaxLength="20" />
+          <Property Name="Estado" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reparacion">
+          <Key>
+            <PropertyRef Name="ReparacionId" />
+          </Key>
+          <Property Name="ReparacionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodigoSeguimiento" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ClienteId" Type="int" Nullable="false" />
+          <Property Name="TipoEquipoId" Type="int" Nullable="false" />
+          <Property Name="MarcaId" Type="int" Nullable="false" />
+          <Property Name="Modelo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TecnicoAsignadoId" Type="int" />
+          <Property Name="DiagnosticoInicial" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="EstadoReparacionId" Type="int" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="FechaEntrega" Type="datetime" />
+          <Property Name="DiagnosticoFinal" Type="varchar" MaxLength="300" />
+          <Property Name="CostoManoObra" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="TotalReparacion" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="UsuarioCreacionId" Type="int" Nullable="false" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="UsuarioModificacionId" Type="int" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoEquipo">
+          <Key>
+            <PropertyRef Name="TipoEquipoId" />
+          </Key>
+          <Property Name="TipoEquipoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="EmpleadoId" Type="int" Nullable="false" />
+          <Property Name="RolId" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__DetalleRe__Produ__14270015">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="DetalleReparacion" Type="Self.DetalleReparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="DetalleReparacion">
+              <PropertyRef Name="ProductoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleRe__Repar__1332DBDC">
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="1" />
+          <End Role="DetalleReparacion" Type="Self.DetalleReparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reparacion">
+              <PropertyRef Name="ReparacionId" />
+            </Principal>
+            <Dependent Role="DetalleReparacion">
+              <PropertyRef Name="ReparacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleRe__Usuar__151B244E">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="DetalleReparacion" Type="Self.DetalleReparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="DetalleReparacion">
+              <PropertyRef Name="UsuarioCreacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleRe__Usuar__160F4887">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="DetalleReparacion" Type="Self.DetalleReparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="DetalleReparacion">
+              <PropertyRef Name="UsuarioModificacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Producto__Provee__7D439ABD">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="ProveedorId" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="ProveedorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Producto__Usuari__7E37BEF6">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="UsuarioCreacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Producto__Usuari__7F2BE32F">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="UsuarioModificacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reparacio__Clien__09A971A2">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ClienteId" />
+            </Principal>
+            <Dependent Role="Reparacion">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reparacio__Estad__08B54D69">
+          <End Role="EstadoReparacion" Type="Self.EstadoReparacion" Multiplicity="1" />
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoReparacion">
+              <PropertyRef Name="EstadoReparacionId" />
+            </Principal>
+            <Dependent Role="Reparacion">
+              <PropertyRef Name="EstadoReparacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reparacio__Marca__07C12930">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="MarcaId" />
+            </Principal>
+            <Dependent Role="Reparacion">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reparacio__Tecni__0A9D95DB">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Reparacion">
+              <PropertyRef Name="TecnicoAsignadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reparacio__TipoE__06CD04F7">
+          <End Role="TipoEquipo" Type="Self.TipoEquipo" Multiplicity="1" />
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEquipo">
+              <PropertyRef Name="TipoEquipoId" />
+            </Principal>
+            <Dependent Role="Reparacion">
+              <PropertyRef Name="TipoEquipoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reparacio__Usuar__0B91BA14">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Reparacion">
+              <PropertyRef Name="UsuarioCreacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reparacio__Usuar__0C85DE4D">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Reparacion">
+              <PropertyRef Name="UsuarioModificacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__Emplead__6754599E">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__RolId__68487DD7">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TallerElectronicoModelStoreContainer">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleReparacion" EntityType="Self.DetalleReparacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoReparacion" EntityType="Self.EstadoReparacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reparacion" EntityType="Self.Reparacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoEquipo" EntityType="Self.TipoEquipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__DetalleRe__Produ__14270015" Association="Self.FK__DetalleRe__Produ__14270015">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="DetalleReparacion" EntitySet="DetalleReparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleRe__Repar__1332DBDC" Association="Self.FK__DetalleRe__Repar__1332DBDC">
+            <End Role="Reparacion" EntitySet="Reparacion" />
+            <End Role="DetalleReparacion" EntitySet="DetalleReparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleRe__Usuar__151B244E" Association="Self.FK__DetalleRe__Usuar__151B244E">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="DetalleReparacion" EntitySet="DetalleReparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleRe__Usuar__160F4887" Association="Self.FK__DetalleRe__Usuar__160F4887">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="DetalleReparacion" EntitySet="DetalleReparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Producto__Provee__7D439ABD" Association="Self.FK__Producto__Provee__7D439ABD">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Producto__Usuari__7E37BEF6" Association="Self.FK__Producto__Usuari__7E37BEF6">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Producto__Usuari__7F2BE32F" Association="Self.FK__Producto__Usuari__7F2BE32F">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reparacio__Clien__09A971A2" Association="Self.FK__Reparacio__Clien__09A971A2">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Reparacion" EntitySet="Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reparacio__Estad__08B54D69" Association="Self.FK__Reparacio__Estad__08B54D69">
+            <End Role="EstadoReparacion" EntitySet="EstadoReparacion" />
+            <End Role="Reparacion" EntitySet="Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reparacio__Marca__07C12930" Association="Self.FK__Reparacio__Marca__07C12930">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Reparacion" EntitySet="Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reparacio__Tecni__0A9D95DB" Association="Self.FK__Reparacio__Tecni__0A9D95DB">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Reparacion" EntitySet="Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reparacio__TipoE__06CD04F7" Association="Self.FK__Reparacio__TipoE__06CD04F7">
+            <End Role="TipoEquipo" EntitySet="TipoEquipo" />
+            <End Role="Reparacion" EntitySet="Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reparacio__Usuar__0B91BA14" Association="Self.FK__Reparacio__Usuar__0B91BA14">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Reparacion" EntitySet="Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reparacio__Usuar__0C85DE4D" Association="Self.FK__Reparacio__Usuar__0C85DE4D">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Reparacion" EntitySet="Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__Emplead__6754599E" Association="Self.FK__Usuario__Emplead__6754599E">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__RolId__68487DD7" Association="Self.FK__Usuario__RolId__68487DD7">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TallerElectronicoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+          </Key>
+          <Property Name="ClienteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDocumento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DUI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CarnetExtranjero" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reparacion" Relationship="Self.FK__Reparacio__Clien__09A971A2" FromRole="Cliente" ToRole="Reparacion" />
+        </EntityType>
+        <EntityType Name="DetalleReparacion">
+          <Key>
+            <PropertyRef Name="DetalleReparacionId" />
+          </Key>
+          <Property Name="DetalleReparacionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReparacionId" Type="Int32" Nullable="false" />
+          <Property Name="ProductoId" Type="Int32" Nullable="false" />
+          <Property Name="CantidadUtilizada" Type="Int32" Nullable="false" />
+          <Property Name="PrecioUnitarioHistorico" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Subtotal" Type="Decimal" Precision="21" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="FechaUso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacionId" Type="Int32" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__DetalleRe__Produ__14270015" FromRole="DetalleReparacion" ToRole="Producto" />
+          <NavigationProperty Name="Reparacion" Relationship="Self.FK__DetalleRe__Repar__1332DBDC" FromRole="DetalleReparacion" ToRole="Reparacion" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__DetalleRe__Usuar__151B244E" FromRole="DetalleReparacion" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__DetalleRe__Usuar__160F4887" FromRole="DetalleReparacion" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="EmpleadoId" />
+          </Key>
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DUI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaContratacion" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__Emplead__6754599E" FromRole="Empleado" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="EstadoReparacion">
+          <Key>
+            <PropertyRef Name="EstadoReparacionId" />
+          </Key>
+          <Property Name="EstadoReparacionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reparacion" Relationship="Self.FK__Reparacio__Estad__08B54D69" FromRole="EstadoReparacion" ToRole="Reparacion" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="MarcaId" />
+          </Key>
+          <Property Name="MarcaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reparacion" Relationship="Self.FK__Reparacio__Marca__07C12930" FromRole="Marca" ToRole="Reparacion" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="ProductoId" />
+          </Key>
+          <Property Name="ProductoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CantidadStock" Type="Int32" Nullable="false" />
+          <Property Name="PrecioUnitario" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ProveedorId" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacionId" Type="Int32" />
+          <NavigationProperty Name="DetalleReparacion" Relationship="Self.FK__DetalleRe__Produ__14270015" FromRole="Producto" ToRole="DetalleReparacion" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.FK__Producto__Provee__7D439ABD" FromRole="Producto" ToRole="Proveedor" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Producto__Usuari__7E37BEF6" FromRole="Producto" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Producto__Usuari__7F2BE32F" FromRole="Producto" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="ProveedorId" />
+          </Key>
+          <Property Name="ProveedorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TipoProveedor" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DUI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NIT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NRC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__Provee__7D439ABD" FromRole="Proveedor" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="Reparacion">
+          <Key>
+            <PropertyRef Name="ReparacionId" />
+          </Key>
+          <Property Name="ReparacionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoSeguimiento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClienteId" Type="Int32" Nullable="false" />
+          <Property Name="TipoEquipoId" Type="Int32" Nullable="false" />
+          <Property Name="MarcaId" Type="Int32" Nullable="false" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TecnicoAsignadoId" Type="Int32" />
+          <Property Name="DiagnosticoInicial" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EstadoReparacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaEntrega" Type="DateTime" Precision="3" />
+          <Property Name="DiagnosticoFinal" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="CostoManoObra" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="TotalReparacion" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="UsuarioCreacionId" Type="Int32" Nullable="false" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="UsuarioModificacionId" Type="Int32" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Reparacio__Clien__09A971A2" FromRole="Reparacion" ToRole="Cliente" />
+          <NavigationProperty Name="DetalleReparacion" Relationship="Self.FK__DetalleRe__Repar__1332DBDC" FromRole="Reparacion" ToRole="DetalleReparacion" />
+          <NavigationProperty Name="EstadoReparacion" Relationship="Self.FK__Reparacio__Estad__08B54D69" FromRole="Reparacion" ToRole="EstadoReparacion" />
+          <NavigationProperty Name="Marca" Relationship="Self.FK__Reparacio__Marca__07C12930" FromRole="Reparacion" ToRole="Marca" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Reparacio__Tecni__0A9D95DB" FromRole="Reparacion" ToRole="Usuario" />
+          <NavigationProperty Name="TipoEquipo" Relationship="Self.FK__Reparacio__TipoE__06CD04F7" FromRole="Reparacion" ToRole="TipoEquipo" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK__Reparacio__Usuar__0B91BA14" FromRole="Reparacion" ToRole="Usuario" />
+          <NavigationProperty Name="Usuario2" Relationship="Self.FK__Reparacio__Usuar__0C85DE4D" FromRole="Reparacion" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__RolId__68487DD7" FromRole="Rol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="TipoEquipo">
+          <Key>
+            <PropertyRef Name="TipoEquipoId" />
+          </Key>
+          <Property Name="TipoEquipoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reparacion" Relationship="Self.FK__Reparacio__TipoE__06CD04F7" FromRole="TipoEquipo" ToRole="Reparacion" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" />
+          <Property Name="RolId" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DetalleReparacion" Relationship="Self.FK__DetalleRe__Usuar__151B244E" FromRole="Usuario" ToRole="DetalleReparacion" />
+          <NavigationProperty Name="DetalleReparacion1" Relationship="Self.FK__DetalleRe__Usuar__160F4887" FromRole="Usuario" ToRole="DetalleReparacion" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Usuario__Emplead__6754599E" FromRole="Usuario" ToRole="Empleado" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__Producto__Usuari__7E37BEF6" FromRole="Usuario" ToRole="Producto" />
+          <NavigationProperty Name="Producto1" Relationship="Self.FK__Producto__Usuari__7F2BE32F" FromRole="Usuario" ToRole="Producto" />
+          <NavigationProperty Name="Reparacion" Relationship="Self.FK__Reparacio__Tecni__0A9D95DB" FromRole="Usuario" ToRole="Reparacion" />
+          <NavigationProperty Name="Reparacion1" Relationship="Self.FK__Reparacio__Usuar__0B91BA14" FromRole="Usuario" ToRole="Reparacion" />
+          <NavigationProperty Name="Reparacion2" Relationship="Self.FK__Reparacio__Usuar__0C85DE4D" FromRole="Usuario" ToRole="Reparacion" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK__Usuario__RolId__68487DD7" FromRole="Usuario" ToRole="Rol" />
+        </EntityType>
+        <Association Name="FK__Reparacio__Clien__09A971A2">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="ClienteId" />
+            </Principal>
+            <Dependent Role="Reparacion">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleRe__Produ__14270015">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="DetalleReparacion" Type="Self.DetalleReparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="DetalleReparacion">
+              <PropertyRef Name="ProductoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleRe__Repar__1332DBDC">
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="1" />
+          <End Role="DetalleReparacion" Type="Self.DetalleReparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reparacion">
+              <PropertyRef Name="ReparacionId" />
+            </Principal>
+            <Dependent Role="DetalleReparacion">
+              <PropertyRef Name="ReparacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleRe__Usuar__151B244E">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="DetalleReparacion" Type="Self.DetalleReparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="DetalleReparacion">
+              <PropertyRef Name="UsuarioCreacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleRe__Usuar__160F4887">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="DetalleReparacion" Type="Self.DetalleReparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="DetalleReparacion">
+              <PropertyRef Name="UsuarioModificacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__Emplead__6754599E">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="EmpleadoId" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reparacio__Estad__08B54D69">
+          <End Role="EstadoReparacion" Type="Self.EstadoReparacion" Multiplicity="1" />
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoReparacion">
+              <PropertyRef Name="EstadoReparacionId" />
+            </Principal>
+            <Dependent Role="Reparacion">
+              <PropertyRef Name="EstadoReparacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reparacio__Marca__07C12930">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="MarcaId" />
+            </Principal>
+            <Dependent Role="Reparacion">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Producto__Provee__7D439ABD">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="ProveedorId" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="ProveedorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Producto__Usuari__7E37BEF6">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="UsuarioCreacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Producto__Usuari__7F2BE32F">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="UsuarioModificacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reparacio__Tecni__0A9D95DB">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Reparacion">
+              <PropertyRef Name="TecnicoAsignadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reparacio__TipoE__06CD04F7">
+          <End Role="TipoEquipo" Type="Self.TipoEquipo" Multiplicity="1" />
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoEquipo">
+              <PropertyRef Name="TipoEquipoId" />
+            </Principal>
+            <Dependent Role="Reparacion">
+              <PropertyRef Name="TipoEquipoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reparacio__Usuar__0B91BA14">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Reparacion">
+              <PropertyRef Name="UsuarioCreacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reparacio__Usuar__0C85DE4D">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Reparacion" Type="Self.Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="Reparacion">
+              <PropertyRef Name="UsuarioModificacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__RolId__68487DD7">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TallerElectronicoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="DetalleReparacion" EntityType="Self.DetalleReparacion" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+          <EntitySet Name="EstadoReparacion" EntityType="Self.EstadoReparacion" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+          <EntitySet Name="Reparacion" EntityType="Self.Reparacion" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" />
+          <EntitySet Name="TipoEquipo" EntityType="Self.TipoEquipo" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK__Reparacio__Clien__09A971A2" Association="Self.FK__Reparacio__Clien__09A971A2">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Reparacion" EntitySet="Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleRe__Produ__14270015" Association="Self.FK__DetalleRe__Produ__14270015">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="DetalleReparacion" EntitySet="DetalleReparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleRe__Repar__1332DBDC" Association="Self.FK__DetalleRe__Repar__1332DBDC">
+            <End Role="Reparacion" EntitySet="Reparacion" />
+            <End Role="DetalleReparacion" EntitySet="DetalleReparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleRe__Usuar__151B244E" Association="Self.FK__DetalleRe__Usuar__151B244E">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="DetalleReparacion" EntitySet="DetalleReparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleRe__Usuar__160F4887" Association="Self.FK__DetalleRe__Usuar__160F4887">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="DetalleReparacion" EntitySet="DetalleReparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__Emplead__6754599E" Association="Self.FK__Usuario__Emplead__6754599E">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reparacio__Estad__08B54D69" Association="Self.FK__Reparacio__Estad__08B54D69">
+            <End Role="EstadoReparacion" EntitySet="EstadoReparacion" />
+            <End Role="Reparacion" EntitySet="Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reparacio__Marca__07C12930" Association="Self.FK__Reparacio__Marca__07C12930">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Reparacion" EntitySet="Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Producto__Provee__7D439ABD" Association="Self.FK__Producto__Provee__7D439ABD">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Producto__Usuari__7E37BEF6" Association="Self.FK__Producto__Usuari__7E37BEF6">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Producto__Usuari__7F2BE32F" Association="Self.FK__Producto__Usuari__7F2BE32F">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reparacio__Tecni__0A9D95DB" Association="Self.FK__Reparacio__Tecni__0A9D95DB">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Reparacion" EntitySet="Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reparacio__TipoE__06CD04F7" Association="Self.FK__Reparacio__TipoE__06CD04F7">
+            <End Role="TipoEquipo" EntitySet="TipoEquipo" />
+            <End Role="Reparacion" EntitySet="Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reparacio__Usuar__0B91BA14" Association="Self.FK__Reparacio__Usuar__0B91BA14">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Reparacion" EntitySet="Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reparacio__Usuar__0C85DE4D" Association="Self.FK__Reparacio__Usuar__0C85DE4D">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Reparacion" EntitySet="Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__RolId__68487DD7" Association="Self.FK__Usuario__RolId__68487DD7">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TallerElectronicoModelStoreContainer" CdmEntityContainer="TallerElectronicoEntities">
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="TallerElectronicoModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="DUI" ColumnName="DUI" />
+                <ScalarProperty Name="CarnetExtranjero" ColumnName="CarnetExtranjero" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleReparacion">
+            <EntityTypeMapping TypeName="TallerElectronicoModel.DetalleReparacion">
+              <MappingFragment StoreEntitySet="DetalleReparacion">
+                <ScalarProperty Name="DetalleReparacionId" ColumnName="DetalleReparacionId" />
+                <ScalarProperty Name="ReparacionId" ColumnName="ReparacionId" />
+                <ScalarProperty Name="ProductoId" ColumnName="ProductoId" />
+                <ScalarProperty Name="CantidadUtilizada" ColumnName="CantidadUtilizada" />
+                <ScalarProperty Name="PrecioUnitarioHistorico" ColumnName="PrecioUnitarioHistorico" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="FechaUso" ColumnName="FechaUso" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacionId" ColumnName="UsuarioModificacionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleado">
+            <EntityTypeMapping TypeName="TallerElectronicoModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="DUI" ColumnName="DUI" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="FechaContratacion" ColumnName="FechaContratacion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoReparacion">
+            <EntityTypeMapping TypeName="TallerElectronicoModel.EstadoReparacion">
+              <MappingFragment StoreEntitySet="EstadoReparacion">
+                <ScalarProperty Name="EstadoReparacionId" ColumnName="EstadoReparacionId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marca">
+            <EntityTypeMapping TypeName="TallerElectronicoModel.Marca">
+              <MappingFragment StoreEntitySet="Marca">
+                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="TallerElectronicoModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="ProductoId" ColumnName="ProductoId" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CantidadStock" ColumnName="CantidadStock" />
+                <ScalarProperty Name="PrecioUnitario" ColumnName="PrecioUnitario" />
+                <ScalarProperty Name="ProveedorId" ColumnName="ProveedorId" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacionId" ColumnName="UsuarioModificacionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedor">
+            <EntityTypeMapping TypeName="TallerElectronicoModel.Proveedor">
+              <MappingFragment StoreEntitySet="Proveedor">
+                <ScalarProperty Name="ProveedorId" ColumnName="ProveedorId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="TipoProveedor" ColumnName="TipoProveedor" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="DUI" ColumnName="DUI" />
+                <ScalarProperty Name="NIT" ColumnName="NIT" />
+                <ScalarProperty Name="NRC" ColumnName="NRC" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reparacion">
+            <EntityTypeMapping TypeName="TallerElectronicoModel.Reparacion">
+              <MappingFragment StoreEntitySet="Reparacion">
+                <ScalarProperty Name="ReparacionId" ColumnName="ReparacionId" />
+                <ScalarProperty Name="CodigoSeguimiento" ColumnName="CodigoSeguimiento" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="TipoEquipoId" ColumnName="TipoEquipoId" />
+                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="TecnicoAsignadoId" ColumnName="TecnicoAsignadoId" />
+                <ScalarProperty Name="DiagnosticoInicial" ColumnName="DiagnosticoInicial" />
+                <ScalarProperty Name="EstadoReparacionId" ColumnName="EstadoReparacionId" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+                <ScalarProperty Name="DiagnosticoFinal" ColumnName="DiagnosticoFinal" />
+                <ScalarProperty Name="CostoManoObra" ColumnName="CostoManoObra" />
+                <ScalarProperty Name="TotalReparacion" ColumnName="TotalReparacion" />
+                <ScalarProperty Name="UsuarioCreacionId" ColumnName="UsuarioCreacionId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="UsuarioModificacionId" ColumnName="UsuarioModificacionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="TallerElectronicoModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoEquipo">
+            <EntityTypeMapping TypeName="TallerElectronicoModel.TipoEquipo">
+              <MappingFragment StoreEntitySet="TipoEquipo">
+                <ScalarProperty Name="TipoEquipoId" ColumnName="TipoEquipoId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="TallerElectronicoModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
