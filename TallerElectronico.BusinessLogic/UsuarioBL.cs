@@ -51,13 +51,21 @@ namespace TallerElectronico.BusinessLogic
             if (string.IsNullOrWhiteSpace(usuario.Clave))
                 throw new ArgumentException("La contraseña es obligatoria.");
 
+            usuario.Nombre = usuario.Nombre.Trim();
+
+            // Validar longitud de Nombre
+            if (usuario.Nombre.Trim().Length > 50)
+                throw new ArgumentException("El nombre de usuario no puede superar los 50 caracteres.");
+
+            // Validar longitud de Clave antes del Hash
+            if (usuario.Clave.Length > 70)
+                throw new ArgumentException("La contraseña no puede superar los 70 caracteres.");
+
             if (usuario.RolId <= 0)
                 throw new ArgumentException("Debe seleccionar un rol válido.");
 
             if (usuario.EmpleadoId <= 0)
                 throw new ArgumentException("Debe asociar un empleado válido.");
-
-            usuario.Nombre = usuario.Nombre.Trim();
 
             var usuarioExistente = _usuarioDal.SelectByUsername(usuario.Nombre);
             if (usuarioExistente != null)
@@ -80,13 +88,17 @@ namespace TallerElectronico.BusinessLogic
             if (string.IsNullOrWhiteSpace(usuarioModificado.Nombre))
                 throw new ArgumentException("El nombre de usuario es obligatorio.");
 
+            usuarioModificado.Nombre = usuarioModificado.Nombre.Trim();
+
+            // Validacion de longitud
+            if (usuarioModificado.Nombre.Length > 50)
+                throw new ArgumentException("El nombre de usuario no puede superar los 50 caracteres.");
+
             if (usuarioModificado.RolId <= 0)
                 throw new ArgumentException("Debe seleccionar un rol válido.");
 
             if (usuarioModificado.EmpleadoId <= 0)
                 throw new ArgumentException("Debe asociar un empleado válido.");
-
-            usuarioModificado.Nombre = usuarioModificado.Nombre.Trim();
 
             var usuarioConMismoNombre = _usuarioDal.SelectByUsername(usuarioModificado.Nombre);
             if (usuarioConMismoNombre != null && usuarioConMismoNombre.UsuarioId != usuarioModificado.UsuarioId)
@@ -96,6 +108,9 @@ namespace TallerElectronico.BusinessLogic
 
             if (!string.IsNullOrWhiteSpace(usuarioModificado.Clave))
             {
+                if (usuarioModificado.Clave.Length > 70)
+                    throw new ArgumentException("La nueva contraseña no puede superar los 70 caracteres.");
+
                 usuarioModificado.Clave = BCrypt.Net.BCrypt.HashPassword(usuarioModificado.Clave);
             }
             else
