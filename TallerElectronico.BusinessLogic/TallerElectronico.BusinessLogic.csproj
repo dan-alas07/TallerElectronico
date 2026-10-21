@@ -67,9 +67,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteBL.cs" />
     <Compile Include="DetalleReparacionBL.cs" />
+    <Compile Include="EmpleadoBL.cs" />
+    <Compile Include="EstadoReparacionBL.cs" />
+    <Compile Include="MarcaBL.cs" />
+    <Compile Include="ProductoBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProveerdorBL.cs" />
     <Compile Include="ReparacionBL.cs" />
+    <Compile Include="RolBL.cs" />
+    <Compile Include="TipoEquipoBL.cs" />
     <Compile Include="UsuarioBL.cs" />
   </ItemGroup>
   <ItemGroup>
