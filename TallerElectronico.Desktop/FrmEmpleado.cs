@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using TallerElectronico.BusinessLogic;
 
 namespace TallerElectronico.Desktop
 {
     public partial class FrmEmpleado : Form
     {
+        private readonly EmpleadoBL _empleadoBL = new EmpleadoBL();
+
         public FrmEmpleado()
         {
             InitializeComponent();
@@ -19,25 +15,52 @@ namespace TallerElectronico.Desktop
 
         private void FrmEmpleado_Load(object sender, EventArgs e)
         {
-
+            CargarEmpleados();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void CargarEmpleados()
         {
+            try
+            {
+                dgvEmpleado.AutoGenerateColumns = false;
+                dgvEmpleado.DataSource = null;
+                dgvEmpleado.DataSource = _empleadoBL.SelectAll();
 
+                dgvEmpleado.ReadOnly = true;
+                dgvEmpleado.AllowUserToAddRows = false;
+                dgvEmpleado.AllowUserToDeleteRows = false;
+                dgvEmpleado.SelectionMode =
+                    DataGridViewSelectionMode.FullRowSelect;
+                dgvEmpleado.MultiSelect = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Error al cargar los empleados: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
 
+        private void dataGridView1_CellContentClick(
+            object sender,
+            DataGridViewCellEventArgs e)
+        {
+            // Aquí podrás agregar posteriormente
+            // acciones al seleccionar una celda.
+        }
+
+        // Botón para crear un empleado
         private void btnCreate_Click(object sender, EventArgs e)
         {
             MessageBox.Show(
-                        $"¡Mensaje!\n" +
-                        $"KLK: " +
-                        $"\n" +
-                        $"Esto es solo prueba:",
-                        "Luego se hace",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
+                "Aquí se abrirá el formulario para registrar un nuevo empleado.",
+                "Registrar empleado",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
     }
 }
