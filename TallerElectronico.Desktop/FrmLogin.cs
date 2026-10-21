@@ -36,12 +36,12 @@ namespace TallerElectronico.Desktop
                         MessageBoxIcon.Information
                     );
 
-                    // Abrir el formulario principal
+                    
                     FrmMain formularioPrincipal = new FrmMain();
 
                     formularioPrincipal.Show();
 
-                    // Ocultar el formulario de login
+                    
                     this.Hide();
                 }
                 else

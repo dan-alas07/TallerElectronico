@@ -167,6 +167,7 @@
             // 
             // pnlContainer
             // 
+            this.pnlContainer.BackColor = System.Drawing.Color.White;
             this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContainer.Location = new System.Drawing.Point(220, 0);
             this.pnlContainer.Name = "pnlContainer";

@@ -45,6 +45,7 @@
             // 
             // dgvEmpleado
             // 
+            this.dgvEmpleado.AllowUserToResizeColumns = false;
             this.dgvEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmpleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCode,
@@ -122,7 +123,7 @@
             // btnCreate
             // 
             this.btnCreate.BackColor = System.Drawing.SystemColors.Window;
-            this.btnCreate.Location = new System.Drawing.Point(40, 259);
+            this.btnCreate.Location = new System.Drawing.Point(40, 239);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(75, 23);
             this.btnCreate.TabIndex = 3;
@@ -134,7 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1029, 450);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.lblTitle);
