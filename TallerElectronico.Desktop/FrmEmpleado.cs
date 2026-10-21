@@ -26,5 +26,18 @@ namespace TallerElectronico.Desktop
         {
 
         }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                        $"¡Mensaje!\n" +
+                        $"KLK: " +
+                        $"\n" +
+                        $"Esto es solo prueba:",
+                        "Luego se hace",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+        }
     }
 }
