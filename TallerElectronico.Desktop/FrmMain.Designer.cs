@@ -35,7 +35,7 @@
             this.btnEmpleado = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnMain = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.pnlMain.SuspendLayout();
@@ -50,14 +50,13 @@
             this.pnlMain.Controls.Add(this.btnEmpleado);
             this.pnlMain.Controls.Add(this.button3);
             this.pnlMain.Controls.Add(this.button2);
-            this.pnlMain.Controls.Add(this.button1);
+            this.pnlMain.Controls.Add(this.btnMain);
             this.pnlMain.Controls.Add(this.lblTitulo);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(220, 450);
             this.pnlMain.TabIndex = 0;
-            this.pnlMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button7
             // 
@@ -138,20 +137,21 @@
             this.button2.Text = "Equipos";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnMain
             // 
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::TallerElectronico.Desktop.Properties.Resources.homepage;
-            this.button1.Location = new System.Drawing.Point(33, 53);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 40);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Inicio";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMain.FlatAppearance.BorderSize = 0;
+            this.btnMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMain.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMain.Image = global::TallerElectronico.Desktop.Properties.Resources.homepage;
+            this.btnMain.Location = new System.Drawing.Point(33, 53);
+            this.btnMain.Name = "btnMain";
+            this.btnMain.Size = new System.Drawing.Size(150, 40);
+            this.btnMain.TabIndex = 1;
+            this.btnMain.Text = "Inicio";
+            this.btnMain.UseVisualStyleBackColor = true;
+            this.btnMain.Click += new System.EventHandler(this.btnMain_Click);
             // 
             // lblTitulo
             // 
@@ -200,7 +200,7 @@
         private System.Windows.Forms.Button btnEmpleado;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnMain;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel pnlContainer;
     }

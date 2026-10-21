@@ -26,22 +26,10 @@ namespace TallerElectronico.Desktop
 
                 if (usuarioEncontrado != null)
                 {
-                    MessageBox.Show(
-                        $"¡Conexión exitosa!\n" +
-                        $"Bienvenido: {usuarioEncontrado.Empleado.Nombre} " +
-                        $"{usuarioEncontrado.Empleado.Apellido}\n" +
-                        $"Rol: {usuarioEncontrado.Rol.Nombre}",
-                        "Acceso Correcto",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
-
-                    
                     FrmMain formularioPrincipal = new FrmMain();
 
                     formularioPrincipal.Show();
 
-                    
                     this.Hide();
                 }
                 else

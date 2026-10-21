@@ -12,27 +12,23 @@ namespace TallerElectronico.Desktop
 {
     public partial class FrmMain : Form
     {
+        private Form formularioActual;
+
         public FrmMain()
         {
             InitializeComponent();
+
+            OpenFrm(new FrmInicio());
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private Form formularioActual;
 
         private void OpenFrm(Form formulario)
         {
             try
             {
+                if (formularioActual != null && formularioActual.GetType() == formulario.GetType())
+                {
+                    return;
+                }
 
                 if (formularioActual != null)
                 {
@@ -66,6 +62,12 @@ namespace TallerElectronico.Desktop
         private void btnEmpleado_Click(object sender, EventArgs e)
         {
             OpenFrm(new FrmEmpleado());
+        }
+
+        private void btnMain_Click(object sender, EventArgs e)
+        {
+
+            OpenFrm(new FrmInicio());
         }
     }
 }
