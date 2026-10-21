@@ -48,11 +48,10 @@ namespace TallerElectronico.Desktop
             object sender,
             DataGridViewCellEventArgs e)
         {
-            // Aquí podrás agregar posteriormente
-            // acciones al seleccionar una celda.
+               //que vamos a hacer en las celdas
         }
 
-        // Botón para crear un empleado
+
         private void btnCreate_Click(object sender, EventArgs e)
         {
             MessageBox.Show(
