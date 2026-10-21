@@ -53,7 +53,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteDAL.cs" />
+    <Compile Include="DetalleReparacionDAL.cs" />
+    <Compile Include="EmpleadoDAL.cs" />
+    <Compile Include="EstadoReparacionDAL.cs" />
+    <Compile Include="MarcaDAL.cs" />
+    <Compile Include="ProductoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProveedorDAL.cs" />
+    <Compile Include="ReparacionDAL.cs" />
+    <Compile Include="RolDAL.cs" />
     <Compile Include="TallerElectronicoModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -64,6 +73,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TallerElectronicoModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="TipoEquipoDAL.cs" />
     <Compile Include="UsuarioDAL.cs" />
   </ItemGroup>
   <ItemGroup>
