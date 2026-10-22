@@ -16,5 +16,10 @@ namespace TallerElectronico.Desktop
         {
             InitializeComponent();
         }
+
+        private void btnProveedor_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

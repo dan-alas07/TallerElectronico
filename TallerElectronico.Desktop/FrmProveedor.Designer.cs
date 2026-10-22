@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -39,17 +39,18 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.dgvEmpleado = new System.Windows.Forms.DataGridView();
+            this.dgvProveedor = new System.Windows.Forms.DataGridView();
             this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDUI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnHiringDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDUI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNRC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProveedor)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBuscar
@@ -161,64 +162,65 @@
             this.lblTitle.TabIndex = 40;
             this.lblTitle.Text = "Gestión de proveedor";
             // 
-            // dgvEmpleado
+            // dgvProveedor
             // 
-            this.dgvEmpleado.AllowUserToAddRows = false;
-            this.dgvEmpleado.AllowUserToDeleteRows = false;
-            this.dgvEmpleado.AllowUserToResizeColumns = false;
-            this.dgvEmpleado.AllowUserToResizeRows = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(252)))));
-            this.dgvEmpleado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.dgvEmpleado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvEmpleado.BackgroundColor = System.Drawing.Color.White;
-            this.dgvEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvEmpleado.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvEmpleado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEmpleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            this.dgvEmpleado.ColumnHeadersHeight = 42;
-            this.dgvEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvEmpleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvProveedor.AllowUserToAddRows = false;
+            this.dgvProveedor.AllowUserToDeleteRows = false;
+            this.dgvProveedor.AllowUserToResizeColumns = false;
+            this.dgvProveedor.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(252)))));
+            this.dgvProveedor.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvProveedor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProveedor.BackgroundColor = System.Drawing.Color.White;
+            this.dgvProveedor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvProveedor.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvProveedor.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProveedor.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvProveedor.ColumnHeadersHeight = 42;
+            this.dgvProveedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvProveedor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCode,
             this.ColumnName,
-            this.ColumnLastName,
-            this.ColumnDUI,
+            this.ColumnType,
             this.ColumnTelephone,
             this.ColumnEmail,
             this.ColumnAddress,
-            this.ColumnHiringDate,
+            this.ColumnDUI,
+            this.ColumnNIT,
+            this.ColumnNRC,
             this.ColumnStatus});
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmpleado.DefaultCellStyle = dataGridViewCellStyle18;
-            this.dgvEmpleado.EnableHeadersVisualStyles = false;
-            this.dgvEmpleado.GridColor = System.Drawing.Color.White;
-            this.dgvEmpleado.Location = new System.Drawing.Point(19, 248);
-            this.dgvEmpleado.MultiSelect = false;
-            this.dgvEmpleado.Name = "dgvEmpleado";
-            this.dgvEmpleado.ReadOnly = true;
-            this.dgvEmpleado.RowHeadersVisible = false;
-            this.dgvEmpleado.RowHeadersWidth = 51;
-            this.dgvEmpleado.RowTemplate.Height = 36;
-            this.dgvEmpleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmpleado.Size = new System.Drawing.Size(1080, 215);
-            this.dgvEmpleado.TabIndex = 39;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProveedor.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvProveedor.EnableHeadersVisualStyles = false;
+            this.dgvProveedor.GridColor = System.Drawing.Color.White;
+            this.dgvProveedor.Location = new System.Drawing.Point(19, 248);
+            this.dgvProveedor.MultiSelect = false;
+            this.dgvProveedor.Name = "dgvProveedor";
+            this.dgvProveedor.ReadOnly = true;
+            this.dgvProveedor.RowHeadersVisible = false;
+            this.dgvProveedor.RowHeadersWidth = 51;
+            this.dgvProveedor.RowTemplate.Height = 36;
+            this.dgvProveedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProveedor.Size = new System.Drawing.Size(1080, 215);
+            this.dgvProveedor.TabIndex = 39;
             // 
             // ColumnCode
             // 
-            this.ColumnCode.DataPropertyName = "EmpleadoId";
+            this.ColumnCode.DataPropertyName = "ProvedorId";
             this.ColumnCode.FillWeight = 65F;
             this.ColumnCode.HeaderText = "Código";
             this.ColumnCode.MinimumWidth = 6;
@@ -234,23 +236,14 @@
             this.ColumnName.Name = "ColumnName";
             this.ColumnName.ReadOnly = true;
             // 
-            // ColumnLastName
+            // ColumnType
             // 
-            this.ColumnLastName.DataPropertyName = "Apellido";
-            this.ColumnLastName.FillWeight = 85F;
-            this.ColumnLastName.HeaderText = "Apellido";
-            this.ColumnLastName.MinimumWidth = 6;
-            this.ColumnLastName.Name = "ColumnLastName";
-            this.ColumnLastName.ReadOnly = true;
-            // 
-            // ColumnDUI
-            // 
-            this.ColumnDUI.DataPropertyName = "DUI";
-            this.ColumnDUI.FillWeight = 85F;
-            this.ColumnDUI.HeaderText = "DUI";
-            this.ColumnDUI.MinimumWidth = 6;
-            this.ColumnDUI.Name = "ColumnDUI";
-            this.ColumnDUI.ReadOnly = true;
+            this.ColumnType.DataPropertyName = "TipoProveedor";
+            this.ColumnType.FillWeight = 85F;
+            this.ColumnType.HeaderText = "Tipo";
+            this.ColumnType.MinimumWidth = 6;
+            this.ColumnType.Name = "ColumnType";
+            this.ColumnType.ReadOnly = true;
             // 
             // ColumnTelephone
             // 
@@ -263,9 +256,9 @@
             // 
             // ColumnEmail
             // 
-            this.ColumnEmail.DataPropertyName = "Correo";
+            this.ColumnEmail.DataPropertyName = "Email";
             this.ColumnEmail.FillWeight = 125F;
-            this.ColumnEmail.HeaderText = "Correo electrónico";
+            this.ColumnEmail.HeaderText = "Correo ";
             this.ColumnEmail.MinimumWidth = 6;
             this.ColumnEmail.Name = "ColumnEmail";
             this.ColumnEmail.ReadOnly = true;
@@ -279,21 +272,31 @@
             this.ColumnAddress.Name = "ColumnAddress";
             this.ColumnAddress.ReadOnly = true;
             // 
-            // ColumnHiringDate
+            // ColumnDUI
             // 
-            this.ColumnHiringDate.DataPropertyName = "FechaContratacion";
-            this.ColumnHiringDate.FillWeight = 110F;
-            this.ColumnHiringDate.HeaderText = "Fecha contratación";
-            this.ColumnHiringDate.MinimumWidth = 6;
-            this.ColumnHiringDate.Name = "ColumnHiringDate";
-            this.ColumnHiringDate.ReadOnly = true;
+            this.ColumnDUI.DataPropertyName = "DUI";
+            this.ColumnDUI.HeaderText = "DUI";
+            this.ColumnDUI.Name = "ColumnDUI";
+            this.ColumnDUI.ReadOnly = true;
+            // 
+            // ColumnNIT
+            // 
+            this.ColumnNIT.DataPropertyName = "NIT";
+            this.ColumnNIT.HeaderText = "NIT";
+            this.ColumnNIT.Name = "ColumnNIT";
+            this.ColumnNIT.ReadOnly = true;
+            // 
+            // ColumnNRC
+            // 
+            this.ColumnNRC.DataPropertyName = "NRC";
+            this.ColumnNRC.HeaderText = "NRC";
+            this.ColumnNRC.Name = "ColumnNRC";
+            this.ColumnNRC.ReadOnly = true;
             // 
             // ColumnStatus
             // 
             this.ColumnStatus.DataPropertyName = "Estado";
-            this.ColumnStatus.FillWeight = 75F;
             this.ColumnStatus.HeaderText = "Estado";
-            this.ColumnStatus.MinimumWidth = 6;
             this.ColumnStatus.Name = "ColumnStatus";
             this.ColumnStatus.ReadOnly = true;
             // 
@@ -301,7 +304,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 450);
+            this.ClientSize = new System.Drawing.Size(1146, 450);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lblBuscar);
             this.Controls.Add(this.label8);
@@ -310,10 +313,10 @@
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.dgvEmpleado);
+            this.Controls.Add(this.dgvProveedor);
             this.Name = "FrmProveedor";
             this.Text = "FrmProveedor";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProveedor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,15 +332,16 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.DataGridView dgvEmpleado;
+        private System.Windows.Forms.DataGridView dgvProveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLastName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDUI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTelephone;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHiringDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDUI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNIT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNRC;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
     }
 }
