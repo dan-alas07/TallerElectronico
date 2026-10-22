@@ -11,6 +11,8 @@ namespace TallerElectronico.Desktop
         public FrmEmpleado()
         {
             InitializeComponent();
+
+            dgvEmpleado.AutoGenerateColumns = false;
         }
 
         private void FrmEmpleado_Load(object sender, EventArgs e)
@@ -22,21 +24,12 @@ namespace TallerElectronico.Desktop
         {
             try
             {
-                dgvEmpleado.AutoGenerateColumns = false;
-                dgvEmpleado.DataSource = null;
                 dgvEmpleado.DataSource = _empleadoBL.SelectAll();
-
-                dgvEmpleado.ReadOnly = true;
-                dgvEmpleado.AllowUserToAddRows = false;
-                dgvEmpleado.AllowUserToDeleteRows = false;
-                dgvEmpleado.SelectionMode =
-                    DataGridViewSelectionMode.FullRowSelect;
-                dgvEmpleado.MultiSelect = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    "Error al cargar los empleados: " + ex.Message,
+                    "Error al cargar los empleados: " + ex.GetBaseException().Message,
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
@@ -48,18 +41,23 @@ namespace TallerElectronico.Desktop
             object sender,
             DataGridViewCellEventArgs e)
         {
-               //que vamos a hacer en las celdas
+            //que vamos a hacer en las celdas
         }
-
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(
-                "Aquí se abrirá el formulario para registrar un nuevo empleado.",
-                "Registrar empleado",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+            using (FrmCreateEmpleado frm = new FrmCreateEmpleado())
+            {
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                {
+                    CargarEmpleados(); 
+                }
+            }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
