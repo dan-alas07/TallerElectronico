@@ -77,5 +77,28 @@ namespace TallerElectronico.DataAccess
                 return false;
             }
         }
+
+        // Metodos extras
+        public bool ExistsByDui(string dui, int? excludeEmpleadoId = null)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                return db.Empleado.Any(e =>
+                    e.DUI == dui &&
+                    e.Estado == "A" &&
+                    (!excludeEmpleadoId.HasValue || e.EmpleadoId != excludeEmpleadoId.Value));
+            }
+        }
+
+        public bool ExistsByEmail(string email, int? excludeEmpleadoId = null)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                return db.Empleado.Any(e =>
+                    e.Correo == email &&
+                    e.Estado == "A" &&
+                    (!excludeEmpleadoId.HasValue || e.EmpleadoId != excludeEmpleadoId.Value));
+            }
+        }
     }
 }

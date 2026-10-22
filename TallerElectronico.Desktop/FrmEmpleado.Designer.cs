@@ -93,7 +93,6 @@ namespace TallerElectronico.Desktop
             this.dgvEmpleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEmpleado.Size = new System.Drawing.Size(1080, 215);
             this.dgvEmpleado.TabIndex = 1;
-            this.dgvEmpleado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
 
             this.ColumnCode.DataPropertyName = "EmpleadoId";
             this.ColumnCode.FillWeight = 65F;
@@ -232,7 +231,6 @@ namespace TallerElectronico.Desktop
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(358, 13);
             this.txtBuscar.TabIndex = 28;
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

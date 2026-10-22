@@ -13,8 +13,6 @@ namespace TallerElectronico.DataAccess
             using (var db = new TallerElectronicoEntities())
             {
                 return db.Usuario.AsNoTracking()
-                                 .Include(u => u.Rol)
-                                 .Include(u => u.Empleado)
                                  .FirstOrDefault(u => u.Nombre == username && u.Estado == "A");
             }
         }

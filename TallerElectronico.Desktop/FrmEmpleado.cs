@@ -11,7 +11,6 @@ namespace TallerElectronico.Desktop
         public FrmEmpleado()
         {
             InitializeComponent();
-
             dgvEmpleado.AutoGenerateColumns = false;
         }
 
@@ -29,19 +28,12 @@ namespace TallerElectronico.Desktop
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    "Error al cargar los empleados: " + ex.GetBaseException().Message,
+                    "Ocurrió un error al cargar los empleados: " + ex.Message,
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
             }
-        }
-
-        private void dataGridView1_CellContentClick(
-            object sender,
-            DataGridViewCellEventArgs e)
-        {
-            //que vamos a hacer en las celdas
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -50,14 +42,9 @@ namespace TallerElectronico.Desktop
             {
                 if (frm.ShowDialog(this) == DialogResult.OK)
                 {
-                    CargarEmpleados(); 
+                    CargarEmpleados();
                 }
             }
-        }
-
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

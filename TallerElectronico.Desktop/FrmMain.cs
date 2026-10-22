@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TallerElectronico.Desktop
@@ -18,7 +11,14 @@ namespace TallerElectronico.Desktop
         {
             InitializeComponent();
 
+            this.FormClosed += FrmMain_FormClosed;
+
             OpenFrm(new FrmInicio());
+        }
+
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void OpenFrm(Form formulario)
@@ -27,9 +27,11 @@ namespace TallerElectronico.Desktop
             {
                 if (formularioActual != null && formularioActual.GetType() == formulario.GetType())
                 {
+                    formulario.Dispose();
                     return;
                 }
 
+                // Cierra y destruye el formulario previo
                 if (formularioActual != null)
                 {
                     formularioActual.Close();
@@ -50,6 +52,7 @@ namespace TallerElectronico.Desktop
             }
             catch (Exception ex)
             {
+                formulario?.Dispose();
                 MessageBox.Show(
                     "No se pudo abrir el formulario.\n\n" + ex.Message,
                     "Error al abrir módulo",
@@ -66,7 +69,6 @@ namespace TallerElectronico.Desktop
 
         private void btnMain_Click(object sender, EventArgs e)
         {
-
             OpenFrm(new FrmInicio());
         }
     }
