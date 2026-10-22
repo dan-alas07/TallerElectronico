@@ -16,5 +16,6 @@ namespace TallerElectronico.Desktop
         {
             InitializeComponent();
         }
+
     }
 }

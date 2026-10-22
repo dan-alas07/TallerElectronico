@@ -85,5 +85,15 @@ namespace TallerElectronico.Desktop
         {
             OpenFrm(new FrmUsuario());
         }
+
+        private void btnInventario_Click(object sender, EventArgs e)
+        {
+            OpenFrm(new FrmInventario());
+        }
+        private void btnProveedor_Click(object sender, EventArgs e)
+        {
+            OpenFrm(new FrmProveedor());
+        }
+
     }
 }
