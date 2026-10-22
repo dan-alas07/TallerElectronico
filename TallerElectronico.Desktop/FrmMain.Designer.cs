@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.pnlMain = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnProveedor = new System.Windows.Forms.Button();
+            this.btnInventario = new System.Windows.Forms.Button();
+            this.btnUsuario = new System.Windows.Forms.Button();
             this.btnEmpleado = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnCliente = new System.Windows.Forms.Button();
+            this.btnEquipo = new System.Windows.Forms.Button();
             this.btnMain = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.pnlContainer = new System.Windows.Forms.Panel();
@@ -44,12 +44,12 @@
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pnlMain.Controls.Add(this.button7);
-            this.pnlMain.Controls.Add(this.button6);
-            this.pnlMain.Controls.Add(this.button5);
+            this.pnlMain.Controls.Add(this.btnProveedor);
+            this.pnlMain.Controls.Add(this.btnInventario);
+            this.pnlMain.Controls.Add(this.btnUsuario);
             this.pnlMain.Controls.Add(this.btnEmpleado);
-            this.pnlMain.Controls.Add(this.button3);
-            this.pnlMain.Controls.Add(this.button2);
+            this.pnlMain.Controls.Add(this.btnCliente);
+            this.pnlMain.Controls.Add(this.btnEquipo);
             this.pnlMain.Controls.Add(this.btnMain);
             this.pnlMain.Controls.Add(this.lblTitulo);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Left;
@@ -58,44 +58,45 @@
             this.pnlMain.Size = new System.Drawing.Size(220, 450);
             this.pnlMain.TabIndex = 0;
             // 
-            // button7
+            // btnProveedor
             // 
-            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(33, 329);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(150, 40);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "Proveedor";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnProveedor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProveedor.FlatAppearance.BorderSize = 0;
+            this.btnProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProveedor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProveedor.Location = new System.Drawing.Point(33, 329);
+            this.btnProveedor.Name = "btnProveedor";
+            this.btnProveedor.Size = new System.Drawing.Size(150, 40);
+            this.btnProveedor.TabIndex = 7;
+            this.btnProveedor.Text = "Proveedor";
+            this.btnProveedor.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnInventario
             // 
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(33, 283);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(150, 40);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Inventario";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnInventario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInventario.FlatAppearance.BorderSize = 0;
+            this.btnInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInventario.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInventario.Location = new System.Drawing.Point(33, 283);
+            this.btnInventario.Name = "btnInventario";
+            this.btnInventario.Size = new System.Drawing.Size(150, 40);
+            this.btnInventario.TabIndex = 6;
+            this.btnInventario.Text = "Inventario";
+            this.btnInventario.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnUsuario
             // 
-            this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(33, 237);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(150, 40);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Usuarios";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUsuario.FlatAppearance.BorderSize = 0;
+            this.btnUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsuario.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsuario.Location = new System.Drawing.Point(39, 237);
+            this.btnUsuario.Name = "btnUsuario";
+            this.btnUsuario.Size = new System.Drawing.Size(150, 40);
+            this.btnUsuario.TabIndex = 5;
+            this.btnUsuario.Text = "Usuarios";
+            this.btnUsuario.UseVisualStyleBackColor = true;
+            this.btnUsuario.Click += new System.EventHandler(this.btnUsuario_Click);
             // 
             // btnEmpleado
             // 
@@ -111,31 +112,32 @@
             this.btnEmpleado.UseVisualStyleBackColor = true;
             this.btnEmpleado.Click += new System.EventHandler(this.btnEmpleado_Click);
             // 
-            // button3
+            // btnCliente
             // 
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(33, 99);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 40);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Clientes";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCliente.FlatAppearance.BorderSize = 0;
+            this.btnCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCliente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCliente.Location = new System.Drawing.Point(33, 99);
+            this.btnCliente.Name = "btnCliente";
+            this.btnCliente.Size = new System.Drawing.Size(150, 40);
+            this.btnCliente.TabIndex = 3;
+            this.btnCliente.Text = "Clientes";
+            this.btnCliente.UseVisualStyleBackColor = true;
+            this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
             // 
-            // button2
+            // btnEquipo
             // 
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(33, 145);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 40);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Equipos";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnEquipo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEquipo.FlatAppearance.BorderSize = 0;
+            this.btnEquipo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEquipo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEquipo.Location = new System.Drawing.Point(39, 145);
+            this.btnEquipo.Name = "btnEquipo";
+            this.btnEquipo.Size = new System.Drawing.Size(150, 40);
+            this.btnEquipo.TabIndex = 2;
+            this.btnEquipo.Text = "Equipos";
+            this.btnEquipo.UseVisualStyleBackColor = true;
             // 
             // btnMain
             // 
@@ -195,13 +197,13 @@
 
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnInventario;
+        private System.Windows.Forms.Button btnUsuario;
         private System.Windows.Forms.Button btnEmpleado;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCliente;
+        private System.Windows.Forms.Button btnEquipo;
         private System.Windows.Forms.Button btnMain;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnProveedor;
         private System.Windows.Forms.Panel pnlContainer;
     }
 }

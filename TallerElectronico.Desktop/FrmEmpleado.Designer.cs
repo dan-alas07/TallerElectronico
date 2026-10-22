@@ -178,7 +178,6 @@ namespace TallerElectronico.Desktop
             this.lblTitle.Size = new System.Drawing.Size(407, 50);
             this.lblTitle.TabIndex = 2;
             this.lblTitle.Text = "Gestión de empleados";
-            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // btnNuevo
             // 
@@ -231,7 +230,6 @@ namespace TallerElectronico.Desktop
             this.btnEliminar.TabIndex = 8;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnEditar
             // 
@@ -249,7 +247,6 @@ namespace TallerElectronico.Desktop
             this.btnEditar.TabIndex = 9;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
-            this.btnEditar.Click += new System.EventHandler(this.button4_Click);
             // 
             // label8
             // 
