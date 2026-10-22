@@ -43,7 +43,7 @@
             // 
             // pnlMain
             // 
-            this.pnlMain.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlMain.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlMain.Controls.Add(this.button7);
             this.pnlMain.Controls.Add(this.button6);
             this.pnlMain.Controls.Add(this.button5);
@@ -156,7 +156,7 @@
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.BackColor = System.Drawing.Color.Silver;
+            this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.Black;
             this.lblTitulo.Location = new System.Drawing.Point(28, 9);
