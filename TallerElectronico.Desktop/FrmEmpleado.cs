@@ -36,7 +36,7 @@ namespace TallerElectronico.Desktop
             }
         }
 
-        private void btnCreate_Click(object sender, EventArgs e)
+        private void btnNuevo_Click(object sender, EventArgs e)
         {
             using (FrmCreateEmpleado frm = new FrmCreateEmpleado())
             {

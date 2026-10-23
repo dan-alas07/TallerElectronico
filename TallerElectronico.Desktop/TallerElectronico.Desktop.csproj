@@ -85,6 +85,18 @@
     <Compile Include="FrmCreateEmpleado.Designer.cs">
       <DependentUpon>FrmCreateEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCreateMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateMarca.Designer.cs">
+      <DependentUpon>FrmCreateMarca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCreateProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateProveedor.Designer.cs">
+      <DependentUpon>FrmCreateProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +133,12 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMarca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMarca.Designer.cs">
+      <DependentUpon>FrmMarca.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +159,12 @@
     <EmbeddedResource Include="FrmCreateEmpleado.resx">
       <DependentUpon>FrmCreateEmpleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateMarca.resx">
+      <DependentUpon>FrmCreateMarca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateProveedor.resx">
+      <DependentUpon>FrmCreateProveedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEmpleado.resx">
       <DependentUpon>FrmEmpleado.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMarca.resx">
+      <DependentUpon>FrmMarca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProveedor.resx">
       <DependentUpon>FrmProveedor.cs</DependentUpon>

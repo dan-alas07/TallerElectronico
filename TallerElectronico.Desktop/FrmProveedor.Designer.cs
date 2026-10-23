@@ -150,6 +150,7 @@
             this.btnNuevo.TabIndex = 41;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // lblTitle
             // 
@@ -220,7 +221,7 @@
             // 
             // ColumnCode
             // 
-            this.ColumnCode.DataPropertyName = "ProvedorId";
+            this.ColumnCode.DataPropertyName = "ProveedorId";
             this.ColumnCode.FillWeight = 65F;
             this.ColumnCode.HeaderText = "Código";
             this.ColumnCode.MinimumWidth = 6;
@@ -239,7 +240,7 @@
             // ColumnType
             // 
             this.ColumnType.DataPropertyName = "TipoProveedor";
-            this.ColumnType.FillWeight = 85F;
+            this.ColumnType.FillWeight = 50F;
             this.ColumnType.HeaderText = "Tipo";
             this.ColumnType.MinimumWidth = 6;
             this.ColumnType.Name = "ColumnType";
@@ -257,7 +258,7 @@
             // ColumnEmail
             // 
             this.ColumnEmail.DataPropertyName = "Email";
-            this.ColumnEmail.FillWeight = 125F;
+            this.ColumnEmail.FillWeight = 150F;
             this.ColumnEmail.HeaderText = "Correo ";
             this.ColumnEmail.MinimumWidth = 6;
             this.ColumnEmail.Name = "ColumnEmail";
@@ -316,6 +317,7 @@
             this.Controls.Add(this.dgvProveedor);
             this.Name = "FrmProveedor";
             this.Text = "FrmProveedor";
+            this.Load += new System.EventHandler(this.FrmProveedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

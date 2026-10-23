@@ -42,5 +42,16 @@ namespace TallerElectronico.Desktop
                 );
             }
         }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            using (FrmCreateProveedor frm = new FrmCreateProveedor())
+            {
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                {
+                    CargarProveedores();
+                }
+            }
+        }
     }
 }

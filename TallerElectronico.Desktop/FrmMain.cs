@@ -95,5 +95,10 @@ namespace TallerElectronico.Desktop
             OpenFrm(new FrmProveedor());
         }
 
+        private void btnMarca_Click(object sender, EventArgs e)
+        {
+            OpenFrm(new FrmMarca());
+        }
+
     }
 }
