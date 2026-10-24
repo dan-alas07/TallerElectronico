@@ -42,12 +42,6 @@
             this.dgvEmpleado = new System.Windows.Forms.DataGridView();
             this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDUI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnHiringDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleado)).BeginInit();
             this.SuspendLayout();
@@ -58,19 +52,17 @@
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtBuscar.Location = new System.Drawing.Point(28, 165);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscar.Location = new System.Drawing.Point(21, 134);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(477, 32);
+            this.txtBuscar.Size = new System.Drawing.Size(358, 27);
             this.txtBuscar.TabIndex = 55;
             // 
             // lblBuscar
             // 
             this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Location = new System.Drawing.Point(23, 145);
-            this.lblBuscar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBuscar.Location = new System.Drawing.Point(17, 118);
             this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(52, 16);
+            this.lblBuscar.Size = new System.Drawing.Size(43, 13);
             this.lblBuscar.TabIndex = 54;
             this.lblBuscar.Text = "Buscar:";
             // 
@@ -78,10 +70,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(43, 81);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(32, 66);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(454, 25);
+            this.label8.Size = new System.Drawing.Size(369, 20);
             this.label8.TabIndex = 53;
             this.label8.Text = "Consulta, registra, edita o elimina usuarios del taller";
             // 
@@ -95,10 +86,9 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(227, 241);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditar.Location = new System.Drawing.Point(170, 196);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(193, 52);
+            this.btnEditar.Size = new System.Drawing.Size(145, 42);
             this.btnEditar.TabIndex = 52;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
@@ -113,10 +103,9 @@
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(428, 241);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminar.Location = new System.Drawing.Point(321, 196);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(193, 52);
+            this.btnEliminar.Size = new System.Drawing.Size(145, 42);
             this.btnEliminar.TabIndex = 51;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -131,10 +120,9 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(512, 165);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBuscar.Location = new System.Drawing.Point(384, 134);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(100, 28);
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 56;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
@@ -149,10 +137,9 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(25, 241);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNuevo.Location = new System.Drawing.Point(19, 196);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(193, 52);
+            this.btnNuevo.Size = new System.Drawing.Size(145, 42);
             this.btnNuevo.TabIndex = 50;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
@@ -162,10 +149,9 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblTitle.Location = new System.Drawing.Point(16, 20);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitle.Location = new System.Drawing.Point(12, 16);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(437, 62);
+            this.lblTitle.Size = new System.Drawing.Size(346, 50);
             this.lblTitle.TabIndex = 49;
             this.lblTitle.Text = "Gestión de usuario";
             // 
@@ -195,12 +181,6 @@
             this.dgvEmpleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCode,
             this.ColumnName,
-            this.ColumnLastName,
-            this.ColumnDUI,
-            this.ColumnTelephone,
-            this.ColumnEmail,
-            this.ColumnAddress,
-            this.ColumnHiringDate,
             this.ColumnStatus});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -213,8 +193,7 @@
             this.dgvEmpleado.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEmpleado.EnableHeadersVisualStyles = false;
             this.dgvEmpleado.GridColor = System.Drawing.Color.White;
-            this.dgvEmpleado.Location = new System.Drawing.Point(25, 314);
-            this.dgvEmpleado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvEmpleado.Location = new System.Drawing.Point(19, 255);
             this.dgvEmpleado.MultiSelect = false;
             this.dgvEmpleado.Name = "dgvEmpleado";
             this.dgvEmpleado.ReadOnly = true;
@@ -222,7 +201,7 @@
             this.dgvEmpleado.RowHeadersWidth = 51;
             this.dgvEmpleado.RowTemplate.Height = 36;
             this.dgvEmpleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmpleado.Size = new System.Drawing.Size(1440, 265);
+            this.dgvEmpleado.Size = new System.Drawing.Size(780, 215);
             this.dgvEmpleado.TabIndex = 48;
             // 
             // ColumnCode
@@ -243,60 +222,6 @@
             this.ColumnName.Name = "ColumnName";
             this.ColumnName.ReadOnly = true;
             // 
-            // ColumnLastName
-            // 
-            this.ColumnLastName.DataPropertyName = "Apellido";
-            this.ColumnLastName.FillWeight = 85F;
-            this.ColumnLastName.HeaderText = "Apellido";
-            this.ColumnLastName.MinimumWidth = 6;
-            this.ColumnLastName.Name = "ColumnLastName";
-            this.ColumnLastName.ReadOnly = true;
-            // 
-            // ColumnDUI
-            // 
-            this.ColumnDUI.DataPropertyName = "DUI";
-            this.ColumnDUI.FillWeight = 85F;
-            this.ColumnDUI.HeaderText = "DUI";
-            this.ColumnDUI.MinimumWidth = 6;
-            this.ColumnDUI.Name = "ColumnDUI";
-            this.ColumnDUI.ReadOnly = true;
-            // 
-            // ColumnTelephone
-            // 
-            this.ColumnTelephone.DataPropertyName = "Telefono";
-            this.ColumnTelephone.FillWeight = 85F;
-            this.ColumnTelephone.HeaderText = "Teléfono";
-            this.ColumnTelephone.MinimumWidth = 6;
-            this.ColumnTelephone.Name = "ColumnTelephone";
-            this.ColumnTelephone.ReadOnly = true;
-            // 
-            // ColumnEmail
-            // 
-            this.ColumnEmail.DataPropertyName = "Correo";
-            this.ColumnEmail.FillWeight = 125F;
-            this.ColumnEmail.HeaderText = "Correo electrónico";
-            this.ColumnEmail.MinimumWidth = 6;
-            this.ColumnEmail.Name = "ColumnEmail";
-            this.ColumnEmail.ReadOnly = true;
-            // 
-            // ColumnAddress
-            // 
-            this.ColumnAddress.DataPropertyName = "Direccion";
-            this.ColumnAddress.FillWeight = 120F;
-            this.ColumnAddress.HeaderText = "Dirección";
-            this.ColumnAddress.MinimumWidth = 6;
-            this.ColumnAddress.Name = "ColumnAddress";
-            this.ColumnAddress.ReadOnly = true;
-            // 
-            // ColumnHiringDate
-            // 
-            this.ColumnHiringDate.DataPropertyName = "FechaContratacion";
-            this.ColumnHiringDate.FillWeight = 110F;
-            this.ColumnHiringDate.HeaderText = "Fecha contratación";
-            this.ColumnHiringDate.MinimumWidth = 6;
-            this.ColumnHiringDate.Name = "ColumnHiringDate";
-            this.ColumnHiringDate.ReadOnly = true;
-            // 
             // ColumnStatus
             // 
             this.ColumnStatus.DataPropertyName = "Estado";
@@ -308,9 +233,9 @@
             // 
             // FrmUsuario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1487, 554);
+            this.ClientSize = new System.Drawing.Size(829, 474);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lblBuscar);
             this.Controls.Add(this.label8);
@@ -320,7 +245,6 @@
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.dgvEmpleado);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmUsuario";
             this.Text = "FrmUsuario";
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleado)).EndInit();
@@ -342,12 +266,6 @@
         private System.Windows.Forms.DataGridView dgvEmpleado;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLastName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDUI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTelephone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHiringDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
     }
 }

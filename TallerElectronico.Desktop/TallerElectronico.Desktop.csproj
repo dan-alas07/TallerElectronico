@@ -79,6 +79,12 @@
     <Compile Include="FrmCliente.Designer.cs">
       <DependentUpon>FrmCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCreateCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateCliente.Designer.cs">
+      <DependentUpon>FrmCreateCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCreateEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     </Compile>
     <Compile Include="FrmCreateProveedor.Designer.cs">
       <DependentUpon>FrmCreateProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCreateUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateUsuario.Designer.cs">
+      <DependentUpon>FrmCreateUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmEmpleado.cs">
       <SubType>Form</SubType>
@@ -156,6 +168,9 @@
     <EmbeddedResource Include="FrmCliente.resx">
       <DependentUpon>FrmCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateCliente.resx">
+      <DependentUpon>FrmCreateCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCreateEmpleado.resx">
       <DependentUpon>FrmCreateEmpleado.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCreateProveedor.resx">
       <DependentUpon>FrmCreateProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateUsuario.resx">
+      <DependentUpon>FrmCreateUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEmpleado.resx">
       <DependentUpon>FrmEmpleado.cs</DependentUpon>

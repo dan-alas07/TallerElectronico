@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.btnMarca = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
@@ -40,7 +41,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pnlContainer = new System.Windows.Forms.Panel();
-            this.btnMarca = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
             this.pnlContainer.SuspendLayout();
             this.SuspendLayout();
@@ -60,8 +60,23 @@
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(220, 523);
+            this.pnlMain.Size = new System.Drawing.Size(220, 540);
             this.pnlMain.TabIndex = 0;
+            // 
+            // btnMarca
+            // 
+            this.btnMarca.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMarca.FlatAppearance.BorderSize = 0;
+            this.btnMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMarca.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarca.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnMarca.Location = new System.Drawing.Point(33, 471);
+            this.btnMarca.Name = "btnMarca";
+            this.btnMarca.Size = new System.Drawing.Size(150, 40);
+            this.btnMarca.TabIndex = 8;
+            this.btnMarca.Text = "Marca";
+            this.btnMarca.UseVisualStyleBackColor = true;
+            this.btnMarca.Click += new System.EventHandler(this.btnMarca_Click);
             // 
             // button2
             // 
@@ -222,30 +237,15 @@
             this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContainer.Location = new System.Drawing.Point(220, 0);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(580, 523);
+            this.pnlContainer.Size = new System.Drawing.Size(580, 540);
             this.pnlContainer.TabIndex = 1;
-            // 
-            // btnMarca
-            // 
-            this.btnMarca.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMarca.FlatAppearance.BorderSize = 0;
-            this.btnMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMarca.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMarca.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnMarca.Location = new System.Drawing.Point(33, 471);
-            this.btnMarca.Name = "btnMarca";
-            this.btnMarca.Size = new System.Drawing.Size(150, 40);
-            this.btnMarca.TabIndex = 8;
-            this.btnMarca.Text = "Marca";
-            this.btnMarca.UseVisualStyleBackColor = true;
-            this.btnMarca.Click += new System.EventHandler(this.btnMarca_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(800, 523);
+            this.ClientSize = new System.Drawing.Size(800, 540);
             this.Controls.Add(this.pnlContainer);
             this.Controls.Add(this.pnlMain);
             this.Name = "FrmMain";
