@@ -33,16 +33,11 @@
             this.pnlCard = new System.Windows.Forms.Panel();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.lblDireccion = new System.Windows.Forms.Label();
-            this.dtpFechaContratacion = new System.Windows.Forms.DateTimePicker();
-            this.lblFecha = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.lblCorreo = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.lblTelefono = new System.Windows.Forms.Label();
             this.txtDUI = new System.Windows.Forms.TextBox();
             this.lblDUI = new System.Windows.Forms.Label();
-            this.txtApellido = new System.Windows.Forms.TextBox();
-            this.lblApellido = new System.Windows.Forms.Label();
+            this.lblTipoProveedor = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.cboEstado = new System.Windows.Forms.ComboBox();
@@ -54,6 +49,13 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.cboTipo = new System.Windows.Forms.ComboBox();
+            this.lblTelefono = new System.Windows.Forms.Label();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.txtNRC = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNIT = new System.Windows.Forms.TextBox();
+            this.lblNIT = new System.Windows.Forms.Label();
             this.pnlCard.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +70,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(500, 519);
+            this.btnCancelar.Location = new System.Drawing.Point(493, 571);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(130, 42);
             this.btnCancelar.TabIndex = 6;
@@ -84,7 +86,7 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(360, 519);
+            this.btnGuardar.Location = new System.Drawing.Point(353, 571);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(130, 42);
             this.btnGuardar.TabIndex = 5;
@@ -94,18 +96,20 @@
             // pnlCard
             // 
             this.pnlCard.BackColor = System.Drawing.Color.White;
+            this.pnlCard.Controls.Add(this.txtNIT);
+            this.pnlCard.Controls.Add(this.lblNIT);
+            this.pnlCard.Controls.Add(this.txtNRC);
+            this.pnlCard.Controls.Add(this.label1);
+            this.pnlCard.Controls.Add(this.cboTipo);
             this.pnlCard.Controls.Add(this.txtDireccion);
             this.pnlCard.Controls.Add(this.lblDireccion);
-            this.pnlCard.Controls.Add(this.dtpFechaContratacion);
-            this.pnlCard.Controls.Add(this.lblFecha);
             this.pnlCard.Controls.Add(this.txtCorreo);
             this.pnlCard.Controls.Add(this.lblCorreo);
             this.pnlCard.Controls.Add(this.txtTelefono);
             this.pnlCard.Controls.Add(this.lblTelefono);
             this.pnlCard.Controls.Add(this.txtDUI);
             this.pnlCard.Controls.Add(this.lblDUI);
-            this.pnlCard.Controls.Add(this.txtApellido);
-            this.pnlCard.Controls.Add(this.lblApellido);
+            this.pnlCard.Controls.Add(this.lblTipoProveedor);
             this.pnlCard.Controls.Add(this.txtNombre);
             this.pnlCard.Controls.Add(this.lblNombre);
             this.pnlCard.Controls.Add(this.cboEstado);
@@ -116,14 +120,14 @@
             this.pnlCard.Controls.Add(this.lblSeccion);
             this.pnlCard.Location = new System.Drawing.Point(30, 119);
             this.pnlCard.Name = "pnlCard";
-            this.pnlCard.Size = new System.Drawing.Size(600, 380);
+            this.pnlCard.Size = new System.Drawing.Size(600, 430);
             this.pnlCard.TabIndex = 4;
             // 
             // txtDireccion
             // 
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDireccion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDireccion.Location = new System.Drawing.Point(30, 326);
+            this.txtDireccion.Location = new System.Drawing.Point(30, 381);
             this.txtDireccion.MaxLength = 200;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(540, 25);
@@ -134,32 +138,11 @@
             this.lblDireccion.AutoSize = true;
             this.lblDireccion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblDireccion.ForeColor = System.Drawing.Color.Black;
-            this.lblDireccion.Location = new System.Drawing.Point(30, 306);
+            this.lblDireccion.Location = new System.Drawing.Point(30, 361);
             this.lblDireccion.Name = "lblDireccion";
             this.lblDireccion.Size = new System.Drawing.Size(68, 15);
             this.lblDireccion.TabIndex = 10;
             this.lblDireccion.Text = "Dirección *";
-            // 
-            // dtpFechaContratacion
-            // 
-            this.dtpFechaContratacion.CalendarFont = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtpFechaContratacion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtpFechaContratacion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaContratacion.Location = new System.Drawing.Point(320, 264);
-            this.dtpFechaContratacion.Name = "dtpFechaContratacion";
-            this.dtpFechaContratacion.Size = new System.Drawing.Size(250, 25);
-            this.dtpFechaContratacion.TabIndex = 6;
-            // 
-            // lblFecha
-            // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblFecha.ForeColor = System.Drawing.Color.Black;
-            this.lblFecha.Location = new System.Drawing.Point(320, 244);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(129, 15);
-            this.lblFecha.TabIndex = 9;
-            this.lblFecha.Text = "Fecha de contratación";
             // 
             // txtCorreo
             // 
@@ -182,27 +165,6 @@
             this.lblCorreo.TabIndex = 8;
             this.lblCorreo.Text = "Correo electrónico *";
             // 
-            // txtTelefono
-            // 
-            this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTelefono.Location = new System.Drawing.Point(320, 202);
-            this.txtTelefono.MaxLength = 9;
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(250, 25);
-            this.txtTelefono.TabIndex = 4;
-            // 
-            // lblTelefono
-            // 
-            this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblTelefono.ForeColor = System.Drawing.Color.Black;
-            this.lblTelefono.Location = new System.Drawing.Point(320, 182);
-            this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(64, 15);
-            this.lblTelefono.TabIndex = 7;
-            this.lblTelefono.Text = "Teléfono *";
-            // 
             // txtDUI
             // 
             this.txtDUI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -224,26 +186,16 @@
             this.lblDUI.TabIndex = 6;
             this.lblDUI.Text = "DUI *";
             // 
-            // txtApellido
+            // lblTipoProveedor
             // 
-            this.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtApellido.Location = new System.Drawing.Point(320, 140);
-            this.txtApellido.MaxLength = 50;
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(250, 25);
-            this.txtApellido.TabIndex = 2;
-            // 
-            // lblApellido
-            // 
-            this.lblApellido.AutoSize = true;
-            this.lblApellido.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblApellido.ForeColor = System.Drawing.Color.Black;
-            this.lblApellido.Location = new System.Drawing.Point(320, 120);
-            this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(60, 15);
-            this.lblApellido.TabIndex = 5;
-            this.lblApellido.Text = "Apellido *";
+            this.lblTipoProveedor.AutoSize = true;
+            this.lblTipoProveedor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblTipoProveedor.ForeColor = System.Drawing.Color.Black;
+            this.lblTipoProveedor.Location = new System.Drawing.Point(320, 120);
+            this.lblTipoProveedor.Name = "lblTipoProveedor";
+            this.lblTipoProveedor.Size = new System.Drawing.Size(39, 15);
+            this.lblTipoProveedor.TabIndex = 5;
+            this.lblTipoProveedor.Text = "Tipo *";
             // 
             // txtNombre
             // 
@@ -367,11 +319,88 @@
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Nuevo proveedor";
             // 
+            // cboTipo
+            // 
+            this.cboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipo.Enabled = false;
+            this.cboTipo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboTipo.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboTipo.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cboTipo.Location = new System.Drawing.Point(320, 140);
+            this.cboTipo.Name = "cboTipo";
+            this.cboTipo.Size = new System.Drawing.Size(250, 25);
+            this.cboTipo.TabIndex = 12;
+            // 
+            // lblTelefono
+            // 
+            this.lblTelefono.AutoSize = true;
+            this.lblTelefono.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblTelefono.ForeColor = System.Drawing.Color.Black;
+            this.lblTelefono.Location = new System.Drawing.Point(320, 182);
+            this.lblTelefono.Name = "lblTelefono";
+            this.lblTelefono.Size = new System.Drawing.Size(64, 15);
+            this.lblTelefono.TabIndex = 7;
+            this.lblTelefono.Text = "Teléfono *";
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtTelefono.Location = new System.Drawing.Point(320, 202);
+            this.txtTelefono.MaxLength = 9;
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(250, 25);
+            this.txtTelefono.TabIndex = 4;
+            // 
+            // txtNRC
+            // 
+            this.txtNRC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNRC.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtNRC.Location = new System.Drawing.Point(30, 322);
+            this.txtNRC.MaxLength = 9;
+            this.txtNRC.Name = "txtNRC";
+            this.txtNRC.Size = new System.Drawing.Size(250, 25);
+            this.txtNRC.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(30, 302);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(39, 15);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "NRC *";
+            // 
+            // txtNIT
+            // 
+            this.txtNIT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNIT.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtNIT.Location = new System.Drawing.Point(320, 264);
+            this.txtNIT.MaxLength = 10;
+            this.txtNIT.Name = "txtNIT";
+            this.txtNIT.Size = new System.Drawing.Size(250, 25);
+            this.txtNIT.TabIndex = 17;
+            // 
+            // lblNIT
+            // 
+            this.lblNIT.AutoSize = true;
+            this.lblNIT.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblNIT.ForeColor = System.Drawing.Color.Black;
+            this.lblNIT.Location = new System.Drawing.Point(320, 244);
+            this.lblNIT.Name = "lblNIT";
+            this.lblNIT.Size = new System.Drawing.Size(35, 15);
+            this.lblNIT.TabIndex = 18;
+            this.lblNIT.Text = "NIT *";
+            // 
             // FrmCreateProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 570);
+            this.ClientSize = new System.Drawing.Size(660, 644);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
@@ -393,16 +422,11 @@
         private System.Windows.Forms.Panel pnlCard;
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label lblDireccion;
-        private System.Windows.Forms.DateTimePicker dtpFechaContratacion;
-        private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.Label lblCorreo;
-        private System.Windows.Forms.TextBox txtTelefono;
-        private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.TextBox txtDUI;
         private System.Windows.Forms.Label lblDUI;
-        private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.Label lblApellido;
+        private System.Windows.Forms.Label lblTipoProveedor;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.ComboBox cboEstado;
@@ -414,5 +438,12 @@
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblSubtitulo;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.ComboBox cboTipo;
+        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.Label lblTelefono;
+        private System.Windows.Forms.TextBox txtNRC;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtNIT;
+        private System.Windows.Forms.Label lblNIT;
     }
 }
