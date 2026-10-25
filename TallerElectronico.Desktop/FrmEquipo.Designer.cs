@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -42,12 +42,6 @@
             this.dgvEmpleado = new System.Windows.Forms.DataGridView();
             this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDUI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnHiringDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleado)).BeginInit();
             this.SuspendLayout();
@@ -78,9 +72,9 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(32, 59);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(387, 20);
+            this.label8.Size = new System.Drawing.Size(365, 20);
             this.label8.TabIndex = 35;
-            this.label8.Text = "Consulta, registra, edita o elimina empleados del taller";
+            this.label8.Text = "Consulta, registra, edita o elimina equipos del taller";
             // 
             // btnEditar
             // 
@@ -157,9 +151,9 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
             this.lblTitle.Location = new System.Drawing.Point(12, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(391, 50);
+            this.lblTitle.Size = new System.Drawing.Size(339, 50);
             this.lblTitle.TabIndex = 31;
-            this.lblTitle.Text = "Gestión de empleado";
+            this.lblTitle.Text = "Gestión de equipo";
             // 
             // dgvEmpleado
             // 
@@ -167,42 +161,36 @@
             this.dgvEmpleado.AllowUserToDeleteRows = false;
             this.dgvEmpleado.AllowUserToResizeColumns = false;
             this.dgvEmpleado.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(252)))));
-            this.dgvEmpleado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(252)))));
+            this.dgvEmpleado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvEmpleado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEmpleado.BackgroundColor = System.Drawing.Color.White;
             this.dgvEmpleado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvEmpleado.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvEmpleado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvEmpleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEmpleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEmpleado.ColumnHeadersHeight = 42;
             this.dgvEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvEmpleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCode,
             this.ColumnName,
-            this.ColumnLastName,
-            this.ColumnDUI,
-            this.ColumnTelephone,
-            this.ColumnEmail,
-            this.ColumnAddress,
-            this.ColumnHiringDate,
             this.ColumnStatus});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEmpleado.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEmpleado.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEmpleado.EnableHeadersVisualStyles = false;
             this.dgvEmpleado.GridColor = System.Drawing.Color.White;
             this.dgvEmpleado.Location = new System.Drawing.Point(19, 248);
@@ -217,7 +205,7 @@
             // 
             // ColumnCode
             // 
-            this.ColumnCode.DataPropertyName = "EmpleadoId";
+            this.ColumnCode.DataPropertyName = "TipoEquipoId";
             this.ColumnCode.FillWeight = 65F;
             this.ColumnCode.HeaderText = "Código";
             this.ColumnCode.Name = "ColumnCode";
@@ -230,54 +218,6 @@
             this.ColumnName.HeaderText = "Nombre";
             this.ColumnName.Name = "ColumnName";
             this.ColumnName.ReadOnly = true;
-            // 
-            // ColumnLastName
-            // 
-            this.ColumnLastName.DataPropertyName = "Apellido";
-            this.ColumnLastName.FillWeight = 85F;
-            this.ColumnLastName.HeaderText = "Apellido";
-            this.ColumnLastName.Name = "ColumnLastName";
-            this.ColumnLastName.ReadOnly = true;
-            // 
-            // ColumnDUI
-            // 
-            this.ColumnDUI.DataPropertyName = "DUI";
-            this.ColumnDUI.FillWeight = 85F;
-            this.ColumnDUI.HeaderText = "DUI";
-            this.ColumnDUI.Name = "ColumnDUI";
-            this.ColumnDUI.ReadOnly = true;
-            // 
-            // ColumnTelephone
-            // 
-            this.ColumnTelephone.DataPropertyName = "Telefono";
-            this.ColumnTelephone.FillWeight = 85F;
-            this.ColumnTelephone.HeaderText = "Teléfono";
-            this.ColumnTelephone.Name = "ColumnTelephone";
-            this.ColumnTelephone.ReadOnly = true;
-            // 
-            // ColumnEmail
-            // 
-            this.ColumnEmail.DataPropertyName = "Correo";
-            this.ColumnEmail.FillWeight = 125F;
-            this.ColumnEmail.HeaderText = "Correo electrónico";
-            this.ColumnEmail.Name = "ColumnEmail";
-            this.ColumnEmail.ReadOnly = true;
-            // 
-            // ColumnAddress
-            // 
-            this.ColumnAddress.DataPropertyName = "Direccion";
-            this.ColumnAddress.FillWeight = 120F;
-            this.ColumnAddress.HeaderText = "Dirección";
-            this.ColumnAddress.Name = "ColumnAddress";
-            this.ColumnAddress.ReadOnly = true;
-            // 
-            // ColumnHiringDate
-            // 
-            this.ColumnHiringDate.DataPropertyName = "FechaContratacion";
-            this.ColumnHiringDate.FillWeight = 110F;
-            this.ColumnHiringDate.HeaderText = "Fecha contratación";
-            this.ColumnHiringDate.Name = "ColumnHiringDate";
-            this.ColumnHiringDate.ReadOnly = true;
             // 
             // ColumnStatus
             // 
@@ -322,12 +262,6 @@
         private System.Windows.Forms.DataGridView dgvEmpleado;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLastName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDUI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTelephone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEmail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHiringDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
     }
 }

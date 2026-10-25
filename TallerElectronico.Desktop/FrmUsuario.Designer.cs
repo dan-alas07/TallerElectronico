@@ -42,6 +42,9 @@
             this.dgvEmpleado = new System.Windows.Forms.DataGridView();
             this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPassword = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnEmpleadoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleado)).BeginInit();
             this.SuspendLayout();
@@ -181,6 +184,9 @@
             this.dgvEmpleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCode,
             this.ColumnName,
+            this.ColumnPassword,
+            this.ColumnEmpleadoId,
+            this.ColumnRol,
             this.ColumnStatus});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -206,7 +212,7 @@
             // 
             // ColumnCode
             // 
-            this.ColumnCode.DataPropertyName = "EmpleadoId";
+            this.ColumnCode.DataPropertyName = "UsuarioId";
             this.ColumnCode.FillWeight = 65F;
             this.ColumnCode.HeaderText = "Código";
             this.ColumnCode.MinimumWidth = 6;
@@ -221,6 +227,26 @@
             this.ColumnName.MinimumWidth = 6;
             this.ColumnName.Name = "ColumnName";
             this.ColumnName.ReadOnly = true;
+            // 
+            // ColumnPassword
+            // 
+            this.ColumnPassword.DataPropertyName = "Clave";
+            this.ColumnPassword.HeaderText = "Clave";
+            this.ColumnPassword.Name = "ColumnPassword";
+            this.ColumnPassword.ReadOnly = true;
+            // 
+            // ColumnEmpleadoId
+            // 
+            this.ColumnEmpleadoId.HeaderText = "EmpleadoId";
+            this.ColumnEmpleadoId.Name = "ColumnEmpleadoId";
+            this.ColumnEmpleadoId.ReadOnly = true;
+            // 
+            // ColumnRol
+            // 
+            this.ColumnRol.DataPropertyName = "RolId";
+            this.ColumnRol.HeaderText = "Rol";
+            this.ColumnRol.Name = "ColumnRol";
+            this.ColumnRol.ReadOnly = true;
             // 
             // ColumnStatus
             // 
@@ -266,6 +292,9 @@
         private System.Windows.Forms.DataGridView dgvEmpleado;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPassword;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEmpleadoId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRol;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
     }
 }

@@ -33,20 +33,10 @@
             this.pnlCard = new System.Windows.Forms.Panel();
             this.cboEstado = new System.Windows.Forms.ComboBox();
             this.lblEstado = new System.Windows.Forms.Label();
-            this.txtDUI = new System.Windows.Forms.TextBox();
-            this.lblDUI = new System.Windows.Forms.Label();
-            this.dtpFechaContratacion = new System.Windows.Forms.DateTimePicker();
-            this.lblFecha = new System.Windows.Forms.Label();
-            this.txtCorreo = new System.Windows.Forms.TextBox();
             this.lblCorreo = new System.Windows.Forms.Label();
-            this.txtCarnet = new System.Windows.Forms.TextBox();
-            this.lblCarnet = new System.Windows.Forms.Label();
-            this.txtTipoDocumento = new System.Windows.Forms.TextBox();
-            this.lblTipo = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.lblTelefono = new System.Windows.Forms.Label();
-            this.txtApellido = new System.Windows.Forms.TextBox();
-            this.lblApellido = new System.Windows.Forms.Label();
+            this.lblEmpleadoId = new System.Windows.Forms.Label();
+            this.txtClave = new System.Windows.Forms.TextBox();
+            this.lblClave = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
@@ -56,6 +46,8 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.cboCodigo = new System.Windows.Forms.ComboBox();
+            this.cboRol = new System.Windows.Forms.ComboBox();
             this.pnlCard.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +62,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(500, 512);
+            this.btnCancelar.Location = new System.Drawing.Point(500, 391);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(130, 42);
             this.btnCancelar.TabIndex = 9;
@@ -86,7 +78,7 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(360, 512);
+            this.btnGuardar.Location = new System.Drawing.Point(360, 391);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(130, 42);
             this.btnGuardar.TabIndex = 8;
@@ -96,22 +88,14 @@
             // pnlCard
             // 
             this.pnlCard.BackColor = System.Drawing.Color.White;
+            this.pnlCard.Controls.Add(this.cboRol);
+            this.pnlCard.Controls.Add(this.cboCodigo);
             this.pnlCard.Controls.Add(this.cboEstado);
             this.pnlCard.Controls.Add(this.lblEstado);
-            this.pnlCard.Controls.Add(this.txtDUI);
-            this.pnlCard.Controls.Add(this.lblDUI);
-            this.pnlCard.Controls.Add(this.dtpFechaContratacion);
-            this.pnlCard.Controls.Add(this.lblFecha);
-            this.pnlCard.Controls.Add(this.txtCorreo);
             this.pnlCard.Controls.Add(this.lblCorreo);
-            this.pnlCard.Controls.Add(this.txtCarnet);
-            this.pnlCard.Controls.Add(this.lblCarnet);
-            this.pnlCard.Controls.Add(this.txtTipoDocumento);
-            this.pnlCard.Controls.Add(this.lblTipo);
-            this.pnlCard.Controls.Add(this.txtTelefono);
-            this.pnlCard.Controls.Add(this.lblTelefono);
-            this.pnlCard.Controls.Add(this.txtApellido);
-            this.pnlCard.Controls.Add(this.lblApellido);
+            this.pnlCard.Controls.Add(this.lblEmpleadoId);
+            this.pnlCard.Controls.Add(this.txtClave);
+            this.pnlCard.Controls.Add(this.lblClave);
             this.pnlCard.Controls.Add(this.txtNombre);
             this.pnlCard.Controls.Add(this.lblNombre);
             this.pnlCard.Controls.Add(this.txtCodigo);
@@ -120,7 +104,7 @@
             this.pnlCard.Controls.Add(this.lblSeccion);
             this.pnlCard.Location = new System.Drawing.Point(30, 95);
             this.pnlCard.Name = "pnlCard";
-            this.pnlCard.Size = new System.Drawing.Size(600, 392);
+            this.pnlCard.Size = new System.Drawing.Size(600, 269);
             this.pnlCard.TabIndex = 7;
             // 
             // cboEstado
@@ -148,58 +132,6 @@
             this.lblEstado.TabIndex = 21;
             this.lblEstado.Text = "Estado";
             // 
-            // txtDUI
-            // 
-            this.txtDUI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDUI.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDUI.Location = new System.Drawing.Point(320, 264);
-            this.txtDUI.MaxLength = 9;
-            this.txtDUI.Name = "txtDUI";
-            this.txtDUI.Size = new System.Drawing.Size(250, 25);
-            this.txtDUI.TabIndex = 18;
-            // 
-            // lblDUI
-            // 
-            this.lblDUI.AutoSize = true;
-            this.lblDUI.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblDUI.ForeColor = System.Drawing.Color.Black;
-            this.lblDUI.Location = new System.Drawing.Point(320, 244);
-            this.lblDUI.Name = "lblDUI";
-            this.lblDUI.Size = new System.Drawing.Size(29, 15);
-            this.lblDUI.TabIndex = 19;
-            this.lblDUI.Text = "DUI";
-            // 
-            // dtpFechaContratacion
-            // 
-            this.dtpFechaContratacion.CalendarFont = new System.Drawing.Font("Segoe UI", 9F);
-            this.dtpFechaContratacion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtpFechaContratacion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaContratacion.Location = new System.Drawing.Point(320, 326);
-            this.dtpFechaContratacion.Name = "dtpFechaContratacion";
-            this.dtpFechaContratacion.Size = new System.Drawing.Size(250, 25);
-            this.dtpFechaContratacion.TabIndex = 16;
-            // 
-            // lblFecha
-            // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblFecha.ForeColor = System.Drawing.Color.Black;
-            this.lblFecha.Location = new System.Drawing.Point(320, 306);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(103, 15);
-            this.lblFecha.TabIndex = 17;
-            this.lblFecha.Text = "Fecha de registro";
-            // 
-            // txtCorreo
-            // 
-            this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCorreo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtCorreo.Location = new System.Drawing.Point(320, 202);
-            this.txtCorreo.MaxLength = 100;
-            this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(250, 25);
-            this.txtCorreo.TabIndex = 14;
-            // 
             // lblCorreo
             // 
             this.lblCorreo.AutoSize = true;
@@ -207,93 +139,41 @@
             this.lblCorreo.ForeColor = System.Drawing.Color.Black;
             this.lblCorreo.Location = new System.Drawing.Point(320, 182);
             this.lblCorreo.Name = "lblCorreo";
-            this.lblCorreo.Size = new System.Drawing.Size(119, 15);
+            this.lblCorreo.Size = new System.Drawing.Size(33, 15);
             this.lblCorreo.TabIndex = 15;
-            this.lblCorreo.Text = "Correo electrónico *";
+            this.lblCorreo.Text = "Rol *";
             // 
-            // txtCarnet
+            // lblEmpleadoId
             // 
-            this.txtCarnet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCarnet.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtCarnet.Location = new System.Drawing.Point(30, 326);
-            this.txtCarnet.MaxLength = 200;
-            this.txtCarnet.Name = "txtCarnet";
-            this.txtCarnet.Size = new System.Drawing.Size(250, 25);
-            this.txtCarnet.TabIndex = 7;
+            this.lblEmpleadoId.AutoSize = true;
+            this.lblEmpleadoId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblEmpleadoId.ForeColor = System.Drawing.Color.Black;
+            this.lblEmpleadoId.Location = new System.Drawing.Point(30, 182);
+            this.lblEmpleadoId.Name = "lblEmpleadoId";
+            this.lblEmpleadoId.Size = new System.Drawing.Size(110, 15);
+            this.lblEmpleadoId.TabIndex = 6;
+            this.lblEmpleadoId.Text = "Código Empleado *";
             // 
-            // lblCarnet
+            // txtClave
             // 
-            this.lblCarnet.AutoSize = true;
-            this.lblCarnet.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblCarnet.ForeColor = System.Drawing.Color.Black;
-            this.lblCarnet.Location = new System.Drawing.Point(30, 306);
-            this.lblCarnet.Name = "lblCarnet";
-            this.lblCarnet.Size = new System.Drawing.Size(47, 15);
-            this.lblCarnet.TabIndex = 10;
-            this.lblCarnet.Text = "Carnet ";
+            this.txtClave.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtClave.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtClave.Location = new System.Drawing.Point(320, 140);
+            this.txtClave.MaxLength = 50;
+            this.txtClave.Name = "txtClave";
+            this.txtClave.Size = new System.Drawing.Size(250, 25);
+            this.txtClave.TabIndex = 2;
             // 
-            // txtTipoDocumento
+            // lblClave
             // 
-            this.txtTipoDocumento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTipoDocumento.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTipoDocumento.Location = new System.Drawing.Point(30, 264);
-            this.txtTipoDocumento.MaxLength = 9;
-            this.txtTipoDocumento.Name = "txtTipoDocumento";
-            this.txtTipoDocumento.Size = new System.Drawing.Size(250, 25);
-            this.txtTipoDocumento.TabIndex = 4;
-            // 
-            // lblTipo
-            // 
-            this.lblTipo.AutoSize = true;
-            this.lblTipo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblTipo.ForeColor = System.Drawing.Color.Black;
-            this.lblTipo.Location = new System.Drawing.Point(30, 244);
-            this.lblTipo.Name = "lblTipo";
-            this.lblTipo.Size = new System.Drawing.Size(108, 15);
-            this.lblTipo.TabIndex = 7;
-            this.lblTipo.Text = "Tipo Documento *";
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTelefono.Location = new System.Drawing.Point(30, 202);
-            this.txtTelefono.MaxLength = 10;
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(250, 25);
-            this.txtTelefono.TabIndex = 3;
-            // 
-            // lblTelefono
-            // 
-            this.lblTelefono.AutoSize = true;
-            this.lblTelefono.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblTelefono.ForeColor = System.Drawing.Color.Black;
-            this.lblTelefono.Location = new System.Drawing.Point(30, 182);
-            this.lblTelefono.Name = "lblTelefono";
-            this.lblTelefono.Size = new System.Drawing.Size(64, 15);
-            this.lblTelefono.TabIndex = 6;
-            this.lblTelefono.Text = "Teléfono *";
-            // 
-            // txtApellido
-            // 
-            this.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtApellido.Location = new System.Drawing.Point(320, 140);
-            this.txtApellido.MaxLength = 50;
-            this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(250, 25);
-            this.txtApellido.TabIndex = 2;
-            // 
-            // lblApellido
-            // 
-            this.lblApellido.AutoSize = true;
-            this.lblApellido.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblApellido.ForeColor = System.Drawing.Color.Black;
-            this.lblApellido.Location = new System.Drawing.Point(320, 120);
-            this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(60, 15);
-            this.lblApellido.TabIndex = 5;
-            this.lblApellido.Text = "Apellido *";
+            this.lblClave.AutoSize = true;
+            this.lblClave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblClave.ForeColor = System.Drawing.Color.Black;
+            this.lblClave.Location = new System.Drawing.Point(320, 120);
+            this.lblClave.Name = "lblClave";
+            this.lblClave.Size = new System.Drawing.Size(45, 15);
+            this.lblClave.TabIndex = 5;
+            this.lblClave.Text = "Clave *";
             // 
             // txtNombre
             // 
@@ -355,9 +235,9 @@
             this.lblSeccion.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lblSeccion.Location = new System.Drawing.Point(30, 14);
             this.lblSeccion.Name = "lblSeccion";
-            this.lblSeccion.Size = new System.Drawing.Size(170, 20);
+            this.lblSeccion.Size = new System.Drawing.Size(176, 20);
             this.lblSeccion.TabIndex = 0;
-            this.lblSeccion.Text = "Información del cliente";
+            this.lblSeccion.Text = "Información del usuario";
             // 
             // pnlHeader
             // 
@@ -377,9 +257,9 @@
             this.lblSubtitulo.ForeColor = System.Drawing.Color.White;
             this.lblSubtitulo.Location = new System.Drawing.Point(31, 49);
             this.lblSubtitulo.Name = "lblSubtitulo";
-            this.lblSubtitulo.Size = new System.Drawing.Size(332, 17);
+            this.lblSubtitulo.Size = new System.Drawing.Size(338, 17);
             this.lblSubtitulo.TabIndex = 1;
-            this.lblSubtitulo.Text = "Completa los datos necesarios para registrar un cliente";
+            this.lblSubtitulo.Text = "Completa los datos necesarios para registrar un usuario";
             // 
             // lblTitulo
             // 
@@ -388,15 +268,43 @@
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(28, 10);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(172, 32);
+            this.lblTitulo.Size = new System.Drawing.Size(182, 32);
             this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Nuevo cliente";
+            this.lblTitulo.Text = "Nuevo usuario";
+            // 
+            // cboCodigo
+            // 
+            this.cboCodigo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCodigo.Enabled = false;
+            this.cboCodigo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboCodigo.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboCodigo.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cboCodigo.Location = new System.Drawing.Point(30, 202);
+            this.cboCodigo.Name = "cboCodigo";
+            this.cboCodigo.Size = new System.Drawing.Size(250, 25);
+            this.cboCodigo.TabIndex = 22;
+            // 
+            // cboRol
+            // 
+            this.cboRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRol.Enabled = false;
+            this.cboRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboRol.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboRol.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cboRol.Location = new System.Drawing.Point(323, 202);
+            this.cboRol.Name = "cboRol";
+            this.cboRol.Size = new System.Drawing.Size(250, 25);
+            this.cboRol.TabIndex = 23;
             // 
             // FrmCreateUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 566);
+            this.ClientSize = new System.Drawing.Size(660, 445);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.pnlCard);
@@ -418,20 +326,10 @@
         private System.Windows.Forms.Panel pnlCard;
         private System.Windows.Forms.ComboBox cboEstado;
         private System.Windows.Forms.Label lblEstado;
-        private System.Windows.Forms.TextBox txtDUI;
-        private System.Windows.Forms.Label lblDUI;
-        private System.Windows.Forms.DateTimePicker dtpFechaContratacion;
-        private System.Windows.Forms.Label lblFecha;
-        private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.Label lblCorreo;
-        private System.Windows.Forms.TextBox txtCarnet;
-        private System.Windows.Forms.Label lblCarnet;
-        private System.Windows.Forms.TextBox txtTipoDocumento;
-        private System.Windows.Forms.Label lblTipo;
-        private System.Windows.Forms.TextBox txtTelefono;
-        private System.Windows.Forms.Label lblTelefono;
-        private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.Label lblApellido;
+        private System.Windows.Forms.Label lblEmpleadoId;
+        private System.Windows.Forms.TextBox txtClave;
+        private System.Windows.Forms.Label lblClave;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtCodigo;
@@ -441,5 +339,7 @@
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblSubtitulo;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.ComboBox cboRol;
+        private System.Windows.Forms.ComboBox cboCodigo;
     }
 }
