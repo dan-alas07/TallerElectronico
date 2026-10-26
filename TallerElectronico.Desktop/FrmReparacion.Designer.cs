@@ -66,17 +66,19 @@
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtBuscar.Location = new System.Drawing.Point(21, 127);
+            this.txtBuscar.Location = new System.Drawing.Point(28, 156);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(358, 27);
+            this.txtBuscar.Size = new System.Drawing.Size(477, 32);
             this.txtBuscar.TabIndex = 46;
             // 
             // lblBuscar
             // 
             this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Location = new System.Drawing.Point(17, 111);
+            this.lblBuscar.Location = new System.Drawing.Point(23, 137);
+            this.lblBuscar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(43, 13);
+            this.lblBuscar.Size = new System.Drawing.Size(52, 16);
             this.lblBuscar.TabIndex = 45;
             this.lblBuscar.Text = "Buscar:";
             // 
@@ -84,9 +86,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(32, 59);
+            this.label8.Location = new System.Drawing.Point(43, 73);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(401, 20);
+            this.label8.Size = new System.Drawing.Size(493, 25);
             this.label8.TabIndex = 44;
             this.label8.Text = "Consulta, registra, edita o elimina reparaciones del taller";
             // 
@@ -100,9 +103,10 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(170, 189);
+            this.btnEditar.Location = new System.Drawing.Point(227, 233);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(145, 42);
+            this.btnEditar.Size = new System.Drawing.Size(193, 52);
             this.btnEditar.TabIndex = 43;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
@@ -117,9 +121,10 @@
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(321, 189);
+            this.btnEliminar.Location = new System.Drawing.Point(428, 233);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(145, 42);
+            this.btnEliminar.Size = new System.Drawing.Size(193, 52);
             this.btnEliminar.TabIndex = 42;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -134,9 +139,10 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(384, 127);
+            this.btnBuscar.Location = new System.Drawing.Point(512, 156);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(100, 28);
             this.btnBuscar.TabIndex = 47;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
@@ -151,9 +157,10 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(19, 189);
+            this.btnNuevo.Location = new System.Drawing.Point(25, 233);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(145, 42);
+            this.btnNuevo.Size = new System.Drawing.Size(193, 52);
             this.btnNuevo.TabIndex = 41;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
@@ -163,9 +170,10 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblTitle.Location = new System.Drawing.Point(12, 9);
+            this.lblTitle.Location = new System.Drawing.Point(16, 11);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(404, 50);
+            this.lblTitle.Size = new System.Drawing.Size(509, 62);
             this.lblTitle.TabIndex = 40;
             this.lblTitle.Text = "Gestión de reparación";
             // 
@@ -221,7 +229,8 @@
             this.dgvCliente.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCliente.EnableHeadersVisualStyles = false;
             this.dgvCliente.GridColor = System.Drawing.Color.White;
-            this.dgvCliente.Location = new System.Drawing.Point(19, 248);
+            this.dgvCliente.Location = new System.Drawing.Point(25, 305);
+            this.dgvCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvCliente.MultiSelect = false;
             this.dgvCliente.Name = "dgvCliente";
             this.dgvCliente.ReadOnly = true;
@@ -229,7 +238,7 @@
             this.dgvCliente.RowHeadersWidth = 51;
             this.dgvCliente.RowTemplate.Height = 36;
             this.dgvCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCliente.Size = new System.Drawing.Size(1080, 215);
+            this.dgvCliente.Size = new System.Drawing.Size(1440, 265);
             this.dgvCliente.TabIndex = 39;
             // 
             // ColumnCode
@@ -317,6 +326,7 @@
             // 
             this.ColumnFinalDiagnosis.DataPropertyName = "DiagnosticoFinal";
             this.ColumnFinalDiagnosis.HeaderText = "Diagnostico Final";
+            this.ColumnFinalDiagnosis.MinimumWidth = 6;
             this.ColumnFinalDiagnosis.Name = "ColumnFinalDiagnosis";
             this.ColumnFinalDiagnosis.ReadOnly = true;
             // 
@@ -324,6 +334,7 @@
             // 
             this.ColumnDeliveryDate.DataPropertyName = "FechaEntrega";
             this.ColumnDeliveryDate.HeaderText = "Fecha Entrega";
+            this.ColumnDeliveryDate.MinimumWidth = 6;
             this.ColumnDeliveryDate.Name = "ColumnDeliveryDate";
             this.ColumnDeliveryDate.ReadOnly = true;
             // 
@@ -331,6 +342,7 @@
             // 
             this.ColumnRepairCost.DataPropertyName = "CostoManoObra";
             this.ColumnRepairCost.HeaderText = "Costo Servicio";
+            this.ColumnRepairCost.MinimumWidth = 6;
             this.ColumnRepairCost.Name = "ColumnRepairCost";
             this.ColumnRepairCost.ReadOnly = true;
             // 
@@ -338,6 +350,7 @@
             // 
             this.ColumnTotalCost.DataPropertyName = "TotalReparacion";
             this.ColumnTotalCost.HeaderText = "Total Reparación";
+            this.ColumnTotalCost.MinimumWidth = 6;
             this.ColumnTotalCost.Name = "ColumnTotalCost";
             this.ColumnTotalCost.ReadOnly = true;
             // 
@@ -345,6 +358,7 @@
             // 
             this.ColumnCreateUser.DataPropertyName = "UsuarioCreacionId";
             this.ColumnCreateUser.HeaderText = "Creado";
+            this.ColumnCreateUser.MinimumWidth = 6;
             this.ColumnCreateUser.Name = "ColumnCreateUser";
             this.ColumnCreateUser.ReadOnly = true;
             // 
@@ -352,6 +366,7 @@
             // 
             this.ColumnDateModified.DataPropertyName = "FechaModificacion";
             this.ColumnDateModified.HeaderText = "Fecha Modificación";
+            this.ColumnDateModified.MinimumWidth = 6;
             this.ColumnDateModified.Name = "ColumnDateModified";
             this.ColumnDateModified.ReadOnly = true;
             // 
@@ -359,6 +374,7 @@
             // 
             this.ColumnEditUser.DataPropertyName = "UsuarioModicacionId";
             this.ColumnEditUser.HeaderText = "Modificado";
+            this.ColumnEditUser.MinimumWidth = 6;
             this.ColumnEditUser.Name = "ColumnEditUser";
             this.ColumnEditUser.ReadOnly = true;
             // 
@@ -366,14 +382,15 @@
             // 
             this.ColumnStatus.DataPropertyName = "Estado";
             this.ColumnStatus.HeaderText = "Estado";
+            this.ColumnStatus.MinimumWidth = 6;
             this.ColumnStatus.Name = "ColumnStatus";
             this.ColumnStatus.ReadOnly = true;
             // 
             // FrmReparacion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1104, 470);
+            this.ClientSize = new System.Drawing.Size(1472, 578);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lblBuscar);
             this.Controls.Add(this.label8);
@@ -383,8 +400,9 @@
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.dgvCliente);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmReparacion";
-            this.Text = "FrmReparacion";
+            this.ShowIcon = false;
             this.Load += new System.EventHandler(this.FrmReparacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).EndInit();
             this.ResumeLayout(false);

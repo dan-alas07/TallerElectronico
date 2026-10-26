@@ -59,17 +59,19 @@
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtBuscar.Location = new System.Drawing.Point(21, 127);
+            this.txtBuscar.Location = new System.Drawing.Point(28, 156);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(358, 27);
+            this.txtBuscar.Size = new System.Drawing.Size(477, 32);
             this.txtBuscar.TabIndex = 46;
             // 
             // lblBuscar
             // 
             this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Location = new System.Drawing.Point(17, 111);
+            this.lblBuscar.Location = new System.Drawing.Point(23, 137);
+            this.lblBuscar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(43, 13);
+            this.lblBuscar.Size = new System.Drawing.Size(52, 16);
             this.lblBuscar.TabIndex = 45;
             this.lblBuscar.Text = "Buscar:";
             // 
@@ -77,9 +79,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(32, 59);
+            this.label8.Location = new System.Drawing.Point(43, 73);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(397, 20);
+            this.label8.Size = new System.Drawing.Size(489, 25);
             this.label8.TabIndex = 44;
             this.label8.Text = "Consulta, registra, edita o elimina proveedores del taller";
             // 
@@ -93,9 +96,10 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(170, 189);
+            this.btnEditar.Location = new System.Drawing.Point(227, 233);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(145, 42);
+            this.btnEditar.Size = new System.Drawing.Size(193, 52);
             this.btnEditar.TabIndex = 43;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
@@ -110,9 +114,10 @@
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(321, 189);
+            this.btnEliminar.Location = new System.Drawing.Point(428, 233);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(145, 42);
+            this.btnEliminar.Size = new System.Drawing.Size(193, 52);
             this.btnEliminar.TabIndex = 42;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -127,9 +132,10 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(384, 127);
+            this.btnBuscar.Location = new System.Drawing.Point(512, 156);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(100, 28);
             this.btnBuscar.TabIndex = 47;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
@@ -144,9 +150,10 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(19, 189);
+            this.btnNuevo.Location = new System.Drawing.Point(25, 233);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(145, 42);
+            this.btnNuevo.Size = new System.Drawing.Size(193, 52);
             this.btnNuevo.TabIndex = 41;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
@@ -157,9 +164,10 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblTitle.Location = new System.Drawing.Point(12, 9);
+            this.lblTitle.Location = new System.Drawing.Point(16, 11);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(399, 50);
+            this.lblTitle.Size = new System.Drawing.Size(503, 62);
             this.lblTitle.TabIndex = 40;
             this.lblTitle.Text = "Gestión de proveedor";
             // 
@@ -208,7 +216,8 @@
             this.dgvProveedor.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProveedor.EnableHeadersVisualStyles = false;
             this.dgvProveedor.GridColor = System.Drawing.Color.White;
-            this.dgvProveedor.Location = new System.Drawing.Point(19, 248);
+            this.dgvProveedor.Location = new System.Drawing.Point(25, 305);
+            this.dgvProveedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvProveedor.MultiSelect = false;
             this.dgvProveedor.Name = "dgvProveedor";
             this.dgvProveedor.ReadOnly = true;
@@ -216,7 +225,7 @@
             this.dgvProveedor.RowHeadersWidth = 51;
             this.dgvProveedor.RowTemplate.Height = 36;
             this.dgvProveedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProveedor.Size = new System.Drawing.Size(1080, 215);
+            this.dgvProveedor.Size = new System.Drawing.Size(1440, 265);
             this.dgvProveedor.TabIndex = 39;
             // 
             // ColumnCode
@@ -277,6 +286,7 @@
             // 
             this.ColumnDUI.DataPropertyName = "DUI";
             this.ColumnDUI.HeaderText = "DUI";
+            this.ColumnDUI.MinimumWidth = 6;
             this.ColumnDUI.Name = "ColumnDUI";
             this.ColumnDUI.ReadOnly = true;
             // 
@@ -284,6 +294,7 @@
             // 
             this.ColumnNIT.DataPropertyName = "NIT";
             this.ColumnNIT.HeaderText = "NIT";
+            this.ColumnNIT.MinimumWidth = 6;
             this.ColumnNIT.Name = "ColumnNIT";
             this.ColumnNIT.ReadOnly = true;
             // 
@@ -291,6 +302,7 @@
             // 
             this.ColumnNRC.DataPropertyName = "NRC";
             this.ColumnNRC.HeaderText = "NRC";
+            this.ColumnNRC.MinimumWidth = 6;
             this.ColumnNRC.Name = "ColumnNRC";
             this.ColumnNRC.ReadOnly = true;
             // 
@@ -298,14 +310,15 @@
             // 
             this.ColumnStatus.DataPropertyName = "Estado";
             this.ColumnStatus.HeaderText = "Estado";
+            this.ColumnStatus.MinimumWidth = 6;
             this.ColumnStatus.Name = "ColumnStatus";
             this.ColumnStatus.ReadOnly = true;
             // 
             // FrmProveedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1146, 450);
+            this.ClientSize = new System.Drawing.Size(1528, 554);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lblBuscar);
             this.Controls.Add(this.label8);
@@ -315,8 +328,9 @@
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.dgvProveedor);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmProveedor";
-            this.Text = "FrmProveedor";
+            this.ShowIcon = false;
             this.Load += new System.EventHandler(this.FrmProveedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedor)).EndInit();
             this.ResumeLayout(false);
