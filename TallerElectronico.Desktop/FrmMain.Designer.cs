@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.btnReparacion = new System.Windows.Forms.Button();
             this.btnMarca = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.btnProveedor = new System.Windows.Forms.Button();
-            this.btnInventario = new System.Windows.Forms.Button();
             this.btnUsuario = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnlContainer = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
             this.pnlContainer.SuspendLayout();
             this.SuspendLayout();
@@ -48,20 +48,35 @@
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            this.pnlMain.Controls.Add(this.btnReparacion);
             this.pnlMain.Controls.Add(this.btnMarca);
             this.pnlMain.Controls.Add(this.button2);
             this.pnlMain.Controls.Add(this.label1);
             this.pnlMain.Controls.Add(this.button6);
             this.pnlMain.Controls.Add(this.btnProveedor);
-            this.pnlMain.Controls.Add(this.btnInventario);
             this.pnlMain.Controls.Add(this.btnUsuario);
             this.pnlMain.Controls.Add(this.button4);
             this.pnlMain.Controls.Add(this.button5);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(220, 540);
+            this.pnlMain.Size = new System.Drawing.Size(220, 622);
             this.pnlMain.TabIndex = 0;
+            // 
+            // btnReparacion
+            // 
+            this.btnReparacion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReparacion.FlatAppearance.BorderSize = 0;
+            this.btnReparacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReparacion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReparacion.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnReparacion.Location = new System.Drawing.Point(33, 461);
+            this.btnReparacion.Name = "btnReparacion";
+            this.btnReparacion.Size = new System.Drawing.Size(150, 40);
+            this.btnReparacion.TabIndex = 9;
+            this.btnReparacion.Text = "Reparación";
+            this.btnReparacion.UseVisualStyleBackColor = true;
+            this.btnReparacion.Click += new System.EventHandler(this.btnReparacion_Click);
             // 
             // btnMarca
             // 
@@ -70,7 +85,7 @@
             this.btnMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMarca.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMarca.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnMarca.Location = new System.Drawing.Point(33, 471);
+            this.btnMarca.Location = new System.Drawing.Point(33, 415);
             this.btnMarca.Name = "btnMarca";
             this.btnMarca.Size = new System.Drawing.Size(150, 40);
             this.btnMarca.TabIndex = 8;
@@ -129,28 +144,13 @@
             this.btnProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProveedor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProveedor.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnProveedor.Location = new System.Drawing.Point(33, 427);
+            this.btnProveedor.Location = new System.Drawing.Point(33, 369);
             this.btnProveedor.Name = "btnProveedor";
             this.btnProveedor.Size = new System.Drawing.Size(150, 40);
             this.btnProveedor.TabIndex = 7;
             this.btnProveedor.Text = "Proveedor";
             this.btnProveedor.UseVisualStyleBackColor = true;
             this.btnProveedor.Click += new System.EventHandler(this.btnProveedor_Click);
-            // 
-            // btnInventario
-            // 
-            this.btnInventario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnInventario.FlatAppearance.BorderSize = 0;
-            this.btnInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInventario.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInventario.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnInventario.Location = new System.Drawing.Point(33, 375);
-            this.btnInventario.Name = "btnInventario";
-            this.btnInventario.Size = new System.Drawing.Size(150, 40);
-            this.btnInventario.TabIndex = 6;
-            this.btnInventario.Text = "Inventario";
-            this.btnInventario.UseVisualStyleBackColor = true;
-            this.btnInventario.Click += new System.EventHandler(this.btnInventario_Click);
             // 
             // btnUsuario
             // 
@@ -212,6 +212,17 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.btnCliente_Click);
             // 
+            // pnlContainer
+            // 
+            this.pnlContainer.BackColor = System.Drawing.Color.White;
+            this.pnlContainer.Controls.Add(this.button1);
+            this.pnlContainer.Controls.Add(this.button3);
+            this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContainer.Location = new System.Drawing.Point(220, 0);
+            this.pnlContainer.Name = "pnlContainer";
+            this.pnlContainer.Size = new System.Drawing.Size(580, 622);
+            this.pnlContainer.TabIndex = 1;
+            // 
             // button1
             // 
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -229,23 +240,12 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnMain_Click);
             // 
-            // pnlContainer
-            // 
-            this.pnlContainer.BackColor = System.Drawing.Color.White;
-            this.pnlContainer.Controls.Add(this.button1);
-            this.pnlContainer.Controls.Add(this.button3);
-            this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContainer.Location = new System.Drawing.Point(220, 0);
-            this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(580, 540);
-            this.pnlContainer.TabIndex = 1;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(800, 540);
+            this.ClientSize = new System.Drawing.Size(800, 622);
             this.Controls.Add(this.pnlContainer);
             this.Controls.Add(this.pnlMain);
             this.Name = "FrmMain";
@@ -261,7 +261,6 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlMain;
-        private System.Windows.Forms.Button btnInventario;
         private System.Windows.Forms.Button btnUsuario;
         private System.Windows.Forms.Button btnProveedor;
         private System.Windows.Forms.Panel pnlContainer;
@@ -273,5 +272,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btnMarca;
+        private System.Windows.Forms.Button btnReparacion;
     }
 }
