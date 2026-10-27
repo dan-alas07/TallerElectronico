@@ -53,9 +53,8 @@
             this.pnlHeader.Controls.Add(this.lblTitulo);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(880, 101);
+            this.pnlHeader.Size = new System.Drawing.Size(660, 82);
             this.pnlHeader.TabIndex = 1;
             // 
             // lblSubtitulo
@@ -63,10 +62,9 @@
             this.lblSubtitulo.AutoSize = true;
             this.lblSubtitulo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblSubtitulo.ForeColor = System.Drawing.Color.White;
-            this.lblSubtitulo.Location = new System.Drawing.Point(41, 60);
-            this.lblSubtitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSubtitulo.Location = new System.Drawing.Point(31, 49);
             this.lblSubtitulo.Name = "lblSubtitulo";
-            this.lblSubtitulo.Size = new System.Drawing.Size(395, 21);
+            this.lblSubtitulo.Size = new System.Drawing.Size(338, 17);
             this.lblSubtitulo.TabIndex = 1;
             this.lblSubtitulo.Text = "Completa los datos necesarios para registrar una marca";
             // 
@@ -75,10 +73,9 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(37, 12);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitulo.Location = new System.Drawing.Point(28, 10);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(201, 41);
+            this.lblTitulo.Size = new System.Drawing.Size(164, 32);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Nueva marca";
             // 
@@ -92,10 +89,9 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(665, 618);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Location = new System.Drawing.Point(499, 319);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(173, 52);
+            this.btnCancelar.Size = new System.Drawing.Size(130, 42);
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -109,10 +105,9 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(479, 618);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Location = new System.Drawing.Point(359, 319);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(173, 52);
+            this.btnGuardar.Size = new System.Drawing.Size(130, 42);
             this.btnGuardar.TabIndex = 8;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -129,21 +124,19 @@
             this.pnlCard.Controls.Add(this.lblCodigo);
             this.pnlCard.Controls.Add(this.pnlLinea);
             this.pnlCard.Controls.Add(this.lblSeccion);
-            this.pnlCard.Location = new System.Drawing.Point(39, 126);
-            this.pnlCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlCard.Location = new System.Drawing.Point(29, 102);
             this.pnlCard.Name = "pnlCard";
-            this.pnlCard.Size = new System.Drawing.Size(800, 468);
+            this.pnlCard.Size = new System.Drawing.Size(600, 199);
             this.pnlCard.TabIndex = 7;
             // 
             // txtNombre
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtNombre.Location = new System.Drawing.Point(40, 172);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Location = new System.Drawing.Point(30, 140);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(333, 30);
+            this.txtNombre.Size = new System.Drawing.Size(250, 25);
             this.txtNombre.TabIndex = 1;
             // 
             // lblNombre
@@ -151,10 +144,9 @@
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblNombre.ForeColor = System.Drawing.Color.Black;
-            this.lblNombre.Location = new System.Drawing.Point(40, 148);
-            this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombre.Location = new System.Drawing.Point(30, 120);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(78, 20);
+            this.lblNombre.Size = new System.Drawing.Size(61, 15);
             this.lblNombre.TabIndex = 4;
             this.lblNombre.Text = "Nombre *";
             // 
@@ -167,10 +159,9 @@
             this.cboEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cboEstado.Location = new System.Drawing.Point(427, 96);
-            this.cboEstado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboEstado.Location = new System.Drawing.Point(320, 78);
             this.cboEstado.Name = "cboEstado";
-            this.cboEstado.Size = new System.Drawing.Size(332, 31);
+            this.cboEstado.Size = new System.Drawing.Size(250, 25);
             this.cboEstado.TabIndex = 0;
             // 
             // lblEstado
@@ -178,10 +169,9 @@
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblEstado.ForeColor = System.Drawing.Color.Black;
-            this.lblEstado.Location = new System.Drawing.Point(427, 71);
-            this.lblEstado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEstado.Location = new System.Drawing.Point(320, 58);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(56, 20);
+            this.lblEstado.Size = new System.Drawing.Size(43, 15);
             this.lblEstado.TabIndex = 3;
             this.lblEstado.Text = "Estado";
             // 
@@ -190,11 +180,10 @@
             this.txtCodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtCodigo.Location = new System.Drawing.Point(40, 96);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Location = new System.Drawing.Point(30, 78);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
-            this.txtCodigo.Size = new System.Drawing.Size(333, 30);
+            this.txtCodigo.Size = new System.Drawing.Size(250, 25);
             this.txtCodigo.TabIndex = 11;
             this.txtCodigo.TabStop = false;
             this.txtCodigo.Text = "Automático";
@@ -204,20 +193,18 @@
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblCodigo.ForeColor = System.Drawing.Color.Black;
-            this.lblCodigo.Location = new System.Drawing.Point(40, 71);
-            this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCodigo.Location = new System.Drawing.Point(30, 58);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(58, 20);
+            this.lblCodigo.Size = new System.Drawing.Size(45, 15);
             this.lblCodigo.TabIndex = 2;
             this.lblCodigo.Text = "Código";
             // 
             // pnlLinea
             // 
             this.pnlLinea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(235)))), ((int)(((byte)(242)))));
-            this.pnlLinea.Location = new System.Drawing.Point(40, 52);
-            this.pnlLinea.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLinea.Location = new System.Drawing.Point(30, 42);
             this.pnlLinea.Name = "pnlLinea";
-            this.pnlLinea.Size = new System.Drawing.Size(720, 1);
+            this.pnlLinea.Size = new System.Drawing.Size(540, 1);
             this.pnlLinea.TabIndex = 1;
             // 
             // lblSeccion
@@ -225,23 +212,21 @@
             this.lblSeccion.AutoSize = true;
             this.lblSeccion.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblSeccion.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lblSeccion.Location = new System.Drawing.Point(40, 17);
-            this.lblSeccion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSeccion.Location = new System.Drawing.Point(30, 14);
             this.lblSeccion.Name = "lblSeccion";
-            this.lblSeccion.Size = new System.Drawing.Size(228, 25);
+            this.lblSeccion.Size = new System.Drawing.Size(179, 20);
             this.lblSeccion.TabIndex = 0;
             this.lblSeccion.Text = "Información de la marca";
             // 
             // FrmCreateMarca
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 702);
+            this.ClientSize = new System.Drawing.Size(660, 371);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.pnlCard);
             this.Controls.Add(this.pnlHeader);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmCreateMarca";
             this.ShowIcon = false;
             this.pnlHeader.ResumeLayout(false);

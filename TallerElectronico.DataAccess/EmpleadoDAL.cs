@@ -9,22 +9,42 @@ namespace TallerElectronico.DataAccess
 {
     public class EmpleadoDAL
     {
+        //public List<Empleado> SelectAll()
+        //{
+        //    using (var db = new TallerElectronicoEntities())
+        //    {
+        //        return db.Empleado.AsNoTracking()
+        //                          .Where(e => e.Estado == "A")
+        //                          .ToList();
+        //    }
+        //}
+
         public List<Empleado> SelectAll()
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Empleado.AsNoTracking()
-                                  .Where(e => e.Estado == "A")
-                                  .ToList();
+                return db.Empleado
+                         .AsNoTracking()
+                         .ToList();
             }
         }
+
+        //public Empleado SelectById(int idEmpleado)
+        //{
+        //    using (var db = new TallerElectronicoEntities())
+        //    {
+        //        return db.Empleado.AsNoTracking()
+        //                          .FirstOrDefault(e => e.EmpleadoId == idEmpleado && e.Estado == "A");
+        //    }
+        //}
 
         public Empleado SelectById(int idEmpleado)
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Empleado.AsNoTracking()
-                                  .FirstOrDefault(e => e.EmpleadoId == idEmpleado && e.Estado == "A");
+                return db.Empleado
+                         .AsNoTracking()
+                         .FirstOrDefault(e => e.EmpleadoId == idEmpleado);
             }
         }
 
