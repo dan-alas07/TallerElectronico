@@ -46,15 +46,12 @@ namespace TallerElectronico.Desktop
                 txtNombre.Text = usuario.Nombre;
                 txtClave.Text = usuario.Clave;
 
-                // Código del empleado relacionado
                 txtCodigoEmpleado.Text = usuario.EmpleadoId.ToString();
 
-                // Nombre del rol relacionado
                 cmbRol.Text = usuario.Rol != null
                     ? usuario.Rol.Nombre
                     : "";
 
-                // Estado del usuario
                 if (usuario.Estado == "A")
                 {
                     cmbEstado.SelectedIndex = 0;
@@ -126,9 +123,6 @@ namespace TallerElectronico.Desktop
                     Estado = cmbEstado.SelectedIndex == 0 ? "A" : "I"
                 };
 
-                // IMPORTANTE:
-                // UsuarioBL.Update debe recibir el objeto Usuario
-                // y gestionar correctamente el rol seleccionado.
                 _usuarioBL.Update(usuario);
 
                 MessageBox.Show(
