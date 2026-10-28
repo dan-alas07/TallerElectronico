@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Windows.Forms;
 using TallerElectronico.BusinessLogic;
 using TallerElectronico.Entities;
@@ -41,22 +42,24 @@ namespace TallerElectronico.Desktop
                     return;
                 }
 
-                txtCodigo.Text = usuario.EmpleadoId.ToString();
+                txtCodigo.Text = usuario.UsuarioId.ToString();
                 txtNombre.Text = usuario.Nombre;
-                txtApellido.Text = usuario.Apellido;
-                txtDUI.Text = usuario.DUI;
-                txtTelefono.Text = usuario.Telefono;
-                txtCorreo.Text = usuario.Correo;
-                txtDireccion.Text = usuario.Direccion;
+                txtClave.Text = usuario.Clave;
 
-                dtpFechaContratacion.Value =
-                    usuario.FechaContratacion.Date;
+                // Código del empleado relacionado
+                txtCodigoEmpleado.Text = usuario.EmpleadoId.ToString();
 
-                if (empleado.Estado == "A")
+                // Nombre del rol relacionado
+                cmbRol.Text = usuario.Rol != null
+                    ? usuario.Rol.Nombre
+                    : "";
+
+                // Estado del usuario
+                if (usuario.Estado == "A")
                 {
                     cmbEstado.SelectedIndex = 0;
                 }
-                else if (empleado.Estado == "I")
+                else if (usuario.Estado == "I")
                 {
                     cmbEstado.SelectedIndex = 1;
                 }
@@ -68,7 +71,8 @@ namespace TallerElectronico.Desktop
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    "Error al cargar los datos del usuario: " + ex.Message,
+                    "Error al cargar los datos del usuario: "
+                    + ex.Message,
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
@@ -84,11 +88,9 @@ namespace TallerElectronico.Desktop
             try
             {
                 if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                    string.IsNullOrWhiteSpace(txtApellido.Text) ||
-                    string.IsNullOrWhiteSpace(txtDUI.Text) ||
-                    string.IsNullOrWhiteSpace(txtTelefono.Text) ||
-                    string.IsNullOrWhiteSpace(txtCorreo.Text) ||
-                    string.IsNullOrWhiteSpace(txtDireccion.Text) ||
+                    string.IsNullOrWhiteSpace(txtClave.Text) ||
+                    string.IsNullOrWhiteSpace(txtCodigoEmpleado.Text) ||
+                    string.IsNullOrWhiteSpace(cmbRol.Text) ||
                     cmbEstado.SelectedIndex == -1)
                 {
                     MessageBox.Show(
@@ -101,19 +103,32 @@ namespace TallerElectronico.Desktop
                     return;
                 }
 
+                if (!int.TryParse(
+                    txtCodigoEmpleado.Text.Trim(),
+                    out int empleadoId))
+                {
+                    MessageBox.Show(
+                        "El código del empleado no es válido.",
+                        "Validación",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return;
+                }
+
                 Usuario usuario = new Usuario
                 {
-                    EmpleadoId = _empleadoId,
+                    UsuarioId = _usuarioId,
+                    EmpleadoId = empleadoId,
                     Nombre = txtNombre.Text.Trim(),
-                    Apellido = txtApellido.Text.Trim(),
-                    DUI = txtDUI.Text.Trim(),
-                    Telefono = txtTelefono.Text.Trim(),
-                    Correo = txtCorreo.Text.Trim(),
-                    Direccion = txtDireccion.Text.Trim(),
-                    FechaContratacion = dtpFechaContratacion.Value.Date,
+                    Clave = txtClave.Text.Trim(),
                     Estado = cmbEstado.SelectedIndex == 0 ? "A" : "I"
                 };
 
+                // IMPORTANTE:
+                // UsuarioBL.Update debe recibir el objeto Usuario
+                // y gestionar correctamente el rol seleccionado.
                 _usuarioBL.Update(usuario);
 
                 MessageBox.Show(
@@ -123,8 +138,8 @@ namespace TallerElectronico.Desktop
                     MessageBoxIcon.Information
                 );
 
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                DialogResult = DialogResult.OK;
+                Close();
             }
             catch (Exception ex)
             {
@@ -140,8 +155,8 @@ namespace TallerElectronico.Desktop
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

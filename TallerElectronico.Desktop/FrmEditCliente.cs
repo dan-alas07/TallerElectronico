@@ -47,10 +47,9 @@ namespace TallerElectronico.Desktop
                 txtDUI.Text = cliente.DUI;
                 txtTelefono.Text = cliente.Telefono;
                 txtCorreo.Text = cliente.Correo;
-                txtDireccion.Text = cliente.Direccion;
 
-                dtpFechaContratacion.Value =
-                    cliente.FechaContratacion.Date;
+                dtpFechaRegistro.Value =
+                    cliente.FechaRegistro.Date;
 
                 if (cliente.Estado == "A")
                 {
@@ -88,7 +87,6 @@ namespace TallerElectronico.Desktop
                     string.IsNullOrWhiteSpace(txtDUI.Text) ||
                     string.IsNullOrWhiteSpace(txtTelefono.Text) ||
                     string.IsNullOrWhiteSpace(txtCorreo.Text) ||
-                    string.IsNullOrWhiteSpace(txtDireccion.Text) ||
                     cmbEstado.SelectedIndex == -1)
                 {
                     MessageBox.Show(
@@ -109,8 +107,7 @@ namespace TallerElectronico.Desktop
                     DUI = txtDUI.Text.Trim(),
                     Telefono = txtTelefono.Text.Trim(),
                     Correo = txtCorreo.Text.Trim(),
-                    Direccion = txtDireccion.Text.Trim(),
-                    FechaContratacion = dtpFechaContratacion.Value.Date,
+                    FechaRegistro = dtpFechaRegistro.Value.Date,
                     Estado = cmbEstado.SelectedIndex == 0 ? "A" : "I"
                 };
 

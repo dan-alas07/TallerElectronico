@@ -41,22 +41,14 @@ namespace TallerElectronico.Desktop
                     return;
                 }
 
-                txtCodigo.Text = empleado.EmpleadoId.ToString();
-                txtNombre.Text = empleado.Nombre;
-                txtApellido.Text = empleado.Apellido;
-                txtDUI.Text = empleado.DUI;
-                txtTelefono.Text = empleado.Telefono;
-                txtCorreo.Text = empleado.Correo;
-                txtDireccion.Text = empleado.Direccion;
+                txtCodigo.Text = marca.MarcaId.ToString();
+                txtNombre.Text = marca.Nombre;
 
-                dtpFechaContratacion.Value =
-                    empleado.FechaContratacion.Date;
-
-                if (empleado.Estado == "A")
+                if (marca.Estado == "A")
                 {
                     cmbEstado.SelectedIndex = 0;
                 }
-                else if (empleado.Estado == "I")
+                else if (marca.Estado == "I")
                 {
                     cmbEstado.SelectedIndex = 1;
                 }
@@ -84,11 +76,6 @@ namespace TallerElectronico.Desktop
             try
             {
                 if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                    string.IsNullOrWhiteSpace(txtApellido.Text) ||
-                    string.IsNullOrWhiteSpace(txtDUI.Text) ||
-                    string.IsNullOrWhiteSpace(txtTelefono.Text) ||
-                    string.IsNullOrWhiteSpace(txtCorreo.Text) ||
-                    string.IsNullOrWhiteSpace(txtDireccion.Text) ||
                     cmbEstado.SelectedIndex == -1)
                 {
                     MessageBox.Show(
@@ -105,12 +92,6 @@ namespace TallerElectronico.Desktop
                 {
                     MarcaId = _marcaId,
                     Nombre = txtNombre.Text.Trim(),
-                    Apellido = txtApellido.Text.Trim(),
-                    DUI = txtDUI.Text.Trim(),
-                    Telefono = txtTelefono.Text.Trim(),
-                    Correo = txtCorreo.Text.Trim(),
-                    Direccion = txtDireccion.Text.Trim(),
-                    FechaContratacion = dtpFechaContratacion.Value.Date,
                     Estado = cmbEstado.SelectedIndex == 0 ? "A" : "I"
                 };
 

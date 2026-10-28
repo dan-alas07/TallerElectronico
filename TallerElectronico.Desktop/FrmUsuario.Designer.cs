@@ -239,6 +239,7 @@
             // 
             // ColumnEmpleadoId
             // 
+            this.ColumnEmpleadoId.DataPropertyName = "EmpleadoId";
             this.ColumnEmpleadoId.HeaderText = "EmpleadoId";
             this.ColumnEmpleadoId.MinimumWidth = 6;
             this.ColumnEmpleadoId.Name = "ColumnEmpleadoId";

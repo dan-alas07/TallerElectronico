@@ -43,14 +43,13 @@ namespace TallerElectronico.Desktop
 
                 txtCodigo.Text = proveedor.ProveedorId.ToString();
                 txtNombre.Text = proveedor.Nombre;
-                txtApellido.Text = proveedor.Apellido;
-                txtDUI.Text = proveedor.DUI;
+                cmbTipo.Text = proveedor.TipoProveedor;
                 txtTelefono.Text = proveedor.Telefono;
-                txtCorreo.Text = proveedor.Correo;
+                txtNIT.Text = proveedor.Email;
                 txtDireccion.Text = proveedor.Direccion;
-
-                dtpFechaContratacion.Value =
-                    proveedor.FechaContratacion.Date;
+                txtDUI.Text = proveedor.DUI;
+                txtNIT.Text = proveedor.NIT;
+                txtNRC.Text = proveedor.NRC;
 
                 if (proveedor.Estado == "A")
                 {
@@ -84,10 +83,9 @@ namespace TallerElectronico.Desktop
             try
             {
                 if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                    string.IsNullOrWhiteSpace(txtApellido.Text) ||
                     string.IsNullOrWhiteSpace(txtDUI.Text) ||
                     string.IsNullOrWhiteSpace(txtTelefono.Text) ||
-                    string.IsNullOrWhiteSpace(txtCorreo.Text) ||
+                    string.IsNullOrWhiteSpace(txtNIT.Text) ||
                     string.IsNullOrWhiteSpace(txtDireccion.Text) ||
                     cmbEstado.SelectedIndex == -1)
                 {
@@ -105,12 +103,13 @@ namespace TallerElectronico.Desktop
                 {
                     ProveedorId = _proveedorId,
                     Nombre = txtNombre.Text.Trim(),
-                    Apellido = txtApellido.Text.Trim(),
-                    DUI = txtDUI.Text.Trim(),
+                    TipoProveedor = cmbTipo.Text.Trim(),
                     Telefono = txtTelefono.Text.Trim(),
-                    Correo = txtCorreo.Text.Trim(),
+                    Email = txtNIT.Text.Trim(),
                     Direccion = txtDireccion.Text.Trim(),
-                    FechaContratacion = dtpFechaContratacion.Value.Date,
+                    DUI = txtDUI.Text.Trim(),
+                    NIT = txtNIT.Text.Trim(),
+                    NRC = txtNRC.Text.Trim(), 
                     Estado = cmbEstado.SelectedIndex == 0 ? "A" : "I"
                 };
 
