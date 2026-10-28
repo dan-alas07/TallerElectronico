@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Windows.Forms;
 using TallerElectronico.BusinessLogic;
 using TallerElectronico.Entities;
@@ -45,9 +46,11 @@ namespace TallerElectronico.Desktop
                 txtNombre.Text = proveedor.Nombre;
                 cmbTipo.Text = proveedor.TipoProveedor;
                 txtTelefono.Text = proveedor.Telefono;
-                txtNIT.Text = proveedor.Email;
+
+                txtCorreo.Text = proveedor.Email;
+
                 txtDireccion.Text = proveedor.Direccion;
-                txtDUI.Text = proveedor.DUI;
+                txtCorreo.Text = proveedor.DUI;
                 txtNIT.Text = proveedor.NIT;
                 txtNRC.Text = proveedor.NRC;
 
@@ -83,10 +86,13 @@ namespace TallerElectronico.Desktop
             try
             {
                 if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                    string.IsNullOrWhiteSpace(txtDUI.Text) ||
+                    string.IsNullOrWhiteSpace(cmbTipo.Text) ||
                     string.IsNullOrWhiteSpace(txtTelefono.Text) ||
-                    string.IsNullOrWhiteSpace(txtNIT.Text) ||
+                    string.IsNullOrWhiteSpace(txtCorreo.Text) ||
                     string.IsNullOrWhiteSpace(txtDireccion.Text) ||
+                    string.IsNullOrWhiteSpace(txtCorreo.Text) ||
+                    string.IsNullOrWhiteSpace(txtNIT.Text) ||
+                    string.IsNullOrWhiteSpace(txtNRC.Text) ||
                     cmbEstado.SelectedIndex == -1)
                 {
                     MessageBox.Show(
@@ -105,11 +111,11 @@ namespace TallerElectronico.Desktop
                     Nombre = txtNombre.Text.Trim(),
                     TipoProveedor = cmbTipo.Text.Trim(),
                     Telefono = txtTelefono.Text.Trim(),
-                    Email = txtNIT.Text.Trim(),
+                    Email = txtCorreo.Text.Trim(),
                     Direccion = txtDireccion.Text.Trim(),
-                    DUI = txtDUI.Text.Trim(),
+                    DUI = txtCorreo.Text.Trim(),
                     NIT = txtNIT.Text.Trim(),
-                    NRC = txtNRC.Text.Trim(), 
+                    NRC = txtNRC.Text.Trim(),
                     Estado = cmbEstado.SelectedIndex == 0 ? "A" : "I"
                 };
 
@@ -122,8 +128,8 @@ namespace TallerElectronico.Desktop
                     MessageBoxIcon.Information
                 );
 
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                DialogResult = DialogResult.OK;
+                Close();
             }
             catch (Exception ex)
             {
@@ -139,8 +145,8 @@ namespace TallerElectronico.Desktop
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

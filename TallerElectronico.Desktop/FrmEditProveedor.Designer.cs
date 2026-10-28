@@ -42,7 +42,7 @@
             this.lblFecha = new System.Windows.Forms.Label();
             this.lblEstado = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtDUI = new System.Windows.Forms.TextBox();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtNIT = new System.Windows.Forms.TextBox();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
@@ -208,15 +208,15 @@
             this.txtNombre.Size = new System.Drawing.Size(290, 25);
             this.txtNombre.TabIndex = 37;
             // 
-            // txtDUI
+            // txtCorreo
             // 
-            this.txtDUI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDUI.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDUI.Location = new System.Drawing.Point(44, 245);
-            this.txtDUI.MaxLength = 10;
-            this.txtDUI.Name = "txtDUI";
-            this.txtDUI.Size = new System.Drawing.Size(290, 25);
-            this.txtDUI.TabIndex = 41;
+            this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCorreo.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtCorreo.Location = new System.Drawing.Point(44, 245);
+            this.txtCorreo.MaxLength = 10;
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(290, 25);
+            this.txtCorreo.TabIndex = 41;
             // 
             // txtTelefono
             // 
@@ -350,7 +350,7 @@
             this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.txtNombre);
-            this.Controls.Add(this.txtDUI);
+            this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtNIT);
             this.Controls.Add(this.cmbEstado);
@@ -383,7 +383,7 @@
         private System.Windows.Forms.Label lblFecha;
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtDUI;
+        private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtNIT;
         private System.Windows.Forms.ComboBox cmbEstado;
