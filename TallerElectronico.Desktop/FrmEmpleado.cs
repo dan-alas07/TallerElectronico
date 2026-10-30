@@ -17,8 +17,7 @@ namespace TallerElectronico.Desktop
             RegistrarEventos(this);
 
             dgvEmpleado.AutoGenerateColumns = false;
-            dgvEmpleado.SelectionMode =
-                DataGridViewSelectionMode.FullRowSelect;
+            dgvEmpleado.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEmpleado.MultiSelect = false;
 
             btnNuevo.Enabled = true;
@@ -36,6 +35,7 @@ namespace TallerElectronico.Desktop
             {
                 RestablecerBotones();
             });
+
         }
 
         private void CargarEmpleados()
@@ -149,9 +149,7 @@ namespace TallerElectronico.Desktop
                 return;
             }
 
-            object valorId =
-                dgvEmpleado.SelectedRows[0]
-                    .Cells["ColumnCode"].Value;
+            object valorId = dgvEmpleado.SelectedRows[0] .Cells["ColumnCode"].Value;
 
             if (valorId == null || valorId == DBNull.Value)
             {
@@ -192,9 +190,7 @@ namespace TallerElectronico.Desktop
                 return;
             }
 
-            object valorId =
-                dgvEmpleado.SelectedRows[0]
-                    .Cells["ColumnCode"].Value;
+            object valorId = dgvEmpleado.SelectedRows[0].Cells["ColumnCode"].Value;
 
             if (valorId == null || valorId == DBNull.Value)
             {

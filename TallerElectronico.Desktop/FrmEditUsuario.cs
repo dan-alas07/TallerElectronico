@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Windows.Forms;
 using TallerElectronico.BusinessLogic;
 using TallerElectronico.Entities;
@@ -9,11 +8,16 @@ namespace TallerElectronico.Desktop
     public partial class FrmEditUsuario : Form
     {
         private readonly UsuarioBL _usuarioBL = new UsuarioBL();
-        private int _usuarioId;
+        private readonly EmpleadoBL _empleadoBL = new EmpleadoBL();
+        private readonly RolBL _rolBL = new RolBL();
+        private readonly int _usuarioId;
 
         public FrmEditUsuario()
         {
             InitializeComponent();
+
+            // Usamos el evento Format para no depender de propiedades calculadas en el modelo
+            cmbEmpleado.Format += cmbEmpleado_Format;
         }
 
         public FrmEditUsuario(int usuarioId) : this()
@@ -22,11 +26,19 @@ namespace TallerElectronico.Desktop
             CargarDatosUsuario();
         }
 
+        private void cmbEmpleado_Format(object sender, ListControlConvertEventArgs e)
+        {
+            if (e.ListItem is Empleado empleado)
+            {
+                e.Value = $"{empleado.Nombre} {empleado.Apellido}";
+            }
+        }
+
         private void CargarDatosUsuario()
         {
             try
             {
-                Usuario usuario = _usuarioBL.SelectById(_usuarioId);
+                UsuarioDTO usuario = _usuarioBL.SelectById(_usuarioId);
 
                 if (usuario == null)
                 {
@@ -42,34 +54,46 @@ namespace TallerElectronico.Desktop
                     return;
                 }
 
-                txtCodigo.Text = usuario.UsuarioId.ToString();
+                // 2. Cargar ComboBox de Empleados
+                cmbEmpleado.DataSource = _empleadoBL.SelectAll();
+                cmbEmpleado.ValueMember = "EmpleadoId";
+
+                // 3. Cargar ComboBox de Roles
+                cmbRol.DataSource = _rolBL.SelectAll();
+                cmbRol.DisplayMember = "Nombre";
+                cmbRol.ValueMember = "RolId";
+
+                // 4. Asignar datos del DTO a los controles
+                txtCodigo.Text = usuario.Id.ToString();
                 txtNombre.Text = usuario.Nombre;
                 txtClave.Text = usuario.Clave;
 
-                txtCodigoEmpleado.Text = usuario.EmpleadoId.ToString();
-
-                cmbRol.Text = usuario.Rol != null
-                    ? usuario.Rol.Nombre
-                    : "";
-
-                if (usuario.Estado == "A")
+                // 5. Seleccionar claves foráneas mediante SelectedValue
+                if (usuario.EmpleadoId.HasValue)
                 {
-                    cmbEstado.SelectedIndex = 0;
-                }
-                else if (usuario.Estado == "I")
-                {
-                    cmbEstado.SelectedIndex = 1;
+                    cmbEmpleado.SelectedValue = usuario.EmpleadoId.Value;
                 }
                 else
                 {
-                    cmbEstado.SelectedIndex = -1;
+                    cmbEmpleado.SelectedIndex = -1;
                 }
+
+                if (usuario.RolId.HasValue)
+                {
+                    cmbRol.SelectedValue = usuario.RolId.Value;
+                }
+                else
+                {
+                    cmbRol.SelectedIndex = -1;
+                }
+
+                // 6. Estado
+                cmbEstado.SelectedIndex = (usuario.Estado == "A" || usuario.Estado == "Activo") ? 0 : 1;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    "Error al cargar los datos del usuario: "
-                    + ex.Message,
+                    "Error al cargar los datos del usuario: " + ex.Message,
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
@@ -82,47 +106,37 @@ namespace TallerElectronico.Desktop
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                string.IsNullOrWhiteSpace(txtClave.Text) ||
+                cmbEmpleado.SelectedValue == null ||
+                cmbRol.SelectedValue == null ||
+                cmbEstado.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor, completa todos los campos requeridos.",
+                    "Validación de formulario",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+
+                return;
+            }
+
             try
             {
-                if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                    string.IsNullOrWhiteSpace(txtClave.Text) ||
-                    string.IsNullOrWhiteSpace(txtCodigoEmpleado.Text) ||
-                    string.IsNullOrWhiteSpace(cmbRol.Text) ||
-                    cmbEstado.SelectedIndex == -1)
-                {
-                    MessageBox.Show(
-                        "Completa todos los campos.",
-                        "Validación",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-
-                    return;
-                }
-
-                if (!int.TryParse(
-                    txtCodigoEmpleado.Text.Trim(),
-                    out int empleadoId))
-                {
-                    MessageBox.Show(
-                        "El código del empleado no es válido.",
-                        "Validación",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-
-                    return;
-                }
+                int empleadoId = Convert.ToInt32(cmbEmpleado.SelectedValue);
+                int rolId = Convert.ToInt32(cmbRol.SelectedValue);
 
                 Usuario usuario = new Usuario
                 {
                     UsuarioId = _usuarioId,
                     EmpleadoId = empleadoId,
+                    RolId = rolId,
                     Nombre = txtNombre.Text.Trim(),
                     Clave = txtClave.Text.Trim(),
                     Estado = cmbEstado.SelectedIndex == 0 ? "A" : "I"
                 };
 
+                // Enviar a la capa de negocio
                 _usuarioBL.Update(usuario);
 
                 MessageBox.Show(
@@ -135,15 +149,14 @@ namespace TallerElectronico.Desktop
                 DialogResult = DialogResult.OK;
                 Close();
             }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message,"Regla de negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "No se pudieron actualizar los datos del usuario: "
-                    + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                MessageBox.Show("Ocurrió un error inesperado al actualizar el usuario: " + ex.Message,
+                    "Error del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

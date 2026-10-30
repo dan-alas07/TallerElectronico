@@ -7,7 +7,7 @@ namespace TallerElectronico.BusinessLogic
 {
     public class UsuarioBL
     {
-        private readonly UsuarioDAL _usuarioDal = new UsuarioDAL();
+        private readonly UsuarioDAL _usuarioDAL = new UsuarioDAL();
 
         public Usuario Login(string nombreUsuario, string clave)
         {
@@ -17,7 +17,7 @@ namespace TallerElectronico.BusinessLogic
             if (string.IsNullOrWhiteSpace(clave))
                 throw new ArgumentException("La contraseña es obligatoria.");
 
-            var usuario = _usuarioDal.SelectByUsername(nombreUsuario.Trim());
+            var usuario = _usuarioDAL.SelectByUsername(nombreUsuario.Trim());
 
             if (usuario == null || !BCrypt.Net.BCrypt.Verify(clave, usuario.Clave))
             {
@@ -27,17 +27,17 @@ namespace TallerElectronico.BusinessLogic
             return usuario;
         }
 
-        public List<Usuario> SelectAll()
+        public List<UsuarioDTO> SelectAll()
         {
-            return _usuarioDal.SelectAll();
+            return _usuarioDAL.SelectAll();
         }
 
-        public Usuario SelectById(int idUsuario)
+        public UsuarioDTO SelectById(int idUsuario)
         {
             if (idUsuario <= 0)
                 throw new ArgumentException("El ID de usuario proporcionado no es válido.");
 
-            return _usuarioDal.SelectById(idUsuario);
+            return _usuarioDAL.SelectById(idUsuario);
         }
 
         public Usuario Insert(Usuario usuario)
@@ -67,58 +67,43 @@ namespace TallerElectronico.BusinessLogic
             if (usuario.EmpleadoId <= 0)
                 throw new ArgumentException("Debe asociar un empleado válido.");
 
-            var usuarioExistente = _usuarioDal.SelectByUsername(usuario.Nombre);
+            var usuarioExistente = _usuarioDAL.SelectByUsername(usuario.Nombre);
             if (usuarioExistente != null)
                 throw new InvalidOperationException($"El nombre de usuario '{usuario.Nombre}' ya se encuentra registrado.");
 
             usuario.Clave = BCrypt.Net.BCrypt.HashPassword(usuario.Clave);
             usuario.Estado = "A";
 
-            return _usuarioDal.Insert(usuario);
+            return _usuarioDAL.Insert(usuario);
         }
 
-        public Usuario Update(Usuario usuarioModificado)
+        public void Update(Usuario usuario)
         {
-            if (usuarioModificado == null)
-                throw new ArgumentNullException(nameof(usuarioModificado), "Los datos del usuario son requeridos.");
+            // 1. Validaciones de Reglas de Negocio
+            if (usuario == null)
+                throw new ArgumentNullException(nameof(usuario), "Los datos del usuario no son válidos.");
 
-            if (usuarioModificado.UsuarioId <= 0)
-                throw new ArgumentException("El ID de usuario no es válido.");
+            if (string.IsNullOrWhiteSpace(usuario.Nombre))
+                throw new Exception("El nombre de usuario es obligatorio.");
 
-            if (string.IsNullOrWhiteSpace(usuarioModificado.Nombre))
-                throw new ArgumentException("El nombre de usuario es obligatorio.");
+            if (usuario.Nombre.Length < 3)
+                throw new Exception("El nombre de usuario debe tener al menos 3 caracteres.");
 
-            usuarioModificado.Nombre = usuarioModificado.Nombre.Trim();
+            if (usuario.EmpleadoId <= 0)
+                throw new Exception("Debe seleccionar un empleado válido.");
 
-            // Validacion de longitud
-            if (usuarioModificado.Nombre.Length > 50)
-                throw new ArgumentException("El nombre de usuario no puede superar los 50 caracteres.");
+            if (usuario.RolId <= 0)
+                throw new Exception("Debe seleccionar un rol válido.");
 
-            if (usuarioModificado.RolId <= 0)
-                throw new ArgumentException("Debe seleccionar un rol válido.");
-
-            if (usuarioModificado.EmpleadoId <= 0)
-                throw new ArgumentException("Debe asociar un empleado válido.");
-
-            var usuarioConMismoNombre = _usuarioDal.SelectByUsername(usuarioModificado.Nombre);
-            if (usuarioConMismoNombre != null && usuarioConMismoNombre.UsuarioId != usuarioModificado.UsuarioId)
+            // 2. Validación de duplicados (Ejemplo: Que no exista otro usuario con el mismo nombre)
+            var usuarioExistente = _usuarioDAL.SelectByUsername(usuario.Nombre);
+            if (usuarioExistente != null && usuarioExistente.UsuarioId != usuario.UsuarioId)
             {
-                throw new InvalidOperationException($"El nombre de usuario '{usuarioModificado.Nombre}' ya está siendo usado por otra cuenta.");
+                throw new Exception("El nombre de usuario ya está registrado por otro empleado.");
             }
 
-            if (!string.IsNullOrWhiteSpace(usuarioModificado.Clave))
-            {
-                if (usuarioModificado.Clave.Length > 70)
-                    throw new ArgumentException("La nueva contraseña no puede superar los 70 caracteres.");
-
-                usuarioModificado.Clave = BCrypt.Net.BCrypt.HashPassword(usuarioModificado.Clave);
-            }
-            else
-            {
-                usuarioModificado.Clave = null;
-            }
-
-            return _usuarioDal.Update(usuarioModificado);
+            // 3. Persistencia
+            _usuarioDAL.Update(usuario);
         }
 
         public bool Delete(int idUsuario)
@@ -126,7 +111,7 @@ namespace TallerElectronico.BusinessLogic
             if (idUsuario <= 0)
                 throw new ArgumentException("El ID de usuario no es válido.");
 
-            return _usuarioDal.Delete(idUsuario);
+            return _usuarioDAL.Delete(idUsuario);
         }
     }
 }

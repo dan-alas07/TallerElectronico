@@ -17,26 +17,44 @@ namespace TallerElectronico.DataAccess
             }
         }
 
-        public List<Usuario> SelectAll()
+        public List<UsuarioDTO> SelectAll()
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Usuario.AsNoTracking()
-                                 .Include(u => u.Rol)
-                                 .Include(u => u.Empleado)
-                                 .Where(u => u.Estado == "A")
-                                 .ToList();
+                return db.Usuario
+                         .AsNoTracking()
+                         .Where(u => u.Estado == "A")
+                         .Select(u => new UsuarioDTO
+                         {
+                             Id = u.UsuarioId,
+                             Nombre = u.Nombre,
+                             Clave = u.Clave,
+                             EmpleadoNombre = u.Empleado != null ? u.Empleado.Nombre + " " + u.Empleado.Apellido : "Sin Asignar",
+                             RolNombre = u.Rol != null ? u.Rol.Nombre : "Sin Rol",
+                             Estado = u.Estado == "A" ? "Activo" : "Inactivo"
+                         }).ToList();
             }
         }
 
-        public Usuario SelectById(int idUsuario)
+        public UsuarioDTO SelectById(int idUsuario)
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Usuario.AsNoTracking()
-                                 .Include(u => u.Rol)
-                                 .Include(u => u.Empleado)
-                                 .FirstOrDefault(u => u.UsuarioId == idUsuario && u.Estado == "A");
+                return db.Usuario
+                         .AsNoTracking()
+                         .Where(u => u.UsuarioId == idUsuario && u.Estado == "A")
+                         .Select(u => new UsuarioDTO
+                         {
+                             Id = u.UsuarioId,
+                             Nombre = u.Nombre,
+                             Clave = u.Clave,
+                             EmpleadoId = u.EmpleadoId,
+                             RolId = u.RolId,
+                             EmpleadoNombre = u.Empleado != null ? u.Empleado.Nombre + " " + u.Empleado.Apellido: "Sin Asignar",
+                             RolNombre = u.Rol != null ? u.Rol.Nombre : "Sin Rol",
+                             Estado = u.Estado
+                         })
+                         .FirstOrDefault();
             }
         }
 
