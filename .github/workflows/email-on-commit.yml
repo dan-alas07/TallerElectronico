@@ -18,7 +18,7 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "Nuevo commit en ${{ github.repository }} por ${{ github.actor }}"
-          to: destinatario@ejemplo.com  # Cambia esto por el correo donde quieres RECIBIR las alertas
+          to: as0173022025@unab.edu.sv, josueenriqueguzmanbonilla29@gmail.com, edwartinez2006@gmail.com, katy.canizalez10@gmail.com  # Cambia esto por el correo donde quieres RECIBIR las alertas
           from: Notificaciones Taller <sistematallerelectronico@gmail.com>
           body: |
             Se ha realizado un nuevo commit en el repositorio.
