@@ -266,6 +266,7 @@
             this.Name = "FrmEditUsuario";
             this.ShowIcon = false;
             this.Text = "Editar Usuario";
+            this.Load += new System.EventHandler(this.FrmEditUsuario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

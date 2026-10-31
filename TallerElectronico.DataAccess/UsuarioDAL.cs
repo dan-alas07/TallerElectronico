@@ -28,7 +28,7 @@ namespace TallerElectronico.DataAccess
                          {
                              Id = u.UsuarioId,
                              Nombre = u.Nombre,
-                             Clave = u.Clave,
+                             Clave = string.Empty, // No enviamos el hash a la interfaz
                              EmpleadoNombre = u.Empleado != null ? u.Empleado.Nombre + " " + u.Empleado.Apellido : "Sin Asignar",
                              RolNombre = u.Rol != null ? u.Rol.Nombre : "Sin Rol",
                              Estado = u.Estado == "A" ? "Activo" : "Inactivo"
@@ -47,10 +47,10 @@ namespace TallerElectronico.DataAccess
                          {
                              Id = u.UsuarioId,
                              Nombre = u.Nombre,
-                             Clave = u.Clave,
+                             Clave = string.Empty, // Dejar vacío para el formulario de edición
                              EmpleadoId = u.EmpleadoId,
                              RolId = u.RolId,
-                             EmpleadoNombre = u.Empleado != null ? u.Empleado.Nombre + " " + u.Empleado.Apellido: "Sin Asignar",
+                             EmpleadoNombre = u.Empleado != null ? u.Empleado.Nombre + " " + u.Empleado.Apellido : "Sin Asignar",
                              RolNombre = u.Rol != null ? u.Rol.Nombre : "Sin Rol",
                              Estado = u.Estado
                          })
@@ -84,7 +84,8 @@ namespace TallerElectronico.DataAccess
                     usuarioExistente.RolId = usuarioModificado.RolId;
                     usuarioExistente.Estado = usuarioModificado.Estado;
 
-                    if (!string.IsNullOrEmpty(usuarioModificado.Clave))
+                    // Si se ingresó una nueva clave (que viene ya hasheada desde la BL), se actualiza
+                    if (!string.IsNullOrWhiteSpace(usuarioModificado.Clave))
                     {
                         usuarioExistente.Clave = usuarioModificado.Clave;
                     }

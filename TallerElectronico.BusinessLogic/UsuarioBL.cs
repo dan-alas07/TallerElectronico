@@ -53,11 +53,9 @@ namespace TallerElectronico.BusinessLogic
 
             usuario.Nombre = usuario.Nombre.Trim();
 
-            // Validar longitud de Nombre
-            if (usuario.Nombre.Trim().Length > 50)
+            if (usuario.Nombre.Length > 50)
                 throw new ArgumentException("El nombre de usuario no puede superar los 50 caracteres.");
 
-            // Validar longitud de Clave antes del Hash
             if (usuario.Clave.Length > 70)
                 throw new ArgumentException("La contraseña no puede superar los 70 caracteres.");
 
@@ -79,30 +77,45 @@ namespace TallerElectronico.BusinessLogic
 
         public void Update(Usuario usuario)
         {
-            // 1. Validaciones de Reglas de Negocio
             if (usuario == null)
                 throw new ArgumentNullException(nameof(usuario), "Los datos del usuario no son válidos.");
 
             if (string.IsNullOrWhiteSpace(usuario.Nombre))
-                throw new Exception("El nombre de usuario es obligatorio.");
+                throw new InvalidOperationException("El nombre de usuario es obligatorio.");
 
-            if (usuario.Nombre.Length < 3)
-                throw new Exception("El nombre de usuario debe tener al menos 3 caracteres.");
+            if (usuario.Nombre.Trim().Length < 3)
+                throw new InvalidOperationException("El nombre de usuario debe tener al menos 3 caracteres.");
 
             if (usuario.EmpleadoId <= 0)
-                throw new Exception("Debe seleccionar un empleado válido.");
+                throw new InvalidOperationException("Debe seleccionar un empleado válido.");
 
             if (usuario.RolId <= 0)
-                throw new Exception("Debe seleccionar un rol válido.");
+                throw new InvalidOperationException("Debe seleccionar un rol válido.");
 
-            // 2. Validación de duplicados (Ejemplo: Que no exista otro usuario con el mismo nombre)
-            var usuarioExistente = _usuarioDAL.SelectByUsername(usuario.Nombre);
+            // Validar si el nombre ya pertenece a otro usuario
+            var usuarioExistente = _usuarioDAL.SelectByUsername(usuario.Nombre.Trim());
             if (usuarioExistente != null && usuarioExistente.UsuarioId != usuario.UsuarioId)
             {
-                throw new Exception("El nombre de usuario ya está registrado por otro empleado.");
+                throw new InvalidOperationException("El nombre de usuario ya está registrado por otro empleado.");
             }
 
-            // 3. Persistencia
+            usuario.Nombre = usuario.Nombre.Trim();
+
+            // Manejo de contraseña al editar:
+            // Si el campo tiene texto, validamos la longitud y la encriptamos con BCrypt.
+            if (!string.IsNullOrWhiteSpace(usuario.Clave))
+            {
+                if (usuario.Clave.Length > 70)
+                    throw new InvalidOperationException("La contraseña no puede superar los 70 caracteres.");
+
+                usuario.Clave = BCrypt.Net.BCrypt.HashPassword(usuario.Clave.Trim());
+            }
+            else
+            {
+                // Si viene vacía, se establece como null para que la DAL preserve la clave actual de la BD
+                usuario.Clave = null;
+            }
+
             _usuarioDAL.Update(usuario);
         }
 
