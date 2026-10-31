@@ -1,0 +1,32 @@
+name: Notificar Commit por Correo
+
+on:
+  push:
+    branches:
+      - main  # Cambia 'main' por 'master' o la rama principal que utilices
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar correo de notificación
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Nuevo commit en ${{ github.repository }} por ${{ github.actor }}"
+          to: as0173022025@unab.edu.sv, josueenriqueguzmanbonilla29@gmail.com, edwartinez2006@gmail.com, katy.canizalez10@gmail.com  # Cambia esto por el correo donde quieres RECIBIR las alertas
+          from: Notificaciones Taller <sistematallerelectronico@gmail.com>
+          body: |
+            Se ha realizado un nuevo commit en el repositorio.
+            
+            Detalles del commit:
+            - Autor: ${{ github.actor }}
+            - Mensaje: ${{ github.event.head_commit.message }}
+            - Rama: ${{ github.ref_name }}
+            
+            Puedes ver los cambios aquí:
+            ${{ github.event.head_commit.url }}
