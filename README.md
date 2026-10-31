@@ -9,4 +9,6 @@ Este repositorio contiene la solución integral para un sistema de taller electr
 - Daniel Alexander Alas Sánchez
 - Josué Enrique Guzmán Bonilla
 - Katherine Jeannette Hernández Canizalez   
-- Edward Edenilson Martínez Rodríguez  
+- Edward Edenilson Martínez Rodríguez
+
+UNAB 2026
