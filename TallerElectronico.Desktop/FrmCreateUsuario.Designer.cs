@@ -31,9 +31,9 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.pnlCard = new System.Windows.Forms.Panel();
-            this.cboRol = new System.Windows.Forms.ComboBox();
-            this.cboCodigo = new System.Windows.Forms.ComboBox();
-            this.cboEstado = new System.Windows.Forms.ComboBox();
+            this.cmbRol = new System.Windows.Forms.ComboBox();
+            this.cmbEmpleado = new System.Windows.Forms.ComboBox();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.lblEstado = new System.Windows.Forms.Label();
             this.lblCorreo = new System.Windows.Forms.Label();
             this.lblEmpleadoId = new System.Windows.Forms.Label();
@@ -60,15 +60,16 @@
             this.btnCancelar.FlatAppearance.BorderSize = 0;
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(213)))), ((int)(((byte)(225)))));
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(667, 481);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(173, 52);
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -80,19 +81,20 @@
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(480, 481);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(173, 52);
             this.btnGuardar.TabIndex = 8;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // pnlCard
             // 
             this.pnlCard.BackColor = System.Drawing.Color.White;
-            this.pnlCard.Controls.Add(this.cboRol);
-            this.pnlCard.Controls.Add(this.cboCodigo);
-            this.pnlCard.Controls.Add(this.cboEstado);
+            this.pnlCard.Controls.Add(this.cmbRol);
+            this.pnlCard.Controls.Add(this.cmbEmpleado);
+            this.pnlCard.Controls.Add(this.cmbEstado);
             this.pnlCard.Controls.Add(this.lblEstado);
             this.pnlCard.Controls.Add(this.lblCorreo);
             this.pnlCard.Controls.Add(this.lblEmpleadoId);
@@ -105,55 +107,51 @@
             this.pnlCard.Controls.Add(this.pnlLinea);
             this.pnlCard.Controls.Add(this.lblSeccion);
             this.pnlCard.Location = new System.Drawing.Point(40, 117);
-            this.pnlCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlCard.Margin = new System.Windows.Forms.Padding(4);
             this.pnlCard.Name = "pnlCard";
             this.pnlCard.Size = new System.Drawing.Size(800, 331);
             this.pnlCard.TabIndex = 7;
             // 
-            // cboRol
+            // cmbRol
             // 
-            this.cboRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboRol.Enabled = false;
-            this.cboRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboRol.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboRol.Items.AddRange(new object[] {
+            this.cmbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRol.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbRol.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cboRol.Location = new System.Drawing.Point(431, 249);
-            this.cboRol.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cboRol.Name = "cboRol";
-            this.cboRol.Size = new System.Drawing.Size(332, 31);
-            this.cboRol.TabIndex = 23;
+            this.cmbRol.Location = new System.Drawing.Point(431, 249);
+            this.cmbRol.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbRol.Name = "cmbRol";
+            this.cmbRol.Size = new System.Drawing.Size(332, 31);
+            this.cmbRol.TabIndex = 23;
             // 
-            // cboCodigo
+            // cmbEmpleado
             // 
-            this.cboCodigo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCodigo.Enabled = false;
-            this.cboCodigo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboCodigo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboCodigo.Items.AddRange(new object[] {
+            this.cmbEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEmpleado.DropDownWidth = 386;
+            this.cmbEmpleado.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbEmpleado.FormattingEnabled = true;
+            this.cmbEmpleado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cboCodigo.Location = new System.Drawing.Point(40, 249);
-            this.cboCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cboCodigo.Name = "cboCodigo";
-            this.cboCodigo.Size = new System.Drawing.Size(332, 31);
-            this.cboCodigo.TabIndex = 22;
+            this.cmbEmpleado.Location = new System.Drawing.Point(40, 249);
+            this.cmbEmpleado.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbEmpleado.Name = "cmbEmpleado";
+            this.cmbEmpleado.Size = new System.Drawing.Size(332, 31);
+            this.cmbEmpleado.TabIndex = 22;
             // 
-            // cboEstado
+            // cmbEstado
             // 
-            this.cboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEstado.Enabled = false;
-            this.cboEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboEstado.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboEstado.Items.AddRange(new object[] {
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstado.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cboEstado.Location = new System.Drawing.Point(427, 95);
-            this.cboEstado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cboEstado.Name = "cboEstado";
-            this.cboEstado.Size = new System.Drawing.Size(332, 31);
-            this.cboEstado.TabIndex = 20;
+            this.cmbEstado.Location = new System.Drawing.Point(427, 95);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(332, 31);
+            this.cmbEstado.TabIndex = 20;
             // 
             // lblEstado
             // 
@@ -187,16 +185,16 @@
             this.lblEmpleadoId.Location = new System.Drawing.Point(40, 224);
             this.lblEmpleadoId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmpleadoId.Name = "lblEmpleadoId";
-            this.lblEmpleadoId.Size = new System.Drawing.Size(142, 20);
+            this.lblEmpleadoId.Size = new System.Drawing.Size(89, 20);
             this.lblEmpleadoId.TabIndex = 6;
-            this.lblEmpleadoId.Text = "Código Empleado *";
+            this.lblEmpleadoId.Text = "Empleado *";
             // 
             // txtClave
             // 
             this.txtClave.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtClave.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtClave.Location = new System.Drawing.Point(427, 172);
-            this.txtClave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtClave.Margin = new System.Windows.Forms.Padding(4);
             this.txtClave.MaxLength = 50;
             this.txtClave.Name = "txtClave";
             this.txtClave.Size = new System.Drawing.Size(333, 30);
@@ -219,7 +217,7 @@
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNombre.Location = new System.Drawing.Point(40, 172);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(333, 30);
@@ -243,7 +241,7 @@
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtCodigo.Location = new System.Drawing.Point(40, 96);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(333, 30);
@@ -267,7 +265,7 @@
             // 
             this.pnlLinea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(235)))), ((int)(((byte)(242)))));
             this.pnlLinea.Location = new System.Drawing.Point(40, 52);
-            this.pnlLinea.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLinea.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLinea.Name = "pnlLinea";
             this.pnlLinea.Size = new System.Drawing.Size(720, 1);
             this.pnlLinea.TabIndex = 1;
@@ -291,7 +289,7 @@
             this.pnlHeader.Controls.Add(this.lblTitulo);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(880, 101);
             this.pnlHeader.TabIndex = 6;
@@ -329,9 +327,10 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.pnlCard);
             this.Controls.Add(this.pnlHeader);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCreateUsuario";
             this.ShowIcon = false;
+            this.Load += new System.EventHandler(this.FrmCreateUsuario_Load);
             this.pnlCard.ResumeLayout(false);
             this.pnlCard.PerformLayout();
             this.pnlHeader.ResumeLayout(false);
@@ -345,7 +344,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Panel pnlCard;
-        private System.Windows.Forms.ComboBox cboEstado;
+        private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.Label lblCorreo;
         private System.Windows.Forms.Label lblEmpleadoId;
@@ -360,7 +359,7 @@
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblSubtitulo;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.ComboBox cboRol;
-        private System.Windows.Forms.ComboBox cboCodigo;
+        private System.Windows.Forms.ComboBox cmbRol;
+        private System.Windows.Forms.ComboBox cmbEmpleado;
     }
 }
