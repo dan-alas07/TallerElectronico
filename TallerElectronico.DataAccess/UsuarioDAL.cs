@@ -112,5 +112,38 @@ namespace TallerElectronico.DataAccess
                 return false;
             }
         }
+
+        public List<UsuarioDTO> Search(string criterio)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                var query = db.Usuario
+                              .AsNoTracking()
+                              .Where(u => u.Estado == "A");
+
+                if (!string.IsNullOrWhiteSpace(criterio))
+                {
+                    criterio = criterio.Trim().ToLower();
+                    int idBusqueda;
+                    bool esNumero = int.TryParse(criterio, out idBusqueda);
+
+                    query = query.Where(u =>
+                                    (esNumero && u.UsuarioId == idBusqueda) ||
+                                    (u.Nombre != null && u.Nombre.ToLower().Contains(criterio)) ||
+                                    (u.Empleado != null && (u.Empleado.Nombre + " " + u.Empleado.Apellido).ToLower().Contains(criterio)) ||
+                                    (u.Rol != null && u.Rol.Nombre.ToLower().Contains(criterio)));
+                }
+
+                return query.Select(u => new UsuarioDTO
+                {
+                    Id = u.UsuarioId,
+                    Nombre = u.Nombre,
+                    Clave = string.Empty,
+                    EmpleadoNombre = u.Empleado != null ? u.Empleado.Nombre + " " + u.Empleado.Apellido : "Sin Asignar",
+                    RolNombre = u.Rol != null ? u.Rol.Nombre : "Sin Rol",
+                    Estado = u.Estado == "A" ? "Activo" : "Inactivo"
+                }).ToList();
+            }
+        }
     }
 }

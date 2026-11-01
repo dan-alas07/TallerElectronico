@@ -126,5 +126,10 @@ namespace TallerElectronico.BusinessLogic
 
             return _usuarioDAL.Delete(idUsuario);
         }
+
+        public List<UsuarioDTO> Search(string criterio)
+        {
+            return _usuarioDAL.Search(criterio);
+        }
     }
 }

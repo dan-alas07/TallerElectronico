@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using TallerElectronico.BusinessLogic;
+using TallerElectronico.Entities;
 
 namespace TallerElectronico.Desktop
 {
@@ -8,6 +10,8 @@ namespace TallerElectronico.Desktop
     {
         private readonly UsuarioBL _usuarioBL = new UsuarioBL();
         private bool cargandoUsuarios = false;
+
+        private readonly Timer _timerBusqueda = new Timer();
 
         public FrmUsuario()
         {
@@ -24,7 +28,21 @@ namespace TallerElectronico.Desktop
             btnEliminar.Enabled = false;
 
             dgvUsuario.SelectionChanged += dgvUsuarios_SelectionChanged;
+
+            // Configurar el temporizador (300 milisegundos de espera)
+            _timerBusqueda.Interval = 300;
+            _timerBusqueda.Tick += TimerBusqueda_Tick;
+
+            if (txtBuscar != null)
+            {
+                txtBuscar.TextChanged += txtBuscar_TextChanged;
+            }
+            if (btnBuscar != null)
+            {
+                btnBuscar.Click += btnBuscar_Click;
+            }
         }
+
 
         private void FrmUsuario_Load(object sender, EventArgs e)
         {
@@ -43,8 +61,20 @@ namespace TallerElectronico.Desktop
             {
                 cargandoUsuarios = true;
 
+                string criterio = txtBuscar != null ? txtBuscar.Text.Trim() : string.Empty;
+
+                // Forzar refresco completo del DataGridView
                 dgvUsuario.DataSource = null;
-                dgvUsuario.DataSource = _usuarioBL.SelectAll();
+
+                // Si la caja de texto tiene contenido consulta mediante la BL el método Search, sino trae SelectAll()
+                if (string.IsNullOrWhiteSpace(criterio))
+                {
+                    dgvUsuario.DataSource = _usuarioBL.SelectAll();
+                }
+                else
+                {
+                    dgvUsuario.DataSource = _usuarioBL.Search(criterio);
+                }
             }
             catch (Exception ex)
             {
@@ -74,7 +104,7 @@ namespace TallerElectronico.Desktop
 
             foreach (Control hijo in control.Controls)
             {
-                if (hijo == btnNuevo || hijo == btnEditar || hijo == btnEliminar)
+                if (hijo == btnNuevo || hijo == btnEditar || hijo == btnEliminar || hijo == txtBuscar || hijo == btnBuscar)
                     continue;
 
                 RegistrarEventos(hijo);
@@ -168,6 +198,24 @@ namespace TallerElectronico.Desktop
             {
                 MessageBox.Show("No se pudo eliminar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            // Reinicia el reloj a cada tecla. Solo cuando te detengas 300ms se consultará a la DAL
+            _timerBusqueda.Stop();
+            _timerBusqueda.Start();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            _timerBusqueda.Stop();
+            CargarUsuarios();
+        }
+        private void TimerBusqueda_Tick(object sender, EventArgs e)
+        {
+            _timerBusqueda.Stop();
+            CargarUsuarios(); // Llama a la DAL cuando el usuario pausó el tipeo
         }
     }
 }
