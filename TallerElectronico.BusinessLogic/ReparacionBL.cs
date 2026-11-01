@@ -9,7 +9,12 @@ namespace TallerElectronico.BusinessLogic
     {
         private readonly ReparacionDAL _reparacionDal = new ReparacionDAL();
 
-        public List<Reparacion> SelectAll()
+        public KpiDashboardDTO GetKpis()
+        {
+            return _reparacionDal.GetKpis();
+        }
+
+        public List<ReparacionDTO> SelectAll()
         {
             return _reparacionDal.SelectAll();
         }

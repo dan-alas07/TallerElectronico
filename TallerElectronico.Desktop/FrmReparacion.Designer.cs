@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -39,25 +39,19 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.dgvCliente = new System.Windows.Forms.DataGridView();
-            this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvReparaciones = new System.Windows.Forms.DataGridView();
             this.ColumnTrackingCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnClientCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDeviceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDeviceType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAssignedTechnician = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnInitialDiagnosis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnEntryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnFinalDiagnosis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDeliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnRepairCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTotalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCreateUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDateModified = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnEditUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).BeginInit();
+            this.btnHistorial = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReparaciones)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBuscar
@@ -67,7 +61,7 @@
             this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtBuscar.Location = new System.Drawing.Point(28, 156);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(477, 32);
             this.txtBuscar.TabIndex = 46;
@@ -86,7 +80,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(43, 73);
+            this.label8.Location = new System.Drawing.Point(23, 89);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(493, 25);
@@ -104,7 +98,7 @@
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.White;
             this.btnEditar.Location = new System.Drawing.Point(227, 233);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(193, 52);
             this.btnEditar.TabIndex = 43;
@@ -122,7 +116,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.Location = new System.Drawing.Point(428, 233);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(193, 52);
             this.btnEliminar.TabIndex = 42;
@@ -140,7 +134,7 @@
             this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
             this.btnBuscar.Location = new System.Drawing.Point(512, 156);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(100, 28);
             this.btnBuscar.TabIndex = 47;
@@ -158,7 +152,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
             this.btnNuevo.Location = new System.Drawing.Point(25, 233);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(193, 52);
             this.btnNuevo.TabIndex = 41;
@@ -177,109 +171,92 @@
             this.lblTitle.TabIndex = 40;
             this.lblTitle.Text = "Gestión de reparación";
             // 
-            // dgvCliente
+            // dgvReparaciones
             // 
-            this.dgvCliente.AllowUserToAddRows = false;
-            this.dgvCliente.AllowUserToDeleteRows = false;
-            this.dgvCliente.AllowUserToResizeColumns = false;
-            this.dgvCliente.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(252)))));
-            this.dgvCliente.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCliente.BackgroundColor = System.Drawing.Color.White;
-            this.dgvCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvCliente.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvCliente.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvCliente.ColumnHeadersHeight = 42;
-            this.dgvCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnCode,
+            this.dgvReparaciones.AllowUserToAddRows = false;
+            this.dgvReparaciones.AllowUserToDeleteRows = false;
+            this.dgvReparaciones.AllowUserToResizeColumns = false;
+            this.dgvReparaciones.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(252)))));
+            this.dgvReparaciones.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvReparaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvReparaciones.BackgroundColor = System.Drawing.Color.White;
+            this.dgvReparaciones.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvReparaciones.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvReparaciones.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReparaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvReparaciones.ColumnHeadersHeight = 42;
+            this.dgvReparaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvReparaciones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnTrackingCode,
+            this.ColumnStatus,
             this.ColumnClientCode,
-            this.ColumnDeviceType,
             this.ColumnBrand,
             this.ColumnModel,
+            this.ColumnDeviceType,
             this.ColumnAssignedTechnician,
-            this.ColumnInitialDiagnosis,
             this.ColumnEntryDate,
-            this.ColumnFinalDiagnosis,
             this.ColumnDeliveryDate,
-            this.ColumnRepairCost,
-            this.ColumnTotalCost,
-            this.ColumnCreateUser,
-            this.ColumnDateModified,
-            this.ColumnEditUser,
-            this.ColumnStatus});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCliente.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvCliente.EnableHeadersVisualStyles = false;
-            this.dgvCliente.GridColor = System.Drawing.Color.White;
-            this.dgvCliente.Location = new System.Drawing.Point(25, 305);
-            this.dgvCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dgvCliente.MultiSelect = false;
-            this.dgvCliente.Name = "dgvCliente";
-            this.dgvCliente.ReadOnly = true;
-            this.dgvCliente.RowHeadersVisible = false;
-            this.dgvCliente.RowHeadersWidth = 51;
-            this.dgvCliente.RowTemplate.Height = 36;
-            this.dgvCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCliente.Size = new System.Drawing.Size(1440, 265);
-            this.dgvCliente.TabIndex = 39;
-            // 
-            // ColumnCode
-            // 
-            this.ColumnCode.DataPropertyName = "ReparacionId";
-            this.ColumnCode.FillWeight = 65F;
-            this.ColumnCode.HeaderText = "Código";
-            this.ColumnCode.MinimumWidth = 6;
-            this.ColumnCode.Name = "ColumnCode";
-            this.ColumnCode.ReadOnly = true;
+            this.ColumnTotalCost});
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReparaciones.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvReparaciones.EnableHeadersVisualStyles = false;
+            this.dgvReparaciones.GridColor = System.Drawing.Color.White;
+            this.dgvReparaciones.Location = new System.Drawing.Point(25, 305);
+            this.dgvReparaciones.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvReparaciones.MultiSelect = false;
+            this.dgvReparaciones.Name = "dgvReparaciones";
+            this.dgvReparaciones.ReadOnly = true;
+            this.dgvReparaciones.RowHeadersVisible = false;
+            this.dgvReparaciones.RowHeadersWidth = 51;
+            this.dgvReparaciones.RowTemplate.Height = 36;
+            this.dgvReparaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvReparaciones.Size = new System.Drawing.Size(1440, 265);
+            this.dgvReparaciones.TabIndex = 39;
             // 
             // ColumnTrackingCode
             // 
             this.ColumnTrackingCode.DataPropertyName = "CodigoSeguimiento";
             this.ColumnTrackingCode.FillWeight = 85F;
-            this.ColumnTrackingCode.HeaderText = "Codigo de seguimiento";
+            this.ColumnTrackingCode.HeaderText = "Codigo";
             this.ColumnTrackingCode.MinimumWidth = 6;
             this.ColumnTrackingCode.Name = "ColumnTrackingCode";
             this.ColumnTrackingCode.ReadOnly = true;
             // 
+            // ColumnStatus
+            // 
+            this.ColumnStatus.DataPropertyName = "EstadoNombre";
+            this.ColumnStatus.HeaderText = "Estado";
+            this.ColumnStatus.MinimumWidth = 6;
+            this.ColumnStatus.Name = "ColumnStatus";
+            this.ColumnStatus.ReadOnly = true;
+            // 
             // ColumnClientCode
             // 
-            this.ColumnClientCode.DataPropertyName = "ClienteId";
+            this.ColumnClientCode.DataPropertyName = "ClienteNombre";
             this.ColumnClientCode.FillWeight = 85F;
-            this.ColumnClientCode.HeaderText = "Código Cliente";
+            this.ColumnClientCode.HeaderText = "Cliente";
             this.ColumnClientCode.MinimumWidth = 6;
             this.ColumnClientCode.Name = "ColumnClientCode";
             this.ColumnClientCode.ReadOnly = true;
             // 
-            // ColumnDeviceType
-            // 
-            this.ColumnDeviceType.DataPropertyName = "TipoEquipoId";
-            this.ColumnDeviceType.FillWeight = 85F;
-            this.ColumnDeviceType.HeaderText = "Tipo Equipo";
-            this.ColumnDeviceType.MinimumWidth = 6;
-            this.ColumnDeviceType.Name = "ColumnDeviceType";
-            this.ColumnDeviceType.ReadOnly = true;
-            // 
             // ColumnBrand
             // 
-            this.ColumnBrand.DataPropertyName = "MarcaId";
+            this.ColumnBrand.DataPropertyName = "MarcaNombre";
             this.ColumnBrand.FillWeight = 85F;
             this.ColumnBrand.HeaderText = "Marca";
             this.ColumnBrand.MinimumWidth = 6;
@@ -295,23 +272,23 @@
             this.ColumnModel.Name = "ColumnModel";
             this.ColumnModel.ReadOnly = true;
             // 
+            // ColumnDeviceType
+            // 
+            this.ColumnDeviceType.DataPropertyName = "TipoEquipoNombre";
+            this.ColumnDeviceType.FillWeight = 85F;
+            this.ColumnDeviceType.HeaderText = "Tipo Equipo";
+            this.ColumnDeviceType.MinimumWidth = 6;
+            this.ColumnDeviceType.Name = "ColumnDeviceType";
+            this.ColumnDeviceType.ReadOnly = true;
+            // 
             // ColumnAssignedTechnician
             // 
-            this.ColumnAssignedTechnician.DataPropertyName = "TecnicoAsignadoId";
+            this.ColumnAssignedTechnician.DataPropertyName = "TecnicoNombre";
             this.ColumnAssignedTechnician.FillWeight = 120F;
-            this.ColumnAssignedTechnician.HeaderText = "Tecnico Asignado";
+            this.ColumnAssignedTechnician.HeaderText = "Tecnico";
             this.ColumnAssignedTechnician.MinimumWidth = 6;
             this.ColumnAssignedTechnician.Name = "ColumnAssignedTechnician";
             this.ColumnAssignedTechnician.ReadOnly = true;
-            // 
-            // ColumnInitialDiagnosis
-            // 
-            this.ColumnInitialDiagnosis.DataPropertyName = "DiagnosticoInicial";
-            this.ColumnInitialDiagnosis.FillWeight = 110F;
-            this.ColumnInitialDiagnosis.HeaderText = "Diagnostico Inicial";
-            this.ColumnInitialDiagnosis.MinimumWidth = 6;
-            this.ColumnInitialDiagnosis.Name = "ColumnInitialDiagnosis";
-            this.ColumnInitialDiagnosis.ReadOnly = true;
             // 
             // ColumnEntryDate
             // 
@@ -322,14 +299,6 @@
             this.ColumnEntryDate.Name = "ColumnEntryDate";
             this.ColumnEntryDate.ReadOnly = true;
             // 
-            // ColumnFinalDiagnosis
-            // 
-            this.ColumnFinalDiagnosis.DataPropertyName = "DiagnosticoFinal";
-            this.ColumnFinalDiagnosis.HeaderText = "Diagnostico Final";
-            this.ColumnFinalDiagnosis.MinimumWidth = 6;
-            this.ColumnFinalDiagnosis.Name = "ColumnFinalDiagnosis";
-            this.ColumnFinalDiagnosis.ReadOnly = true;
-            // 
             // ColumnDeliveryDate
             // 
             this.ColumnDeliveryDate.DataPropertyName = "FechaEntrega";
@@ -338,59 +307,39 @@
             this.ColumnDeliveryDate.Name = "ColumnDeliveryDate";
             this.ColumnDeliveryDate.ReadOnly = true;
             // 
-            // ColumnRepairCost
-            // 
-            this.ColumnRepairCost.DataPropertyName = "CostoManoObra";
-            this.ColumnRepairCost.HeaderText = "Costo Servicio";
-            this.ColumnRepairCost.MinimumWidth = 6;
-            this.ColumnRepairCost.Name = "ColumnRepairCost";
-            this.ColumnRepairCost.ReadOnly = true;
-            // 
             // ColumnTotalCost
             // 
             this.ColumnTotalCost.DataPropertyName = "TotalReparacion";
-            this.ColumnTotalCost.HeaderText = "Total Reparación";
+            this.ColumnTotalCost.HeaderText = "Total";
             this.ColumnTotalCost.MinimumWidth = 6;
             this.ColumnTotalCost.Name = "ColumnTotalCost";
             this.ColumnTotalCost.ReadOnly = true;
             // 
-            // ColumnCreateUser
+            // btnHistorial
             // 
-            this.ColumnCreateUser.DataPropertyName = "UsuarioCreacionId";
-            this.ColumnCreateUser.HeaderText = "Creado";
-            this.ColumnCreateUser.MinimumWidth = 6;
-            this.ColumnCreateUser.Name = "ColumnCreateUser";
-            this.ColumnCreateUser.ReadOnly = true;
-            // 
-            // ColumnDateModified
-            // 
-            this.ColumnDateModified.DataPropertyName = "FechaModificacion";
-            this.ColumnDateModified.HeaderText = "Fecha Modificación";
-            this.ColumnDateModified.MinimumWidth = 6;
-            this.ColumnDateModified.Name = "ColumnDateModified";
-            this.ColumnDateModified.ReadOnly = true;
-            // 
-            // ColumnEditUser
-            // 
-            this.ColumnEditUser.DataPropertyName = "UsuarioModicacionId";
-            this.ColumnEditUser.HeaderText = "Modificado";
-            this.ColumnEditUser.MinimumWidth = 6;
-            this.ColumnEditUser.Name = "ColumnEditUser";
-            this.ColumnEditUser.ReadOnly = true;
-            // 
-            // ColumnStatus
-            // 
-            this.ColumnStatus.DataPropertyName = "Estado";
-            this.ColumnStatus.HeaderText = "Estado";
-            this.ColumnStatus.MinimumWidth = 6;
-            this.ColumnStatus.Name = "ColumnStatus";
-            this.ColumnStatus.ReadOnly = true;
+            this.btnHistorial.BackColor = System.Drawing.Color.Yellow;
+            this.btnHistorial.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHistorial.FlatAppearance.BorderSize = 0;
+            this.btnHistorial.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.btnHistorial.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
+            this.btnHistorial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistorial.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnHistorial.ForeColor = System.Drawing.Color.Black;
+            this.btnHistorial.Location = new System.Drawing.Point(1266, 233);
+            this.btnHistorial.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHistorial.Name = "btnHistorial";
+            this.btnHistorial.Size = new System.Drawing.Size(193, 52);
+            this.btnHistorial.TabIndex = 48;
+            this.btnHistorial.Text = "Historial";
+            this.btnHistorial.UseVisualStyleBackColor = false;
             // 
             // FrmReparacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1472, 578);
+            this.Controls.Add(this.btnHistorial);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lblBuscar);
             this.Controls.Add(this.label8);
@@ -399,12 +348,12 @@
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.dgvCliente);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Controls.Add(this.dgvReparaciones);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmReparacion";
             this.ShowIcon = false;
             this.Load += new System.EventHandler(this.FrmReparacion_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReparaciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,23 +369,17 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.DataGridView dgvCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
+        private System.Windows.Forms.DataGridView dgvReparaciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTrackingCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnClientCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDeviceType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnBrand;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnModel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDeviceType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAssignedTechnician;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnInitialDiagnosis;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEntryDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnFinalDiagnosis;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDeliveryDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRepairCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotalCost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCreateUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateModified;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEditUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
+        private System.Windows.Forms.Button btnHistorial;
     }
 }

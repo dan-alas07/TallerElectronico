@@ -21,15 +21,18 @@ namespace TallerElectronico.Desktop
                 string usuarioTxt = txtUsuario.Text.Trim();
                 string claveTxt = txtClave.Text.Trim();
 
-                Usuario usuarioEncontrado =
-                    _usuarioBL.Login(usuarioTxt, claveTxt);
+                Usuario usuarioEncontrado = _usuarioBL.Login(usuarioTxt, claveTxt);
 
                 if (usuarioEncontrado != null)
                 {
+                    // Aca se guarda la sesion
+                    SesionUsuario.IniciarSesion(usuarioEncontrado);
+
                     FrmMain formularioPrincipal = new FrmMain();
 
-                    formularioPrincipal.Show();
+                    formularioPrincipal.FormClosed += (s, args) => this.Close();
 
+                    formularioPrincipal.Show();
                     this.Hide();
                 }
                 else

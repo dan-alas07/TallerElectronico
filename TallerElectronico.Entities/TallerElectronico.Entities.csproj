@@ -76,9 +76,11 @@
     <Compile Include="Reparacion.cs">
       <DependentUpon>TallerElectronicoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReparacionDTO.cs" />
     <Compile Include="Rol.cs">
       <DependentUpon>TallerElectronicoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SesionUsuario.cs" />
     <Compile Include="TallerElectronicoModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

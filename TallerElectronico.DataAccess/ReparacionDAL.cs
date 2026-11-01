@@ -8,17 +8,60 @@ namespace TallerElectronico.DataAccess
 {
     public class ReparacionDAL
     {
-        public List<Reparacion> SelectAll()
+        public List<ReparacionDTO> SelectAll()
         {
             using (var db = new TallerElectronicoEntities())
             {
                 return db.Reparacion.AsNoTracking()
-                                    .Include(r => r.Cliente)
-                                    .Include(r => r.TipoEquipo)
-                                    .Include(r => r.Marca)
-                                    .Include(r => r.EstadoReparacion)
-                                    .Include(r => r.Usuario) // Técnico asignado
-                                    .ToList();
+                    .OrderByDescending(r => r.FechaIngreso)
+                    .Select(r => new ReparacionDTO
+                    {
+                        ReparacionId = r.ReparacionId,
+                        CodigoSeguimiento = r.CodigoSeguimiento,
+                        Modelo = r.Modelo,
+                        FechaIngreso = r.FechaIngreso,
+                        FechaEntrega = r.FechaEntrega,
+                        CostoManoObra = r.CostoManoObra,
+                        TotalReparacion = r.TotalReparacion ?? 0.00m,
+
+                        // Uniones (JOINs)
+                        EstadoNombre = r.EstadoReparacion.Nombre,
+                        TipoEquipoNombre = r.TipoEquipo.Nombre,
+                        MarcaNombre = r.Marca.Nombre,
+                        ClienteNombre = r.Cliente.Nombre + " " + r.Cliente.Apellido,
+                        TecnicoNombre = r.Usuario != null && r.Usuario.Empleado != null
+                            ? r.Usuario.Empleado.Nombre + " " + r.Usuario.Empleado.Apellido
+                            : "Sin Asignar",
+
+                        // Concatenado para la grilla
+                        EquipoCompleto = r.TipoEquipo.Nombre + " " + r.Marca.Nombre + " " + r.Modelo
+                    })
+                    .ToList();
+            }
+        }
+
+        public KpiDashboardDTO GetKpis()
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                var query = db.Reparacion.AsNoTracking();
+
+                return new KpiDashboardDTO
+                {
+                    // 1. Órdenes Abiertas: Activas en taller (excluye Entregado y Cancelado)
+                    OrdenesAbiertas = query.Count(r =>
+                        r.EstadoReparacion.Nombre != "Entregado" &&
+                        r.EstadoReparacion.Nombre != "Cancelado"),
+
+                    // 2. Órdenes Listas: Equipos reparados listos para entrega
+                    OrdenesListas = query.Count(r =>
+                        r.EstadoReparacion.Nombre == "Terminado" ||
+                        r.EstadoReparacion.Nombre == "Listo"),
+
+                    // 3. Órdenes Entregadas: Histórico de equipos entregados al cliente
+                    OrdenesEntregadas = query.Count(r =>
+                        r.EstadoReparacion.Nombre == "Entregado")
+                };
             }
         }
 
