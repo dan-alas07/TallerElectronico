@@ -49,7 +49,7 @@ namespace TallerElectronico.DataAccess
                          {
                              Id = u.UsuarioId,
                              Nombre = u.Nombre,
-                             Clave = string.Empty, // Dejar vacío para el formulario de edición
+                             Clave = string.Empty, 
                              EmpleadoId = u.EmpleadoId,
                              RolId = u.RolId,
                              EmpleadoNombre = u.Empleado != null ? u.Empleado.Nombre + " " + u.Empleado.Apellido : "Sin Asignar",

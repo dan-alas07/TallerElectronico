@@ -35,7 +35,6 @@
             this.lblNIT = new System.Windows.Forms.Label();
             this.txtNRC = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboTipo = new System.Windows.Forms.ComboBox();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
@@ -47,7 +46,6 @@
             this.lblTipoProveedor = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.cboEstado = new System.Windows.Forms.ComboBox();
             this.lblEstado = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
@@ -56,6 +54,8 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
+            this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.pnlCard.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
@@ -71,12 +71,13 @@
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(657, 703);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(173, 52);
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -88,21 +89,23 @@
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(471, 703);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(173, 52);
             this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // pnlCard
             // 
             this.pnlCard.BackColor = System.Drawing.Color.White;
+            this.pnlCard.Controls.Add(this.cmbTipo);
+            this.pnlCard.Controls.Add(this.cmbEstado);
             this.pnlCard.Controls.Add(this.txtNIT);
             this.pnlCard.Controls.Add(this.lblNIT);
             this.pnlCard.Controls.Add(this.txtNRC);
             this.pnlCard.Controls.Add(this.label1);
-            this.pnlCard.Controls.Add(this.cboTipo);
             this.pnlCard.Controls.Add(this.txtDireccion);
             this.pnlCard.Controls.Add(this.lblDireccion);
             this.pnlCard.Controls.Add(this.txtCorreo);
@@ -114,14 +117,13 @@
             this.pnlCard.Controls.Add(this.lblTipoProveedor);
             this.pnlCard.Controls.Add(this.txtNombre);
             this.pnlCard.Controls.Add(this.lblNombre);
-            this.pnlCard.Controls.Add(this.cboEstado);
             this.pnlCard.Controls.Add(this.lblEstado);
             this.pnlCard.Controls.Add(this.txtCodigo);
             this.pnlCard.Controls.Add(this.lblCodigo);
             this.pnlCard.Controls.Add(this.pnlLinea);
             this.pnlCard.Controls.Add(this.lblSeccion);
             this.pnlCard.Location = new System.Drawing.Point(40, 146);
-            this.pnlCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlCard.Margin = new System.Windows.Forms.Padding(4);
             this.pnlCard.Name = "pnlCard";
             this.pnlCard.Size = new System.Drawing.Size(800, 529);
             this.pnlCard.TabIndex = 4;
@@ -131,7 +133,7 @@
             this.txtNIT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNIT.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNIT.Location = new System.Drawing.Point(427, 325);
-            this.txtNIT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNIT.Margin = new System.Windows.Forms.Padding(4);
             this.txtNIT.MaxLength = 10;
             this.txtNIT.Name = "txtNIT";
             this.txtNIT.Size = new System.Drawing.Size(333, 30);
@@ -154,7 +156,7 @@
             this.txtNRC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNRC.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNRC.Location = new System.Drawing.Point(40, 396);
-            this.txtNRC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNRC.Margin = new System.Windows.Forms.Padding(4);
             this.txtNRC.MaxLength = 9;
             this.txtNRC.Name = "txtNRC";
             this.txtNRC.Size = new System.Drawing.Size(333, 30);
@@ -172,27 +174,12 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "NRC *";
             // 
-            // cboTipo
-            // 
-            this.cboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipo.Enabled = false;
-            this.cboTipo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboTipo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboTipo.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.cboTipo.Location = new System.Drawing.Point(427, 172);
-            this.cboTipo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cboTipo.Name = "cboTipo";
-            this.cboTipo.Size = new System.Drawing.Size(332, 31);
-            this.cboTipo.TabIndex = 12;
-            // 
             // txtDireccion
             // 
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDireccion.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtDireccion.Location = new System.Drawing.Point(40, 469);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDireccion.MaxLength = 200;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(719, 30);
@@ -215,7 +202,7 @@
             this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCorreo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtCorreo.Location = new System.Drawing.Point(40, 325);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCorreo.MaxLength = 100;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(333, 30);
@@ -238,7 +225,7 @@
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtTelefono.Location = new System.Drawing.Point(427, 249);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.txtTelefono.MaxLength = 9;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(333, 30);
@@ -261,7 +248,7 @@
             this.txtDUI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDUI.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtDUI.Location = new System.Drawing.Point(40, 249);
-            this.txtDUI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDUI.Margin = new System.Windows.Forms.Padding(4);
             this.txtDUI.MaxLength = 10;
             this.txtDUI.Name = "txtDUI";
             this.txtDUI.Size = new System.Drawing.Size(333, 30);
@@ -296,7 +283,7 @@
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNombre.Location = new System.Drawing.Point(40, 172);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(333, 30);
@@ -313,21 +300,6 @@
             this.lblNombre.Size = new System.Drawing.Size(78, 20);
             this.lblNombre.TabIndex = 4;
             this.lblNombre.Text = "Nombre *";
-            // 
-            // cboEstado
-            // 
-            this.cboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEstado.Enabled = false;
-            this.cboEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboEstado.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboEstado.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.cboEstado.Location = new System.Drawing.Point(427, 96);
-            this.cboEstado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cboEstado.Name = "cboEstado";
-            this.cboEstado.Size = new System.Drawing.Size(332, 31);
-            this.cboEstado.TabIndex = 0;
             // 
             // lblEstado
             // 
@@ -347,7 +319,7 @@
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtCodigo.Location = new System.Drawing.Point(40, 96);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(333, 30);
@@ -371,7 +343,7 @@
             // 
             this.pnlLinea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(235)))), ((int)(((byte)(242)))));
             this.pnlLinea.Location = new System.Drawing.Point(40, 52);
-            this.pnlLinea.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLinea.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLinea.Name = "pnlLinea";
             this.pnlLinea.Size = new System.Drawing.Size(720, 1);
             this.pnlLinea.TabIndex = 1;
@@ -395,7 +367,7 @@
             this.pnlHeader.Controls.Add(this.lblTitulo);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(880, 101);
             this.pnlHeader.TabIndex = 7;
@@ -424,6 +396,34 @@
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Nuevo proveedor";
             // 
+            // cmbEstado
+            // 
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstado.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cmbEstado.Location = new System.Drawing.Point(427, 96);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(333, 31);
+            this.cmbEstado.TabIndex = 50;
+            // 
+            // cmbTipo
+            // 
+            this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipo.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbTipo.FormattingEnabled = true;
+            this.cmbTipo.Items.AddRange(new object[] {
+            "Persona Natural",
+            "Persona Jurídica"});
+            this.cmbTipo.Location = new System.Drawing.Point(427, 172);
+            this.cmbTipo.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbTipo.Name = "cmbTipo";
+            this.cmbTipo.Size = new System.Drawing.Size(333, 31);
+            this.cmbTipo.TabIndex = 60;
+            // 
             // FrmCreateProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -433,9 +433,10 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.pnlCard);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCreateProveedor";
             this.ShowIcon = false;
+            this.Load += new System.EventHandler(this.FrmCreateProveedor_Load);
             this.pnlCard.ResumeLayout(false);
             this.pnlCard.PerformLayout();
             this.pnlHeader.ResumeLayout(false);
@@ -458,7 +459,6 @@
         private System.Windows.Forms.Label lblTipoProveedor;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.ComboBox cboEstado;
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label lblCodigo;
@@ -467,12 +467,13 @@
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblSubtitulo;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.ComboBox cboTipo;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.TextBox txtNRC;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNIT;
         private System.Windows.Forms.Label lblNIT;
+        private System.Windows.Forms.ComboBox cmbEstado;
+        private System.Windows.Forms.ComboBox cmbTipo;
     }
 }

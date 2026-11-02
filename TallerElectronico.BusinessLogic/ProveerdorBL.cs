@@ -202,5 +202,10 @@ namespace TallerElectronico.BusinessLogic
 
             return _proveedorDal.Delete(idProveedor);
         }
+
+        public List<Proveedor> Search(string criterio)
+        {
+            return _proveedorDal.Search(criterio);
+        }
     }
 }

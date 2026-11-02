@@ -12,9 +12,24 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Proveedor.AsNoTracking()
-                                   .Where(p => p.Estado == "A")
-                                   .ToList();
+                return db.Proveedor
+                         .AsNoTracking()
+                         .Where(p => p.Estado == "A")
+                         .ToList()
+                         .Select(p => new Proveedor
+                         {
+                             ProveedorId = p.ProveedorId,
+                             Nombre = p.Nombre,
+                             Telefono = p.Telefono,
+                             Email = p.Email,
+                             Direccion = p.Direccion,
+                             DUI = p.DUI,
+                             NIT = p.NIT,
+                             NRC = p.NRC,
+                             TipoProveedor = p.TipoProveedor == "PN" ? "Persona Natural" : (p.TipoProveedor == "PJ" ? "Persona Jurídica" : p.TipoProveedor),
+                             Estado = p.Estado == "A" ? "Activo" : "Inactivo"
+                         })
+                         .ToList();
             }
         }
 
@@ -77,5 +92,35 @@ namespace TallerElectronico.DataAccess
                 return false;
             }
         }
+
+        public List<Proveedor> Search(string criterio)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                var query = db.Proveedor
+                              .AsNoTracking()
+                              .Where(p => p.Estado == "A");
+
+                if (!string.IsNullOrWhiteSpace(criterio))
+                {
+                    criterio = criterio.Trim().ToLower();
+                    int idBusqueda;
+                    bool esNumero = int.TryParse(criterio, out idBusqueda);
+
+                    query = query.Where(p =>
+                        (esNumero && p.ProveedorId == idBusqueda) ||
+                        (p.Nombre != null && p.Nombre.ToLower().Contains(criterio)) ||
+                        (p.Telefono != null && p.Telefono.ToLower().Contains(criterio)) ||
+                        (p.Email != null && p.Email.ToLower().Contains(criterio)) ||
+                        (p.Direccion != null && p.Direccion.ToLower().Contains(criterio)) ||
+                        (p.DUI != null && p.DUI.ToLower().Contains(criterio)) ||
+                        (p.NIT != null && p.NIT.ToLower().Contains(criterio)) ||
+                        (p.NRC != null && p.NRC.ToLower().Contains(criterio))
+                    );
+                }
+                return query.OrderBy(p => p.Nombre).ToList();
+            }
+        }
+    
     }
 }
