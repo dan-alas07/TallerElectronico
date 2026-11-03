@@ -20,46 +20,65 @@ namespace TallerElectronico.Desktop
         public FrmCreateMarca()
         {
             InitializeComponent();
-            cboEstado.SelectedIndex = 0;
+        }
+
+        private void FrmCreateMarca_Load(object sender, EventArgs e)
+        {
+            cmbEstado.SelectedIndex = 0;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            Marca marca = new Marca
-            {
-                Nombre = txtNombre.Text
-            };
+            DialogResult confirm = MessageBox.Show(
+                "¿Desea guardar esta nueva marca?",
+                "Confirmar",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
-            btnGuardar.Enabled = false;
-            Cursor = Cursors.WaitCursor;
+            if (confirm != DialogResult.Yes) return;
 
             try
             {
-                _marcaBL.Insert(marca);
+                Marca marca = new Marca
+                {
+                    Nombre = txtNombre.Text.Trim(),
+                    Estado = cmbEstado.SelectedIndex == 0 ? "A" : "I"
+                };
 
-                MessageBox.Show("Marca guardada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Marca nuevaMarca = _marcaBL.Insert(marca);
 
-                DialogResult = DialogResult.OK;
-                Close();
+                if (nuevaMarca != null && nuevaMarca.MarcaId > 0)
+                {
+                    MessageBox.Show(
+                        "La marca ha sido registrada correctamente.",
+                        "Éxito",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
             catch (ArgumentException ex)
             {
-                MessageBox.Show(ex.Message, "Datos inválidos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Validación de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (InvalidOperationException ex)
             {
-                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Regla de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error inesperado en el sistema:\n" + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrió un error inesperado al crear la marca: " + ex.Message, "Error del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
-            {
-                Cursor = Cursors.Default;
-                btnGuardar.Enabled = true;
-            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

@@ -12,9 +12,17 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Marca.AsNoTracking()
-                               .Where(m => m.Estado == "A")
-                               .ToList();
+                return db.Marca
+                         .AsNoTracking()
+                         .Where(p => p.Estado == "A")
+                         .ToList()
+                         .Select(p => new Marca
+                         {
+                             MarcaId = p.MarcaId,
+                             Nombre = p.Nombre,
+                             Estado = p.Estado == "A" ? "Activo" : "Inactivo"
+                         })
+                         .ToList();
             }
         }
 
@@ -68,6 +76,28 @@ namespace TallerElectronico.DataAccess
                 }
 
                 return false;
+            }
+        }
+        public List<Marca> Search(string criterio)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                var query = db.Marca
+                              .AsNoTracking()
+                              .Where(p => p.Estado == "A");
+
+                if (!string.IsNullOrWhiteSpace(criterio))
+                {
+                    criterio = criterio.Trim().ToLower();
+                    int idBusqueda;
+                    bool esNumero = int.TryParse(criterio, out idBusqueda);
+
+                    query = query.Where(p =>
+                        (esNumero && p.MarcaId == idBusqueda) ||
+                        (p.Nombre != null && p.Nombre.ToLower().Contains(criterio))
+                    );
+                }
+                return query.OrderBy(p => p.Nombre).ToList();
             }
         }
     }

@@ -44,9 +44,10 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 23F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblTitulo.Location = new System.Drawing.Point(32, 22);
+            this.lblTitulo.Location = new System.Drawing.Point(43, 27);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(202, 42);
+            this.lblTitulo.Size = new System.Drawing.Size(254, 52);
             this.lblTitulo.TabIndex = 11;
             this.lblTitulo.Text = "Editar marca";
             // 
@@ -55,9 +56,10 @@
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblCodigo.Location = new System.Drawing.Point(35, 106);
+            this.lblCodigo.Location = new System.Drawing.Point(47, 130);
+            this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(129, 19);
+            this.lblCodigo.Size = new System.Drawing.Size(152, 23);
             this.lblCodigo.TabIndex = 13;
             this.lblCodigo.Text = "Código de marca:";
             // 
@@ -67,10 +69,11 @@
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtCodigo.Location = new System.Drawing.Point(35, 135);
+            this.txtCodigo.Location = new System.Drawing.Point(47, 166);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
-            this.txtCodigo.Size = new System.Drawing.Size(118, 25);
+            this.txtCodigo.Size = new System.Drawing.Size(157, 30);
             this.txtCodigo.TabIndex = 15;
             this.txtCodigo.TabStop = false;
             // 
@@ -79,9 +82,10 @@
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblNombre.Location = new System.Drawing.Point(35, 177);
+            this.lblNombre.Location = new System.Drawing.Point(47, 218);
+            this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(69, 19);
+            this.lblNombre.Size = new System.Drawing.Size(81, 23);
             this.lblNombre.TabIndex = 17;
             this.lblNombre.Text = "Nombre:";
             // 
@@ -89,10 +93,11 @@
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtNombre.Location = new System.Drawing.Point(35, 202);
+            this.txtNombre.Location = new System.Drawing.Point(47, 249);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(290, 25);
+            this.txtNombre.Size = new System.Drawing.Size(386, 30);
             this.txtNombre.TabIndex = 12;
             // 
             // btnGuardar
@@ -105,12 +110,14 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(382, 251);
+            this.btnGuardar.Location = new System.Drawing.Point(509, 309);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(145, 42);
+            this.btnGuardar.Size = new System.Drawing.Size(193, 52);
             this.btnGuardar.TabIndex = 27;
             this.btnGuardar.Text = "Guardar cambios";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -123,21 +130,24 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(537, 251);
+            this.btnCancelar.Location = new System.Drawing.Point(716, 309);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(145, 42);
+            this.btnCancelar.Size = new System.Drawing.Size(193, 52);
             this.btnCancelar.TabIndex = 29;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblEstado.Location = new System.Drawing.Point(363, 176);
+            this.lblEstado.Location = new System.Drawing.Point(484, 217);
+            this.lblEstado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(57, 19);
+            this.lblEstado.Size = new System.Drawing.Size(68, 23);
             this.lblEstado.TabIndex = 33;
             this.lblEstado.Text = "Estado:";
             // 
@@ -149,17 +159,18 @@
             this.cmbEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cmbEstado.Location = new System.Drawing.Point(363, 201);
+            this.cmbEstado.Location = new System.Drawing.Point(484, 247);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(201, 25);
+            this.cmbEstado.Size = new System.Drawing.Size(388, 31);
             this.cmbEstado.TabIndex = 32;
             // 
             // FrmEditMarca
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(720, 310);
+            this.ClientSize = new System.Drawing.Size(960, 382);
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.cmbEstado);
             this.Controls.Add(this.lblTitulo);
@@ -170,10 +181,10 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnCancelar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmEditMarca";
             this.ShowIcon = false;
-            this.Text = "Editar Marca";
+            this.Load += new System.EventHandler(this.FrmEditMarca_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

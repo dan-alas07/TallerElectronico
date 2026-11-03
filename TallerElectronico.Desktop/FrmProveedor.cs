@@ -22,7 +22,7 @@ namespace TallerElectronico.Desktop
             dgvProveedor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProveedor.MultiSelect = false;
 
-            btnNuevo.Enabled = true;
+            btnNuevo.Enabled = true; 
             btnEditar.Enabled = false;
             btnEliminar.Enabled = false;
 

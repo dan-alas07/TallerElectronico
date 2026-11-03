@@ -93,5 +93,10 @@ namespace TallerElectronico.BusinessLogic
 
             return _marcaDal.Delete(idMarca);
         }
+
+        public List<Marca> Search(string criterio)
+        {
+            return _marcaDal.Search(criterio);
+        }
     }
 }
