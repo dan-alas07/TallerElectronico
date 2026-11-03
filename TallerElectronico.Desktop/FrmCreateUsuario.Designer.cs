@@ -314,9 +314,9 @@
             this.lblTitulo.Location = new System.Drawing.Point(37, 12);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(222, 41);
+            this.lblTitulo.Size = new System.Drawing.Size(226, 41);
             this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Nuevo usuario";
+            this.lblTitulo.Text = "Nuevo Usuario";
             // 
             // FrmCreateUsuario
             // 

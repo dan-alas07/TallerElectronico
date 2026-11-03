@@ -188,5 +188,10 @@ namespace TallerElectronico.BusinessLogic
 
             return _clienteDal.Delete(idCliente);
         }
+
+        public List<Cliente> Search(string criterio)
+        {
+            return _clienteDal.Search(criterio);
+        }
     }
 }

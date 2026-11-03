@@ -42,10 +42,10 @@ namespace TallerElectronico.Desktop
                 txtCodigo.Text = proveedor.ProveedorId.ToString();
                 txtNombre.Text = proveedor.Nombre;
                 cmbTipo.SelectedIndex = (proveedor.TipoProveedor == "PN" || proveedor.TipoProveedor == "Persona Natural") ? 0 : 1;
-                txtTelefono.Text = proveedor.Telefono;
+                mtxtTelefono.Text = proveedor.Telefono;
                 txtCorreo.Text = proveedor.Email;
                 txtDireccion.Text = proveedor.Direccion;
-                txtDUI.Text = proveedor.DUI ?? "";
+                mtxtDUI.Text = proveedor.DUI ?? "";
                 txtNIT.Text = proveedor.NIT ?? "";
                 txtNRC.Text = proveedor.NRC ?? "";
 
@@ -59,18 +59,35 @@ namespace TallerElectronico.Desktop
             }
         }
 
+        private void panelCentral_Paint(object sender, PaintEventArgs e)
+        {
+            if (!mtxtTelefono.MaskFull && mtxtTelefono.Text.Trim() == "-")
+                mtxtTelefono.SelectionStart = 0;
+
+            if (!mtxtDUI.MaskFull && mtxtDUI.Text.Trim() == "-")
+                mtxtDUI.SelectionStart = 0;
+        }
+
+        private void mtxtTelefono_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            if (!mtxtTelefono.MaskFull) mtxtTelefono.Clear();
+        }
+
+        private void mtxtDUI_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            if (!mtxtDUI.MaskFull) mtxtDUI.Clear();
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                string.IsNullOrWhiteSpace(cmbTipo.Text) ||
-                string.IsNullOrWhiteSpace(txtTelefono.Text) ||
-                string.IsNullOrWhiteSpace(txtCorreo.Text) ||
-                string.IsNullOrWhiteSpace(txtDireccion.Text) ||
-                cmbEstado.SelectedIndex == -1)
-            {
-                MessageBox.Show("Por favor, completa todos los campos requeridos.", "Validación de formulario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            DialogResult confirm = MessageBox.Show(
+                "¿Desea actualizar los datos de este proveedor?",
+                "Confirmar",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (confirm != DialogResult.Yes) return;
 
             try
             {
@@ -78,13 +95,13 @@ namespace TallerElectronico.Desktop
                 {
                     ProveedorId = _proveedorId,
                     Nombre = txtNombre.Text.Trim(),
-                    TipoProveedor = cmbTipo.SelectedIndex == 0 ? "PN" : "PJ",
-                    Telefono = txtTelefono.Text.Trim(),
+                    TipoProveedor = cmbTipo.SelectedIndex == 0 ? "PN" : (cmbTipo.SelectedIndex == 1 ? "PJ" : ""),
+                    Telefono = mtxtTelefono.Text.Trim(),
                     Email = txtCorreo.Text.Trim(),
                     Direccion = txtDireccion.Text.Trim(),
-                    DUI = txtDUI.Text.Trim(),
-                    NIT = txtNIT.Text.Trim(),
-                    NRC = txtNRC.Text.Trim(),
+                    DUI = string.IsNullOrWhiteSpace(mtxtDUI.Text) ? null : mtxtDUI.Text.Trim(),
+                    NIT = string.IsNullOrWhiteSpace(txtNIT.Text) ? null : txtNIT.Text.Trim(),
+                    NRC = string.IsNullOrWhiteSpace(txtNRC.Text) ? null : txtNRC.Text.Trim(),
                     Estado = cmbEstado.SelectedIndex == 0 ? "A" : "I"
                 };
 
@@ -94,13 +111,17 @@ namespace TallerElectronico.Desktop
                 DialogResult = DialogResult.OK;
                 Close();
             }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Validación de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             catch (InvalidOperationException ex)
             {
-                MessageBox.Show(ex.Message, "Regla de negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Regla de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error inesperado al actualizar el proveedor: " + ex.Message, "Error del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrió un error inesperado al actualizar el proveedor: " + ex.Message, "Error del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

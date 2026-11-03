@@ -12,9 +12,26 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Cliente.AsNoTracking()
-                                 .Where(c => c.Estado == "A")
-                                 .ToList();
+                return db.Cliente
+                         .AsNoTracking()
+                         .Where(c => c.Estado == "A")
+                         .ToList()
+                         .Select(c => new Cliente
+                         {
+                             ClienteId = c.ClienteId,
+                             Nombre = c.Nombre,
+                             Apellido = c.Apellido,
+                             Telefono = c.Telefono,
+                             Correo = c.Correo,
+                             TipoDocumento = c.TipoDocumento == "DUI" ? "DUI" : (c.TipoDocumento == "CarnetExtranjero" ? "Carnet de Extranjería" : c.TipoDocumento),
+                             DUI = c.DUI,
+                             CarnetExtranjero = c.CarnetExtranjero,
+                             FechaRegistro = c.FechaRegistro,
+                             Estado = c.Estado == "A" ? "Activo" : "Inactivo"
+                         })
+                         .OrderBy(c => c.Nombre)
+                         .ThenBy(c => c.Apellido)
+                         .ToList();
             }
         }
 
@@ -74,6 +91,39 @@ namespace TallerElectronico.DataAccess
                 }
 
                 return false;
+            }
+        }
+
+
+        public List<Cliente> Search(string criterio)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                var query = db.Cliente
+                              .AsNoTracking()
+                              .Where(c => c.Estado == "A");
+
+                if (!string.IsNullOrWhiteSpace(criterio))
+                {
+                    criterio = criterio.Trim().ToLower();
+                    int idBusqueda;
+                    bool esNumero = int.TryParse(criterio, out idBusqueda);
+
+                    query = query.Where(c =>
+                        (esNumero && c.ClienteId == idBusqueda) ||
+                        (c.Nombre != null && c.Nombre.ToLower().Contains(criterio)) ||
+                        (c.Apellido != null && c.Apellido.ToLower().Contains(criterio)) ||
+                        (c.Telefono != null && c.Telefono.ToLower().Contains(criterio)) ||
+                        (c.Correo != null && c.Correo.ToLower().Contains(criterio)) ||
+                        (c.TipoDocumento != null && c.TipoDocumento.ToLower().Contains(criterio)) ||
+                        (c.DUI != null && c.DUI.ToLower().Contains(criterio)) ||
+                        (c.CarnetExtranjero != null && c.CarnetExtranjero.ToLower().Contains(criterio))
+                    );
+                }
+
+                return query.OrderBy(c => c.Nombre)
+                            .ThenBy(c => c.Apellido)
+                            .ToList();
             }
         }
     }

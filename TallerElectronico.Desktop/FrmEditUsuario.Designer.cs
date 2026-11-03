@@ -53,9 +53,9 @@
             this.lblTitulo.Location = new System.Drawing.Point(51, 28);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(278, 52);
+            this.lblTitulo.Size = new System.Drawing.Size(282, 52);
             this.lblTitulo.TabIndex = 11;
-            this.lblTitulo.Text = "Editar usuario";
+            this.lblTitulo.Text = "Editar Usuario";
             // 
             // lblCodigo
             // 
@@ -176,7 +176,7 @@
             this.cmbEstado.Location = new System.Drawing.Point(59, 416);
             this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(399, 31);
+            this.cmbEstado.Size = new System.Drawing.Size(386, 31);
             this.cmbEstado.TabIndex = 25;
             // 
             // btnGuardar
@@ -265,7 +265,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmEditUsuario";
             this.ShowIcon = false;
-            this.Text = "Editar Usuario";
             this.Load += new System.EventHandler(this.FrmEditUsuario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

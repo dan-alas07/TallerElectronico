@@ -53,20 +53,6 @@ namespace TallerElectronico.Desktop
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                string.IsNullOrWhiteSpace(txtClave.Text) ||
-                cmbEmpleado.SelectedValue == null ||
-                cmbRol.SelectedValue == null)
-            {
-                MessageBox.Show(
-                    "Por favor, completa todos los campos obligatorios.",
-                    "Validación",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-                return;
-            }
-
             DialogResult confirm = MessageBox.Show(
                 "¿Desea guardar este nuevo usuario?",
                 "Confirmar",
@@ -78,12 +64,15 @@ namespace TallerElectronico.Desktop
 
             try
             {
+                int empleadoId = cmbEmpleado.SelectedValue != null ? Convert.ToInt32(cmbEmpleado.SelectedValue) : 0;
+                int rolId = cmbRol.SelectedValue != null ? Convert.ToInt32(cmbRol.SelectedValue) : 0;
+
                 Usuario usuario = new Usuario
                 {
                     Nombre = txtNombre.Text.Trim(),
-                    Clave = txtClave.Text.Trim(), // La BL se encarga del Hash
-                    EmpleadoId = Convert.ToInt32(cmbEmpleado.SelectedValue),
-                    RolId = Convert.ToInt32(cmbRol.SelectedValue)
+                    Clave = txtClave.Text.Trim(),
+                    EmpleadoId = empleadoId,
+                    RolId = rolId
                 };
 
                 Usuario nuevoUsuario = _usuarioBL.Insert(usuario);

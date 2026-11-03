@@ -31,15 +31,6 @@ namespace TallerElectronico.Desktop
             // Configurar el temporizador (300 milisegundos de espera)
             _timerBusqueda.Interval = 300;
             _timerBusqueda.Tick += TimerBusqueda_Tick;
-
-            if (txtBuscar != null)
-            {
-                txtBuscar.TextChanged += txtBuscar_TextChanged;
-            }
-            if (btnBuscar != null)
-            {
-                btnBuscar.Click += btnBuscar_Click;
-            }
         }
 
 
@@ -101,7 +92,7 @@ namespace TallerElectronico.Desktop
 
             foreach (Control hijo in control.Controls)
             {
-                if (hijo == btnNuevo || hijo == btnEditar || hijo == btnEliminar || hijo == txtBuscar || hijo == btnBuscar)
+                if (hijo == btnNuevo || hijo == btnEditar || hijo == btnEliminar || hijo == txtBuscar)
                     continue;
 
                 RegistrarEventos(hijo);
@@ -204,11 +195,6 @@ namespace TallerElectronico.Desktop
             _timerBusqueda.Start();
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            _timerBusqueda.Stop();
-            CargarProveedores();
-        }
         private void TimerBusqueda_Tick(object sender, EventArgs e)
         {
             _timerBusqueda.Stop();

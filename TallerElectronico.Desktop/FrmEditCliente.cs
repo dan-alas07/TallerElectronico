@@ -8,7 +8,7 @@ namespace TallerElectronico.Desktop
     public partial class FrmEditCliente : Form
     {
         private readonly ClienteBL _clienteBL = new ClienteBL();
-        private int _clienteId;
+        private readonly int _clienteId;
 
         public FrmEditCliente()
         {
@@ -18,7 +18,55 @@ namespace TallerElectronico.Desktop
         public FrmEditCliente(int clienteId) : this()
         {
             _clienteId = clienteId;
+        }
+
+        private void FrmEditCliente_Load(object sender, EventArgs e)
+        {
             CargarDatosCliente();
+        }
+
+        private void panelCentral_Paint(object sender, PaintEventArgs e)
+        {
+            if (!mtxtTelefono.MaskFull && mtxtTelefono.Text.Trim() == "-")
+                mtxtTelefono.SelectionStart = 0;
+
+            if (!mtxtDUI.MaskFull && mtxtDUI.Text.Trim() == "-")
+                mtxtDUI.SelectionStart = 0;
+        }
+
+        private void mtxtTelefono_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            if (!mtxtTelefono.MaskFull) mtxtTelefono.Clear();
+        }
+
+        private void mtxtDUI_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            if (!mtxtDUI.MaskFull) mtxtDUI.Clear();
+        }
+
+        private void cmbTipoDocumento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string seleccion = cmbTipoDocumento.SelectedItem?.ToString();
+
+            if (seleccion == "DUI")
+            {
+                mtxtDUI.Enabled = true;
+                txtCarnet.Enabled = false;
+                txtCarnet.Clear();
+            }
+            else if (seleccion == "Carnet Extranjero")
+            {
+                txtCarnet.Enabled = true;
+                mtxtDUI.Enabled = false;
+                mtxtDUI.Clear();
+            }
+            else
+            {
+                mtxtDUI.Enabled = false;
+                txtCarnet.Enabled = false;
+                mtxtDUI.Clear();
+                txtCarnet.Clear();
+            }
         }
 
         private void CargarDatosCliente()
@@ -30,10 +78,7 @@ namespace TallerElectronico.Desktop
                 if (cliente == null)
                 {
                     MessageBox.Show(
-                        "No se encontró el cliente seleccionado.",
-                        "Aviso",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
+                        "No se encontró el cliente seleccionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning
                     );
 
                     DialogResult = DialogResult.Cancel;
@@ -44,33 +89,27 @@ namespace TallerElectronico.Desktop
                 txtCodigo.Text = cliente.ClienteId.ToString();
                 txtNombre.Text = cliente.Nombre;
                 txtApellido.Text = cliente.Apellido;
-                txtDUI.Text = cliente.DUI;
-                txtTelefono.Text = cliente.Telefono;
+                mtxtTelefono.Text = cliente.Telefono;
                 txtCorreo.Text = cliente.Correo;
+                dtpFechaRegistro.Value = cliente.FechaRegistro;
+                cmbTipoDocumento.SelectedItem = cliente.TipoDocumento;
 
-                dtpFechaRegistro.Value =
-                    cliente.FechaRegistro.Date;
+                if (cliente.TipoDocumento == "DUI")
+                {
+                    mtxtDUI.Text = cliente.DUI;
+                }
+                else if (cliente.TipoDocumento == "Carnet Extranjero")
+                {
+                    txtCarnet.Text = cliente.CarnetExtranjero;
+                }
 
-                if (cliente.Estado == "A")
-                {
-                    cmbEstado.SelectedIndex = 0;
-                }
-                else if (cliente.Estado == "I")
-                {
-                    cmbEstado.SelectedIndex = 1;
-                }
-                else
-                {
-                    cmbEstado.SelectedIndex = -1;
-                }
+                cmbEstado.SelectedIndex = (cliente.Estado == "A") ? 0 : 1;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
                     "Error al cargar los datos del cliente: " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error
                 );
 
                 DialogResult = DialogResult.Cancel;
@@ -80,23 +119,25 @@ namespace TallerElectronico.Desktop
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            DialogResult confirm = MessageBox.Show("¿Desea actualizar los datos de este cliente?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question
+            );
+
+            if (confirm != DialogResult.Yes) return;
+
             try
             {
-                if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                    string.IsNullOrWhiteSpace(txtApellido.Text) ||
-                    string.IsNullOrWhiteSpace(txtDUI.Text) ||
-                    string.IsNullOrWhiteSpace(txtTelefono.Text) ||
-                    string.IsNullOrWhiteSpace(txtCorreo.Text) ||
-                    cmbEstado.SelectedIndex == -1)
-                {
-                    MessageBox.Show(
-                        "Completa todos los campos.",
-                        "Validación",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
+                string tipoDoc = cmbTipoDocumento.SelectedItem?.ToString();
 
-                    return;
+                string duiValor = null;
+                string carnetValor = null;
+
+                if (tipoDoc == "DUI")
+                {
+                    duiValor = string.IsNullOrWhiteSpace(mtxtDUI.Text) || !mtxtDUI.MaskCompleted ? null : mtxtDUI.Text.Trim();
+                }
+                else if (tipoDoc == "Carnet Extranjero")
+                {
+                    carnetValor = string.IsNullOrWhiteSpace(txtCarnet.Text) ? null : txtCarnet.Text.Trim();
                 }
 
                 Cliente cliente = new Cliente
@@ -104,10 +145,12 @@ namespace TallerElectronico.Desktop
                     ClienteId = _clienteId,
                     Nombre = txtNombre.Text.Trim(),
                     Apellido = txtApellido.Text.Trim(),
-                    DUI = txtDUI.Text.Trim(),
-                    Telefono = txtTelefono.Text.Trim(),
-                    Correo = txtCorreo.Text.Trim(),
-                    FechaRegistro = dtpFechaRegistro.Value.Date,
+                    Telefono = mtxtTelefono.Text.Trim(),
+                    Correo = string.IsNullOrWhiteSpace(txtCorreo.Text) ? null : txtCorreo.Text.Trim(),
+                    TipoDocumento = tipoDoc,
+                    DUI = duiValor,
+                    CarnetExtranjero = carnetValor,
+                    FechaRegistro = dtpFechaRegistro.Value,
                     Estado = cmbEstado.SelectedIndex == 0 ? "A" : "I"
                 };
 
@@ -123,14 +166,18 @@ namespace TallerElectronico.Desktop
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Validación de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Regla de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "No se pudieron actualizar los datos del cliente: "
-                    + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
+                MessageBox.Show("Ocurrió un error inesperado al actualizar el cliente: " + ex.Message,
+                    "Error del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error
                 );
             }
         }

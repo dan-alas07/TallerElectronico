@@ -31,6 +31,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.pnlCard = new System.Windows.Forms.Panel();
+            this.cmbTipo = new System.Windows.Forms.ComboBox();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.txtNIT = new System.Windows.Forms.TextBox();
             this.lblNIT = new System.Windows.Forms.Label();
             this.txtNRC = new System.Windows.Forms.TextBox();
@@ -39,9 +41,7 @@
             this.lblDireccion = new System.Windows.Forms.Label();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.lblCorreo = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.lblTelefono = new System.Windows.Forms.Label();
-            this.txtDUI = new System.Windows.Forms.TextBox();
             this.lblDUI = new System.Windows.Forms.Label();
             this.lblTipoProveedor = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -54,8 +54,8 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.cmbEstado = new System.Windows.Forms.ComboBox();
-            this.cmbTipo = new System.Windows.Forms.ComboBox();
+            this.mtxtTelefono = new System.Windows.Forms.MaskedTextBox();
+            this.mtxtDUI = new System.Windows.Forms.MaskedTextBox();
             this.pnlCard.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
@@ -68,7 +68,7 @@
             this.btnCancelar.FlatAppearance.BorderSize = 0;
             this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(213)))), ((int)(((byte)(225)))));
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(657, 703);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
@@ -100,6 +100,8 @@
             // pnlCard
             // 
             this.pnlCard.BackColor = System.Drawing.Color.White;
+            this.pnlCard.Controls.Add(this.mtxtDUI);
+            this.pnlCard.Controls.Add(this.mtxtTelefono);
             this.pnlCard.Controls.Add(this.cmbTipo);
             this.pnlCard.Controls.Add(this.cmbEstado);
             this.pnlCard.Controls.Add(this.txtNIT);
@@ -110,9 +112,7 @@
             this.pnlCard.Controls.Add(this.lblDireccion);
             this.pnlCard.Controls.Add(this.txtCorreo);
             this.pnlCard.Controls.Add(this.lblCorreo);
-            this.pnlCard.Controls.Add(this.txtTelefono);
             this.pnlCard.Controls.Add(this.lblTelefono);
-            this.pnlCard.Controls.Add(this.txtDUI);
             this.pnlCard.Controls.Add(this.lblDUI);
             this.pnlCard.Controls.Add(this.lblTipoProveedor);
             this.pnlCard.Controls.Add(this.txtNombre);
@@ -127,6 +127,35 @@
             this.pnlCard.Name = "pnlCard";
             this.pnlCard.Size = new System.Drawing.Size(800, 529);
             this.pnlCard.TabIndex = 4;
+            this.pnlCard.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCentral_Paint);
+            // 
+            // cmbTipo
+            // 
+            this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipo.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbTipo.FormattingEnabled = true;
+            this.cmbTipo.Items.AddRange(new object[] {
+            "Persona Natural",
+            "Persona Jurídica"});
+            this.cmbTipo.Location = new System.Drawing.Point(427, 172);
+            this.cmbTipo.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbTipo.Name = "cmbTipo";
+            this.cmbTipo.Size = new System.Drawing.Size(333, 31);
+            this.cmbTipo.TabIndex = 60;
+            // 
+            // cmbEstado
+            // 
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstado.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cmbEstado.Location = new System.Drawing.Point(427, 96);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(333, 31);
+            this.cmbEstado.TabIndex = 50;
             // 
             // txtNIT
             // 
@@ -220,17 +249,6 @@
             this.lblCorreo.TabIndex = 8;
             this.lblCorreo.Text = "Correo electrónico *";
             // 
-            // txtTelefono
-            // 
-            this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTelefono.Location = new System.Drawing.Point(427, 249);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTelefono.MaxLength = 9;
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(333, 30);
-            this.txtTelefono.TabIndex = 4;
-            // 
             // lblTelefono
             // 
             this.lblTelefono.AutoSize = true;
@@ -242,17 +260,6 @@
             this.lblTelefono.Size = new System.Drawing.Size(81, 20);
             this.lblTelefono.TabIndex = 7;
             this.lblTelefono.Text = "Teléfono *";
-            // 
-            // txtDUI
-            // 
-            this.txtDUI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDUI.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDUI.Location = new System.Drawing.Point(40, 249);
-            this.txtDUI.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDUI.MaxLength = 10;
-            this.txtDUI.Name = "txtDUI";
-            this.txtDUI.Size = new System.Drawing.Size(333, 30);
-            this.txtDUI.TabIndex = 3;
             // 
             // lblDUI
             // 
@@ -377,7 +384,7 @@
             this.lblSubtitulo.AutoSize = true;
             this.lblSubtitulo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblSubtitulo.ForeColor = System.Drawing.Color.White;
-            this.lblSubtitulo.Location = new System.Drawing.Point(41, 60);
+            this.lblSubtitulo.Location = new System.Drawing.Point(40, 53);
             this.lblSubtitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSubtitulo.Name = "lblSubtitulo";
             this.lblSubtitulo.Size = new System.Drawing.Size(416, 21);
@@ -392,37 +399,33 @@
             this.lblTitulo.Location = new System.Drawing.Point(37, 12);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(264, 41);
+            this.lblTitulo.Size = new System.Drawing.Size(263, 41);
             this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Nuevo proveedor";
+            this.lblTitulo.Text = "Nuevo Proveedor";
             // 
-            // cmbEstado
+            // mtxtTelefono
             // 
-            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEstado.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Items.AddRange(new object[] {
-            "Activo",
-            "Inactivo"});
-            this.cmbEstado.Location = new System.Drawing.Point(427, 96);
-            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(333, 31);
-            this.cmbEstado.TabIndex = 50;
+            this.mtxtTelefono.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.mtxtTelefono.HidePromptOnLeave = true;
+            this.mtxtTelefono.Location = new System.Drawing.Point(427, 249);
+            this.mtxtTelefono.Mask = "0000-0000";
+            this.mtxtTelefono.Name = "mtxtTelefono";
+            this.mtxtTelefono.PromptChar = ' ';
+            this.mtxtTelefono.Size = new System.Drawing.Size(333, 29);
+            this.mtxtTelefono.TabIndex = 53;
+            this.mtxtTelefono.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtxtTelefono_MaskInputRejected);
             // 
-            // cmbTipo
+            // mtxtDUI
             // 
-            this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTipo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbTipo.FormattingEnabled = true;
-            this.cmbTipo.Items.AddRange(new object[] {
-            "Persona Natural",
-            "Persona Jurídica"});
-            this.cmbTipo.Location = new System.Drawing.Point(427, 172);
-            this.cmbTipo.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbTipo.Name = "cmbTipo";
-            this.cmbTipo.Size = new System.Drawing.Size(333, 31);
-            this.cmbTipo.TabIndex = 60;
+            this.mtxtDUI.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.mtxtDUI.HidePromptOnLeave = true;
+            this.mtxtDUI.Location = new System.Drawing.Point(40, 249);
+            this.mtxtDUI.Mask = "00000000-0";
+            this.mtxtDUI.Name = "mtxtDUI";
+            this.mtxtDUI.PromptChar = ' ';
+            this.mtxtDUI.Size = new System.Drawing.Size(333, 29);
+            this.mtxtDUI.TabIndex = 61;
+            this.mtxtDUI.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtxtDUI_MaskInputRejected);
             // 
             // FrmCreateProveedor
             // 
@@ -454,7 +457,6 @@
         private System.Windows.Forms.Label lblDireccion;
         private System.Windows.Forms.TextBox txtCorreo;
         private System.Windows.Forms.Label lblCorreo;
-        private System.Windows.Forms.TextBox txtDUI;
         private System.Windows.Forms.Label lblDUI;
         private System.Windows.Forms.Label lblTipoProveedor;
         private System.Windows.Forms.TextBox txtNombre;
@@ -467,7 +469,6 @@
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblSubtitulo;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.TextBox txtNRC;
         private System.Windows.Forms.Label label1;
@@ -475,5 +476,7 @@
         private System.Windows.Forms.Label lblNIT;
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.ComboBox cmbTipo;
+        private System.Windows.Forms.MaskedTextBox mtxtTelefono;
+        private System.Windows.Forms.MaskedTextBox mtxtDUI;
     }
 }

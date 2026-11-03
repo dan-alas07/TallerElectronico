@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDUI = new System.Windows.Forms.TextBox();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
@@ -43,7 +42,6 @@
             this.lblEstado = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtCorreo = new System.Windows.Forms.TextBox();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtNIT = new System.Windows.Forms.TextBox();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -52,6 +50,8 @@
             this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.txtNRC = new System.Windows.Forms.TextBox();
+            this.mtxtDUI = new System.Windows.Forms.MaskedTextBox();
+            this.mtxtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -66,28 +66,17 @@
             this.label1.TabIndex = 58;
             this.label1.Text = "DUI:";
             // 
-            // txtDUI
-            // 
-            this.txtDUI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDUI.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDUI.Location = new System.Drawing.Point(59, 395);
-            this.txtDUI.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDUI.MaxLength = 9;
-            this.txtDUI.Name = "txtDUI";
-            this.txtDUI.Size = new System.Drawing.Size(399, 30);
-            this.txtDUI.TabIndex = 57;
-            // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 23F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblTitulo.Location = new System.Drawing.Point(51, 20);
+            this.lblTitulo.Location = new System.Drawing.Point(48, 20);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(332, 52);
             this.lblTitulo.TabIndex = 36;
-            this.lblTitulo.Text = "Editar proveedor";
+            this.lblTitulo.Text = "Editar Proveedor";
             // 
             // lblCodigo
             // 
@@ -230,19 +219,8 @@
             this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCorreo.MaxLength = 10;
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(386, 30);
+            this.txtCorreo.Size = new System.Drawing.Size(399, 30);
             this.txtCorreo.TabIndex = 41;
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTelefono.Location = new System.Drawing.Point(511, 220);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTelefono.MaxLength = 9;
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(399, 30);
-            this.txtTelefono.TabIndex = 43;
             // 
             // txtNIT
             // 
@@ -266,7 +244,7 @@
             this.cmbEstado.Location = new System.Drawing.Point(511, 487);
             this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(399, 31);
+            this.cmbEstado.Size = new System.Drawing.Size(386, 31);
             this.cmbEstado.TabIndex = 49;
             // 
             // btnGuardar
@@ -339,7 +317,7 @@
             this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDireccion.MaxLength = 9;
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(399, 30);
+            this.txtDireccion.Size = new System.Drawing.Size(386, 30);
             this.txtDireccion.TabIndex = 60;
             // 
             // txtNRC
@@ -353,17 +331,42 @@
             this.txtNRC.Size = new System.Drawing.Size(399, 30);
             this.txtNRC.TabIndex = 61;
             // 
+            // mtxtDUI
+            // 
+            this.mtxtDUI.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.mtxtDUI.HidePromptOnLeave = true;
+            this.mtxtDUI.Location = new System.Drawing.Point(59, 395);
+            this.mtxtDUI.Mask = "00000000-0";
+            this.mtxtDUI.Name = "mtxtDUI";
+            this.mtxtDUI.PromptChar = ' ';
+            this.mtxtDUI.Size = new System.Drawing.Size(399, 29);
+            this.mtxtDUI.TabIndex = 62;
+            this.mtxtDUI.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtxtDUI_MaskInputRejected);
+            // 
+            // mtxtTelefono
+            // 
+            this.mtxtTelefono.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.mtxtTelefono.HidePromptOnLeave = true;
+            this.mtxtTelefono.Location = new System.Drawing.Point(511, 222);
+            this.mtxtTelefono.Mask = "0000-0000";
+            this.mtxtTelefono.Name = "mtxtTelefono";
+            this.mtxtTelefono.PromptChar = ' ';
+            this.mtxtTelefono.Size = new System.Drawing.Size(386, 29);
+            this.mtxtTelefono.TabIndex = 63;
+            this.mtxtTelefono.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtxtTelefono_MaskInputRejected);
+            // 
             // FrmEditProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 615);
+            this.Controls.Add(this.mtxtTelefono);
+            this.Controls.Add(this.mtxtDUI);
             this.Controls.Add(this.txtNRC);
             this.Controls.Add(this.txtDireccion);
             this.Controls.Add(this.cmbTipo);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtDUI);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.txtCodigo);
@@ -377,7 +380,6 @@
             this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtCorreo);
-            this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtNIT);
             this.Controls.Add(this.cmbEstado);
             this.Controls.Add(this.btnGuardar);
@@ -389,6 +391,7 @@
             this.ShowIcon = false;
             this.Text = "Editar Proveedor";
             this.Load += new System.EventHandler(this.FrmEditProveedor_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCentral_Paint);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -397,7 +400,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtDUI;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.TextBox txtCodigo;
@@ -411,7 +413,6 @@
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtCorreo;
-        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtNIT;
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.Button btnGuardar;
@@ -420,5 +421,7 @@
         private System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.TextBox txtNRC;
+        private System.Windows.Forms.MaskedTextBox mtxtDUI;
+        private System.Windows.Forms.MaskedTextBox mtxtTelefono;
     }
 }

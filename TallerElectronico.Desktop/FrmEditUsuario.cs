@@ -81,39 +81,49 @@ namespace TallerElectronico.Desktop
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtClave.Text) ||
-                cmbEmpleado.SelectedValue == null || cmbRol.SelectedValue == null ||
-                cmbEstado.SelectedIndex == -1)
-            {
-                MessageBox.Show("Por favor, completa todos los campos requeridos.", "Validación de formulario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            DialogResult confirm = MessageBox.Show("¿Desea actualizar los datos de este usuario?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question
+            );
+
+            if (confirm != DialogResult.Yes) return;
 
             try
             {
+                int empleadoId = cmbEmpleado.SelectedValue != null ? Convert.ToInt32(cmbEmpleado.SelectedValue) : 0;
+                int rolId = cmbRol.SelectedValue != null ? Convert.ToInt32(cmbRol.SelectedValue) : 0;
+
                 Usuario usuario = new Usuario
                 {
                     UsuarioId = _usuarioId,
-                    EmpleadoId = Convert.ToInt32(cmbEmpleado.SelectedValue),
-                    RolId = Convert.ToInt32(cmbRol.SelectedValue),
+                    EmpleadoId = empleadoId,
+                    RolId = rolId,
                     Nombre = txtNombre.Text.Trim(),
-                    Clave = txtClave.Text.Trim(),
+                    Clave = string.IsNullOrWhiteSpace(txtClave.Text) ? null : txtClave.Text.Trim(),
                     Estado = cmbEstado.SelectedIndex == 0 ? "A" : "I"
                 };
 
                 _usuarioBL.Update(usuario);
 
-                MessageBox.Show("Los datos del usuario se actualizaron correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-                Close();
+                MessageBox.Show(
+                    "Los datos del usuario se actualizaron correctamente.",
+                    "Éxito",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Validación de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (InvalidOperationException ex)
             {
-                MessageBox.Show(ex.Message, "Regla de negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.Message, "Regla de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error inesperado al actualizar el usuario: " + ex.Message, "Error del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrió un error inesperado al actualizar el usuario: " + ex.Message, "Error del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error );
             }
         }
 
