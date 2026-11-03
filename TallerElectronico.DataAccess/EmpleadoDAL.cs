@@ -25,6 +25,20 @@ namespace TallerElectronico.DataAccess
             {
                 return db.Empleado
                          .AsNoTracking()
+                         .Where(p => p.Estado == "A")
+                         .ToList()
+                         .Select(p => new Empleado
+                         {
+                             EmpleadoId = p.EmpleadoId,
+                             Nombre = p.Nombre,
+                             Apellido = p.Apellido,
+                             DUI = p.DUI,
+                             Telefono = p.Telefono,
+                             Correo = p.Correo,
+                             Direccion = p.Direccion,
+                             FechaContratacion = p.FechaContratacion,
+                             Estado = p.Estado == "A" ? "Activo" : "Inactivo"
+                         })
                          .ToList();
             }
         }
@@ -118,6 +132,34 @@ namespace TallerElectronico.DataAccess
                     e.Correo == email &&
                     e.Estado == "A" &&
                     (!excludeEmpleadoId.HasValue || e.EmpleadoId != excludeEmpleadoId.Value));
+            }
+        }
+
+        public List<Empleado> Search(string criterio)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                var query = db.Empleado
+                              .AsNoTracking()
+                              .Where(p => p.Estado == "A");
+
+                if (!string.IsNullOrWhiteSpace(criterio))
+                {
+                    criterio = criterio.Trim().ToLower();
+                    int idBusqueda;
+                    bool esNumero = int.TryParse(criterio, out idBusqueda);
+
+                    query = query.Where(p =>
+                        (esNumero && p.EmpleadoId == idBusqueda) ||
+                        (p.Nombre != null && p.Nombre.ToLower().Contains(criterio)) ||
+                        (p.Apellido != null && p.Apellido.ToLower().Contains(criterio)) ||
+                        (p.DUI != null && p.DUI.ToLower().Contains(criterio)) ||
+                        (p.Telefono != null && p.Telefono.ToLower().Contains(criterio)) ||
+                        (p.Correo != null && p.Correo.ToLower().Contains(criterio)) ||
+                        (p.Direccion != null && p.Direccion.ToLower().Contains(criterio))
+                    );
+                }
+                return query.OrderBy(p => p.Nombre).ToList();
             }
         }
     }

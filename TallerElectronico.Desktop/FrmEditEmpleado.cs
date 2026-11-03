@@ -18,8 +18,13 @@ namespace TallerElectronico.Desktop
         public FrmEditEmpleado(int empleadoId) : this()
         {
             _empleadoId = empleadoId;
+        }
+
+        private void FrmEditEmpleado_Load(object sender, EventArgs e)
+        {
             CargarDatosEmpleado();
         }
+
 
         private void CargarDatosEmpleado()
         {
@@ -29,13 +34,7 @@ namespace TallerElectronico.Desktop
 
                 if (empleado == null)
                 {
-                    MessageBox.Show(
-                        "No se encontró el empleado seleccionado.",
-                        "Aviso",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-
+                    MessageBox.Show("No se encontró el empleado seleccionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     DialogResult = DialogResult.Cancel;
                     Close();
                     return;
@@ -44,104 +43,90 @@ namespace TallerElectronico.Desktop
                 txtCodigo.Text = empleado.EmpleadoId.ToString();
                 txtNombre.Text = empleado.Nombre;
                 txtApellido.Text = empleado.Apellido;
-                txtDUI.Text = empleado.DUI;
-                txtTelefono.Text = empleado.Telefono;
+                mtxtDUI.Text = empleado.DUI;
+                mtxtTelefono.Text = empleado.Telefono;
                 txtCorreo.Text = empleado.Correo;
                 txtDireccion.Text = empleado.Direccion;
-
-                dtpFechaContratacion.Value =
-                    empleado.FechaContratacion.Date;
-
-                if (empleado.Estado == "A")
-                {
-                    cmbEstado.SelectedIndex = 0;
-                }
-                else if (empleado.Estado == "I")
-                {
-                    cmbEstado.SelectedIndex = 1;
-                }
-                else
-                {
-                    cmbEstado.SelectedIndex = -1;
-                }
+                dtpFechaContratacion.Value = empleado.FechaContratacion;
+                cmbEstado.SelectedIndex = (empleado.Estado == "A" || empleado.Estado == "Activo") ? 0 : 1;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Error al cargar los datos del empleado: " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-
+                MessageBox.Show("Error al cargar los datos del empleado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DialogResult = DialogResult.Cancel;
                 Close();
             }
         }
 
+        private void panelCentral_Paint(object sender, PaintEventArgs e)
+        {
+            if (!mtxtTelefono.MaskFull && mtxtTelefono.Text.Trim() == "-")
+                mtxtTelefono.SelectionStart = 0;
+
+            if (!mtxtDUI.MaskFull && mtxtDUI.Text.Trim() == "-")
+                mtxtDUI.SelectionStart = 0;
+        }
+
+        private void mtxtTelefono_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            if (!mtxtTelefono.MaskFull) mtxtTelefono.Clear();
+        }
+
+        private void mtxtDUI_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            if (!mtxtDUI.MaskFull) mtxtDUI.Clear();
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            DialogResult confirm = MessageBox.Show(
+                "¿Desea actualizar los datos de este empleado?",
+                "Confirmar",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (confirm != DialogResult.Yes) return;
+
             try
             {
-                if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                    string.IsNullOrWhiteSpace(txtApellido.Text) ||
-                    string.IsNullOrWhiteSpace(txtDUI.Text) ||
-                    string.IsNullOrWhiteSpace(txtTelefono.Text) ||
-                    string.IsNullOrWhiteSpace(txtCorreo.Text) ||
-                    string.IsNullOrWhiteSpace(txtDireccion.Text) ||
-                    cmbEstado.SelectedIndex == -1)
-                {
-                    MessageBox.Show(
-                        "Completa todos los campos.",
-                        "Validación",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-
-                    return;
-                }
-
                 Empleado empleado = new Empleado
                 {
                     EmpleadoId = _empleadoId,
                     Nombre = txtNombre.Text.Trim(),
                     Apellido = txtApellido.Text.Trim(),
-                    DUI = txtDUI.Text.Trim(),
-                    Telefono = txtTelefono.Text.Trim(),
+                    DUI = mtxtDUI.Text.Trim(),
+                    Telefono = mtxtTelefono.Text.Trim(),
                     Correo = txtCorreo.Text.Trim(),
                     Direccion = txtDireccion.Text.Trim(),
-                    FechaContratacion = dtpFechaContratacion.Value.Date,
+                    FechaContratacion = dtpFechaContratacion.Value,
                     Estado = cmbEstado.SelectedIndex == 0 ? "A" : "I"
                 };
 
                 _empleadoBL.Update(empleado);
 
-                MessageBox.Show(
-                    "Los datos del empleado se actualizaron correctamente.",
-                    "Éxito",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                MessageBox.Show("Los datos del empleado se actualizaron correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Validación de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Regla de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "No se pudieron actualizar los datos del empleado: "
-                    + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                MessageBox.Show("Ocurrió un error inesperado al actualizar el empleado: " + ex.Message, "Error del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

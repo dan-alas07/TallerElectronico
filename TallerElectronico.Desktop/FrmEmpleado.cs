@@ -9,6 +9,7 @@ namespace TallerElectronico.Desktop
     {
         private readonly EmpleadoBL _empleadoBL = new EmpleadoBL();
         private bool cargandoEmpleados = false;
+        private readonly Timer _timerBusqueda = new Timer();
 
         public FrmEmpleado()
         {
@@ -25,6 +26,9 @@ namespace TallerElectronico.Desktop
             btnEliminar.Enabled = false;
 
             dgvEmpleado.SelectionChanged += dgvEmpleado_SelectionChanged;
+
+            _timerBusqueda.Interval = 300;
+            _timerBusqueda.Tick += TimerBusqueda_Tick;
         }
 
         private void FrmEmpleado_Load(object sender, EventArgs e)
@@ -44,21 +48,22 @@ namespace TallerElectronico.Desktop
             {
                 cargandoEmpleados = true;
 
-                dgvEmpleado.DataSource = null;
-                dgvEmpleado.DataSource = _empleadoBL.SelectAll();
+                string criterio = txtBuscar != null ? txtBuscar.Text.Trim() : string.Empty;
 
-                dgvEmpleado.ClearSelection();
-                dgvEmpleado.CurrentCell = null;
+                dgvEmpleado.DataSource = null;
+
+                if (string.IsNullOrWhiteSpace(criterio))
+                {
+                    dgvEmpleado.DataSource = _empleadoBL.SelectAll();
+                }
+                else
+                {
+                    dgvEmpleado.DataSource = _empleadoBL.Search(criterio);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Ocurrió un error al cargar los empleados: "
-                    + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                MessageBox.Show("Ocurrió un error al cargar los empleados: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -67,14 +72,11 @@ namespace TallerElectronico.Desktop
             }
         }
 
-        private void dgvEmpleado_SelectionChanged(
-            object sender, EventArgs e)
+        private void dgvEmpleado_SelectionChanged(object sender, EventArgs e)
         {
-            if (cargandoEmpleados)
-                return;
+            if (cargandoEmpleados) return;
 
-            bool empleadoSeleccionado =
-                dgvEmpleado.SelectedRows.Count > 0;
+            bool empleadoSeleccionado = dgvEmpleado.SelectedRows.Count > 0;
 
             btnNuevo.Enabled = !empleadoSeleccionado;
             btnEditar.Enabled = empleadoSeleccionado;
@@ -87,12 +89,8 @@ namespace TallerElectronico.Desktop
 
             foreach (Control hijo in control.Controls)
             {
-                if (hijo == btnNuevo ||
-                    hijo == btnEditar ||
-                    hijo == btnEliminar)
-                {
+                if (hijo == btnNuevo || hijo == btnEditar || hijo == btnEliminar || hijo == txtBuscar)
                     continue;
-                }
 
                 RegistrarEventos(hijo);
             }
@@ -102,10 +100,7 @@ namespace TallerElectronico.Desktop
         {
             Control control = sender as Control;
 
-            if (control == null)
-                return;
-
-            if (control == dgvEmpleado)
+            if (control == null || control == dgvEmpleado)
                 return;
 
             RestablecerBotones();
@@ -124,6 +119,25 @@ namespace TallerElectronico.Desktop
             btnEliminar.Enabled = false;
         }
 
+        private int? ObtenerEmpleadoSeleccionado()
+        {
+            if (dgvEmpleado.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecciona un empleado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            object valorId = dgvEmpleado.SelectedRows[0].Cells["ColumnCode"].Value;
+
+            if (valorId == null || valorId == DBNull.Value)
+            {
+                MessageBox.Show("No se pudo obtener el código del empleado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
+            return Convert.ToInt32(valorId);
+        }
+
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             using (FrmCreateEmpleado frm = new FrmCreateEmpleado())
@@ -137,121 +151,52 @@ namespace TallerElectronico.Desktop
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (dgvEmpleado.SelectedRows.Count == 0)
-            {
-                MessageBox.Show(
-                    "Selecciona un empleado para editar.",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
+            int? empleadoId = ObtenerEmpleadoSeleccionado();
+            if (!empleadoId.HasValue) return;
 
-                return;
-            }
-
-            object valorId = dgvEmpleado.SelectedRows[0] .Cells["ColumnCode"].Value;
-
-            if (valorId == null || valorId == DBNull.Value)
-            {
-                MessageBox.Show(
-                    "No se pudo obtener el código del empleado.",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-
-                return;
-            }
-
-            int empleadoId = Convert.ToInt32(valorId);
-
-            using (FrmEditEmpleado frm =
-                new FrmEditEmpleado(empleadoId))
+            using (FrmEditEmpleado frm = new FrmEditEmpleado(empleadoId.Value))
             {
                 if (frm.ShowDialog(this) == DialogResult.OK)
                 {
                     CargarEmpleados();
-                    RestablecerBotones();
                 }
             }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvEmpleado.SelectedRows.Count == 0)
-            {
-                MessageBox.Show(
-                    "Selecciona un empleado para eliminar.",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
+            int? empleadoId = ObtenerEmpleadoSeleccionado();
+            if (!empleadoId.HasValue) return;
 
-                return;
-            }
+            string nombre = Convert.ToString(dgvEmpleado.SelectedRows[0].Cells["ColumnName"].Value);
+            string apellido = Convert.ToString(dgvEmpleado.SelectedRows[0].Cells["ColumnLastName"].Value);
 
-            object valorId = dgvEmpleado.SelectedRows[0].Cells["ColumnCode"].Value;
-
-            if (valorId == null || valorId == DBNull.Value)
-            {
-                MessageBox.Show(
-                    "No se pudo obtener el código del empleado.",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-
-                return;
-            }
-
-            int empleadoId = Convert.ToInt32(valorId);
-
-            string nombre = Convert.ToString(
-                dgvEmpleado.SelectedRows[0]
-                    .Cells["ColumnName"].Value
-            );
-
-            string apellido = Convert.ToString(
-                dgvEmpleado.SelectedRows[0]
-                    .Cells["ColumnLastName"].Value
-            );
-
-            DialogResult respuesta = MessageBox.Show(
-                "¿Estás seguro de que deseas eliminar al empleado "
-                + nombre + " " + apellido + "?\n\n"
-                + "Esta acción desactivará al empleado.",
-                "Confirmar eliminación",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (respuesta != DialogResult.Yes)
-                return;
+            DialogResult confirm = MessageBox.Show($"¿Seguro que desea eliminar al empleado {nombre} {apellido}?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirm != DialogResult.Yes) return;
 
             try
             {
-                _empleadoBL.Delete(empleadoId);
-
-                MessageBox.Show(
-                    "El empleado se eliminó correctamente.",
-                    "Éxito",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-
+                _empleadoBL.Delete(empleadoId.Value);
+                MessageBox.Show("El empleado se eliminó correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarEmpleados();
-                RestablecerBotones();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "No se pudo eliminar el empleado: "
-                    + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                MessageBox.Show("No se pudo eliminar el empleado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            // Reinicia el reloj a cada tecla. Solo cuando te detengas 300ms se consultará a la DAL
+            _timerBusqueda.Stop();
+            _timerBusqueda.Start();
+        }
+
+        private void TimerBusqueda_Tick(object sender, EventArgs e)
+        {
+            _timerBusqueda.Stop();
+            CargarEmpleados(); // Llama a la DAL cuando el usuario pausó el tipeo
         }
     }
 }

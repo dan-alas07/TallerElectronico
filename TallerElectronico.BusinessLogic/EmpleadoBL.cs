@@ -130,5 +130,11 @@ namespace TallerElectronico.BusinessLogic
             if (empleado.FechaContratacion == default(DateTime))
                 throw new ArgumentException("Debe seleccionar una fecha de contratación válida.");
         }
+
+        public List<Empleado> Search(string criterio)
+        {
+            return _empleadoDal.Search(criterio);
+        }
     }
+
 }
