@@ -91,5 +91,10 @@ namespace TallerElectronico.BusinessLogic
 
             return _tipoEquipoDal.Delete(idTipoEquipo);
         }
+
+        public List<TipoEquipo> Search(string criterio)
+        {
+            return _tipoEquipoDal.Search(criterio);
+        }
     }
 }

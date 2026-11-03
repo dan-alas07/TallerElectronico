@@ -47,9 +47,9 @@
             this.lblTitulo.Location = new System.Drawing.Point(43, 27);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(254, 52);
+            this.lblTitulo.Size = new System.Drawing.Size(255, 52);
             this.lblTitulo.TabIndex = 11;
-            this.lblTitulo.Text = "Editar marca";
+            this.lblTitulo.Text = "Editar Marca";
             // 
             // lblCodigo
             // 

@@ -12,9 +12,17 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.TipoEquipo.AsNoTracking()
-                                    .Where(t => t.Estado == "A")
-                                    .ToList();
+                return db.TipoEquipo
+                         .AsNoTracking()
+                         .Where(p => p.Estado == "A")
+                         .ToList()
+                         .Select(p => new TipoEquipo
+                         {
+                             TipoEquipoId = p.TipoEquipoId,
+                             Nombre = p.Nombre,
+                             Estado = p.Estado == "A" ? "Activo" : "Inactivo"
+                         })
+                         .ToList();
             }
         }
 
@@ -68,6 +76,29 @@ namespace TallerElectronico.DataAccess
                 }
 
                 return false;
+            }
+        }
+
+        public List<TipoEquipo> Search(string criterio)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                var query = db.TipoEquipo
+                              .AsNoTracking()
+                              .Where(p => p.Estado == "A");
+
+                if (!string.IsNullOrWhiteSpace(criterio))
+                {
+                    criterio = criterio.Trim().ToLower();
+                    int idBusqueda;
+                    bool esNumero = int.TryParse(criterio, out idBusqueda);
+
+                    query = query.Where(p =>
+                        (esNumero && p.TipoEquipoId == idBusqueda) ||
+                        (p.Nombre != null && p.Nombre.ToLower().Contains(criterio))
+                    );
+                }
+                return query.OrderBy(p => p.Nombre).ToList();
             }
         }
     }

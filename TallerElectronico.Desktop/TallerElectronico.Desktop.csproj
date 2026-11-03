@@ -91,6 +91,12 @@
     <Compile Include="FrmCreateEmpleado.Designer.cs">
       <DependentUpon>FrmCreateEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCreateTipoEquipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateTipoEquipo.Designer.cs">
+      <DependentUpon>FrmCreateTipoEquipo.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCreateMarca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,12 @@
     </Compile>
     <Compile Include="FrmEditEmpleado.Designer.cs">
       <DependentUpon>FrmEditEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditTipoEquipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditTipoEquipo.Designer.cs">
+      <DependentUpon>FrmEditTipoEquipo.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmEditMarca.cs">
       <SubType>Form</SubType>
@@ -210,6 +222,9 @@
     <EmbeddedResource Include="FrmCreateEmpleado.resx">
       <DependentUpon>FrmCreateEmpleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateTipoEquipo.resx">
+      <DependentUpon>FrmCreateTipoEquipo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCreateMarca.resx">
       <DependentUpon>FrmCreateMarca.cs</DependentUpon>
     </EmbeddedResource>
@@ -227,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEditEmpleado.resx">
       <DependentUpon>FrmEditEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditTipoEquipo.resx">
+      <DependentUpon>FrmEditTipoEquipo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEditMarca.resx">
       <DependentUpon>FrmEditMarca.cs</DependentUpon>
