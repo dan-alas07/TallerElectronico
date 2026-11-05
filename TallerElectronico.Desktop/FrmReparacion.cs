@@ -140,13 +140,13 @@ namespace TallerElectronico.Desktop
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            //using (FrmCreateReparacion frm = new FrmCreateReparacion())
-            //{
-            //    if (frm.ShowDialog(this) == DialogResult.OK)
-            //    {
-            //        CargarReparaciones();
-            //    }
-            //}
+            using (FrmCreateReparacion frm = new FrmCreateReparacion())
+            {
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                {
+                    CargarReparaciones();
+                }
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -197,5 +197,6 @@ namespace TallerElectronico.Desktop
             _timerBusqueda.Stop();
             CargarReparaciones(); // Llama a la DAL cuando el usuario pausó el tipeo
         }
+
     }
 }
