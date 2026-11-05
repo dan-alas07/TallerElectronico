@@ -140,13 +140,13 @@ namespace TallerElectronico.Desktop
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            //using (FrmCreateProducto frm = new FrmCreateProducto())
-            //{
-            //    if (frm.ShowDialog(this) == DialogResult.OK)
-            //    {
-            //        CargarProductos();
-            //    }
-            //}
+            using (FrmCreateProducto frm = new FrmCreateProducto())
+            {
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                {
+                    CargarProductos();
+                }
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)

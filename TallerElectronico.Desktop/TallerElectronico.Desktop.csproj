@@ -91,6 +91,12 @@
     <Compile Include="FrmCreateEmpleado.Designer.cs">
       <DependentUpon>FrmCreateEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCreateProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateProveedor.Designer.cs">
+      <DependentUpon>FrmCreateProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCreateTipoEquipo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,11 +109,11 @@
     <Compile Include="FrmCreateMarca.Designer.cs">
       <DependentUpon>FrmCreateMarca.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCreateProveedor.cs">
+    <Compile Include="FrmCreateProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCreateProveedor.Designer.cs">
-      <DependentUpon>FrmCreateProveedor.cs</DependentUpon>
+    <Compile Include="FrmCreateProducto.Designer.cs">
+      <DependentUpon>FrmCreateProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCreateUsuario.cs">
       <SubType>Form</SubType>
@@ -228,14 +234,17 @@
     <EmbeddedResource Include="FrmCreateEmpleado.resx">
       <DependentUpon>FrmCreateEmpleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateProveedor.resx">
+      <DependentUpon>FrmCreateProveedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCreateTipoEquipo.resx">
       <DependentUpon>FrmCreateTipoEquipo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCreateMarca.resx">
       <DependentUpon>FrmCreateMarca.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCreateProveedor.resx">
-      <DependentUpon>FrmCreateProveedor.cs</DependentUpon>
+    <EmbeddedResource Include="FrmCreateProducto.resx">
+      <DependentUpon>FrmCreateProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCreateUsuario.resx">
       <DependentUpon>FrmCreateUsuario.cs</DependentUpon>

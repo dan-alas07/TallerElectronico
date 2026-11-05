@@ -118,5 +118,14 @@ namespace TallerElectronico.DataAccess
                 return false;
             }
         }
+
+        public Producto SelectByCodigo(string codigo)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                return db.Producto.AsNoTracking()
+                    .FirstOrDefault(p => p.Codigo == codigo);
+            }
+        }
     }
 }

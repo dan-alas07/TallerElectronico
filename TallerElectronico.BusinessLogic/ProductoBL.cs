@@ -165,5 +165,13 @@ namespace TallerElectronico.BusinessLogic
 
             return _productoDal.Delete(idProducto, idUsuarioModificacion);
         }
+
+        public Producto SelectByCodigo(string codigo)
+        {
+            if (string.IsNullOrWhiteSpace(codigo))
+                return null;
+
+            return _productoDal.SelectByCodigo(codigo);
+        }
     }
 }
