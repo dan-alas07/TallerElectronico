@@ -43,13 +43,37 @@ namespace TallerElectronico.DataAccess
             }
         }
 
-        public Producto SelectById(int idProducto)
+        public ProductoDTO SelectById(int idProducto)
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Producto.AsNoTracking()
-                                  .Include(p => p.Proveedor)
-                                  .FirstOrDefault(p => p.ProductoId == idProducto && p.Estado == "A");
+                return db.Producto
+                         .AsNoTracking()
+                         .Where(p => p.ProductoId == idProducto && p.Estado == "A")
+                         .Select(p => new ProductoDTO
+                         {
+                             ProductoId = p.ProductoId,
+                             Codigo = p.Codigo,
+                             Nombre = p.Nombre,
+                             Descripcion = p.Descripcion,
+                             CantidadStock = p.CantidadStock,
+                             PrecioUnitario = p.PrecioUnitario,
+                             Estado = p.Estado == "A" ? "Activo" : "Inactivo",
+
+                             // Claves Foráneas
+                             ProveedorId = p.ProveedorId,
+                             UsuarioCreacionId = p.UsuarioCreacionId,
+
+                             // Mapeo ti relasion (JOINs implícitos)
+                             ProveedorNombre = p.Proveedor != null ? p.Proveedor.Nombre : "Sin Proveedor",
+
+                             UsuarioCreacionNombre = p.Usuario != null
+                                 ? (p.Usuario.Empleado != null
+                                     ? p.Usuario.Empleado.Nombre + " " + p.Usuario.Empleado.Apellido
+                                     : p.Usuario.Nombre)
+                                 : "Sin Usuario"
+                         })
+                         .FirstOrDefault();
             }
         }
 

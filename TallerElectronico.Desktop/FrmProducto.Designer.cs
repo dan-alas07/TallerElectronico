@@ -29,14 +29,13 @@ namespace TallerElectronico.Desktop
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCodeProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnProve = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnUserCreate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,14 +62,13 @@ namespace TallerElectronico.Desktop
             this.dgvProducto.ColumnHeadersHeight = 42;
             this.dgvProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProducto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnCode,
             this.ColumnCodeProduct,
             this.ColumnName,
             this.ColumnAddress,
             this.ColumnStock,
+            this.Column1,
             this.ColumnProve,
-            this.ColumnStatus,
-            this.ColumnUserCreate});
+            this.ColumnStatus});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -198,16 +196,6 @@ namespace TallerElectronico.Desktop
             this.txtBuscar.TabIndex = 47;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
-            // ColumnCode
-            // 
-            this.ColumnCode.DataPropertyName = "ProductoId";
-            this.ColumnCode.FillWeight = 24.83387F;
-            this.ColumnCode.HeaderText = "Código";
-            this.ColumnCode.MinimumWidth = 6;
-            this.ColumnCode.Name = "ColumnCode";
-            this.ColumnCode.ReadOnly = true;
-            this.ColumnCode.Width = 125;
-            // 
             // ColumnCodeProduct
             // 
             this.ColumnCodeProduct.DataPropertyName = "Codigo";
@@ -249,6 +237,15 @@ namespace TallerElectronico.Desktop
             this.ColumnStock.ReadOnly = true;
             this.ColumnStock.Width = 125;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "PrecioUnitario";
+            this.Column1.HeaderText = "Precio Unitario";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 125;
+            // 
             // ColumnProve
             // 
             this.ColumnProve.DataPropertyName = "ProveedorNombre";
@@ -268,15 +265,6 @@ namespace TallerElectronico.Desktop
             this.ColumnStatus.Name = "ColumnStatus";
             this.ColumnStatus.ReadOnly = true;
             this.ColumnStatus.Width = 125;
-            // 
-            // ColumnUserCreate
-            // 
-            this.ColumnUserCreate.DataPropertyName = "UsuarioCreacionNombre";
-            this.ColumnUserCreate.HeaderText = "Usuario Creación";
-            this.ColumnUserCreate.MinimumWidth = 6;
-            this.ColumnUserCreate.Name = "ColumnUserCreate";
-            this.ColumnUserCreate.ReadOnly = true;
-            this.ColumnUserCreate.Width = 150;
             // 
             // FrmProducto
             // 
@@ -313,13 +301,12 @@ namespace TallerElectronico.Desktop
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodeProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProve;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUserCreate;
     }
 }

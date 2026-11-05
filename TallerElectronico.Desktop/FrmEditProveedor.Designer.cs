@@ -389,7 +389,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmEditProveedor";
             this.ShowIcon = false;
-            this.Text = "Editar Proveedor";
             this.Load += new System.EventHandler(this.FrmEditProveedor_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCentral_Paint);
             this.ResumeLayout(false);

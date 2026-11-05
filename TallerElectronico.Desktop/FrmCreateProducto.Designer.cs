@@ -31,6 +31,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.pnlCard = new System.Windows.Forms.Panel();
+            this.txtUsuarioCreacion = new System.Windows.Forms.TextBox();
             this.lblUsuarioCreacionId = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.cmbProveedor = new System.Windows.Forms.ComboBox();
@@ -39,7 +40,6 @@
             this.lblPrecioUnitario = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.lblDescripcion = new System.Windows.Forms.Label();
-            this.txtCantidadStock = new System.Windows.Forms.TextBox();
             this.lblCantidadStock = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblProveedorId = new System.Windows.Forms.Label();
@@ -54,9 +54,10 @@
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnGenerarCodigo = new System.Windows.Forms.Button();
-            this.txtUsuarioCreacion = new System.Windows.Forms.TextBox();
+            this.nudCantidadStock = new System.Windows.Forms.NumericUpDown();
             this.pnlCard.SuspendLayout();
             this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadStock)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -99,6 +100,7 @@
             // pnlCard
             // 
             this.pnlCard.BackColor = System.Drawing.Color.White;
+            this.pnlCard.Controls.Add(this.nudCantidadStock);
             this.pnlCard.Controls.Add(this.txtUsuarioCreacion);
             this.pnlCard.Controls.Add(this.lblUsuarioCreacionId);
             this.pnlCard.Controls.Add(this.txtNombre);
@@ -108,7 +110,6 @@
             this.pnlCard.Controls.Add(this.lblPrecioUnitario);
             this.pnlCard.Controls.Add(this.txtDescripcion);
             this.pnlCard.Controls.Add(this.lblDescripcion);
-            this.pnlCard.Controls.Add(this.txtCantidadStock);
             this.pnlCard.Controls.Add(this.lblCantidadStock);
             this.pnlCard.Controls.Add(this.lblNombre);
             this.pnlCard.Controls.Add(this.lblProveedorId);
@@ -124,6 +125,18 @@
             this.pnlCard.Name = "pnlCard";
             this.pnlCard.Size = new System.Drawing.Size(800, 523);
             this.pnlCard.TabIndex = 4;
+            // 
+            // txtUsuarioCreacion
+            // 
+            this.txtUsuarioCreacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUsuarioCreacion.Enabled = false;
+            this.txtUsuarioCreacion.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtUsuarioCreacion.Location = new System.Drawing.Point(426, 324);
+            this.txtUsuarioCreacion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUsuarioCreacion.MaxLength = 50;
+            this.txtUsuarioCreacion.Name = "txtUsuarioCreacion";
+            this.txtUsuarioCreacion.Size = new System.Drawing.Size(333, 30);
+            this.txtUsuarioCreacion.TabIndex = 63;
             // 
             // lblUsuarioCreacionId
             // 
@@ -186,6 +199,7 @@
             this.txtPrecioUnitario.Name = "txtPrecioUnitario";
             this.txtPrecioUnitario.Size = new System.Drawing.Size(333, 30);
             this.txtPrecioUnitario.TabIndex = 17;
+            this.txtPrecioUnitario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioUnitario_KeyPress);
             // 
             // lblPrecioUnitario
             // 
@@ -221,17 +235,6 @@
             this.lblDescripcion.Size = new System.Drawing.Size(101, 20);
             this.lblDescripcion.TabIndex = 10;
             this.lblDescripcion.Text = "Descripción *";
-            // 
-            // txtCantidadStock
-            // 
-            this.txtCantidadStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCantidadStock.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtCantidadStock.Location = new System.Drawing.Point(40, 325);
-            this.txtCantidadStock.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCantidadStock.MaxLength = 100;
-            this.txtCantidadStock.Name = "txtCantidadStock";
-            this.txtCantidadStock.Size = new System.Drawing.Size(333, 30);
-            this.txtCantidadStock.TabIndex = 5;
             // 
             // lblCantidadStock
             // 
@@ -402,17 +405,23 @@
             this.btnGenerarCodigo.UseVisualStyleBackColor = false;
             this.btnGenerarCodigo.Click += new System.EventHandler(this.btnGenerarCodigo_Click);
             // 
-            // txtUsuarioCreacion
+            // nudCantidadStock
             // 
-            this.txtUsuarioCreacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUsuarioCreacion.Enabled = false;
-            this.txtUsuarioCreacion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtUsuarioCreacion.Location = new System.Drawing.Point(426, 324);
-            this.txtUsuarioCreacion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtUsuarioCreacion.MaxLength = 50;
-            this.txtUsuarioCreacion.Name = "txtUsuarioCreacion";
-            this.txtUsuarioCreacion.Size = new System.Drawing.Size(333, 30);
-            this.txtUsuarioCreacion.TabIndex = 63;
+            this.nudCantidadStock.Location = new System.Drawing.Point(40, 332);
+            this.nudCantidadStock.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudCantidadStock.Name = "nudCantidadStock";
+            this.nudCantidadStock.ReadOnly = true;
+            this.nudCantidadStock.Size = new System.Drawing.Size(333, 22);
+            this.nudCantidadStock.TabIndex = 64;
+            this.nudCantidadStock.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // FrmCreateProducto
             // 
@@ -432,6 +441,7 @@
             this.pnlCard.PerformLayout();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadStock)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -443,7 +453,6 @@
         private System.Windows.Forms.Panel pnlCard;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label lblDescripcion;
-        private System.Windows.Forms.TextBox txtCantidadStock;
         private System.Windows.Forms.Label lblCantidadStock;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblProveedorId;
@@ -465,5 +474,6 @@
         private System.Windows.Forms.Label lblUsuarioCreacionId;
         private System.Windows.Forms.Button btnGenerarCodigo;
         private System.Windows.Forms.TextBox txtUsuarioCreacion;
+        private System.Windows.Forms.NumericUpDown nudCantidadStock;
     }
 }
