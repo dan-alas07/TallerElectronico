@@ -97,6 +97,12 @@
     <Compile Include="FrmCreateEmpleado.Designer.cs">
       <DependentUpon>FrmCreateEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCreateEstadoReparacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateEstadoReparacion.Designer.cs">
+      <DependentUpon>FrmCreateEstadoReparacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCreateProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,12 @@
     </Compile>
     <Compile Include="FrmEditEmpleado.Designer.cs">
       <DependentUpon>FrmEditEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditEstadoReparacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditEstadoReparacion.Designer.cs">
+      <DependentUpon>FrmEditEstadoReparacion.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmEditTipoEquipo.cs">
       <SubType>Form</SubType>
@@ -255,6 +267,9 @@
     <EmbeddedResource Include="FrmCreateEmpleado.resx">
       <DependentUpon>FrmCreateEmpleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateEstadoReparacion.resx">
+      <DependentUpon>FrmCreateEstadoReparacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCreateProveedor.resx">
       <DependentUpon>FrmCreateProveedor.cs</DependentUpon>
     </EmbeddedResource>
@@ -281,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEditEmpleado.resx">
       <DependentUpon>FrmEditEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditEstadoReparacion.resx">
+      <DependentUpon>FrmEditEstadoReparacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEditTipoEquipo.resx">
       <DependentUpon>FrmEditTipoEquipo.cs</DependentUpon>

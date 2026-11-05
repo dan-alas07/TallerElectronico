@@ -14,7 +14,6 @@ namespace TallerElectronico.DataAccess
             {
                 return db.Marca
                          .AsNoTracking()
-                         .Where(p => p.Estado == "A")
                          .ToList()
                          .Select(p => new Marca
                          {
@@ -31,7 +30,7 @@ namespace TallerElectronico.DataAccess
             using (var db = new TallerElectronicoEntities())
             {
                 return db.Marca.AsNoTracking()
-                               .FirstOrDefault(m => m.MarcaId == idMarca && m.Estado == "A");
+                               .FirstOrDefault(m => m.MarcaId == idMarca);
             }
         }
 
