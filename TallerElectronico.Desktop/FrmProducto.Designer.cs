@@ -29,6 +29,7 @@ namespace TallerElectronico.Desktop
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCodeProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +63,7 @@ namespace TallerElectronico.Desktop
             this.dgvProducto.ColumnHeadersHeight = 42;
             this.dgvProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProducto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnCode,
             this.ColumnCodeProduct,
             this.ColumnName,
             this.ColumnAddress,
@@ -196,6 +198,15 @@ namespace TallerElectronico.Desktop
             this.txtBuscar.TabIndex = 47;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
+            // ColumnCode
+            // 
+            this.ColumnCode.DataPropertyName = "ProductoId";
+            this.ColumnCode.HeaderText = "Código";
+            this.ColumnCode.MinimumWidth = 6;
+            this.ColumnCode.Name = "ColumnCode";
+            this.ColumnCode.ReadOnly = true;
+            this.ColumnCode.Width = 125;
+            // 
             // ColumnCodeProduct
             // 
             this.ColumnCodeProduct.DataPropertyName = "Codigo";
@@ -301,6 +312,7 @@ namespace TallerElectronico.Desktop
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodeProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddress;

@@ -90,5 +90,10 @@ namespace TallerElectronico.BusinessLogic
 
             return _estadoReparacionDal.Delete(idEstadoReparacion);
         }
+
+        public List<EstadoReparacion> Search(string criterio)
+        {
+            return _estadoReparacionDal.Search(criterio);
+        }
     }
 }
