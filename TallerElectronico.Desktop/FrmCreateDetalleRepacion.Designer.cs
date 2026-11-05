@@ -1,0 +1,354 @@
+﻿namespace TallerElectronico.Desktop
+{
+    partial class FrmCreateDetalleRepacion
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.pnlCard = new System.Windows.Forms.Panel();
+            this.cmbProducto = new System.Windows.Forms.ComboBox();
+            this.lblProducto = new System.Windows.Forms.Label();
+            this.lblFechaUso = new System.Windows.Forms.Label();
+            this.lblSubtotal = new System.Windows.Forms.Label();
+            this.txtClave = new System.Windows.Forms.TextBox();
+            this.lblPrecio = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.lblCantidad = new System.Windows.Forms.Label();
+            this.lblReparacion = new System.Windows.Forms.Label();
+            this.pnlLinea = new System.Windows.Forms.Panel();
+            this.lblSeccion = new System.Windows.Forms.Label();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.lblSubtitulo = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.cmbReparacion = new System.Windows.Forms.ComboBox();
+            this.dtpFechaUso = new System.Windows.Forms.DateTimePicker();
+            this.txtSubtotal = new System.Windows.Forms.TextBox();
+            this.pnlCard.SuspendLayout();
+            this.pnlHeader.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.Red;
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(213)))), ((int)(((byte)(225)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(667, 489);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(173, 52);
+            this.btnCancelar.TabIndex = 13;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(480, 489);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(173, 52);
+            this.btnGuardar.TabIndex = 12;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            // 
+            // pnlCard
+            // 
+            this.pnlCard.BackColor = System.Drawing.Color.White;
+            this.pnlCard.Controls.Add(this.txtSubtotal);
+            this.pnlCard.Controls.Add(this.dtpFechaUso);
+            this.pnlCard.Controls.Add(this.cmbReparacion);
+            this.pnlCard.Controls.Add(this.cmbProducto);
+            this.pnlCard.Controls.Add(this.lblProducto);
+            this.pnlCard.Controls.Add(this.lblFechaUso);
+            this.pnlCard.Controls.Add(this.lblSubtotal);
+            this.pnlCard.Controls.Add(this.txtClave);
+            this.pnlCard.Controls.Add(this.lblPrecio);
+            this.pnlCard.Controls.Add(this.txtNombre);
+            this.pnlCard.Controls.Add(this.lblCantidad);
+            this.pnlCard.Controls.Add(this.lblReparacion);
+            this.pnlCard.Controls.Add(this.pnlLinea);
+            this.pnlCard.Controls.Add(this.lblSeccion);
+            this.pnlCard.Location = new System.Drawing.Point(40, 125);
+            this.pnlCard.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlCard.Name = "pnlCard";
+            this.pnlCard.Size = new System.Drawing.Size(800, 331);
+            this.pnlCard.TabIndex = 11;
+            // 
+            // cmbProducto
+            // 
+            this.cmbProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProducto.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbProducto.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cmbProducto.Location = new System.Drawing.Point(427, 95);
+            this.cmbProducto.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbProducto.Name = "cmbProducto";
+            this.cmbProducto.Size = new System.Drawing.Size(332, 31);
+            this.cmbProducto.TabIndex = 20;
+            // 
+            // lblProducto
+            // 
+            this.lblProducto.AutoSize = true;
+            this.lblProducto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblProducto.ForeColor = System.Drawing.Color.Black;
+            this.lblProducto.Location = new System.Drawing.Point(427, 70);
+            this.lblProducto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProducto.Name = "lblProducto";
+            this.lblProducto.Size = new System.Drawing.Size(84, 20);
+            this.lblProducto.TabIndex = 21;
+            this.lblProducto.Text = "Producto *";
+            // 
+            // lblFechaUso
+            // 
+            this.lblFechaUso.AutoSize = true;
+            this.lblFechaUso.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblFechaUso.ForeColor = System.Drawing.Color.Black;
+            this.lblFechaUso.Location = new System.Drawing.Point(427, 224);
+            this.lblFechaUso.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFechaUso.Name = "lblFechaUso";
+            this.lblFechaUso.Size = new System.Drawing.Size(99, 20);
+            this.lblFechaUso.TabIndex = 15;
+            this.lblFechaUso.Text = "Fecha de uso";
+            // 
+            // lblSubtotal
+            // 
+            this.lblSubtotal.AutoSize = true;
+            this.lblSubtotal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblSubtotal.ForeColor = System.Drawing.Color.Black;
+            this.lblSubtotal.Location = new System.Drawing.Point(40, 224);
+            this.lblSubtotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSubtotal.Name = "lblSubtotal";
+            this.lblSubtotal.Size = new System.Drawing.Size(68, 20);
+            this.lblSubtotal.TabIndex = 6;
+            this.lblSubtotal.Text = "Subtotal";
+            // 
+            // txtClave
+            // 
+            this.txtClave.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtClave.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtClave.Location = new System.Drawing.Point(427, 172);
+            this.txtClave.Margin = new System.Windows.Forms.Padding(4);
+            this.txtClave.MaxLength = 50;
+            this.txtClave.Name = "txtClave";
+            this.txtClave.Size = new System.Drawing.Size(333, 30);
+            this.txtClave.TabIndex = 2;
+            // 
+            // lblPrecio
+            // 
+            this.lblPrecio.AutoSize = true;
+            this.lblPrecio.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblPrecio.ForeColor = System.Drawing.Color.Black;
+            this.lblPrecio.Location = new System.Drawing.Point(427, 148);
+            this.lblPrecio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPrecio.Name = "lblPrecio";
+            this.lblPrecio.Size = new System.Drawing.Size(176, 20);
+            this.lblPrecio.TabIndex = 5;
+            this.lblPrecio.Text = "Precio unitario historico";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtNombre.Location = new System.Drawing.Point(40, 172);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombre.MaxLength = 50;
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(333, 30);
+            this.txtNombre.TabIndex = 1;
+            // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblCantidad.ForeColor = System.Drawing.Color.Black;
+            this.lblCantidad.Location = new System.Drawing.Point(40, 148);
+            this.lblCantidad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(145, 20);
+            this.lblCantidad.TabIndex = 4;
+            this.lblCantidad.Text = "Cantidad utilizada *";
+            // 
+            // lblReparacion
+            // 
+            this.lblReparacion.AutoSize = true;
+            this.lblReparacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblReparacion.ForeColor = System.Drawing.Color.Black;
+            this.lblReparacion.Location = new System.Drawing.Point(40, 71);
+            this.lblReparacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblReparacion.Name = "lblReparacion";
+            this.lblReparacion.Size = new System.Drawing.Size(98, 20);
+            this.lblReparacion.TabIndex = 2;
+            this.lblReparacion.Text = "Reparación *";
+            // 
+            // pnlLinea
+            // 
+            this.pnlLinea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(235)))), ((int)(((byte)(242)))));
+            this.pnlLinea.Location = new System.Drawing.Point(40, 52);
+            this.pnlLinea.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlLinea.Name = "pnlLinea";
+            this.pnlLinea.Size = new System.Drawing.Size(720, 1);
+            this.pnlLinea.TabIndex = 1;
+            // 
+            // lblSeccion
+            // 
+            this.lblSeccion.AutoSize = true;
+            this.lblSeccion.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblSeccion.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.lblSeccion.Location = new System.Drawing.Point(40, 17);
+            this.lblSeccion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSeccion.Name = "lblSeccion";
+            this.lblSeccion.Size = new System.Drawing.Size(226, 25);
+            this.lblSeccion.TabIndex = 0;
+            this.lblSeccion.Text = "Información del usuario";
+            // 
+            // pnlHeader
+            // 
+            this.pnlHeader.BackColor = System.Drawing.Color.DarkBlue;
+            this.pnlHeader.Controls.Add(this.lblSubtitulo);
+            this.pnlHeader.Controls.Add(this.lblTitulo);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(880, 101);
+            this.pnlHeader.TabIndex = 10;
+            // 
+            // lblSubtitulo
+            // 
+            this.lblSubtitulo.AutoSize = true;
+            this.lblSubtitulo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.lblSubtitulo.ForeColor = System.Drawing.Color.White;
+            this.lblSubtitulo.Location = new System.Drawing.Point(41, 60);
+            this.lblSubtitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSubtitulo.Name = "lblSubtitulo";
+            this.lblSubtitulo.Size = new System.Drawing.Size(426, 21);
+            this.lblSubtitulo.TabIndex = 1;
+            this.lblSubtitulo.Text = "Completa los datos necesarios para registrar una reparación";
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(37, 12);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(383, 41);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Nuevo Detalle Reparación";
+            // 
+            // cmbReparacion
+            // 
+            this.cmbReparacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbReparacion.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbReparacion.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cmbReparacion.Location = new System.Drawing.Point(40, 95);
+            this.cmbReparacion.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbReparacion.Name = "cmbReparacion";
+            this.cmbReparacion.Size = new System.Drawing.Size(332, 31);
+            this.cmbReparacion.TabIndex = 24;
+            // 
+            // dtpFechaUso
+            // 
+            this.dtpFechaUso.CalendarFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpFechaUso.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.dtpFechaUso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaUso.Location = new System.Drawing.Point(427, 250);
+            this.dtpFechaUso.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpFechaUso.Name = "dtpFechaUso";
+            this.dtpFechaUso.Size = new System.Drawing.Size(332, 30);
+            this.dtpFechaUso.TabIndex = 25;
+            // 
+            // txtSubtotal
+            // 
+            this.txtSubtotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSubtotal.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtSubtotal.Location = new System.Drawing.Point(40, 254);
+            this.txtSubtotal.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSubtotal.MaxLength = 50;
+            this.txtSubtotal.Name = "txtSubtotal";
+            this.txtSubtotal.Size = new System.Drawing.Size(333, 30);
+            this.txtSubtotal.TabIndex = 26;
+            // 
+            // FrmCreateDetalleRepacion
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(880, 548);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.pnlCard);
+            this.Controls.Add(this.pnlHeader);
+            this.Name = "FrmCreateDetalleRepacion";
+            this.ShowIcon = false;
+            this.pnlCard.ResumeLayout(false);
+            this.pnlCard.PerformLayout();
+            this.pnlHeader.ResumeLayout(false);
+            this.pnlHeader.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Panel pnlCard;
+        private System.Windows.Forms.ComboBox cmbProducto;
+        private System.Windows.Forms.Label lblProducto;
+        private System.Windows.Forms.Label lblFechaUso;
+        private System.Windows.Forms.Label lblSubtotal;
+        private System.Windows.Forms.TextBox txtClave;
+        private System.Windows.Forms.Label lblPrecio;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.Label lblCantidad;
+        private System.Windows.Forms.Label lblReparacion;
+        private System.Windows.Forms.Panel pnlLinea;
+        private System.Windows.Forms.Label lblSeccion;
+        private System.Windows.Forms.Panel pnlHeader;
+        private System.Windows.Forms.Label lblSubtitulo;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.ComboBox cmbReparacion;
+        private System.Windows.Forms.DateTimePicker dtpFechaUso;
+        private System.Windows.Forms.TextBox txtSubtotal;
+    }
+}
