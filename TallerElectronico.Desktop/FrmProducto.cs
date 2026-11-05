@@ -154,13 +154,13 @@ namespace TallerElectronico.Desktop
             int? productoId = ObtenerProductoSeleccionado();
             if (!productoId.HasValue) return;
 
-            //using (FrmEditProducto frm = new FrmEditProducto(productoId.Value))
-            //{
-            //    if (frm.ShowDialog(this) == DialogResult.OK)
-            //    {
-            //        CargarProductos();
-            //    }
-            //}
+            using (FrmEditProducto frm = new FrmEditProducto(productoId.Value))
+            {
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                {
+                    CargarProductos();
+                }
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

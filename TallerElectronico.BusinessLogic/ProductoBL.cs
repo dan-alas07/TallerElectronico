@@ -16,7 +16,7 @@ namespace TallerElectronico.BusinessLogic
             return _productoDal.SelectAll();
         }
 
-        public Producto SelectById(int idProducto)
+        public ProductoDTO SelectById(int idProducto)
         {
             if (idProducto <= 0)
                 throw new ArgumentException("El ID de producto proporcionado no es válido.");

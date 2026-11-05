@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label6 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -38,11 +38,11 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.dgvMarca = new System.Windows.Forms.DataGridView();
+            this.dgvEstadoReparacion = new System.Windows.Forms.DataGridView();
             this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMarca)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstadoReparacion)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
@@ -66,6 +66,7 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(477, 32);
             this.txtBuscar.TabIndex = 55;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // label8
             // 
@@ -95,6 +96,7 @@
             this.btnEditar.TabIndex = 53;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnEliminar
             // 
@@ -113,6 +115,7 @@
             this.btnEliminar.TabIndex = 52;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnNuevo
             // 
@@ -131,72 +134,73 @@
             this.btnNuevo.TabIndex = 51;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblTitle.Location = new System.Drawing.Point(26, 31);
+            this.lblTitle.Location = new System.Drawing.Point(17, 31);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(680, 62);
             this.lblTitle.TabIndex = 50;
             this.lblTitle.Text = "Gestión de Estado Reparación";
             // 
-            // dgvMarca
+            // dgvEstadoReparacion
             // 
-            this.dgvMarca.AllowUserToAddRows = false;
-            this.dgvMarca.AllowUserToDeleteRows = false;
-            this.dgvMarca.AllowUserToResizeColumns = false;
-            this.dgvMarca.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(252)))));
-            this.dgvMarca.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.dgvMarca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMarca.BackgroundColor = System.Drawing.Color.White;
-            this.dgvMarca.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvMarca.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvMarca.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMarca.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.dgvMarca.ColumnHeadersHeight = 42;
-            this.dgvMarca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvMarca.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvEstadoReparacion.AllowUserToAddRows = false;
+            this.dgvEstadoReparacion.AllowUserToDeleteRows = false;
+            this.dgvEstadoReparacion.AllowUserToResizeColumns = false;
+            this.dgvEstadoReparacion.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(252)))));
+            this.dgvEstadoReparacion.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvEstadoReparacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvEstadoReparacion.BackgroundColor = System.Drawing.Color.White;
+            this.dgvEstadoReparacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvEstadoReparacion.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvEstadoReparacion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvEstadoReparacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvEstadoReparacion.ColumnHeadersHeight = 42;
+            this.dgvEstadoReparacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvEstadoReparacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCode,
             this.ColumnName,
             this.ColumnStatus});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMarca.DefaultCellStyle = dataGridViewCellStyle12;
-            this.dgvMarca.EnableHeadersVisualStyles = false;
-            this.dgvMarca.GridColor = System.Drawing.Color.White;
-            this.dgvMarca.Location = new System.Drawing.Point(34, 326);
-            this.dgvMarca.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvMarca.MultiSelect = false;
-            this.dgvMarca.Name = "dgvMarca";
-            this.dgvMarca.ReadOnly = true;
-            this.dgvMarca.RowHeadersVisible = false;
-            this.dgvMarca.RowHeadersWidth = 51;
-            this.dgvMarca.RowTemplate.Height = 36;
-            this.dgvMarca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMarca.Size = new System.Drawing.Size(1440, 265);
-            this.dgvMarca.TabIndex = 49;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEstadoReparacion.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvEstadoReparacion.EnableHeadersVisualStyles = false;
+            this.dgvEstadoReparacion.GridColor = System.Drawing.Color.White;
+            this.dgvEstadoReparacion.Location = new System.Drawing.Point(34, 333);
+            this.dgvEstadoReparacion.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvEstadoReparacion.MultiSelect = false;
+            this.dgvEstadoReparacion.Name = "dgvEstadoReparacion";
+            this.dgvEstadoReparacion.ReadOnly = true;
+            this.dgvEstadoReparacion.RowHeadersVisible = false;
+            this.dgvEstadoReparacion.RowHeadersWidth = 51;
+            this.dgvEstadoReparacion.RowTemplate.Height = 36;
+            this.dgvEstadoReparacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvEstadoReparacion.Size = new System.Drawing.Size(1440, 358);
+            this.dgvEstadoReparacion.TabIndex = 49;
             // 
             // ColumnCode
             // 
-            this.ColumnCode.DataPropertyName = "MarcaId";
+            this.ColumnCode.DataPropertyName = "EstadoReparacionId";
             this.ColumnCode.FillWeight = 65F;
             this.ColumnCode.HeaderText = "Código";
             this.ColumnCode.MinimumWidth = 6;
@@ -224,6 +228,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1533, 726);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtBuscar);
@@ -232,10 +237,11 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.dgvMarca);
+            this.Controls.Add(this.dgvEstadoReparacion);
             this.Name = "FrmEstadoReparacion";
             this.ShowIcon = false;
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMarca)).EndInit();
+            this.Load += new System.EventHandler(this.FrmEstadoReparacion_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstadoReparacion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,7 +256,7 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.DataGridView dgvMarca;
+        private System.Windows.Forms.DataGridView dgvEstadoReparacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;

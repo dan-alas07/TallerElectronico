@@ -35,14 +35,27 @@ namespace TallerElectronico.Desktop
                 cmbProveedor.SelectedIndex = -1;
 
                 cmbEstado.SelectedIndex = 0; // "A" (Activo) por defecto
-                txtCantidadStock.Text = 0.ToString();
-                txtPrecioUnitario.Text = "0.00";
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar los datos iniciales del producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void txtPrecioUnitario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite números (0-9) y teclas de control (como Borrar/Backspace)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true; // Cancela la tecla presionada (no la escribe)
+            }
+
+            // Permite solo un punto decimal
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true; // Cancela si ya existe un punto en el texto
+            }
+        }
+
 
         private static Random generador = new Random();
 
@@ -85,7 +98,7 @@ namespace TallerElectronico.Desktop
             {
                 int proveedorId = cmbProveedor.SelectedValue != null ? Convert.ToInt32(cmbProveedor.SelectedValue) : 0;
                 decimal.TryParse(txtPrecioUnitario.Text.Trim(), out decimal precio);
-                int.TryParse(txtCantidadStock.Text.Trim(), out int stock);
+                int.TryParse(nudCantidadStock.Value.ToString(), out int stock);
 
                 Producto producto = new Producto
                 {
