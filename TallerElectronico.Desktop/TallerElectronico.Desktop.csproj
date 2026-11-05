@@ -85,6 +85,12 @@
     <Compile Include="FrmCreateCliente.Designer.cs">
       <DependentUpon>FrmCreateCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCreateDetalleRepacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateDetalleRepacion.Designer.cs">
+      <DependentUpon>FrmCreateDetalleRepacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCreateEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,12 @@
     <Compile Include="FrmEditCliente.Designer.cs">
       <DependentUpon>FrmEditCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEditDetalleReparacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditDetalleReparacion.Designer.cs">
+      <DependentUpon>FrmEditDetalleReparacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEditEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +168,12 @@
     </Compile>
     <Compile Include="FrmEditUsuario.Designer.cs">
       <DependentUpon>FrmEditUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEstadoReparacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEstadoReparacion.Designer.cs">
+      <DependentUpon>FrmEstadoReparacion.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmProducto.cs">
       <SubType>Form</SubType>
@@ -225,6 +243,9 @@
     <EmbeddedResource Include="FrmCreateCliente.resx">
       <DependentUpon>FrmCreateCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateDetalleRepacion.resx">
+      <DependentUpon>FrmCreateDetalleRepacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCreateEmpleado.resx">
       <DependentUpon>FrmCreateEmpleado.cs</DependentUpon>
     </EmbeddedResource>
@@ -246,6 +267,9 @@
     <EmbeddedResource Include="FrmEditCliente.resx">
       <DependentUpon>FrmEditCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditDetalleReparacion.resx">
+      <DependentUpon>FrmEditDetalleReparacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEditEmpleado.resx">
       <DependentUpon>FrmEditEmpleado.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEditUsuario.resx">
       <DependentUpon>FrmEditUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEstadoReparacion.resx">
+      <DependentUpon>FrmEstadoReparacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProducto.resx">
       <DependentUpon>FrmProducto.cs</DependentUpon>
