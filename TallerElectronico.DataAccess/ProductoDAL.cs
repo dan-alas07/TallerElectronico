@@ -8,14 +8,38 @@ namespace TallerElectronico.DataAccess
 {
     public class ProductoDAL
     {
-        public List<Producto> SelectAll()
+
+        public List<ProductoDTO> SelectAll()
         {
             using (var db = new TallerElectronicoEntities())
             {
                 return db.Producto.AsNoTracking()
-                                  .Include(p => p.Proveedor)
-                                  .Where(p => p.Estado == "A")
-                                  .ToList();
+                    .OrderBy(p => p.Nombre)
+                    .Select(p => new ProductoDTO
+                    {
+                        ProductoId = p.ProductoId,
+                        Codigo = p.Codigo,
+                        Nombre = p.Nombre,
+                        Descripcion = p.Descripcion,
+                        CantidadStock = p.CantidadStock,
+                        PrecioUnitario = p.PrecioUnitario,
+                        Estado = p.Estado == "A" ? "Activo" : "Inactivo",
+
+                        // Claves Foráneas para edición y control interno
+                        ProveedorId = p.ProveedorId,
+                        UsuarioCreacionId = p.UsuarioCreacionId,
+
+                        // Uniones (JOINs implícitos mediante propiedades de navegación)
+                        ProveedorNombre = p.Proveedor != null ? p.Proveedor.Nombre : "Sin Proveedor",
+
+                        // Mapea el nombre del usuario que creó el producto (accediendo a Empleado si aplica o a su Nombre directo)
+                        UsuarioCreacionNombre = p.Usuario != null
+                            ? (p.Usuario.Empleado != null
+                                ? p.Usuario.Empleado.Nombre + " " + p.Usuario.Empleado.Apellido
+                                : p.Usuario.Nombre)
+                            : "Sin Usuario"
+                    })
+                    .ToList();
             }
         }
 

@@ -11,7 +11,7 @@ namespace TallerElectronico.BusinessLogic
         private readonly ProductoDAL _productoDal = new ProductoDAL();
         private readonly ProveedorDAL _proveedorDal = new ProveedorDAL();
 
-        public List<Producto> SelectAll()
+        public List<ProductoDTO> SelectAll()
         {
             return _productoDal.SelectAll();
         }

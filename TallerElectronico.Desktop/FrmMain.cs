@@ -100,5 +100,10 @@ namespace TallerElectronico.Desktop
         {
             OpenFrm(new FrmReparacion());
         }
+
+        private void btnProducto_Click(object sender, EventArgs e)
+        {
+            OpenFrm(new FrmProducto());
+        }
     }
 }
