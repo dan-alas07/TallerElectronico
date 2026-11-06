@@ -1,35 +1,24 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Entity;
 using TallerElectronico.Entities;
 
 namespace TallerElectronico.DataAccess
 {
     public class EmpleadoDAL
     {
-        //public List<Empleado> SelectAll()
-        //{
-        //    using (var db = new TallerElectronicoEntities())
-        //    {
-        //        return db.Empleado.AsNoTracking()
-        //                          .Where(e => e.Estado == "A")
-        //                          .ToList();
-        //    }
-        //}
-
-        public List<Empleado> SelectAll()
+        public List<EmpleadoDTO> SelectAll()
         {
             using (var db = new TallerElectronicoEntities())
             {
                 return db.Empleado
                          .AsNoTracking()
-                         .Where(p => p.Estado == "A")
-                         .ToList()
-                         .Select(p => new Empleado
+                         .OrderBy(p => p.Nombre)
+                         .Select(p => new EmpleadoDTO
                          {
-                             EmpleadoId = p.EmpleadoId,
+                             Id = p.EmpleadoId,
                              Nombre = p.Nombre,
                              Apellido = p.Apellido,
                              DUI = p.DUI,
@@ -42,15 +31,6 @@ namespace TallerElectronico.DataAccess
                          .ToList();
             }
         }
-
-        //public Empleado SelectById(int idEmpleado)
-        //{
-        //    using (var db = new TallerElectronicoEntities())
-        //    {
-        //        return db.Empleado.AsNoTracking()
-        //                          .FirstOrDefault(e => e.EmpleadoId == idEmpleado && e.Estado == "A");
-        //    }
-        //}
 
         public Empleado SelectById(int idEmpleado)
         {
@@ -112,7 +92,8 @@ namespace TallerElectronico.DataAccess
             }
         }
 
-        // Metodos extras
+        // Métodos extras
+
         public bool ExistsByDui(string dui, int? excludeEmpleadoId = null)
         {
             using (var db = new TallerElectronicoEntities())
@@ -135,17 +116,16 @@ namespace TallerElectronico.DataAccess
             }
         }
 
-        public List<Empleado> Search(string criterio)
+        public List<EmpleadoDTO> Search(string criterio)
         {
             using (var db = new TallerElectronicoEntities())
             {
-                var query = db.Empleado
-                              .AsNoTracking()
-                              .Where(p => p.Estado == "A");
+                IQueryable<Empleado> query = db.Empleado.AsNoTracking();
 
                 if (!string.IsNullOrWhiteSpace(criterio))
                 {
                     criterio = criterio.Trim().ToLower();
+
                     int idBusqueda;
                     bool esNumero = int.TryParse(criterio, out idBusqueda);
 
@@ -159,7 +139,21 @@ namespace TallerElectronico.DataAccess
                         (p.Direccion != null && p.Direccion.ToLower().Contains(criterio))
                     );
                 }
-                return query.OrderBy(p => p.Nombre).ToList();
+
+                return query.OrderBy(p => p.Nombre)
+                            .Select(p => new EmpleadoDTO
+                            {
+                                Id = p.EmpleadoId,
+                                Nombre = p.Nombre,
+                                Apellido = p.Apellido,
+                                DUI = p.DUI,
+                                Telefono = p.Telefono,
+                                Correo = p.Correo,
+                                Direccion = p.Direccion,
+                                FechaContratacion = p.FechaContratacion,
+                                Estado = p.Estado == "A" ? "Activo" : "Inactivo"
+                            })
+                            .ToList();
             }
         }
     }

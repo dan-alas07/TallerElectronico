@@ -61,6 +61,7 @@
     <Compile Include="Empleado.cs">
       <DependentUpon>TallerElectronicoModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EmpleadoDTO.cs" />
     <Compile Include="EstadoReparacion.cs">
       <DependentUpon>TallerElectronicoModel.tt</DependentUpon>
     </Compile>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using TallerElectronico.DataAccess;
@@ -10,10 +11,13 @@ namespace TallerElectronico.BusinessLogic
     {
         private readonly EmpleadoDAL _empleadoDal = new EmpleadoDAL();
 
-        private static readonly Regex RegexDui = new Regex(@"^\d{8}-\d{1}$", RegexOptions.Compiled);
-        private static readonly Regex RegexCorreo = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.Compiled);
+        private static readonly Regex RegexDui =
+            new Regex(@"^\d{8}-\d{1}$", RegexOptions.Compiled);
 
-        public List<Empleado> SelectAll()
+        private static readonly Regex RegexCorreo =
+            new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.Compiled);
+
+        public List<EmpleadoDTO> SelectAll()
         {
             return _empleadoDal.SelectAll();
         }
@@ -31,10 +35,12 @@ namespace TallerElectronico.BusinessLogic
             ValidarDatosEmpleado(empleado);
 
             if (_empleadoDal.ExistsByDui(empleado.DUI))
-                throw new InvalidOperationException($"El DUI '{empleado.DUI}' ya se encuentra registrado.");
+                throw new InvalidOperationException(
+                    $"El DUI '{empleado.DUI}' ya se encuentra registrado.");
 
             if (_empleadoDal.ExistsByEmail(empleado.Correo))
-                throw new InvalidOperationException($"El correo '{empleado.Correo}' ya se encuentra registrado.");
+                throw new InvalidOperationException(
+                    $"El correo '{empleado.Correo}' ya se encuentra registrado.");
 
             empleado.Estado = "A";
 
@@ -44,23 +50,35 @@ namespace TallerElectronico.BusinessLogic
         public Empleado Update(Empleado empleadoModificado)
         {
             if (empleadoModificado == null)
-                throw new ArgumentNullException(nameof(empleadoModificado), "Los datos del empleado son requeridos.");
+                throw new ArgumentNullException(
+                    nameof(empleadoModificado),
+                    "Los datos del empleado son requeridos.");
 
             if (empleadoModificado.EmpleadoId <= 0)
                 throw new ArgumentException("El ID de empleado no es válido.");
 
             ValidarDatosEmpleado(empleadoModificado);
 
-            // Excluye el ID actual para evitar falsos positivos con el mismo registro
-            if (_empleadoDal.ExistsByDui(empleadoModificado.DUI, empleadoModificado.EmpleadoId))
-                throw new InvalidOperationException($"El DUI '{empleadoModificado.DUI}' ya está registrado para otro empleado.");
+            // Excluye el ID actual para evitar falsos positivos
+            if (_empleadoDal.ExistsByDui(
+                empleadoModificado.DUI, empleadoModificado.EmpleadoId))
+            {
+                throw new InvalidOperationException(
+                    $"El DUI '{empleadoModificado.DUI}' ya está registrado para otro empleado.");
+            }
 
-            if (_empleadoDal.ExistsByEmail(empleadoModificado.Correo, empleadoModificado.EmpleadoId))
-                throw new InvalidOperationException($"El correo '{empleadoModificado.Correo}' ya está registrado para otro empleado.");
+            if (_empleadoDal.ExistsByEmail(
+                empleadoModificado.Correo, empleadoModificado.EmpleadoId))
+            {
+                throw new InvalidOperationException(
+                    $"El correo '{empleadoModificado.Correo}' ya está registrado para otro empleado.");
+            }
 
             var empleadoActualizado = _empleadoDal.Update(empleadoModificado);
+
             if (empleadoActualizado == null)
-                throw new InvalidOperationException($"El empleado con ID {empleadoModificado.EmpleadoId} no existe o se encuentra inactivo.");
+                throw new InvalidOperationException(
+                    $"El empleado con ID {empleadoModificado.EmpleadoId} no existe o se encuentra inactivo.");
 
             return empleadoActualizado;
         }
@@ -71,8 +89,10 @@ namespace TallerElectronico.BusinessLogic
                 throw new ArgumentException("El ID de empleado no es válido.");
 
             bool eliminado = _empleadoDal.Delete(idEmpleado);
+
             if (!eliminado)
-                throw new InvalidOperationException($"El empleado con ID {idEmpleado} no existe o ya se encuentra inactivo.");
+                throw new InvalidOperationException(
+                    $"El empleado con ID {idEmpleado} no existe o ya se encuentra inactivo.");
 
             return true;
         }
@@ -80,7 +100,9 @@ namespace TallerElectronico.BusinessLogic
         private void ValidarDatosEmpleado(Empleado empleado)
         {
             if (empleado == null)
-                throw new ArgumentNullException(nameof(empleado), "Los datos del empleado son requeridos.");
+                throw new ArgumentNullException(
+                    nameof(empleado),
+                    "Los datos del empleado son requeridos.");
 
             if (string.IsNullOrWhiteSpace(empleado.Nombre))
                 throw new ArgumentException("El nombre del empleado es obligatorio.");
@@ -131,10 +153,9 @@ namespace TallerElectronico.BusinessLogic
                 throw new ArgumentException("Debe seleccionar una fecha de contratación válida.");
         }
 
-        public List<Empleado> Search(string criterio)
+        public List<EmpleadoDTO> Search(string criterio)
         {
             return _empleadoDal.Search(criterio);
         }
     }
-
 }
