@@ -1,6 +1,6 @@
 ﻿namespace TallerElectronico.Desktop
 {
-    partial class FrmCreateDetalleRepacion
+    partial class FrmCreateDetalleReparacion
     {
         /// <summary>
         /// Required designer variable.

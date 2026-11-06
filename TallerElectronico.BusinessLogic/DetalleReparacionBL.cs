@@ -11,7 +11,7 @@ namespace TallerElectronico.BusinessLogic
         private readonly ReparacionDAL _reparacionDal = new ReparacionDAL();
         private readonly ProductoDAL _productoDal = new ProductoDAL();
 
-        public List<DetalleReparacion> SelectAll()
+        public List<DetalleReparacionDTO> SelectAll()
         {
             return _detalleReparacionDal.SelectAll();
         }
@@ -24,7 +24,7 @@ namespace TallerElectronico.BusinessLogic
             return _detalleReparacionDal.SelectByReparacionId(idReparacion);
         }
 
-        public DetalleReparacion SelectById(int idDetalleReparacion)
+        public DetalleReparacionDTO SelectById(int idDetalleReparacion)
         {
             if (idDetalleReparacion <= 0)
                 throw new ArgumentException("El ID de detalle de reparación proporcionado no es válido.");

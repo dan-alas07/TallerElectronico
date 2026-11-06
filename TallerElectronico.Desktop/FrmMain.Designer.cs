@@ -29,24 +29,26 @@
         private void InitializeComponent()
         {
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.btnEstadoReparacion = new System.Windows.Forms.Button();
             this.btnProducto = new System.Windows.Forms.Button();
             this.btnReparacion = new System.Windows.Forms.Button();
             this.btnMarca = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
             this.btnProveedor = new System.Windows.Forms.Button();
             this.btnUsuario = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.pnlContainer = new System.Windows.Forms.Panel();
-            this.btnEstadoReparacion = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnDetalleReparacion = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            this.pnlMain.Controls.Add(this.btnDetalleReparacion);
             this.pnlMain.Controls.Add(this.btnEstadoReparacion);
             this.pnlMain.Controls.Add(this.btnProducto);
             this.pnlMain.Controls.Add(this.btnReparacion);
@@ -62,8 +64,24 @@
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(293, 766);
+            this.pnlMain.Size = new System.Drawing.Size(293, 844);
             this.pnlMain.TabIndex = 0;
+            // 
+            // btnEstadoReparacion
+            // 
+            this.btnEstadoReparacion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEstadoReparacion.FlatAppearance.BorderSize = 0;
+            this.btnEstadoReparacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEstadoReparacion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEstadoReparacion.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnEstadoReparacion.Location = new System.Drawing.Point(31, 681);
+            this.btnEstadoReparacion.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEstadoReparacion.Name = "btnEstadoReparacion";
+            this.btnEstadoReparacion.Size = new System.Drawing.Size(239, 49);
+            this.btnEstadoReparacion.TabIndex = 11;
+            this.btnEstadoReparacion.Text = "Estado Reparación";
+            this.btnEstadoReparacion.UseVisualStyleBackColor = true;
+            this.btnEstadoReparacion.Click += new System.EventHandler(this.btnEstadoReparacion_Click);
             // 
             // btnProducto
             // 
@@ -142,6 +160,24 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Taller Electrónica";
             // 
+            // button6
+            // 
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.SystemColors.Window;
+            this.button6.Image = global::TallerElectronico.Desktop.Properties.Resources.homepage;
+            this.button6.Location = new System.Drawing.Point(44, 142);
+            this.button6.Margin = new System.Windows.Forms.Padding(4);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(200, 49);
+            this.button6.TabIndex = 1;
+            this.button6.Text = "Inicio";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.btnMain_Click);
+            // 
             // btnProveedor
             // 
             this.btnProveedor.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -213,50 +249,32 @@
             this.pnlContainer.Location = new System.Drawing.Point(293, 0);
             this.pnlContainer.Margin = new System.Windows.Forms.Padding(4);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(774, 766);
+            this.pnlContainer.Size = new System.Drawing.Size(774, 844);
             this.pnlContainer.TabIndex = 1;
             this.pnlContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContainer_Paint);
             // 
-            // btnEstadoReparacion
+            // btnDetalleReparacion
             // 
-            this.btnEstadoReparacion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEstadoReparacion.FlatAppearance.BorderSize = 0;
-            this.btnEstadoReparacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEstadoReparacion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstadoReparacion.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnEstadoReparacion.Location = new System.Drawing.Point(31, 681);
-            this.btnEstadoReparacion.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEstadoReparacion.Name = "btnEstadoReparacion";
-            this.btnEstadoReparacion.Size = new System.Drawing.Size(239, 49);
-            this.btnEstadoReparacion.TabIndex = 11;
-            this.btnEstadoReparacion.Text = "Estado Reparación";
-            this.btnEstadoReparacion.UseVisualStyleBackColor = true;
-            this.btnEstadoReparacion.Click += new System.EventHandler(this.btnEstadoReparacion_Click);
-            // 
-            // button6
-            // 
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.SystemColors.Window;
-            this.button6.Image = global::TallerElectronico.Desktop.Properties.Resources.homepage;
-            this.button6.Location = new System.Drawing.Point(44, 142);
-            this.button6.Margin = new System.Windows.Forms.Padding(4);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(200, 49);
-            this.button6.TabIndex = 1;
-            this.button6.Text = "Inicio";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.btnMain_Click);
+            this.btnDetalleReparacion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDetalleReparacion.FlatAppearance.BorderSize = 0;
+            this.btnDetalleReparacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetalleReparacion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalleReparacion.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnDetalleReparacion.Location = new System.Drawing.Point(31, 738);
+            this.btnDetalleReparacion.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDetalleReparacion.Name = "btnDetalleReparacion";
+            this.btnDetalleReparacion.Size = new System.Drawing.Size(239, 49);
+            this.btnDetalleReparacion.TabIndex = 12;
+            this.btnDetalleReparacion.Text = "Detalle Reparación";
+            this.btnDetalleReparacion.UseVisualStyleBackColor = true;
+            this.btnDetalleReparacion.Click += new System.EventHandler(this.btnDetalleReparacion_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1067, 766);
+            this.ClientSize = new System.Drawing.Size(1067, 844);
             this.Controls.Add(this.pnlContainer);
             this.Controls.Add(this.pnlMain);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -284,5 +302,6 @@
         private System.Windows.Forms.Button btnReparacion;
         private System.Windows.Forms.Button btnProducto;
         private System.Windows.Forms.Button btnEstadoReparacion;
+        private System.Windows.Forms.Button btnDetalleReparacion;
     }
 }

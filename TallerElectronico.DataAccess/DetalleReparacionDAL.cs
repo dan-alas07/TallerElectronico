@@ -8,14 +8,39 @@ namespace TallerElectronico.DataAccess
 {
     public class DetalleReparacionDAL
     {
-        public List<DetalleReparacion> SelectAll()
+        public List<DetalleReparacionDTO> SelectAll()
         {
             using (var db = new TallerElectronicoEntities())
             {
                 return db.DetalleReparacion.AsNoTracking()
-                                           .Include(d => d.Reparacion)
-                                           .Include(d => d.Producto)
-                                           .ToList();
+                    .OrderByDescending(d => d.FechaUso)
+                    .Select(d => new DetalleReparacionDTO
+                    {
+                        DetalleReparacionId = d.DetalleReparacionId,
+                        ReparacionId = d.ReparacionId,
+                        ProductoId = d.ProductoId,
+                        CantidadUtilizada = d.CantidadUtilizada,
+                        PrecioUnitarioHistorico = d.PrecioUnitarioHistorico,
+                        Subtotal = d.CantidadUtilizada * d.PrecioUnitarioHistorico, // O d.Subtotal si Entity Framework lo reconoce directamente
+                        FechaUso = d.FechaUso,
+
+                        // Campos de auditoría
+                        UsuarioCreacionId = d.UsuarioCreacionId,
+                        FechaModificacion = d.FechaModificacion,
+                        UsuarioModificacionId = d.UsuarioModificacionId,
+
+                        // Uniones (JOINs implícitos mediante propiedades de navegación)
+                        ReparacionCodigo = d.Reparacion != null ? d.Reparacion.CodigoSeguimiento : "Sin Código",
+                        ProductoNombre = d.Producto != null ? d.Producto.Nombre : "Producto Desconocido",
+
+                        // Mapeo del usuario que registró el uso del repuesto/producto
+                        UsuarioCreacionNombre = d.Usuario != null
+                            ? (d.Usuario.Empleado != null
+                                ? d.Usuario.Empleado.Nombre + " " + d.Usuario.Empleado.Apellido
+                                : d.Usuario.Nombre)
+                            : "Sin Usuario"
+                    })
+                    .ToList();
             }
         }
 
@@ -30,14 +55,39 @@ namespace TallerElectronico.DataAccess
             }
         }
 
-        public DetalleReparacion SelectById(int idDetalleReparacion)
+        public DetalleReparacionDTO SelectById(int idDetalleReparacion)
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.DetalleReparacion.AsNoTracking()
-                                           .Include(d => d.Reparacion)
-                                           .Include(d => d.Producto)
-                                           .FirstOrDefault(d => d.DetalleReparacionId == idDetalleReparacion);
+                return db.DetalleReparacion
+                         .AsNoTracking()
+                         .Where(d => d.DetalleReparacionId == idDetalleReparacion)
+                         .Select(d => new DetalleReparacionDTO
+                         {
+                             DetalleReparacionId = d.DetalleReparacionId,
+                             ReparacionId = d.ReparacionId,
+                             ProductoId = d.ProductoId,
+                             CantidadUtilizada = d.CantidadUtilizada,
+                             PrecioUnitarioHistorico = d.PrecioUnitarioHistorico,
+                             Subtotal = d.CantidadUtilizada * d.PrecioUnitarioHistorico,
+                             FechaUso = d.FechaUso,
+
+                             // Campos de auditoría
+                             UsuarioCreacionId = d.UsuarioCreacionId,
+                             FechaModificacion = d.FechaModificacion,
+                             UsuarioModificacionId = d.UsuarioModificacionId,
+
+                             // Relaciones descriptivas
+                             ReparacionCodigo = d.Reparacion != null ? d.Reparacion.CodigoSeguimiento : "Sin Código",
+                             ProductoNombre = d.Producto != null ? d.Producto.Nombre : "Producto Desconocido",
+
+                             UsuarioCreacionNombre = d.Usuario != null
+                                 ? (d.Usuario.Empleado != null
+                                     ? d.Usuario.Empleado.Nombre + " " + d.Usuario.Empleado.Apellido
+                                     : d.Usuario.Nombre)
+                                 : "Sin Usuario"
+                         })
+                         .FirstOrDefault();
             }
         }
 

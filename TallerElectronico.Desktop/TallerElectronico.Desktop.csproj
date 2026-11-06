@@ -85,11 +85,11 @@
     <Compile Include="FrmCreateCliente.Designer.cs">
       <DependentUpon>FrmCreateCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCreateDetalleRepacion.cs">
+    <Compile Include="FrmCreateDetalleReparacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCreateDetalleRepacion.Designer.cs">
-      <DependentUpon>FrmCreateDetalleRepacion.cs</DependentUpon>
+    <Compile Include="FrmCreateDetalleReparacion.Designer.cs">
+      <DependentUpon>FrmCreateDetalleReparacion.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCreateEmpleado.cs">
       <SubType>Form</SubType>
@@ -273,8 +273,8 @@
     <EmbeddedResource Include="FrmCreateCliente.resx">
       <DependentUpon>FrmCreateCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCreateDetalleRepacion.resx">
-      <DependentUpon>FrmCreateDetalleRepacion.cs</DependentUpon>
+    <EmbeddedResource Include="FrmCreateDetalleReparacion.resx">
+      <DependentUpon>FrmCreateDetalleReparacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCreateEmpleado.resx">
       <DependentUpon>FrmCreateEmpleado.cs</DependentUpon>

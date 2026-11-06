@@ -39,7 +39,7 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.dgvCliente = new System.Windows.Forms.DataGridView();
+            this.dgvDetalleReparacion = new System.Windows.Forms.DataGridView();
             this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnRepairCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,10 +47,7 @@
             this.ColumnUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnUseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCreateUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDateModified = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnEditUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleReparacion)).BeginInit();
             this.SuspendLayout();
             // 
             // txtBuscar
@@ -60,7 +57,7 @@
             this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtBuscar.Location = new System.Drawing.Point(28, 167);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(477, 32);
             this.txtBuscar.TabIndex = 55;
@@ -97,12 +94,13 @@
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.White;
             this.btnEditar.Location = new System.Drawing.Point(227, 244);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(193, 52);
             this.btnEditar.TabIndex = 52;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnEliminar
             // 
@@ -115,12 +113,13 @@
             this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.Location = new System.Drawing.Point(428, 244);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(193, 52);
             this.btnEliminar.TabIndex = 51;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnBuscar
             // 
@@ -133,7 +132,7 @@
             this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
             this.btnBuscar.Location = new System.Drawing.Point(512, 167);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(100, 28);
             this.btnBuscar.TabIndex = 56;
@@ -151,12 +150,13 @@
             this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
             this.btnNuevo.Location = new System.Drawing.Point(25, 244);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(193, 52);
             this.btnNuevo.TabIndex = 50;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // lblTitle
             // 
@@ -170,19 +170,19 @@
             this.lblTitle.TabIndex = 49;
             this.lblTitle.Text = "Detalle de reparación";
             // 
-            // dgvCliente
+            // dgvDetalleReparacion
             // 
-            this.dgvCliente.AllowUserToAddRows = false;
-            this.dgvCliente.AllowUserToDeleteRows = false;
-            this.dgvCliente.AllowUserToResizeColumns = false;
-            this.dgvCliente.AllowUserToResizeRows = false;
+            this.dgvDetalleReparacion.AllowUserToAddRows = false;
+            this.dgvDetalleReparacion.AllowUserToDeleteRows = false;
+            this.dgvDetalleReparacion.AllowUserToResizeColumns = false;
+            this.dgvDetalleReparacion.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(252)))));
-            this.dgvCliente.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvCliente.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCliente.BackgroundColor = System.Drawing.Color.White;
-            this.dgvCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvCliente.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvCliente.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvDetalleReparacion.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDetalleReparacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDetalleReparacion.BackgroundColor = System.Drawing.Color.White;
+            this.dgvDetalleReparacion.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvDetalleReparacion.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvDetalleReparacion.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -190,20 +190,17 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvCliente.ColumnHeadersHeight = 42;
-            this.dgvCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDetalleReparacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvDetalleReparacion.ColumnHeadersHeight = 42;
+            this.dgvDetalleReparacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvDetalleReparacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCode,
             this.ColumnRepairCode,
             this.ColumnProductCode,
             this.ColumnQuantiyUses,
             this.ColumnUnitPrice,
             this.ColumnSubtotal,
-            this.ColumnUseDate,
-            this.ColumnCreateUser,
-            this.ColumnDateModified,
-            this.ColumnEditUser});
+            this.ColumnUseDate});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -212,25 +209,26 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCliente.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvCliente.EnableHeadersVisualStyles = false;
-            this.dgvCliente.GridColor = System.Drawing.Color.White;
-            this.dgvCliente.Location = new System.Drawing.Point(25, 316);
-            this.dgvCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dgvCliente.MultiSelect = false;
-            this.dgvCliente.Name = "dgvCliente";
-            this.dgvCliente.ReadOnly = true;
-            this.dgvCliente.RowHeadersVisible = false;
-            this.dgvCliente.RowHeadersWidth = 51;
-            this.dgvCliente.RowTemplate.Height = 36;
-            this.dgvCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCliente.Size = new System.Drawing.Size(1440, 265);
-            this.dgvCliente.TabIndex = 48;
+            this.dgvDetalleReparacion.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvDetalleReparacion.EnableHeadersVisualStyles = false;
+            this.dgvDetalleReparacion.GridColor = System.Drawing.Color.White;
+            this.dgvDetalleReparacion.Location = new System.Drawing.Point(25, 316);
+            this.dgvDetalleReparacion.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvDetalleReparacion.MultiSelect = false;
+            this.dgvDetalleReparacion.Name = "dgvDetalleReparacion";
+            this.dgvDetalleReparacion.ReadOnly = true;
+            this.dgvDetalleReparacion.RowHeadersVisible = false;
+            this.dgvDetalleReparacion.RowHeadersWidth = 51;
+            this.dgvDetalleReparacion.RowTemplate.Height = 36;
+            this.dgvDetalleReparacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDetalleReparacion.Size = new System.Drawing.Size(1691, 265);
+            this.dgvDetalleReparacion.TabIndex = 48;
+            this.dgvDetalleReparacion.SelectionChanged += new System.EventHandler(this.dgvDetalleReparacion_SelectionChanged);
             // 
             // ColumnCode
             // 
             this.ColumnCode.DataPropertyName = "DetalleReparacionId";
-            this.ColumnCode.FillWeight = 65F;
+            this.ColumnCode.FillWeight = 14.39591F;
             this.ColumnCode.HeaderText = "Código";
             this.ColumnCode.MinimumWidth = 6;
             this.ColumnCode.Name = "ColumnCode";
@@ -238,8 +236,8 @@
             // 
             // ColumnRepairCode
             // 
-            this.ColumnRepairCode.DataPropertyName = "ReparacionId";
-            this.ColumnRepairCode.FillWeight = 85F;
+            this.ColumnRepairCode.DataPropertyName = "ReparacionCodigo";
+            this.ColumnRepairCode.FillWeight = 18.82542F;
             this.ColumnRepairCode.HeaderText = "Código Reparación";
             this.ColumnRepairCode.MinimumWidth = 6;
             this.ColumnRepairCode.Name = "ColumnRepairCode";
@@ -247,8 +245,8 @@
             // 
             // ColumnProductCode
             // 
-            this.ColumnProductCode.DataPropertyName = "ProductoId";
-            this.ColumnProductCode.FillWeight = 85F;
+            this.ColumnProductCode.DataPropertyName = "ProductoNombre";
+            this.ColumnProductCode.FillWeight = 18.82542F;
             this.ColumnProductCode.HeaderText = "Producto";
             this.ColumnProductCode.MinimumWidth = 6;
             this.ColumnProductCode.Name = "ColumnProductCode";
@@ -257,7 +255,7 @@
             // ColumnQuantiyUses
             // 
             this.ColumnQuantiyUses.DataPropertyName = "CantidadUtilizada";
-            this.ColumnQuantiyUses.FillWeight = 85F;
+            this.ColumnQuantiyUses.FillWeight = 18.82542F;
             this.ColumnQuantiyUses.HeaderText = "Cantidad";
             this.ColumnQuantiyUses.MinimumWidth = 6;
             this.ColumnQuantiyUses.Name = "ColumnQuantiyUses";
@@ -266,7 +264,7 @@
             // ColumnUnitPrice
             // 
             this.ColumnUnitPrice.DataPropertyName = "PrecioUnitarioHistorico";
-            this.ColumnUnitPrice.FillWeight = 85F;
+            this.ColumnUnitPrice.FillWeight = 18.82542F;
             this.ColumnUnitPrice.HeaderText = "Precio Unitario";
             this.ColumnUnitPrice.MinimumWidth = 6;
             this.ColumnUnitPrice.Name = "ColumnUnitPrice";
@@ -275,7 +273,7 @@
             // ColumnSubtotal
             // 
             this.ColumnSubtotal.DataPropertyName = "Subtotal";
-            this.ColumnSubtotal.FillWeight = 125F;
+            this.ColumnSubtotal.FillWeight = 27.68444F;
             this.ColumnSubtotal.HeaderText = "Subtotal";
             this.ColumnSubtotal.MinimumWidth = 6;
             this.ColumnSubtotal.Name = "ColumnSubtotal";
@@ -284,41 +282,17 @@
             // ColumnUseDate
             // 
             this.ColumnUseDate.DataPropertyName = "FechaUso";
-            this.ColumnUseDate.FillWeight = 120F;
+            this.ColumnUseDate.FillWeight = 26.57706F;
             this.ColumnUseDate.HeaderText = "Fecha Uso";
             this.ColumnUseDate.MinimumWidth = 6;
             this.ColumnUseDate.Name = "ColumnUseDate";
             this.ColumnUseDate.ReadOnly = true;
             // 
-            // ColumnCreateUser
-            // 
-            this.ColumnCreateUser.DataPropertyName = "UsuarioCreacionId";
-            this.ColumnCreateUser.HeaderText = "Creado";
-            this.ColumnCreateUser.MinimumWidth = 6;
-            this.ColumnCreateUser.Name = "ColumnCreateUser";
-            this.ColumnCreateUser.ReadOnly = true;
-            // 
-            // ColumnDateModified
-            // 
-            this.ColumnDateModified.DataPropertyName = "FechaModificacion";
-            this.ColumnDateModified.HeaderText = "Fecha Modificación";
-            this.ColumnDateModified.MinimumWidth = 6;
-            this.ColumnDateModified.Name = "ColumnDateModified";
-            this.ColumnDateModified.ReadOnly = true;
-            // 
-            // ColumnEditUser
-            // 
-            this.ColumnEditUser.DataPropertyName = "UsuarioModicacionId";
-            this.ColumnEditUser.HeaderText = "Modificado";
-            this.ColumnEditUser.MinimumWidth = 6;
-            this.ColumnEditUser.Name = "ColumnEditUser";
-            this.ColumnEditUser.ReadOnly = true;
-            // 
             // FrmDetalleReparacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1471, 554);
+            this.ClientSize = new System.Drawing.Size(1783, 554);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lblBuscar);
             this.Controls.Add(this.label8);
@@ -327,11 +301,12 @@
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.dgvCliente);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Controls.Add(this.dgvDetalleReparacion);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmDetalleReparacion";
             this.ShowIcon = false;
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).EndInit();
+            this.Load += new System.EventHandler(this.FrmDetalleReparacion_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleReparacion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,7 +322,7 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.DataGridView dgvCliente;
+        private System.Windows.Forms.DataGridView dgvDetalleReparacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRepairCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProductCode;
@@ -355,8 +330,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUnitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSubtotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUseDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCreateUser;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateModified;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEditUser;
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TallerElectronico.Desktop
 {
-    public partial class FrmCreateDetalleRepacion : Form
+    public partial class FrmCreateDetalleReparacion : Form
     {
-        public FrmCreateDetalleRepacion()
+        public FrmCreateDetalleReparacion()
         {
             InitializeComponent();
         }
