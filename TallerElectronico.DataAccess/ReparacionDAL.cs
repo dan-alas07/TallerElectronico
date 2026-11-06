@@ -14,6 +14,7 @@ namespace TallerElectronico.DataAccess
             {
                 return db.Reparacion.AsNoTracking()
                     .OrderByDescending(r => r.FechaIngreso)
+                    .Where(r => r.EstadoReparacion.Nombre != "Cancelado")
                     .Select(r => new ReparacionDTO
                     {
                         ReparacionId = r.ReparacionId,
@@ -48,19 +49,12 @@ namespace TallerElectronico.DataAccess
 
                 return new KpiDashboardDTO
                 {
-                    // 1. Órdenes Abiertas: Activas en taller (excluye Entregado y Cancelado)
-                    OrdenesAbiertas = query.Count(r =>
-                        r.EstadoReparacion.Nombre != "Entregado" &&
-                        r.EstadoReparacion.Nombre != "Cancelado"),
+                    OrdenesAbiertas = query.Count(r => r.EstadoReparacion.Nombre != "Entregado" &&
+                                                       r.EstadoReparacion.Nombre != "Cancelado"),
 
-                    // 2. Órdenes Listas: Equipos reparados listos para entrega
-                    OrdenesListas = query.Count(r =>
-                        r.EstadoReparacion.Nombre == "Terminado" ||
-                        r.EstadoReparacion.Nombre == "Listo"),
+                    OrdenesListas = query.Count(r => r.EstadoReparacion.Nombre == "Reparado"),
 
-                    // 3. Órdenes Entregadas: Histórico de equipos entregados al cliente
-                    OrdenesEntregadas = query.Count(r =>
-                        r.EstadoReparacion.Nombre == "Entregado")
+                    OrdenesEntregadas = query.Count(r => r.EstadoReparacion.Nombre == "Entregado")
                 };
             }
         }
@@ -146,7 +140,7 @@ namespace TallerElectronico.DataAccess
             }
         }
 
-        public bool Delete(int idReparacion)
+        public bool Cancelar(int idReparacion, int idUsuarioModificacion)
         {
             using (var db = new TallerElectronicoEntities())
             {
@@ -154,11 +148,68 @@ namespace TallerElectronico.DataAccess
 
                 if (reparacion != null)
                 {
-                    db.Reparacion.Remove(reparacion);
-                    return db.SaveChanges() > 0;
+                    var estadoCancelado = db.EstadoReparacion.FirstOrDefault(e => e.Nombre == "Cancelado");
+
+                    if (estadoCancelado != null)
+                    {
+                        reparacion.EstadoReparacionId = estadoCancelado.EstadoReparacionId;
+                        reparacion.FechaModificacion = DateTime.Now;
+                        reparacion.UsuarioModificacionId = idUsuarioModificacion;
+
+                        return db.SaveChanges() > 0;
+                    }
                 }
 
                 return false;
+            }
+        }
+
+        public List<ReparacionDTO> Search(string criterio)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                var query = db.Reparacion.AsNoTracking()
+                    .Where(r => r.EstadoReparacion.Nombre != "Cancelado");
+
+                if (!string.IsNullOrWhiteSpace(criterio))
+                {
+                    criterio = criterio.Trim();
+
+                    int idBusqueda;
+                    bool esNumero = int.TryParse(criterio, out idBusqueda);
+
+                    query = query.Where(r =>
+                        (esNumero && r.ReparacionId == idBusqueda) ||
+                        (r.CodigoSeguimiento != null && r.CodigoSeguimiento.Contains(criterio)) ||
+                        (r.Modelo != null && r.Modelo.Contains(criterio)) ||
+                        (r.TipoEquipo.Nombre != null && r.TipoEquipo.Nombre.Contains(criterio)) ||
+                        (r.Marca.Nombre != null && r.Marca.Nombre.Contains(criterio)) ||
+                        (r.EstadoReparacion.Nombre != null && r.EstadoReparacion.Nombre.Contains(criterio)) ||
+                        ((r.Cliente.Nombre + " " + r.Cliente.Apellido).Contains(criterio)) ||
+                        (r.Usuario != null && r.Usuario.Empleado != null &&
+                         (r.Usuario.Empleado.Nombre + " " + r.Usuario.Empleado.Apellido).Contains(criterio))
+                    );
+                }
+
+                return query.OrderByDescending(r => r.FechaIngreso)
+                    .Select(r => new ReparacionDTO
+                    {
+                        ReparacionId = r.ReparacionId,
+                        CodigoSeguimiento = r.CodigoSeguimiento,
+                        Modelo = r.Modelo,
+                        FechaIngreso = r.FechaIngreso,
+                        FechaEntrega = r.FechaEntrega,
+                        CostoManoObra = r.CostoManoObra,
+                        TotalReparacion = r.TotalReparacion ?? 0.00m,
+
+                        EstadoNombre = r.EstadoReparacion.Nombre,
+                        TipoEquipoNombre = r.TipoEquipo.Nombre,
+                        MarcaNombre = r.Marca.Nombre,
+                        ClienteNombre = r.Cliente.Nombre + " " + r.Cliente.Apellido,
+                        TecnicoNombre = r.Usuario != null && r.Usuario.Empleado != null ? r.Usuario.Empleado.Nombre + " " + r.Usuario.Empleado.Apellido : "Sin Asignar",
+
+                        EquipoCompleto = r.TipoEquipo.Nombre + " " + r.Marca.Nombre + " " + r.Modelo
+                    }).ToList();
             }
         }
     }

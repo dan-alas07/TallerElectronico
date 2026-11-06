@@ -25,7 +25,7 @@ namespace TallerElectronico.Desktop
 
             btnNuevo.Enabled = true;
             btnEditar.Enabled = false;
-            btnEliminar.Enabled = false;
+            btnAnular.Enabled = false;
 
             dgvReparaciones.SelectionChanged += dgvReparaciones_SelectionChanged;
 
@@ -51,23 +51,18 @@ namespace TallerElectronico.Desktop
             {
                 cargandoReparaciones = true;
 
-                string criterio = txtBuscar != null ? txtBuscar.Text.Trim().ToLower() : string.Empty;
+                string criterio = txtBuscar != null ? txtBuscar.Text.Trim() : string.Empty;
 
                 dgvReparaciones.DataSource = null;
 
-                List<ReparacionDTO> lista = _reparacionBL.SelectAll();
-
-                if (!string.IsNullOrWhiteSpace(criterio))
+                if (string.IsNullOrWhiteSpace(criterio))
                 {
-                    lista = lista.Where(r =>
-                        (!string.IsNullOrEmpty(r.CodigoSeguimiento) && r.CodigoSeguimiento.ToLower().Contains(criterio)) ||
-                        (!string.IsNullOrEmpty(r.ClienteNombre) && r.ClienteNombre.ToLower().Contains(criterio)) ||
-                        (!string.IsNullOrEmpty(r.EquipoCompleto) && r.EquipoCompleto.ToLower().Contains(criterio)) ||
-                        (!string.IsNullOrEmpty(r.EstadoNombre) && r.EstadoNombre.ToLower().Contains(criterio))
-                    ).ToList();
+                    dgvReparaciones.DataSource = _reparacionBL.SelectAll();
                 }
-
-                dgvReparaciones.DataSource = lista;
+                else
+                {
+                    dgvReparaciones.DataSource = _reparacionBL.Search(criterio);
+                }
             }
             catch (Exception ex)
             {
@@ -88,7 +83,7 @@ namespace TallerElectronico.Desktop
 
             btnNuevo.Enabled = !reparacionSeleccionada;
             btnEditar.Enabled = reparacionSeleccionada;
-            btnEliminar.Enabled = reparacionSeleccionada;
+            btnAnular.Enabled = reparacionSeleccionada;
         }
 
         private void RegistrarEventos(Control control)
@@ -97,7 +92,7 @@ namespace TallerElectronico.Desktop
 
             foreach (Control hijo in control.Controls)
             {
-                if (hijo == btnNuevo || hijo == btnEditar || hijo == btnEliminar || hijo == txtBuscar)
+                if (hijo == btnNuevo || hijo == btnEditar || hijo == btnAnular || hijo == txtBuscar)
                     continue;
 
                 RegistrarEventos(hijo);
@@ -124,7 +119,7 @@ namespace TallerElectronico.Desktop
 
             btnNuevo.Enabled = true;
             btnEditar.Enabled = false;
-            btnEliminar.Enabled = false;
+            btnAnular.Enabled = false;
         }
 
         private ReparacionDTO ObtenerReparacionSeleccionada()
@@ -169,29 +164,28 @@ namespace TallerElectronico.Desktop
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
+        private void btnAnular_Click(object sender, EventArgs e)
         {
             ReparacionDTO seleccion = ObtenerReparacionSeleccionada();
             if (seleccion == null) return;
 
             DialogResult confirm = MessageBox.Show(
-                $"¿Seguro que desea eliminar la reparación '{seleccion.CodigoSeguimiento}' ({seleccion.EquipoCompleto})?",
-                "Confirmar Eliminación",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
+                $"¿Seguro que desea cancelar la reparación '{seleccion.CodigoSeguimiento}' ({seleccion.EquipoCompleto})?",
+                "Confirmar Cancelación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question
             );
 
             if (confirm != DialogResult.Yes) return;
 
             try
             {
-                _reparacionBL.Delete(seleccion.ReparacionId);
-                MessageBox.Show("La reparación se eliminó correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _reparacionBL.Cancelar(seleccion.ReparacionId, SesionUsuario.UsuarioId);
+
+                MessageBox.Show("La reparación se canceló correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarReparaciones();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No se pudo eliminar la reparación: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -206,6 +200,11 @@ namespace TallerElectronico.Desktop
         {
             _timerBusqueda.Stop();
             CargarReparaciones();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

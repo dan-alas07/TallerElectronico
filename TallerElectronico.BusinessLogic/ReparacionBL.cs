@@ -165,12 +165,30 @@ namespace TallerElectronico.BusinessLogic
             return _reparacionDal.Update(reparacionModificada);
         }
 
-        public bool Delete(int idReparacion)
+        public bool Cancelar(int idReparacion, int idUsuarioModificacion)
         {
             if (idReparacion <= 0)
-                throw new ArgumentException("El ID de reparación no es válido.");
+                throw new ArgumentException("El ID de reparación proporcionado no es válido.");
 
-            return _reparacionDal.Delete(idReparacion);
+            if (idUsuarioModificacion <= 0)
+                throw new ArgumentException("Debe especificar el usuario que realiza la cancelación.");
+
+            var reparacionExistente = _reparacionDal.SelectById(idReparacion);
+            if (reparacionExistente == null)
+                throw new InvalidOperationException("La reparación no existe.");
+
+            if (reparacionExistente.EstadoReparacion.Nombre == "Cancelado")
+                throw new InvalidOperationException("Esta reparación ya se encuentra cancelada.");
+
+            if (reparacionExistente.EstadoReparacion.Nombre == "Entregado")
+                throw new InvalidOperationException("No se puede cancelar una reparación que ya ha sido entregada al cliente.");
+
+            return _reparacionDal.Cancelar(idReparacion, idUsuarioModificacion);
+        }
+
+        public List<ReparacionDTO> Search(string criterio)
+        {
+            return _reparacionDal.Search(criterio);
         }
 
         private string GenerateTrackingCode()
