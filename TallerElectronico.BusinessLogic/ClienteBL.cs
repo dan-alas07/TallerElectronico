@@ -45,7 +45,6 @@ namespace TallerElectronico.BusinessLogic
             cliente.Telefono = cliente.Telefono.Trim();
             cliente.TipoDocumento = cliente.TipoDocumento.Trim();
 
-            // Validaciones de longitud
             if (cliente.Nombre.Length > 100)
                 throw new ArgumentException("El nombre no puede superar los 100 caracteres.");
 
@@ -60,9 +59,11 @@ namespace TallerElectronico.BusinessLogic
                 cliente.Correo = cliente.Correo.Trim();
                 if (cliente.Correo.Length > 100)
                     throw new ArgumentException("El correo electrónico no puede superar los 100 caracteres.");
+
+                if (_clienteDal.ExistsByEmail(cliente.Correo))
+                    throw new InvalidOperationException($"El correo electrónico '{cliente.Correo}' ya se encuentra registrado.");
             }
 
-            // Validaciones según el Constraint CK_Cliente_Documento
             if (cliente.TipoDocumento == "DUI")
             {
                 if (string.IsNullOrWhiteSpace(cliente.DUI))
@@ -72,6 +73,9 @@ namespace TallerElectronico.BusinessLogic
 
                 if (!Regex.IsMatch(cliente.DUI, @"^\d{8}-\d{1}$"))
                     throw new ArgumentException("El formato del DUI debe ser 00000000-0.");
+
+                if (_clienteDal.ExistsByDui(cliente.DUI))
+                    throw new InvalidOperationException($"El número de DUI '{cliente.DUI}' ya se encuentra registrado.");
 
                 cliente.CarnetExtranjero = null;
             }
@@ -123,7 +127,6 @@ namespace TallerElectronico.BusinessLogic
             clienteModificado.Telefono = clienteModificado.Telefono.Trim();
             clienteModificado.TipoDocumento = clienteModificado.TipoDocumento.Trim();
 
-            // Validaciones de longitud
             if (clienteModificado.Nombre.Length > 100)
                 throw new ArgumentException("El nombre no puede superar los 100 caracteres.");
 
@@ -138,9 +141,11 @@ namespace TallerElectronico.BusinessLogic
                 clienteModificado.Correo = clienteModificado.Correo.Trim();
                 if (clienteModificado.Correo.Length > 100)
                     throw new ArgumentException("El correo electrónico no puede superar los 100 caracteres.");
+
+                if (_clienteDal.ExistsByEmail(clienteModificado.Correo, clienteModificado.ClienteId))
+                    throw new InvalidOperationException($"El correo electrónico '{clienteModificado.Correo}' ya está registrado por otro cliente.");
             }
 
-            // Validaciones según el Constraint CK_Cliente_Documento
             if (clienteModificado.TipoDocumento == "DUI")
             {
                 if (string.IsNullOrWhiteSpace(clienteModificado.DUI))
@@ -150,6 +155,9 @@ namespace TallerElectronico.BusinessLogic
 
                 if (!Regex.IsMatch(clienteModificado.DUI, @"^\d{8}-\d{1}$"))
                     throw new ArgumentException("El formato del DUI debe ser 00000000-0.");
+
+                if (_clienteDal.ExistsByDui(clienteModificado.DUI, clienteModificado.ClienteId))
+                    throw new InvalidOperationException($"El número de DUI '{clienteModificado.DUI}' ya está registrado por otro cliente.");
 
                 clienteModificado.CarnetExtranjero = null;
             }

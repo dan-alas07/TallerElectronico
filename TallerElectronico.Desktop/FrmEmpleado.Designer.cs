@@ -22,6 +22,13 @@ namespace TallerElectronico.Desktop
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvEmpleado = new System.Windows.Forms.DataGridView();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -31,13 +38,6 @@ namespace TallerElectronico.Desktop
             this.ColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnHiringDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,87 +95,6 @@ namespace TallerElectronico.Desktop
             this.dgvEmpleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEmpleado.Size = new System.Drawing.Size(1080, 215);
             this.dgvEmpleado.TabIndex = 1;
-            // 
-            // ColumnCode
-            // 
-            this.ColumnCode.DataPropertyName = "EmpleadoId";
-            this.ColumnCode.FillWeight = 65F;
-            this.ColumnCode.HeaderText = "Código";
-            this.ColumnCode.MinimumWidth = 6;
-            this.ColumnCode.Name = "ColumnCode";
-            this.ColumnCode.ReadOnly = true;
-            // 
-            // ColumnName
-            // 
-            this.ColumnName.DataPropertyName = "Nombre";
-            this.ColumnName.FillWeight = 85F;
-            this.ColumnName.HeaderText = "Nombre";
-            this.ColumnName.MinimumWidth = 6;
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.ReadOnly = true;
-            // 
-            // ColumnLastName
-            // 
-            this.ColumnLastName.DataPropertyName = "Apellido";
-            this.ColumnLastName.FillWeight = 85F;
-            this.ColumnLastName.HeaderText = "Apellido";
-            this.ColumnLastName.MinimumWidth = 6;
-            this.ColumnLastName.Name = "ColumnLastName";
-            this.ColumnLastName.ReadOnly = true;
-            // 
-            // ColumnDUI
-            // 
-            this.ColumnDUI.DataPropertyName = "DUI";
-            this.ColumnDUI.FillWeight = 85F;
-            this.ColumnDUI.HeaderText = "DUI";
-            this.ColumnDUI.MinimumWidth = 6;
-            this.ColumnDUI.Name = "ColumnDUI";
-            this.ColumnDUI.ReadOnly = true;
-            // 
-            // ColumnTelephone
-            // 
-            this.ColumnTelephone.DataPropertyName = "Telefono";
-            this.ColumnTelephone.FillWeight = 85F;
-            this.ColumnTelephone.HeaderText = "Teléfono";
-            this.ColumnTelephone.MinimumWidth = 6;
-            this.ColumnTelephone.Name = "ColumnTelephone";
-            this.ColumnTelephone.ReadOnly = true;
-            // 
-            // ColumnEmail
-            // 
-            this.ColumnEmail.DataPropertyName = "Correo";
-            this.ColumnEmail.FillWeight = 125F;
-            this.ColumnEmail.HeaderText = "Correo electrónico";
-            this.ColumnEmail.MinimumWidth = 6;
-            this.ColumnEmail.Name = "ColumnEmail";
-            this.ColumnEmail.ReadOnly = true;
-            // 
-            // ColumnAddress
-            // 
-            this.ColumnAddress.DataPropertyName = "Direccion";
-            this.ColumnAddress.FillWeight = 120F;
-            this.ColumnAddress.HeaderText = "Dirección";
-            this.ColumnAddress.MinimumWidth = 6;
-            this.ColumnAddress.Name = "ColumnAddress";
-            this.ColumnAddress.ReadOnly = true;
-            // 
-            // ColumnHiringDate
-            // 
-            this.ColumnHiringDate.DataPropertyName = "FechaContratacion";
-            this.ColumnHiringDate.FillWeight = 110F;
-            this.ColumnHiringDate.HeaderText = "Fecha contratación";
-            this.ColumnHiringDate.MinimumWidth = 6;
-            this.ColumnHiringDate.Name = "ColumnHiringDate";
-            this.ColumnHiringDate.ReadOnly = true;
-            // 
-            // ColumnStatus
-            // 
-            this.ColumnStatus.DataPropertyName = "Estado";
-            this.ColumnStatus.FillWeight = 75F;
-            this.ColumnStatus.HeaderText = "Estado";
-            this.ColumnStatus.MinimumWidth = 6;
-            this.ColumnStatus.Name = "ColumnStatus";
-            this.ColumnStatus.ReadOnly = true;
             // 
             // lblTitle
             // 
@@ -275,6 +194,87 @@ namespace TallerElectronico.Desktop
             this.txtBuscar.TabIndex = 47;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
+            // ColumnCode
+            // 
+            this.ColumnCode.DataPropertyName = "Id";
+            this.ColumnCode.FillWeight = 65F;
+            this.ColumnCode.HeaderText = "Código";
+            this.ColumnCode.MinimumWidth = 6;
+            this.ColumnCode.Name = "ColumnCode";
+            this.ColumnCode.ReadOnly = true;
+            // 
+            // ColumnName
+            // 
+            this.ColumnName.DataPropertyName = "Nombre";
+            this.ColumnName.FillWeight = 85F;
+            this.ColumnName.HeaderText = "Nombre";
+            this.ColumnName.MinimumWidth = 6;
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            // 
+            // ColumnLastName
+            // 
+            this.ColumnLastName.DataPropertyName = "Apellido";
+            this.ColumnLastName.FillWeight = 85F;
+            this.ColumnLastName.HeaderText = "Apellido";
+            this.ColumnLastName.MinimumWidth = 6;
+            this.ColumnLastName.Name = "ColumnLastName";
+            this.ColumnLastName.ReadOnly = true;
+            // 
+            // ColumnDUI
+            // 
+            this.ColumnDUI.DataPropertyName = "DUI";
+            this.ColumnDUI.FillWeight = 85F;
+            this.ColumnDUI.HeaderText = "DUI";
+            this.ColumnDUI.MinimumWidth = 6;
+            this.ColumnDUI.Name = "ColumnDUI";
+            this.ColumnDUI.ReadOnly = true;
+            // 
+            // ColumnTelephone
+            // 
+            this.ColumnTelephone.DataPropertyName = "Telefono";
+            this.ColumnTelephone.FillWeight = 85F;
+            this.ColumnTelephone.HeaderText = "Teléfono";
+            this.ColumnTelephone.MinimumWidth = 6;
+            this.ColumnTelephone.Name = "ColumnTelephone";
+            this.ColumnTelephone.ReadOnly = true;
+            // 
+            // ColumnEmail
+            // 
+            this.ColumnEmail.DataPropertyName = "Correo";
+            this.ColumnEmail.FillWeight = 125F;
+            this.ColumnEmail.HeaderText = "Correo electrónico";
+            this.ColumnEmail.MinimumWidth = 6;
+            this.ColumnEmail.Name = "ColumnEmail";
+            this.ColumnEmail.ReadOnly = true;
+            // 
+            // ColumnAddress
+            // 
+            this.ColumnAddress.DataPropertyName = "Direccion";
+            this.ColumnAddress.FillWeight = 120F;
+            this.ColumnAddress.HeaderText = "Dirección";
+            this.ColumnAddress.MinimumWidth = 6;
+            this.ColumnAddress.Name = "ColumnAddress";
+            this.ColumnAddress.ReadOnly = true;
+            // 
+            // ColumnHiringDate
+            // 
+            this.ColumnHiringDate.DataPropertyName = "FechaContratacion";
+            this.ColumnHiringDate.FillWeight = 110F;
+            this.ColumnHiringDate.HeaderText = "Fecha contratación";
+            this.ColumnHiringDate.MinimumWidth = 6;
+            this.ColumnHiringDate.Name = "ColumnHiringDate";
+            this.ColumnHiringDate.ReadOnly = true;
+            // 
+            // ColumnStatus
+            // 
+            this.ColumnStatus.DataPropertyName = "Estado";
+            this.ColumnStatus.FillWeight = 75F;
+            this.ColumnStatus.HeaderText = "Estado";
+            this.ColumnStatus.MinimumWidth = 6;
+            this.ColumnStatus.Name = "ColumnStatus";
+            this.ColumnStatus.ReadOnly = true;
+            // 
             // FrmEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,6 +306,9 @@ namespace TallerElectronico.Desktop
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLastName;
@@ -315,8 +318,5 @@ namespace TallerElectronico.Desktop
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnHiringDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtBuscar;
     }
 }

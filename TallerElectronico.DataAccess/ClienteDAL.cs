@@ -15,20 +15,6 @@ namespace TallerElectronico.DataAccess
                 return db.Cliente
                          .AsNoTracking()
                          .Where(c => c.Estado == "A")
-                         .ToList()
-                         .Select(c => new Cliente
-                         {
-                             ClienteId = c.ClienteId,
-                             Nombre = c.Nombre,
-                             Apellido = c.Apellido,
-                             Telefono = c.Telefono,
-                             Correo = c.Correo,
-                             TipoDocumento = c.TipoDocumento == "DUI" ? "DUI" : (c.TipoDocumento == "CarnetExtranjero" ? "Carnet de Extranjería" : c.TipoDocumento),
-                             DUI = c.DUI,
-                             CarnetExtranjero = c.CarnetExtranjero,
-                             FechaRegistro = c.FechaRegistro,
-                             Estado = c.Estado == "A" ? "Activo" : "Inactivo"
-                         })
                          .OrderBy(c => c.Nombre)
                          .ThenBy(c => c.Apellido)
                          .ToList();
@@ -39,8 +25,9 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Cliente.AsNoTracking()
-                                 .FirstOrDefault(c => c.ClienteId == idCliente && c.Estado == "A");
+                return db.Cliente
+                         .AsNoTracking()
+                         .FirstOrDefault(c => c.ClienteId == idCliente && c.Estado == "A");
             }
         }
 
@@ -94,6 +81,27 @@ namespace TallerElectronico.DataAccess
             }
         }
 
+        public bool ExistsByDui(string dui, int? excludeClienteId = null)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                return db.Cliente.Any(c =>
+                    c.DUI == dui &&
+                    c.Estado == "A" &&
+                    (!excludeClienteId.HasValue || c.ClienteId != excludeClienteId.Value));
+            }
+        }
+
+        public bool ExistsByEmail(string email, int? excludeClienteId = null)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                return db.Cliente.Any(c =>
+                    c.Correo == email &&
+                    c.Estado == "A" &&
+                    (!excludeClienteId.HasValue || c.ClienteId != excludeClienteId.Value));
+            }
+        }
 
         public List<Cliente> Search(string criterio)
         {

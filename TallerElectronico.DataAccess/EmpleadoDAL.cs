@@ -1,33 +1,21 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Data.Entity;
+using System.Linq;
 using TallerElectronico.Entities;
 
 namespace TallerElectronico.DataAccess
 {
     public class EmpleadoDAL
     {
-        public List<EmpleadoDTO> SelectAll()
+        public List<Empleado> SelectAll()
         {
             using (var db = new TallerElectronicoEntities())
             {
                 return db.Empleado
                          .AsNoTracking()
+                         .Where(e => e.Estado == "A")
                          .OrderBy(p => p.Nombre)
-                         .Select(p => new EmpleadoDTO
-                         {
-                             Id = p.EmpleadoId,
-                             Nombre = p.Nombre,
-                             Apellido = p.Apellido,
-                             DUI = p.DUI,
-                             Telefono = p.Telefono,
-                             Correo = p.Correo,
-                             Direccion = p.Direccion,
-                             FechaContratacion = p.FechaContratacion,
-                             Estado = p.Estado == "A" ? "Activo" : "Inactivo"
-                         })
                          .ToList();
             }
         }
@@ -38,7 +26,7 @@ namespace TallerElectronico.DataAccess
             {
                 return db.Empleado
                          .AsNoTracking()
-                         .FirstOrDefault(e => e.EmpleadoId == idEmpleado);
+                         .FirstOrDefault(e => e.EmpleadoId == idEmpleado && e.Estado == "A");
             }
         }
 
@@ -92,8 +80,6 @@ namespace TallerElectronico.DataAccess
             }
         }
 
-        // Métodos extras
-
         public bool ExistsByDui(string dui, int? excludeEmpleadoId = null)
         {
             using (var db = new TallerElectronicoEntities())
@@ -116,11 +102,11 @@ namespace TallerElectronico.DataAccess
             }
         }
 
-        public List<EmpleadoDTO> Search(string criterio)
+        public List<Empleado> Search(string criterio)
         {
             using (var db = new TallerElectronicoEntities())
             {
-                IQueryable<Empleado> query = db.Empleado.AsNoTracking();
+                IQueryable<Empleado> query = db.Empleado.AsNoTracking().Where(e => e.Estado == "A");
 
                 if (!string.IsNullOrWhiteSpace(criterio))
                 {
@@ -140,20 +126,7 @@ namespace TallerElectronico.DataAccess
                     );
                 }
 
-                return query.OrderBy(p => p.Nombre)
-                            .Select(p => new EmpleadoDTO
-                            {
-                                Id = p.EmpleadoId,
-                                Nombre = p.Nombre,
-                                Apellido = p.Apellido,
-                                DUI = p.DUI,
-                                Telefono = p.Telefono,
-                                Correo = p.Correo,
-                                Direccion = p.Direccion,
-                                FechaContratacion = p.FechaContratacion,
-                                Estado = p.Estado == "A" ? "Activo" : "Inactivo"
-                            })
-                            .ToList();
+                return query.OrderBy(p => p.Nombre).ToList();
             }
         }
     }
