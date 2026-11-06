@@ -8,14 +8,13 @@ namespace TallerElectronico.DataAccess
 {
     public class ClienteDAL
     {
-        // Convierte el valor que viene de la UI ("Activo"/"Inactivo") al formato de BD ("A"/"I")
+
         private string NormalizarEstadoParaBD(string estado)
         {
             if (string.IsNullOrWhiteSpace(estado)) return "I";
             return estado.Equals("Activo", StringComparison.OrdinalIgnoreCase) || estado == "A" ? "A" : "I";
         }
 
-        // Convierte el valor almacenado en BD ("A"/"I") al formato para la UI ("Activo"/"Inactivo")
         private string TransformarEstadoParaUI(string estado)
         {
             return estado == "A" ? "Activo" : "Inactivo";
@@ -57,7 +56,6 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                // Asegura guardar "A" o "I" en la BD
                 cliente.Estado = NormalizarEstadoParaBD(cliente.Estado);
 
                 var nuevoCliente = db.Cliente.Add(cliente);
@@ -84,7 +82,6 @@ namespace TallerElectronico.DataAccess
                     clienteExistente.DUI = clienteModificado.DUI;
                     clienteExistente.CarnetExtranjero = clienteModificado.CarnetExtranjero;
 
-                    // Convertir "Activo"/"Inactivo" a "A"/"I" antes de guardar
                     clienteExistente.Estado = NormalizarEstadoParaBD(clienteModificado.Estado);
 
                     db.SaveChanges();
