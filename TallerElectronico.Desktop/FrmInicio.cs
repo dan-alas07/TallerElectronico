@@ -68,5 +68,10 @@ namespace TallerElectronico.Desktop
                 MessageBox.Show("Error al cargar las órdenes de trabajo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
