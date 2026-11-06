@@ -8,28 +8,48 @@ namespace TallerElectronico.DataAccess
 {
     public class ProveedorDAL
     {
+        private string NormalizarEstadoParaBD(string estado)
+        {
+            if (string.IsNullOrWhiteSpace(estado)) return "I";
+            return estado.Equals("Activo", StringComparison.OrdinalIgnoreCase) || estado == "A" ? "A" : "I";
+        }
+
+        private string TransformarEstadoParaUI(string estado)
+        {
+            return estado == "A" ? "Activo" : "Inactivo";
+        }
+
+        private string NormalizarTipoProveedorParaBD(string tipo)
+        {
+            if (string.IsNullOrWhiteSpace(tipo)) return "PN";
+            if (tipo.Equals("Persona Natural", StringComparison.OrdinalIgnoreCase) || tipo == "PN") return "PN";
+            if (tipo.Equals("Persona Jurídica", StringComparison.OrdinalIgnoreCase) || tipo == "PJ") return "PJ";
+            return tipo;
+        }
+
+        private string TransformarTipoProveedorParaUI(string tipo)
+        {
+            if (tipo == "PN") return "Persona Natural";
+            if (tipo == "PJ") return "Persona Jurídica";
+            return tipo;
+        }
+
         public List<Proveedor> SelectAll()
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Proveedor
-                         .AsNoTracking()
-                         .Where(p => p.Estado == "A")
-                         .ToList()
-                         .Select(p => new Proveedor
-                         {
-                             ProveedorId = p.ProveedorId,
-                             Nombre = p.Nombre,
-                             Telefono = p.Telefono,
-                             Email = p.Email,
-                             Direccion = p.Direccion,
-                             DUI = p.DUI,
-                             NIT = p.NIT,
-                             NRC = p.NRC,
-                             TipoProveedor = p.TipoProveedor == "PN" ? "Persona Natural" : (p.TipoProveedor == "PJ" ? "Persona Jurídica" : p.TipoProveedor),
-                             Estado = p.Estado == "A" ? "Activo" : "Inactivo"
-                         })
-                         .ToList();
+                var lista = db.Proveedor
+                              .AsNoTracking()
+                              .OrderBy(p => p.Nombre)
+                              .ToList();
+
+                lista.ForEach(p =>
+                {
+                    p.Estado = TransformarEstadoParaUI(p.Estado);
+                    p.TipoProveedor = TransformarTipoProveedorParaUI(p.TipoProveedor);
+                });
+
+                return lista;
             }
         }
 
@@ -37,8 +57,17 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Proveedor.AsNoTracking()
-                                   .FirstOrDefault(p => p.ProveedorId == idProveedor && p.Estado == "A");
+                var proveedor = db.Proveedor
+                                  .AsNoTracking()
+                                  .FirstOrDefault(p => p.ProveedorId == idProveedor);
+
+                if (proveedor != null)
+                {
+                    proveedor.Estado = TransformarEstadoParaUI(proveedor.Estado);
+                    proveedor.TipoProveedor = TransformarTipoProveedorParaUI(proveedor.TipoProveedor);
+                }
+
+                return proveedor;
             }
         }
 
@@ -46,8 +75,14 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
+                proveedor.Estado = NormalizarEstadoParaBD(proveedor.Estado);
+                proveedor.TipoProveedor = NormalizarTipoProveedorParaBD(proveedor.TipoProveedor);
+
                 var nuevoProveedor = db.Proveedor.Add(proveedor);
                 db.SaveChanges();
+
+                nuevoProveedor.Estado = TransformarEstadoParaUI(nuevoProveedor.Estado);
+                nuevoProveedor.TipoProveedor = TransformarTipoProveedorParaUI(nuevoProveedor.TipoProveedor);
                 return nuevoProveedor;
             }
         }
@@ -61,16 +96,19 @@ namespace TallerElectronico.DataAccess
                 if (proveedorExistente != null)
                 {
                     proveedorExistente.Nombre = proveedorModificado.Nombre;
-                    proveedorExistente.TipoProveedor = proveedorModificado.TipoProveedor;
+                    proveedorExistente.TipoProveedor = NormalizarTipoProveedorParaBD(proveedorModificado.TipoProveedor);
                     proveedorExistente.Telefono = proveedorModificado.Telefono;
                     proveedorExistente.Email = proveedorModificado.Email;
                     proveedorExistente.Direccion = proveedorModificado.Direccion;
                     proveedorExistente.DUI = proveedorModificado.DUI;
                     proveedorExistente.NIT = proveedorModificado.NIT;
                     proveedorExistente.NRC = proveedorModificado.NRC;
-                    proveedorExistente.Estado = proveedorModificado.Estado;
+                    proveedorExistente.Estado = NormalizarEstadoParaBD(proveedorModificado.Estado);
 
                     db.SaveChanges();
+
+                    proveedorExistente.Estado = TransformarEstadoParaUI(proveedorExistente.Estado);
+                    proveedorExistente.TipoProveedor = TransformarTipoProveedorParaUI(proveedorExistente.TipoProveedor);
                 }
 
                 return proveedorExistente;
@@ -93,34 +131,86 @@ namespace TallerElectronico.DataAccess
             }
         }
 
+        public bool ExistsByEmail(string email, int? excludeProveedorId = null)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                return db.Proveedor.Any(p =>
+                    p.Email == email &&
+                    p.Estado == "A" &&
+                    (!excludeProveedorId.HasValue || p.ProveedorId != excludeProveedorId.Value));
+            }
+        }
+
+        public bool ExistsByDui(string dui, int? excludeProveedorId = null)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                return db.Proveedor.Any(p =>
+                    p.DUI == dui &&
+                    p.Estado == "A" &&
+                    (!excludeProveedorId.HasValue || p.ProveedorId != excludeProveedorId.Value));
+            }
+        }
+
+        public bool ExistsByNit(string nit, int? excludeProveedorId = null)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                return db.Proveedor.Any(p =>
+                    p.NIT == nit &&
+                    p.Estado == "A" &&
+                    (!excludeProveedorId.HasValue || p.ProveedorId != excludeProveedorId.Value));
+            }
+        }
+
+        public bool ExistsByNrc(string nrc, int? excludeProveedorId = null)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                return db.Proveedor.Any(p =>
+                    p.NRC == nrc &&
+                    p.Estado == "A" &&
+                    (!excludeProveedorId.HasValue || p.ProveedorId != excludeProveedorId.Value));
+            }
+        }
+
         public List<Proveedor> Search(string criterio)
         {
             using (var db = new TallerElectronicoEntities())
             {
-                var query = db.Proveedor
-                              .AsNoTracking()
-                              .Where(p => p.Estado == "A");
+                IQueryable<Proveedor> query = db.Proveedor.AsNoTracking();
 
                 if (!string.IsNullOrWhiteSpace(criterio))
                 {
-                    criterio = criterio.Trim().ToLower();
+                    criterio = criterio.Trim();
+
                     int idBusqueda;
                     bool esNumero = int.TryParse(criterio, out idBusqueda);
 
                     query = query.Where(p =>
                         (esNumero && p.ProveedorId == idBusqueda) ||
-                        (p.Nombre != null && p.Nombre.ToLower().Contains(criterio)) ||
-                        (p.Telefono != null && p.Telefono.ToLower().Contains(criterio)) ||
-                        (p.Email != null && p.Email.ToLower().Contains(criterio)) ||
-                        (p.Direccion != null && p.Direccion.ToLower().Contains(criterio)) ||
-                        (p.DUI != null && p.DUI.ToLower().Contains(criterio)) ||
-                        (p.NIT != null && p.NIT.ToLower().Contains(criterio)) ||
-                        (p.NRC != null && p.NRC.ToLower().Contains(criterio))
+                        (p.Nombre != null && p.Nombre.Contains(criterio)) ||
+                        (p.Telefono != null && p.Telefono.Contains(criterio)) ||
+                        (p.Email != null && p.Email.Contains(criterio)) ||
+                        (p.Direccion != null && p.Direccion.Contains(criterio)) ||
+                        (p.DUI != null && p.DUI.Contains(criterio)) ||
+                        (p.NIT != null && p.NIT.Contains(criterio)) ||
+                        (p.NRC != null && p.NRC.Contains(criterio))
                     );
                 }
-                return query.OrderBy(p => p.Nombre).ToList();
+
+                var lista = query.OrderBy(p => p.Nombre)
+                                 .ToList();
+
+                lista.ForEach(p =>
+                {
+                    p.Estado = TransformarEstadoParaUI(p.Estado);
+                    p.TipoProveedor = TransformarTipoProveedorParaUI(p.TipoProveedor);
+                });
+
+                return lista;
             }
         }
-    
     }
 }

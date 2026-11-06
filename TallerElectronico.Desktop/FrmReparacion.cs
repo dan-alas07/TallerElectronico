@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using TallerElectronico.BusinessLogic;
+using TallerElectronico.Entities;
 
 namespace TallerElectronico.Desktop
 {
@@ -26,7 +29,7 @@ namespace TallerElectronico.Desktop
 
             dgvReparaciones.SelectionChanged += dgvReparaciones_SelectionChanged;
 
-            // Configurar el temporizador (300 milisegundos de espera)
+            // Configurar el temporizador para la búsqueda (300 ms de espera tras tipear)
             _timerBusqueda.Interval = 300;
             _timerBusqueda.Tick += TimerBusqueda_Tick;
         }
@@ -35,7 +38,7 @@ namespace TallerElectronico.Desktop
         {
             CargarReparaciones();
 
-            // Garantiza que la deselección se aplique tras renderizar los controles
+            // Garantiza la deselección de filas tras renderizar los controles
             BeginInvoke((MethodInvoker)delegate
             {
                 RestablecerBotones();
@@ -48,18 +51,23 @@ namespace TallerElectronico.Desktop
             {
                 cargandoReparaciones = true;
 
-                string criterio = txtBuscar != null ? txtBuscar.Text.Trim() : string.Empty;
+                string criterio = txtBuscar != null ? txtBuscar.Text.Trim().ToLower() : string.Empty;
 
                 dgvReparaciones.DataSource = null;
 
-                if (string.IsNullOrWhiteSpace(criterio))
+                List<ReparacionDTO> lista = _reparacionBL.SelectAll();
+
+                if (!string.IsNullOrWhiteSpace(criterio))
                 {
-                    dgvReparaciones.DataSource = _reparacionBL.SelectAll();
+                    lista = lista.Where(r =>
+                        (!string.IsNullOrEmpty(r.CodigoSeguimiento) && r.CodigoSeguimiento.ToLower().Contains(criterio)) ||
+                        (!string.IsNullOrEmpty(r.ClienteNombre) && r.ClienteNombre.ToLower().Contains(criterio)) ||
+                        (!string.IsNullOrEmpty(r.EquipoCompleto) && r.EquipoCompleto.ToLower().Contains(criterio)) ||
+                        (!string.IsNullOrEmpty(r.EstadoNombre) && r.EstadoNombre.ToLower().Contains(criterio))
+                    ).ToList();
                 }
-                else
-                {
-                    //dgvReparaciones.DataSource = _reparacionBL.Search(criterio);
-                }
+
+                dgvReparaciones.DataSource = lista;
             }
             catch (Exception ex)
             {
@@ -119,23 +127,21 @@ namespace TallerElectronico.Desktop
             btnEliminar.Enabled = false;
         }
 
-        private int? ObtenerReparacionSeleccionada()
+        private ReparacionDTO ObtenerReparacionSeleccionada()
         {
             if (dgvReparaciones.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Selecciona una reparación.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Selecciona una reparación de la lista.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return null;
             }
 
-            object valorId = dgvReparaciones.SelectedRows[0].Cells["ColumnCode"].Value;
-
-            if (valorId == null || valorId == DBNull.Value)
+            if (dgvReparaciones.SelectedRows[0].DataBoundItem is ReparacionDTO dto)
             {
-                MessageBox.Show("No se pudo obtener el código de la reparación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                return dto;
             }
 
-            return Convert.ToInt32(valorId);
+            MessageBox.Show("No se pudo obtener la información de la reparación seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return null;
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -151,31 +157,35 @@ namespace TallerElectronico.Desktop
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            int? reparacionId = ObtenerReparacionSeleccionada();
-            if (!reparacionId.HasValue) return;
+            ReparacionDTO seleccion = ObtenerReparacionSeleccionada();
+            if (seleccion == null) return;
 
-            //using (FrmEditReparacion frm = new FrmEditReparacion(reparacionId.Value))
-            //{
-            //    if (frm.ShowDialog(this) == DialogResult.OK)
-            //    {
-            //        CargarReparaciones();
-            //    }
-            //}
+            using (FrmEditReparacion frm = new FrmEditReparacion(seleccion.ReparacionId))
+            {
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                {
+                    CargarReparaciones();
+                }
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            int? reparacionId = ObtenerReparacionSeleccionada();
-            if (!reparacionId.HasValue) return;
+            ReparacionDTO seleccion = ObtenerReparacionSeleccionada();
+            if (seleccion == null) return;
 
-            string nombre = Convert.ToString(dgvReparaciones.SelectedRows[0].Cells["ColumnName"].Value);
+            DialogResult confirm = MessageBox.Show(
+                $"¿Seguro que desea eliminar la reparación '{seleccion.CodigoSeguimiento}' ({seleccion.EquipoCompleto})?",
+                "Confirmar Eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
 
-            DialogResult confirm = MessageBox.Show($"¿Seguro que desea eliminar la reparación {nombre}?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirm != DialogResult.Yes) return;
 
             try
             {
-                _reparacionBL.Delete(reparacionId.Value);
+                _reparacionBL.Delete(seleccion.ReparacionId);
                 MessageBox.Show("La reparación se eliminó correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarReparaciones();
             }
@@ -187,7 +197,7 @@ namespace TallerElectronico.Desktop
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            // Reinicia el reloj a cada tecla. Solo cuando te detengas 300ms se consultará a la DAL
+            // Reinicia el reloj con cada tecla presionada; ejecuta la búsqueda tras 300 ms de inactividad
             _timerBusqueda.Stop();
             _timerBusqueda.Start();
         }
@@ -195,8 +205,7 @@ namespace TallerElectronico.Desktop
         private void TimerBusqueda_Tick(object sender, EventArgs e)
         {
             _timerBusqueda.Stop();
-            CargarReparaciones(); // Llama a la DAL cuando el usuario pausó el tipeo
+            CargarReparaciones();
         }
-
     }
 }

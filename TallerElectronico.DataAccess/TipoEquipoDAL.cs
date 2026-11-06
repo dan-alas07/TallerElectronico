@@ -8,21 +8,28 @@ namespace TallerElectronico.DataAccess
 {
     public class TipoEquipoDAL
     {
+        private string NormalizarEstadoParaBD(string estado)
+        {
+            if (string.IsNullOrWhiteSpace(estado)) return "I";
+            return estado.Equals("Activo", StringComparison.OrdinalIgnoreCase) || estado == "A" ? "A" : "I";
+        }
+
+        private string TransformarEstadoParaUI(string estado)
+        {
+            return estado == "A" ? "Activo" : "Inactivo";
+        }
+
         public List<TipoEquipo> SelectAll()
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.TipoEquipo
-                         .AsNoTracking()
-                         .Where(p => p.Estado == "A")
-                         .ToList()
-                         .Select(p => new TipoEquipo
-                         {
-                             TipoEquipoId = p.TipoEquipoId,
-                             Nombre = p.Nombre,
-                             Estado = p.Estado == "A" ? "Activo" : "Inactivo"
-                         })
-                         .ToList();
+                var lista = db.TipoEquipo
+                              .AsNoTracking()
+                              .OrderBy(t => t.Nombre)
+                              .ToList();
+
+                lista.ForEach(t => t.Estado = TransformarEstadoParaUI(t.Estado));
+                return lista;
             }
         }
 
@@ -30,8 +37,16 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.TipoEquipo.AsNoTracking()
-                                    .FirstOrDefault(t => t.TipoEquipoId == idTipoEquipo && t.Estado == "A");
+                var tipoEquipo = db.TipoEquipo
+                                   .AsNoTracking()
+                                   .FirstOrDefault(t => t.TipoEquipoId == idTipoEquipo);
+
+                if (tipoEquipo != null)
+                {
+                    tipoEquipo.Estado = TransformarEstadoParaUI(tipoEquipo.Estado);
+                }
+
+                return tipoEquipo;
             }
         }
 
@@ -39,8 +54,12 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
+                tipoEquipo.Estado = NormalizarEstadoParaBD(tipoEquipo.Estado);
+
                 var nuevoTipoEquipo = db.TipoEquipo.Add(tipoEquipo);
                 db.SaveChanges();
+
+                nuevoTipoEquipo.Estado = TransformarEstadoParaUI(nuevoTipoEquipo.Estado);
                 return nuevoTipoEquipo;
             }
         }
@@ -54,9 +73,11 @@ namespace TallerElectronico.DataAccess
                 if (tipoEquipoExistente != null)
                 {
                     tipoEquipoExistente.Nombre = tipoEquipoModificado.Nombre;
-                    tipoEquipoExistente.Estado = tipoEquipoModificado.Estado;
+                    tipoEquipoExistente.Estado = NormalizarEstadoParaBD(tipoEquipoModificado.Estado);
 
                     db.SaveChanges();
+
+                    tipoEquipoExistente.Estado = TransformarEstadoParaUI(tipoEquipoExistente.Estado);
                 }
 
                 return tipoEquipoExistente;
@@ -79,26 +100,41 @@ namespace TallerElectronico.DataAccess
             }
         }
 
+        public bool ExistsByNombre(string nombre, int? excludeTipoEquipoId = null)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                return db.TipoEquipo.Any(t =>
+                    t.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase) &&
+                    t.Estado == "A" &&
+                    (!excludeTipoEquipoId.HasValue || t.TipoEquipoId != excludeTipoEquipoId.Value));
+            }
+        }
+
         public List<TipoEquipo> Search(string criterio)
         {
             using (var db = new TallerElectronicoEntities())
             {
-                var query = db.TipoEquipo
-                              .AsNoTracking()
-                              .Where(p => p.Estado == "A");
+                IQueryable<TipoEquipo> query = db.TipoEquipo.AsNoTracking();
 
                 if (!string.IsNullOrWhiteSpace(criterio))
                 {
-                    criterio = criterio.Trim().ToLower();
+                    criterio = criterio.Trim();
+
                     int idBusqueda;
                     bool esNumero = int.TryParse(criterio, out idBusqueda);
 
-                    query = query.Where(p =>
-                        (esNumero && p.TipoEquipoId == idBusqueda) ||
-                        (p.Nombre != null && p.Nombre.ToLower().Contains(criterio))
+                    query = query.Where(t =>
+                        (esNumero && t.TipoEquipoId == idBusqueda) ||
+                        (t.Nombre != null && t.Nombre.Contains(criterio))
                     );
                 }
-                return query.OrderBy(p => p.Nombre).ToList();
+
+                var lista = query.OrderBy(t => t.Nombre)
+                                 .ToList();
+
+                lista.ForEach(t => t.Estado = TransformarEstadoParaUI(t.Estado));
+                return lista;
             }
         }
     }

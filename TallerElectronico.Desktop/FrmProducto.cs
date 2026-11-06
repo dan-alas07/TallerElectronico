@@ -1,7 +1,8 @@
-﻿
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using TallerElectronico.BusinessLogic;
+using TallerElectronico.Entities;
 
 namespace TallerElectronico.Desktop
 {
@@ -21,25 +22,60 @@ namespace TallerElectronico.Desktop
             dgvProducto.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProducto.MultiSelect = false;
 
+            // Mapeo explicito de DataPropertyName a ProductoDTO para evitar que se vacie la grilla
+            MapearColumnasDTO();
+
             btnNuevo.Enabled = true;
             btnEditar.Enabled = false;
             btnEliminar.Enabled = false;
 
             dgvProducto.SelectionChanged += dgvProducto_SelectionChanged;
 
+            // Configurar el temporizador (300 milisegundos de espera)
             _timerBusqueda.Interval = 300;
             _timerBusqueda.Tick += TimerBusqueda_Tick;
+        }
+
+        private void MapearColumnasDTO()
+        {
+            // Ajusta los nombres de las columnas en tu DataGridView si difieren
+            if (dgvProducto.Columns["ColumnCode"] != null)
+                dgvProducto.Columns["ColumnCode"].DataPropertyName = nameof(ProductoDTO.ProductoId);
+
+            if (dgvProducto.Columns["ColumnCodigo"] != null)
+                dgvProducto.Columns["ColumnCodigo"].DataPropertyName = nameof(ProductoDTO.Codigo);
+
+            if (dgvProducto.Columns["ColumnNombre"] != null)
+                dgvProducto.Columns["ColumnNombre"].DataPropertyName = nameof(ProductoDTO.Nombre);
+
+            if (dgvProducto.Columns["ColumnDescripcion"] != null)
+                dgvProducto.Columns["ColumnDescripcion"].DataPropertyName = nameof(ProductoDTO.Descripcion);
+
+            if (dgvProducto.Columns["ColumnStock"] != null)
+                dgvProducto.Columns["ColumnStock"].DataPropertyName = nameof(ProductoDTO.CantidadStock);
+
+            if (dgvProducto.Columns["ColumnPrecio"] != null)
+                dgvProducto.Columns["ColumnPrecio"].DataPropertyName = nameof(ProductoDTO.PrecioUnitario);
+
+            if (dgvProducto.Columns["ColumnEstado"] != null)
+                dgvProducto.Columns["ColumnEstado"].DataPropertyName = nameof(ProductoDTO.Estado);
+
+            if (dgvProducto.Columns["ColumnProveedor"] != null)
+                dgvProducto.Columns["ColumnProveedor"].DataPropertyName = nameof(ProductoDTO.ProveedorNombre);
+
+            if (dgvProducto.Columns["ColumnUsuario"] != null)
+                dgvProducto.Columns["ColumnUsuario"].DataPropertyName = nameof(ProductoDTO.UsuarioCreacionNombre);
         }
 
         private void FrmProducto_Load(object sender, EventArgs e)
         {
             CargarProductos();
 
+            // Garantiza que la deselección se aplique tras renderizar los controles
             BeginInvoke((MethodInvoker)delegate
             {
                 RestablecerBotones();
             });
-
         }
 
         private void CargarProductos()
@@ -58,7 +94,7 @@ namespace TallerElectronico.Desktop
                 }
                 else
                 {
-                    //dgvProducto.DataSource = _productoBL.Search(criterio);
+                    dgvProducto.DataSource = _productoBL.Search(criterio);
                 }
             }
             catch (Exception ex)
@@ -168,15 +204,17 @@ namespace TallerElectronico.Desktop
             int? productoId = ObtenerProductoSeleccionado();
             if (!productoId.HasValue) return;
 
-            string nombre = Convert.ToString(dgvProducto.SelectedRows[0].Cells["ColumnName"].Value);
-            string apellido = Convert.ToString(dgvProducto.SelectedRows[0].Cells["ColumnLastName"].Value);
+            string nombre = Convert.ToString(dgvProducto.SelectedRows[0].Cells["ColumnNombre"].Value);
 
-            DialogResult confirm = MessageBox.Show($"¿Seguro que desea eliminar el producto {nombre} {apellido}?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult confirm = MessageBox.Show($"¿Seguro que desea eliminar el producto {nombre}?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirm != DialogResult.Yes) return;
 
             try
             {
-                _productoBL.Delete(productoId.Value);
+                // Reemplazar con el ID de usuario autenticado si manejas sesión (ej: SesionUsuario.UsuarioId)
+                int usuarioActualId = 1;
+
+                _productoBL.Delete(productoId.Value, usuarioActualId);
                 MessageBox.Show("El producto se eliminó correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CargarProductos();
             }
@@ -188,7 +226,6 @@ namespace TallerElectronico.Desktop
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            // Reinicia el reloj a cada tecla. Solo cuando te detengas 300ms se consultará a la DAL
             _timerBusqueda.Stop();
             _timerBusqueda.Start();
         }
@@ -196,7 +233,7 @@ namespace TallerElectronico.Desktop
         private void TimerBusqueda_Tick(object sender, EventArgs e)
         {
             _timerBusqueda.Stop();
-            CargarProductos(); // Llama a la DAL cuando el usuario pausó el tipeo
+            CargarProductos();
         }
     }
 }

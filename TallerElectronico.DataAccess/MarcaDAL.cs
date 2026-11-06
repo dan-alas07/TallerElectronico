@@ -8,20 +8,28 @@ namespace TallerElectronico.DataAccess
 {
     public class MarcaDAL
     {
+        private string NormalizarEstadoParaBD(string estado)
+        {
+            if (string.IsNullOrWhiteSpace(estado)) return "I";
+            return estado.Equals("Activo", StringComparison.OrdinalIgnoreCase) || estado == "A" ? "A" : "I";
+        }
+
+        private string TransformarEstadoParaUI(string estado)
+        {
+            return estado == "A" ? "Activo" : "Inactivo";
+        }
+
         public List<Marca> SelectAll()
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Marca
-                         .AsNoTracking()
-                         .ToList()
-                         .Select(p => new Marca
-                         {
-                             MarcaId = p.MarcaId,
-                             Nombre = p.Nombre,
-                             Estado = p.Estado == "A" ? "Activo" : "Inactivo"
-                         })
-                         .ToList();
+                var lista = db.Marca
+                              .AsNoTracking()
+                              .OrderBy(m => m.Nombre)
+                              .ToList();
+
+                lista.ForEach(m => m.Estado = TransformarEstadoParaUI(m.Estado));
+                return lista;
             }
         }
 
@@ -29,8 +37,16 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Marca.AsNoTracking()
-                               .FirstOrDefault(m => m.MarcaId == idMarca);
+                var marca = db.Marca
+                              .AsNoTracking()
+                              .FirstOrDefault(m => m.MarcaId == idMarca);
+
+                if (marca != null)
+                {
+                    marca.Estado = TransformarEstadoParaUI(marca.Estado);
+                }
+
+                return marca;
             }
         }
 
@@ -38,8 +54,12 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
+                marca.Estado = NormalizarEstadoParaBD(marca.Estado);
+
                 var nuevaMarca = db.Marca.Add(marca);
                 db.SaveChanges();
+
+                nuevaMarca.Estado = TransformarEstadoParaUI(nuevaMarca.Estado);
                 return nuevaMarca;
             }
         }
@@ -53,9 +73,11 @@ namespace TallerElectronico.DataAccess
                 if (marcaExistente != null)
                 {
                     marcaExistente.Nombre = marcaModificada.Nombre;
-                    marcaExistente.Estado = marcaModificada.Estado;
+                    marcaExistente.Estado = NormalizarEstadoParaBD(marcaModificada.Estado);
 
                     db.SaveChanges();
+
+                    marcaExistente.Estado = TransformarEstadoParaUI(marcaExistente.Estado);
                 }
 
                 return marcaExistente;
@@ -77,26 +99,42 @@ namespace TallerElectronico.DataAccess
                 return false;
             }
         }
+
+        public bool ExistsByNombre(string nombre, int? excludeMarcaId = null)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                return db.Marca.Any(m =>
+                    m.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase) &&
+                    m.Estado == "A" &&
+                    (!excludeMarcaId.HasValue || m.MarcaId != excludeMarcaId.Value));
+            }
+        }
+
         public List<Marca> Search(string criterio)
         {
             using (var db = new TallerElectronicoEntities())
             {
-                var query = db.Marca
-                              .AsNoTracking()
-                              .Where(p => p.Estado == "A");
+                IQueryable<Marca> query = db.Marca.AsNoTracking();
 
                 if (!string.IsNullOrWhiteSpace(criterio))
                 {
-                    criterio = criterio.Trim().ToLower();
+                    criterio = criterio.Trim();
+
                     int idBusqueda;
                     bool esNumero = int.TryParse(criterio, out idBusqueda);
 
-                    query = query.Where(p =>
-                        (esNumero && p.MarcaId == idBusqueda) ||
-                        (p.Nombre != null && p.Nombre.ToLower().Contains(criterio))
+                    query = query.Where(m =>
+                        (esNumero && m.MarcaId == idBusqueda) ||
+                        (m.Nombre != null && m.Nombre.Contains(criterio))
                     );
                 }
-                return query.OrderBy(p => p.Nombre).ToList();
+
+                var lista = query.OrderBy(m => m.Nombre)
+                                 .ToList();
+
+                lista.ForEach(m => m.Estado = TransformarEstadoParaUI(m.Estado));
+                return lista;
             }
         }
     }

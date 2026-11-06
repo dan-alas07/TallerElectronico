@@ -120,5 +120,23 @@ namespace TallerElectronico.Desktop
         {
 
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmacion = MessageBox.Show(
+                "¿Está seguro de que desea cerrar la sesión y salir al inicio?",
+                "Confirmar salida",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+                    if (confirmacion == DialogResult.Yes)
+                    {
+                        FrmLogin login = new FrmLogin();
+                        login.Show();
+
+                        this.Close();
+                    }
+        }
     }
 }

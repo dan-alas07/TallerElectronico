@@ -8,38 +8,51 @@ namespace TallerElectronico.DataAccess
 {
     public class ProductoDAL
     {
+        private string NormalizarEstadoParaBD(string estado)
+        {
+            if (string.IsNullOrWhiteSpace(estado)) return "I";
+            return estado.Equals("Activo", StringComparison.OrdinalIgnoreCase) || estado == "A" ? "A" : "I";
+        }
+
+        private string TransformarEstadoParaUI(string estado)
+        {
+            return estado == "A" ? "Activo" : "Inactivo";
+        }
+
+        private IQueryable<ProductoDTO> MapearAProductoDTO(IQueryable<Producto> query)
+        {
+            return query.Select(p => new ProductoDTO
+            {
+                ProductoId = p.ProductoId,
+                Codigo = p.Codigo,
+                Nombre = p.Nombre,
+                Descripcion = p.Descripcion,
+                CantidadStock = p.CantidadStock,
+                PrecioUnitario = p.PrecioUnitario,
+                Estado = p.Estado == "A" ? "Activo" : "Inactivo",
+
+                ProveedorId = p.ProveedorId,
+                UsuarioCreacionId = p.UsuarioCreacionId,
+
+                ProveedorNombre = p.Proveedor != null ? p.Proveedor.Nombre : "Sin Proveedor",
+
+                UsuarioCreacionNombre = p.Usuario != null
+                    ? (p.Usuario.Empleado != null
+                        ? p.Usuario.Empleado.Nombre + " " + p.Usuario.Empleado.Apellido
+                        : p.Usuario.Nombre)
+                    : "Sin Usuario"
+            });
+        }
 
         public List<ProductoDTO> SelectAll()
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Producto.AsNoTracking()
-                    .OrderBy(p => p.Nombre)
-                    .Select(p => new ProductoDTO
-                    {
-                        ProductoId = p.ProductoId,
-                        Codigo = p.Codigo,
-                        Nombre = p.Nombre,
-                        Descripcion = p.Descripcion,
-                        CantidadStock = p.CantidadStock,
-                        PrecioUnitario = p.PrecioUnitario,
-                        Estado = p.Estado == "A" ? "Activo" : "Inactivo",
+                var query = db.Producto
+                              .AsNoTracking()
+                              .OrderBy(p => p.Nombre);
 
-                        // Claves Foráneas para edición y control interno
-                        ProveedorId = p.ProveedorId,
-                        UsuarioCreacionId = p.UsuarioCreacionId,
-
-                        // Uniones (JOINs implícitos mediante propiedades de navegación)
-                        ProveedorNombre = p.Proveedor != null ? p.Proveedor.Nombre : "Sin Proveedor",
-
-                        // Mapea el nombre del usuario que creó el producto (accediendo a Empleado si aplica o a su Nombre directo)
-                        UsuarioCreacionNombre = p.Usuario != null
-                            ? (p.Usuario.Empleado != null
-                                ? p.Usuario.Empleado.Nombre + " " + p.Usuario.Empleado.Apellido
-                                : p.Usuario.Nombre)
-                            : "Sin Usuario"
-                    })
-                    .ToList();
+                return MapearAProductoDTO(query).ToList();
             }
         }
 
@@ -47,33 +60,23 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Producto
-                         .AsNoTracking()
-                         .Where(p => p.ProductoId == idProducto && p.Estado == "A")
-                         .Select(p => new ProductoDTO
-                         {
-                             ProductoId = p.ProductoId,
-                             Codigo = p.Codigo,
-                             Nombre = p.Nombre,
-                             Descripcion = p.Descripcion,
-                             CantidadStock = p.CantidadStock,
-                             PrecioUnitario = p.PrecioUnitario,
-                             Estado = p.Estado == "A" ? "Activo" : "Inactivo",
+                var query = db.Producto
+                              .AsNoTracking()
+                              .Where(p => p.ProductoId == idProducto);
 
-                             // Claves Foráneas
-                             ProveedorId = p.ProveedorId,
-                             UsuarioCreacionId = p.UsuarioCreacionId,
+                return MapearAProductoDTO(query).FirstOrDefault();
+            }
+        }
 
-                             // Mapeo ti relasion (JOINs implícitos)
-                             ProveedorNombre = p.Proveedor != null ? p.Proveedor.Nombre : "Sin Proveedor",
+        public ProductoDTO SelectByCodigo(string codigo)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                var query = db.Producto
+                              .AsNoTracking()
+                              .Where(p => p.Codigo == codigo);
 
-                             UsuarioCreacionNombre = p.Usuario != null
-                                 ? (p.Usuario.Empleado != null
-                                     ? p.Usuario.Empleado.Nombre + " " + p.Usuario.Empleado.Apellido
-                                     : p.Usuario.Nombre)
-                                 : "Sin Usuario"
-                         })
-                         .FirstOrDefault();
+                return MapearAProductoDTO(query).FirstOrDefault();
             }
         }
 
@@ -82,6 +85,9 @@ namespace TallerElectronico.DataAccess
             using (var db = new TallerElectronicoEntities())
             {
                 producto.Proveedor = null;
+                producto.Usuario = null;
+
+                producto.Estado = NormalizarEstadoParaBD(producto.Estado);
 
                 if (producto.FechaCreacion == default(DateTime))
                 {
@@ -90,6 +96,8 @@ namespace TallerElectronico.DataAccess
 
                 var nuevoProducto = db.Producto.Add(producto);
                 db.SaveChanges();
+
+                nuevoProducto.Estado = TransformarEstadoParaUI(nuevoProducto.Estado);
                 return nuevoProducto;
             }
         }
@@ -108,12 +116,14 @@ namespace TallerElectronico.DataAccess
                     productoExistente.CantidadStock = productoModificado.CantidadStock;
                     productoExistente.PrecioUnitario = productoModificado.PrecioUnitario;
                     productoExistente.ProveedorId = productoModificado.ProveedorId;
-                    productoExistente.Estado = productoModificado.Estado;
 
+                    productoExistente.Estado = NormalizarEstadoParaBD(productoModificado.Estado);
                     productoExistente.FechaModificacion = DateTime.Now;
                     productoExistente.UsuarioModificacionId = productoModificado.UsuarioModificacionId;
 
                     db.SaveChanges();
+
+                    productoExistente.Estado = TransformarEstadoParaUI(productoExistente.Estado);
                 }
 
                 return productoExistente;
@@ -143,12 +153,42 @@ namespace TallerElectronico.DataAccess
             }
         }
 
-        public Producto SelectByCodigo(string codigo)
+        public bool ExistsByCodigo(string codigo, int? excludeProductoId = null)
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Producto.AsNoTracking()
-                    .FirstOrDefault(p => p.Codigo == codigo);
+                return db.Producto.Any(p =>
+                    p.Codigo == codigo &&
+                    p.Estado == "A" &&
+                    (!excludeProductoId.HasValue || p.ProductoId != excludeProductoId.Value));
+            }
+        }
+
+        public List<ProductoDTO> Search(string criterio)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                IQueryable<Producto> query = db.Producto.AsNoTracking();
+
+                if (!string.IsNullOrWhiteSpace(criterio))
+                {
+                    criterio = criterio.Trim();
+
+                    int idBusqueda;
+                    bool esNumero = int.TryParse(criterio, out idBusqueda);
+
+                    query = query.Where(p =>
+                        (esNumero && p.ProductoId == idBusqueda) ||
+                        (p.Codigo != null && p.Codigo.Contains(criterio)) ||
+                        (p.Nombre != null && p.Nombre.Contains(criterio)) ||
+                        (p.Descripcion != null && p.Descripcion.Contains(criterio)) ||
+                        (p.Proveedor != null && p.Proveedor.Nombre.Contains(criterio))
+                    );
+                }
+
+                var queryOrdenada = query.OrderBy(p => p.Nombre);
+
+                return MapearAProductoDTO(queryOrdenada).ToList();
             }
         }
     }
