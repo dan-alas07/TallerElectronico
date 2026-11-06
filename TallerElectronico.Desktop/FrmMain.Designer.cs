@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.btnDetalleReparacion = new System.Windows.Forms.Button();
             this.btnEstadoReparacion = new System.Windows.Forms.Button();
             this.btnProducto = new System.Windows.Forms.Button();
             this.btnReparacion = new System.Windows.Forms.Button();
@@ -41,13 +42,14 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.pnlContainer = new System.Windows.Forms.Panel();
-            this.btnDetalleReparacion = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            this.pnlMain.Controls.Add(this.btnSalir);
             this.pnlMain.Controls.Add(this.btnDetalleReparacion);
             this.pnlMain.Controls.Add(this.btnEstadoReparacion);
             this.pnlMain.Controls.Add(this.btnProducto);
@@ -62,10 +64,24 @@
             this.pnlMain.Controls.Add(this.button5);
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
-            this.pnlMain.Margin = new System.Windows.Forms.Padding(4);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(293, 844);
+            this.pnlMain.Size = new System.Drawing.Size(220, 749);
             this.pnlMain.TabIndex = 0;
+            // 
+            // btnDetalleReparacion
+            // 
+            this.btnDetalleReparacion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDetalleReparacion.FlatAppearance.BorderSize = 0;
+            this.btnDetalleReparacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetalleReparacion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDetalleReparacion.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnDetalleReparacion.Location = new System.Drawing.Point(23, 600);
+            this.btnDetalleReparacion.Name = "btnDetalleReparacion";
+            this.btnDetalleReparacion.Size = new System.Drawing.Size(179, 40);
+            this.btnDetalleReparacion.TabIndex = 12;
+            this.btnDetalleReparacion.Text = "Detalle Reparación";
+            this.btnDetalleReparacion.UseVisualStyleBackColor = true;
+            this.btnDetalleReparacion.Click += new System.EventHandler(this.btnDetalleReparacion_Click);
             // 
             // btnEstadoReparacion
             // 
@@ -74,10 +90,9 @@
             this.btnEstadoReparacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEstadoReparacion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEstadoReparacion.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnEstadoReparacion.Location = new System.Drawing.Point(31, 681);
-            this.btnEstadoReparacion.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEstadoReparacion.Location = new System.Drawing.Point(23, 553);
             this.btnEstadoReparacion.Name = "btnEstadoReparacion";
-            this.btnEstadoReparacion.Size = new System.Drawing.Size(239, 49);
+            this.btnEstadoReparacion.Size = new System.Drawing.Size(179, 40);
             this.btnEstadoReparacion.TabIndex = 11;
             this.btnEstadoReparacion.Text = "Estado Reparación";
             this.btnEstadoReparacion.UseVisualStyleBackColor = true;
@@ -90,10 +105,9 @@
             this.btnProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProducto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProducto.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnProducto.Location = new System.Drawing.Point(46, 624);
-            this.btnProducto.Margin = new System.Windows.Forms.Padding(4);
+            this.btnProducto.Location = new System.Drawing.Point(34, 507);
             this.btnProducto.Name = "btnProducto";
-            this.btnProducto.Size = new System.Drawing.Size(200, 49);
+            this.btnProducto.Size = new System.Drawing.Size(150, 40);
             this.btnProducto.TabIndex = 10;
             this.btnProducto.Text = "Producto\r\n";
             this.btnProducto.UseVisualStyleBackColor = true;
@@ -106,10 +120,9 @@
             this.btnReparacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReparacion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReparacion.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnReparacion.Location = new System.Drawing.Point(44, 567);
-            this.btnReparacion.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReparacion.Location = new System.Drawing.Point(33, 461);
             this.btnReparacion.Name = "btnReparacion";
-            this.btnReparacion.Size = new System.Drawing.Size(200, 49);
+            this.btnReparacion.Size = new System.Drawing.Size(150, 40);
             this.btnReparacion.TabIndex = 9;
             this.btnReparacion.Text = "Reparación";
             this.btnReparacion.UseVisualStyleBackColor = true;
@@ -122,10 +135,9 @@
             this.btnMarca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMarca.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMarca.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnMarca.Location = new System.Drawing.Point(44, 511);
-            this.btnMarca.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMarca.Location = new System.Drawing.Point(33, 415);
             this.btnMarca.Name = "btnMarca";
-            this.btnMarca.Size = new System.Drawing.Size(200, 49);
+            this.btnMarca.Size = new System.Drawing.Size(150, 40);
             this.btnMarca.TabIndex = 8;
             this.btnMarca.Text = "Marca";
             this.btnMarca.UseVisualStyleBackColor = true;
@@ -138,10 +150,9 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.Window;
-            this.button2.Location = new System.Drawing.Point(44, 270);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(33, 219);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 49);
+            this.button2.Size = new System.Drawing.Size(150, 40);
             this.button2.TabIndex = 2;
             this.button2.Text = "Equipos";
             this.button2.UseVisualStyleBackColor = true;
@@ -153,10 +164,9 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(37, 31);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(28, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 32);
+            this.label1.Size = new System.Drawing.Size(161, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Taller Electrónica";
             // 
@@ -169,10 +179,9 @@
             this.button6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.SystemColors.Window;
             this.button6.Image = global::TallerElectronico.Desktop.Properties.Resources.homepage;
-            this.button6.Location = new System.Drawing.Point(44, 142);
-            this.button6.Margin = new System.Windows.Forms.Padding(4);
+            this.button6.Location = new System.Drawing.Point(33, 115);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(200, 49);
+            this.button6.Size = new System.Drawing.Size(150, 40);
             this.button6.TabIndex = 1;
             this.button6.Text = "Inicio";
             this.button6.UseVisualStyleBackColor = true;
@@ -185,10 +194,9 @@
             this.btnProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProveedor.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProveedor.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnProveedor.Location = new System.Drawing.Point(44, 454);
-            this.btnProveedor.Margin = new System.Windows.Forms.Padding(4);
+            this.btnProveedor.Location = new System.Drawing.Point(33, 369);
             this.btnProveedor.Name = "btnProveedor";
-            this.btnProveedor.Size = new System.Drawing.Size(200, 49);
+            this.btnProveedor.Size = new System.Drawing.Size(150, 40);
             this.btnProveedor.TabIndex = 7;
             this.btnProveedor.Text = "Proveedor";
             this.btnProveedor.UseVisualStyleBackColor = true;
@@ -201,10 +209,9 @@
             this.btnUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsuario.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsuario.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnUsuario.Location = new System.Drawing.Point(44, 398);
-            this.btnUsuario.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUsuario.Location = new System.Drawing.Point(33, 323);
             this.btnUsuario.Name = "btnUsuario";
-            this.btnUsuario.Size = new System.Drawing.Size(200, 49);
+            this.btnUsuario.Size = new System.Drawing.Size(150, 40);
             this.btnUsuario.TabIndex = 5;
             this.btnUsuario.Text = "Usuarios";
             this.btnUsuario.UseVisualStyleBackColor = true;
@@ -217,10 +224,9 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.Window;
-            this.button4.Location = new System.Drawing.Point(44, 334);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
+            this.button4.Location = new System.Drawing.Point(33, 271);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(200, 49);
+            this.button4.Size = new System.Drawing.Size(150, 40);
             this.button4.TabIndex = 4;
             this.button4.Text = "Empleados";
             this.button4.UseVisualStyleBackColor = true;
@@ -233,10 +239,9 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.SystemColors.Window;
-            this.button5.Location = new System.Drawing.Point(44, 206);
-            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Location = new System.Drawing.Point(33, 167);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(200, 49);
+            this.button5.Size = new System.Drawing.Size(150, 40);
             this.button5.TabIndex = 3;
             this.button5.Text = "Clientes";
             this.button5.UseVisualStyleBackColor = true;
@@ -246,38 +251,36 @@
             // 
             this.pnlContainer.BackColor = System.Drawing.Color.White;
             this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContainer.Location = new System.Drawing.Point(293, 0);
-            this.pnlContainer.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlContainer.Location = new System.Drawing.Point(220, 0);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(774, 844);
+            this.pnlContainer.Size = new System.Drawing.Size(580, 749);
             this.pnlContainer.TabIndex = 1;
             this.pnlContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlContainer_Paint);
             // 
-            // btnDetalleReparacion
+            // btnSalir
             // 
-            this.btnDetalleReparacion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDetalleReparacion.FlatAppearance.BorderSize = 0;
-            this.btnDetalleReparacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDetalleReparacion.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDetalleReparacion.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnDetalleReparacion.Location = new System.Drawing.Point(31, 738);
-            this.btnDetalleReparacion.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDetalleReparacion.Name = "btnDetalleReparacion";
-            this.btnDetalleReparacion.Size = new System.Drawing.Size(239, 49);
-            this.btnDetalleReparacion.TabIndex = 12;
-            this.btnDetalleReparacion.Text = "Detalle Reparación";
-            this.btnDetalleReparacion.UseVisualStyleBackColor = true;
-            this.btnDetalleReparacion.Click += new System.EventHandler(this.btnDetalleReparacion_Click);
+            this.btnSalir.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalir.FlatAppearance.BorderSize = 0;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnSalir.Location = new System.Drawing.Point(23, 659);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(179, 40);
+            this.btnSalir.TabIndex = 13;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1067, 844);
+            this.ClientSize = new System.Drawing.Size(800, 749);
             this.Controls.Add(this.pnlContainer);
             this.Controls.Add(this.pnlMain);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.ShowIcon = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -303,5 +306,6 @@
         private System.Windows.Forms.Button btnProducto;
         private System.Windows.Forms.Button btnEstadoReparacion;
         private System.Windows.Forms.Button btnDetalleReparacion;
+        private System.Windows.Forms.Button btnSalir;
     }
 }
