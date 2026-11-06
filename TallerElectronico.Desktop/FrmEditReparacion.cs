@@ -38,8 +38,8 @@ namespace TallerElectronico.Desktop
         {
             try
             {
-                // 1. Cliente
-                cmbCliente.DisplayMember = "NombreCompleto";
+                // 1. Cliente 
+                cmbCliente.DisplayMember = "Nombre"; 
                 cmbCliente.ValueMember = "ClienteId";
                 cmbCliente.DataSource = _clienteBL.SelectAll();
 
@@ -53,9 +53,9 @@ namespace TallerElectronico.Desktop
                 cmbMarca.ValueMember = "MarcaId";
                 cmbMarca.DataSource = _marcaBL.SelectAll();
 
-                // 4. Técnico / Usuario (Configurar ValueMember y DisplayMember ANTES del DataSource)
-                cmbTecnico.DisplayMember = "NombreCompleto";
-                cmbTecnico.ValueMember = "UsuarioId";
+                // 4. Técnico / Usuario (Propiedades exactas de UsuarioDTO)
+                cmbTecnico.DisplayMember = "EmpleadoNombre";
+                cmbTecnico.ValueMember = "Id";
                 cmbTecnico.DataSource = _usuarioBL.SelectAll();
                 cmbTecnico.SelectedIndex = -1;
 
@@ -83,7 +83,6 @@ namespace TallerElectronico.Desktop
                     return;
                 }
 
-                
                 txtCodigoSeguimiento.Text = _reparacionActual.CodigoSeguimiento;
                 txtCodigoSeguimiento.ReadOnly = true;
 
@@ -104,7 +103,6 @@ namespace TallerElectronico.Desktop
 
                 txtFechaIngreso.Text = _reparacionActual.FechaIngreso.ToString("dd/MM/yyyy HH:mm");
 
-                
                 if (_reparacionActual.TecnicoAsignadoId.HasValue)
                 {
                     cmbTecnico.SelectedValue = _reparacionActual.TecnicoAsignadoId.Value;
@@ -178,6 +176,7 @@ namespace TallerElectronico.Desktop
                     tecnicoId = parsedId;
                 }
 
+                // Extracción del Estado ID
                 int estadoId = 0;
                 if (cmbEstado.SelectedValue is int idEstado)
                 {
@@ -198,7 +197,7 @@ namespace TallerElectronico.Desktop
 
                 DateTime? fechaEntrega = dtpFechaEntrega.Checked ? dtpFechaEntrega.Value : (DateTime?)null;
 
-               
+                // Actualización de propiedades en la entidad
                 _reparacionActual.TecnicoAsignadoId = tecnicoId;
                 _reparacionActual.EstadoReparacionId = estadoId;
                 _reparacionActual.DiagnosticoFinal = string.IsNullOrWhiteSpace(txtDiagnosticoFinal.Text) ? null : txtDiagnosticoFinal.Text.Trim();
@@ -206,11 +205,10 @@ namespace TallerElectronico.Desktop
                 _reparacionActual.TotalReparacion = totalReparacion;
                 _reparacionActual.FechaEntrega = fechaEntrega;
 
-               
+                // Auditoría
                 _reparacionActual.FechaModificacion = DateTime.Now;
                 _reparacionActual.UsuarioModificacionId = SesionUsuario.UsuarioId;
 
-                
                 Reparacion reparacionActualizada = _reparacionBL.Update(_reparacionActual);
 
                 if (reparacionActualizada != null)
@@ -246,9 +244,5 @@ namespace TallerElectronico.Desktop
             this.Close();
         }
 
-        private void lblTitulo_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

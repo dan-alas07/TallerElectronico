@@ -473,7 +473,6 @@
             this.lblTitulo.Size = new System.Drawing.Size(331, 30);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Gestión y Cierre de Reparación";
-            this.lblTitulo.Click += new System.EventHandler(this.lblTitulo_Click);
             // 
             // lblSubtitulo
             // 
