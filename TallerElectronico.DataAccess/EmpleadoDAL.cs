@@ -8,17 +8,31 @@ namespace TallerElectronico.DataAccess
 {
     public class EmpleadoDAL
     {
+        // Convierte el valor que viene de la UI ("Activo"/"Inactivo") al formato de BD ("A"/"I")
+        private string NormalizarEstadoParaBD(string estado)
+        {
+            if (string.IsNullOrWhiteSpace(estado)) return "I";
+            return estado.Equals("Activo", StringComparison.OrdinalIgnoreCase) || estado == "A" ? "A" : "I";
+        }
+
+        // Convierte el valor almacenado en BD ("A"/"I") al formato para la UI ("Activo"/"Inactivo")
+        private string TransformarEstadoParaUI(string estado)
+        {
+            return estado == "A" ? "Activo" : "Inactivo";
+        }
+
         public List<Empleado> SelectAll()
         {
             using (var db = new TallerElectronicoEntities())
             {
-                var list = db.Empleado
-                             .AsNoTracking()
-                             .OrderBy(e => e.Nombre)
-                             .ToList();
+                var empleados = db.Empleado
+                                  .AsNoTracking()
+                                  .OrderBy(e => e.Nombre)
+                                  .ThenBy(e => e.Apellido)
+                                  .ToList();
 
-                NormalizarEstado(list);
-                return list;
+                empleados.ForEach(e => e.Estado = TransformarEstadoParaUI(e.Estado));
+                return empleados;
             }
         }
 
@@ -32,7 +46,7 @@ namespace TallerElectronico.DataAccess
 
                 if (empleado != null)
                 {
-                    empleado.Estado = MapearEstadoLegible(empleado.Estado);
+                    empleado.Estado = TransformarEstadoParaUI(empleado.Estado);
                 }
 
                 return empleado;
@@ -43,12 +57,13 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                empleado.Estado = MapearEstadoBD(empleado.Estado);
+                // Asegura guardar "A" o "I" en la BD
+                empleado.Estado = NormalizarEstadoParaBD(empleado.Estado);
 
                 var nuevoEmpleado = db.Empleado.Add(empleado);
                 db.SaveChanges();
 
-                nuevoEmpleado.Estado = MapearEstadoLegible(nuevoEmpleado.Estado);
+                nuevoEmpleado.Estado = TransformarEstadoParaUI(nuevoEmpleado.Estado);
                 return nuevoEmpleado;
             }
         }
@@ -68,10 +83,13 @@ namespace TallerElectronico.DataAccess
                     empleadoExistente.Correo = empleadoModificado.Correo;
                     empleadoExistente.Direccion = empleadoModificado.Direccion;
                     empleadoExistente.FechaContratacion = empleadoModificado.FechaContratacion;
-                    empleadoExistente.Estado = MapearEstadoBD(empleadoModificado.Estado);
+
+                    // Convertir "Activo"/"Inactivo" a "A"/"I" antes de guardar
+                    empleadoExistente.Estado = NormalizarEstadoParaBD(empleadoModificado.Estado);
 
                     db.SaveChanges();
-                    empleadoExistente.Estado = MapearEstadoLegible(empleadoExistente.Estado);
+
+                    empleadoExistente.Estado = TransformarEstadoParaUI(empleadoExistente.Estado);
                 }
 
                 return empleadoExistente;
@@ -100,6 +118,7 @@ namespace TallerElectronico.DataAccess
             {
                 return db.Empleado.Any(e =>
                     e.DUI == dui &&
+                    e.Estado == "A" &&
                     (!excludeEmpleadoId.HasValue || e.EmpleadoId != excludeEmpleadoId.Value));
             }
         }
@@ -110,6 +129,7 @@ namespace TallerElectronico.DataAccess
             {
                 return db.Empleado.Any(e =>
                     e.Correo == email &&
+                    e.Estado == "A" &&
                     (!excludeEmpleadoId.HasValue || e.EmpleadoId != excludeEmpleadoId.Value));
             }
         }
@@ -118,7 +138,6 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                // Tipado explícito como IQueryable<Empleado> para evitar DbQuery mismatch
                 IQueryable<Empleado> query = db.Empleado.AsNoTracking();
 
                 if (!string.IsNullOrWhiteSpace(criterio))
@@ -139,31 +158,13 @@ namespace TallerElectronico.DataAccess
                     );
                 }
 
-                var list = query.OrderBy(e => e.Nombre).ToList();
-                NormalizarEstado(list);
-                return list;
+                var lista = query.OrderBy(e => e.Nombre)
+                                 .ThenBy(e => e.Apellido)
+                                 .ToList();
+
+                lista.ForEach(e => e.Estado = TransformarEstadoParaUI(e.Estado));
+                return lista;
             }
         }
-
-        #region Métodos Auxiliares de Mapeo
-        private static string MapearEstadoLegible(string estadoBD)
-        {
-            return estadoBD == "A" ? "Activo" : "Inactivo";
-        }
-
-        private static string MapearEstadoBD(string estadoLegible)
-        {
-            if (string.IsNullOrWhiteSpace(estadoLegible)) return "I";
-            return (estadoLegible.Equals("Activo", StringComparison.OrdinalIgnoreCase) || estadoLegible == "A") ? "A" : "I";
-        }
-
-        private static void NormalizarEstado(IEnumerable<Empleado> empleados)
-        {
-            foreach (var emp in empleados)
-            {
-                emp.Estado = MapearEstadoLegible(emp.Estado);
-            }
-        }
-        #endregion
     }
 }

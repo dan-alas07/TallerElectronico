@@ -208,7 +208,7 @@
             // 
             // ColumnCode
             // 
-            this.ColumnCode.DataPropertyName = "Id";
+            this.ColumnCode.DataPropertyName = "ClienteId";
             this.ColumnCode.FillWeight = 65F;
             this.ColumnCode.HeaderText = "Código";
             this.ColumnCode.MinimumWidth = 6;

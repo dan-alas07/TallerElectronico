@@ -196,7 +196,7 @@ namespace TallerElectronico.Desktop
             // 
             // ColumnCode
             // 
-            this.ColumnCode.DataPropertyName = "Id";
+            this.ColumnCode.DataPropertyName = "EmpleadoId";
             this.ColumnCode.FillWeight = 65F;
             this.ColumnCode.HeaderText = "Código";
             this.ColumnCode.MinimumWidth = 6;

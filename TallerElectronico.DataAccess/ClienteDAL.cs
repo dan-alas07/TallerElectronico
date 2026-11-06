@@ -8,15 +8,31 @@ namespace TallerElectronico.DataAccess
 {
     public class ClienteDAL
     {
+        // Convierte el valor que viene de la UI ("Activo"/"Inactivo") al formato de BD ("A"/"I")
+        private string NormalizarEstadoParaBD(string estado)
+        {
+            if (string.IsNullOrWhiteSpace(estado)) return "I";
+            return estado.Equals("Activo", StringComparison.OrdinalIgnoreCase) || estado == "A" ? "A" : "I";
+        }
+
+        // Convierte el valor almacenado en BD ("A"/"I") al formato para la UI ("Activo"/"Inactivo")
+        private string TransformarEstadoParaUI(string estado)
+        {
+            return estado == "A" ? "Activo" : "Inactivo";
+        }
+
         public List<Cliente> SelectAll()
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Cliente
-                         .AsNoTracking()
-                         .OrderBy(c => c.Nombre)
-                         .ThenBy(c => c.Apellido)
-                         .ToList();
+                var clientes = db.Cliente
+                                 .AsNoTracking()
+                                 .OrderBy(c => c.Nombre)
+                                 .ThenBy(c => c.Apellido)
+                                 .ToList();
+
+                clientes.ForEach(c => c.Estado = TransformarEstadoParaUI(c.Estado));
+                return clientes;
             }
         }
 
@@ -24,9 +40,16 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Cliente
-                         .AsNoTracking()
-                         .FirstOrDefault(c => c.ClienteId == idCliente);
+                var cliente = db.Cliente
+                                .AsNoTracking()
+                                .FirstOrDefault(c => c.ClienteId == idCliente);
+
+                if (cliente != null)
+                {
+                    cliente.Estado = TransformarEstadoParaUI(cliente.Estado);
+                }
+
+                return cliente;
             }
         }
 
@@ -34,8 +57,13 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
+                // Asegura guardar "A" o "I" en la BD
+                cliente.Estado = NormalizarEstadoParaBD(cliente.Estado);
+
                 var nuevoCliente = db.Cliente.Add(cliente);
                 db.SaveChanges();
+
+                nuevoCliente.Estado = TransformarEstadoParaUI(nuevoCliente.Estado);
                 return nuevoCliente;
             }
         }
@@ -55,9 +83,13 @@ namespace TallerElectronico.DataAccess
                     clienteExistente.TipoDocumento = clienteModificado.TipoDocumento;
                     clienteExistente.DUI = clienteModificado.DUI;
                     clienteExistente.CarnetExtranjero = clienteModificado.CarnetExtranjero;
-                    clienteExistente.Estado = clienteModificado.Estado;
+
+                    // Convertir "Activo"/"Inactivo" a "A"/"I" antes de guardar
+                    clienteExistente.Estado = NormalizarEstadoParaBD(clienteModificado.Estado);
 
                     db.SaveChanges();
+
+                    clienteExistente.Estado = TransformarEstadoParaUI(clienteExistente.Estado);
                 }
 
                 return clienteExistente;
@@ -86,6 +118,7 @@ namespace TallerElectronico.DataAccess
             {
                 return db.Cliente.Any(c =>
                     c.DUI == dui &&
+                    c.Estado == "A" &&
                     (!excludeClienteId.HasValue || c.ClienteId != excludeClienteId.Value));
             }
         }
@@ -96,6 +129,7 @@ namespace TallerElectronico.DataAccess
             {
                 return db.Cliente.Any(c =>
                     c.Correo == email &&
+                    c.Estado == "A" &&
                     (!excludeClienteId.HasValue || c.ClienteId != excludeClienteId.Value));
             }
         }
@@ -108,25 +142,29 @@ namespace TallerElectronico.DataAccess
 
                 if (!string.IsNullOrWhiteSpace(criterio))
                 {
-                    criterio = criterio.Trim().ToLower();
+                    criterio = criterio.Trim();
+
                     int idBusqueda;
                     bool esNumero = int.TryParse(criterio, out idBusqueda);
 
                     query = query.Where(c =>
                         (esNumero && c.ClienteId == idBusqueda) ||
-                        (c.Nombre != null && c.Nombre.ToLower().Contains(criterio)) ||
-                        (c.Apellido != null && c.Apellido.ToLower().Contains(criterio)) ||
-                        (c.Telefono != null && c.Telefono.ToLower().Contains(criterio)) ||
-                        (c.Correo != null && c.Correo.ToLower().Contains(criterio)) ||
-                        (c.TipoDocumento != null && c.TipoDocumento.ToLower().Contains(criterio)) ||
-                        (c.DUI != null && c.DUI.ToLower().Contains(criterio)) ||
-                        (c.CarnetExtranjero != null && c.CarnetExtranjero.ToLower().Contains(criterio))
+                        (c.Nombre != null && c.Nombre.Contains(criterio)) ||
+                        (c.Apellido != null && c.Apellido.Contains(criterio)) ||
+                        (c.Telefono != null && c.Telefono.Contains(criterio)) ||
+                        (c.Correo != null && c.Correo.Contains(criterio)) ||
+                        (c.TipoDocumento != null && c.TipoDocumento.Contains(criterio)) ||
+                        (c.DUI != null && c.DUI.Contains(criterio)) ||
+                        (c.CarnetExtranjero != null && c.CarnetExtranjero.Contains(criterio))
                     );
                 }
 
-                return query.OrderBy(c => c.Nombre)
-                            .ThenBy(c => c.Apellido)
-                            .ToList();
+                var lista = query.OrderBy(c => c.Nombre)
+                                 .ThenBy(c => c.Apellido)
+                                 .ToList();
+
+                lista.ForEach(c => c.Estado = TransformarEstadoParaUI(c.Estado));
+                return lista;
             }
         }
     }
