@@ -12,11 +12,13 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Empleado
-                         .AsNoTracking()
-                         .Where(e => e.Estado == "A")
-                         .OrderBy(p => p.Nombre)
-                         .ToList();
+                var list = db.Empleado
+                             .AsNoTracking()
+                             .OrderBy(e => e.Nombre)
+                             .ToList();
+
+                NormalizarEstado(list);
+                return list;
             }
         }
 
@@ -24,9 +26,16 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Empleado
-                         .AsNoTracking()
-                         .FirstOrDefault(e => e.EmpleadoId == idEmpleado && e.Estado == "A");
+                var empleado = db.Empleado
+                                 .AsNoTracking()
+                                 .FirstOrDefault(e => e.EmpleadoId == idEmpleado);
+
+                if (empleado != null)
+                {
+                    empleado.Estado = MapearEstadoLegible(empleado.Estado);
+                }
+
+                return empleado;
             }
         }
 
@@ -34,8 +43,12 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
+                empleado.Estado = MapearEstadoBD(empleado.Estado);
+
                 var nuevoEmpleado = db.Empleado.Add(empleado);
                 db.SaveChanges();
+
+                nuevoEmpleado.Estado = MapearEstadoLegible(nuevoEmpleado.Estado);
                 return nuevoEmpleado;
             }
         }
@@ -55,9 +68,10 @@ namespace TallerElectronico.DataAccess
                     empleadoExistente.Correo = empleadoModificado.Correo;
                     empleadoExistente.Direccion = empleadoModificado.Direccion;
                     empleadoExistente.FechaContratacion = empleadoModificado.FechaContratacion;
-                    empleadoExistente.Estado = empleadoModificado.Estado;
+                    empleadoExistente.Estado = MapearEstadoBD(empleadoModificado.Estado);
 
                     db.SaveChanges();
+                    empleadoExistente.Estado = MapearEstadoLegible(empleadoExistente.Estado);
                 }
 
                 return empleadoExistente;
@@ -86,7 +100,6 @@ namespace TallerElectronico.DataAccess
             {
                 return db.Empleado.Any(e =>
                     e.DUI == dui &&
-                    e.Estado == "A" &&
                     (!excludeEmpleadoId.HasValue || e.EmpleadoId != excludeEmpleadoId.Value));
             }
         }
@@ -97,7 +110,6 @@ namespace TallerElectronico.DataAccess
             {
                 return db.Empleado.Any(e =>
                     e.Correo == email &&
-                    e.Estado == "A" &&
                     (!excludeEmpleadoId.HasValue || e.EmpleadoId != excludeEmpleadoId.Value));
             }
         }
@@ -106,28 +118,52 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                IQueryable<Empleado> query = db.Empleado.AsNoTracking().Where(e => e.Estado == "A");
+                // Tipado explícito como IQueryable<Empleado> para evitar DbQuery mismatch
+                IQueryable<Empleado> query = db.Empleado.AsNoTracking();
 
                 if (!string.IsNullOrWhiteSpace(criterio))
                 {
-                    criterio = criterio.Trim().ToLower();
+                    criterio = criterio.Trim();
 
                     int idBusqueda;
                     bool esNumero = int.TryParse(criterio, out idBusqueda);
 
-                    query = query.Where(p =>
-                        (esNumero && p.EmpleadoId == idBusqueda) ||
-                        (p.Nombre != null && p.Nombre.ToLower().Contains(criterio)) ||
-                        (p.Apellido != null && p.Apellido.ToLower().Contains(criterio)) ||
-                        (p.DUI != null && p.DUI.ToLower().Contains(criterio)) ||
-                        (p.Telefono != null && p.Telefono.ToLower().Contains(criterio)) ||
-                        (p.Correo != null && p.Correo.ToLower().Contains(criterio)) ||
-                        (p.Direccion != null && p.Direccion.ToLower().Contains(criterio))
+                    query = query.Where(e =>
+                        (esNumero && e.EmpleadoId == idBusqueda) ||
+                        (e.Nombre != null && e.Nombre.Contains(criterio)) ||
+                        (e.Apellido != null && e.Apellido.Contains(criterio)) ||
+                        (e.DUI != null && e.DUI.Contains(criterio)) ||
+                        (e.Telefono != null && e.Telefono.Contains(criterio)) ||
+                        (e.Correo != null && e.Correo.Contains(criterio)) ||
+                        (e.Direccion != null && e.Direccion.Contains(criterio))
                     );
                 }
 
-                return query.OrderBy(p => p.Nombre).ToList();
+                var list = query.OrderBy(e => e.Nombre).ToList();
+                NormalizarEstado(list);
+                return list;
             }
         }
+
+        #region Métodos Auxiliares de Mapeo
+        private static string MapearEstadoLegible(string estadoBD)
+        {
+            return estadoBD == "A" ? "Activo" : "Inactivo";
+        }
+
+        private static string MapearEstadoBD(string estadoLegible)
+        {
+            if (string.IsNullOrWhiteSpace(estadoLegible)) return "I";
+            return (estadoLegible.Equals("Activo", StringComparison.OrdinalIgnoreCase) || estadoLegible == "A") ? "A" : "I";
+        }
+
+        private static void NormalizarEstado(IEnumerable<Empleado> empleados)
+        {
+            foreach (var emp in empleados)
+            {
+                emp.Estado = MapearEstadoLegible(emp.Estado);
+            }
+        }
+        #endregion
     }
 }

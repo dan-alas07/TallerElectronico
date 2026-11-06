@@ -14,7 +14,6 @@ namespace TallerElectronico.DataAccess
             {
                 return db.Cliente
                          .AsNoTracking()
-                         .Where(c => c.Estado == "A")
                          .OrderBy(c => c.Nombre)
                          .ThenBy(c => c.Apellido)
                          .ToList();
@@ -27,7 +26,7 @@ namespace TallerElectronico.DataAccess
             {
                 return db.Cliente
                          .AsNoTracking()
-                         .FirstOrDefault(c => c.ClienteId == idCliente && c.Estado == "A");
+                         .FirstOrDefault(c => c.ClienteId == idCliente);
             }
         }
 
@@ -87,7 +86,6 @@ namespace TallerElectronico.DataAccess
             {
                 return db.Cliente.Any(c =>
                     c.DUI == dui &&
-                    c.Estado == "A" &&
                     (!excludeClienteId.HasValue || c.ClienteId != excludeClienteId.Value));
             }
         }
@@ -98,7 +96,6 @@ namespace TallerElectronico.DataAccess
             {
                 return db.Cliente.Any(c =>
                     c.Correo == email &&
-                    c.Estado == "A" &&
                     (!excludeClienteId.HasValue || c.ClienteId != excludeClienteId.Value));
             }
         }
@@ -107,9 +104,7 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                var query = db.Cliente
-                              .AsNoTracking()
-                              .Where(c => c.Estado == "A");
+                IQueryable<Cliente> query = db.Cliente.AsNoTracking();
 
                 if (!string.IsNullOrWhiteSpace(criterio))
                 {
