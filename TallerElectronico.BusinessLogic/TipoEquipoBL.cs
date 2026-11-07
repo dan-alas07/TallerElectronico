@@ -42,7 +42,10 @@ namespace TallerElectronico.BusinessLogic
             if (listaTipos.Any(t => t.Nombre.Equals(tipoEquipo.Nombre, StringComparison.OrdinalIgnoreCase)))
                 throw new InvalidOperationException($"El tipo de equipo '{tipoEquipo.Nombre}' ya se encuentra registrado.");
 
-            tipoEquipo.Estado = "A";
+            if (string.IsNullOrWhiteSpace(tipoEquipo.Estado))
+            {
+                tipoEquipo.Estado = "A";
+            }
 
             return _tipoEquipoDal.Insert(tipoEquipo);
         }

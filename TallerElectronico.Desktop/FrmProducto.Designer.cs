@@ -31,7 +31,7 @@ namespace TallerElectronico.Desktop
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCodeProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,7 +65,7 @@ namespace TallerElectronico.Desktop
             this.dgvProducto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCode,
             this.ColumnCodeProduct,
-            this.ColumnName,
+            this.ColumnNombre,
             this.ColumnAddress,
             this.ColumnStock,
             this.Column1,
@@ -218,15 +218,15 @@ namespace TallerElectronico.Desktop
             this.ColumnCodeProduct.ReadOnly = true;
             this.ColumnCodeProduct.Width = 150;
             // 
-            // ColumnName
+            // ColumnNombre
             // 
-            this.ColumnName.DataPropertyName = "Nombre";
-            this.ColumnName.FillWeight = 0.7266592F;
-            this.ColumnName.HeaderText = "Nombre";
-            this.ColumnName.MinimumWidth = 6;
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.ReadOnly = true;
-            this.ColumnName.Width = 150;
+            this.ColumnNombre.DataPropertyName = "Nombre";
+            this.ColumnNombre.FillWeight = 0.7266592F;
+            this.ColumnNombre.HeaderText = "Nombre";
+            this.ColumnNombre.MinimumWidth = 6;
+            this.ColumnNombre.Name = "ColumnNombre";
+            this.ColumnNombre.ReadOnly = true;
+            this.ColumnNombre.Width = 150;
             // 
             // ColumnAddress
             // 
@@ -314,7 +314,7 @@ namespace TallerElectronico.Desktop
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodeProduct;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

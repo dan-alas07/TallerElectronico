@@ -25,7 +25,6 @@ namespace TallerElectronico.DataAccess
             {
                 return db.Usuario
                          .AsNoTracking()
-                         .Where(u => u.Estado == "A")
                          .Select(u => new UsuarioDTO
                          {
                              Id = u.UsuarioId,
