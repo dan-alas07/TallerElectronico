@@ -91,5 +91,10 @@ namespace TallerElectronico.BusinessLogic
 
             return _rolDal.Delete(idRol);
         }
+
+        public List<Rol> Search(string criterio)
+        {
+            return _rolDal.Search(criterio);
+        }
     }
 }

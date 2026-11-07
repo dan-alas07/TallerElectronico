@@ -116,6 +116,11 @@ namespace TallerElectronico.Desktop
             OpenFrm(new FrmDetalleReparacion());
         }
 
+        private void btnRol_Click(object sender, EventArgs e)
+        {
+            OpenFrm(new FrmRol());
+        }
+
         private void pnlContainer_Paint(object sender, PaintEventArgs e)
         {
 

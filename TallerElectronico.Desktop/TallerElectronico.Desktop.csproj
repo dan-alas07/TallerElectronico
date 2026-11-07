@@ -103,6 +103,18 @@
     <Compile Include="FrmCreateEstadoReparacion.Designer.cs">
       <DependentUpon>FrmCreateEstadoReparacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCreateRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCreateRol.Designer.cs">
+      <DependentUpon>FrmCreateRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditRol.Designer.cs">
+      <DependentUpon>FrmEditRol.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEditProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +223,12 @@
     <Compile Include="FrmCreateReparacion.Designer.cs">
       <DependentUpon>FrmCreateReparacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRol.Designer.cs">
+      <DependentUpon>FrmRol.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +306,12 @@
     <EmbeddedResource Include="FrmCreateEstadoReparacion.resx">
       <DependentUpon>FrmCreateEstadoReparacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCreateRol.resx">
+      <DependentUpon>FrmCreateRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditRol.resx">
+      <DependentUpon>FrmEditRol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEditProducto.resx">
       <DependentUpon>FrmEditProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -341,6 +365,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEstadoReparacion.resx">
       <DependentUpon>FrmEstadoReparacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRol.resx">
+      <DependentUpon>FrmRol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProducto.resx">
       <DependentUpon>FrmProducto.cs</DependentUpon>
