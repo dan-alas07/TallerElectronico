@@ -105,7 +105,7 @@
             this.btnDetalleReparacion.Location = new System.Drawing.Point(4, 631);
             this.btnDetalleReparacion.Margin = new System.Windows.Forms.Padding(4);
             this.btnDetalleReparacion.Name = "btnDetalleReparacion";
-            this.btnDetalleReparacion.Size = new System.Drawing.Size(228, 49);
+            this.btnDetalleReparacion.Size = new System.Drawing.Size(217, 49);
             this.btnDetalleReparacion.TabIndex = 12;
             this.btnDetalleReparacion.Text = "Detalle Reparación";
             this.btnDetalleReparacion.UseVisualStyleBackColor = true;
@@ -121,7 +121,7 @@
             this.btnEstadoReparacion.Location = new System.Drawing.Point(4, 517);
             this.btnEstadoReparacion.Margin = new System.Windows.Forms.Padding(4);
             this.btnEstadoReparacion.Name = "btnEstadoReparacion";
-            this.btnEstadoReparacion.Size = new System.Drawing.Size(228, 49);
+            this.btnEstadoReparacion.Size = new System.Drawing.Size(217, 49);
             this.btnEstadoReparacion.TabIndex = 11;
             this.btnEstadoReparacion.Text = "Estado Reparación";
             this.btnEstadoReparacion.UseVisualStyleBackColor = true;
@@ -153,7 +153,7 @@
             this.btnReparacion.Location = new System.Drawing.Point(4, 574);
             this.btnReparacion.Margin = new System.Windows.Forms.Padding(4);
             this.btnReparacion.Name = "btnReparacion";
-            this.btnReparacion.Size = new System.Drawing.Size(228, 49);
+            this.btnReparacion.Size = new System.Drawing.Size(216, 49);
             this.btnReparacion.TabIndex = 9;
             this.btnReparacion.Text = "Reparación";
             this.btnReparacion.UseVisualStyleBackColor = true;
@@ -187,7 +187,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(216, 49);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Equipos";
+            this.button2.Text = "Tipo Equipo";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.btnEquipo_Click);
             // 
@@ -311,9 +311,9 @@
             this.flowLayoutPanel1.Controls.Add(this.btnEstadoReparacion);
             this.flowLayoutPanel1.Controls.Add(this.btnReparacion);
             this.flowLayoutPanel1.Controls.Add(this.btnDetalleReparacion);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(27, 125);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(27, 123);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(228, 695);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(239, 695);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // FrmMain

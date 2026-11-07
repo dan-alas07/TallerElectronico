@@ -174,7 +174,7 @@ namespace TallerElectronico.Desktop
 
             string nombre = Convert.ToString(dgvEquipo.SelectedRows[0].Cells["ColumnName"].Value);
 
-            DialogResult confirm = MessageBox.Show($"¿Seguro que desea eliminar el equipo {nombre}?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult confirm = MessageBox.Show($"¿Seguro que desea eliminar el equipo {nombre}?", "Confirmar", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (confirm != DialogResult.Yes) return;
 
             try
