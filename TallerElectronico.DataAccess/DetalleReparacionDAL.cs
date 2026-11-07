@@ -133,21 +133,5 @@ namespace TallerElectronico.DataAccess
                 return detalleExistente;
             }
         }
-
-        public bool Delete(int idDetalleReparacion)
-        {
-            using (var db = new TallerElectronicoEntities())
-            {
-                var detalle = db.DetalleReparacion.Find(idDetalleReparacion);
-
-                if (detalle != null)
-                {
-                    db.DetalleReparacion.Remove(detalle);
-                    return db.SaveChanges() > 0;
-                }
-
-                return false;
-            }
-        }
     }
 }

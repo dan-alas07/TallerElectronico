@@ -250,6 +250,7 @@
             this.Controls.Add(this.btnCancelar);
             this.Name = "FrmEditDetalleReparacion";
             this.ShowIcon = false;
+            this.Load += new System.EventHandler(this.FrmEditDetalleReparacion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

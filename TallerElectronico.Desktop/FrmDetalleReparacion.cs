@@ -29,7 +29,6 @@ namespace TallerElectronico.Desktop
 
             btnNuevo.Enabled = true;
             btnEditar.Enabled = false;
-            btnEliminar.Enabled = false;
 
             dgvDetalleReparacion.SelectionChanged += dgvDetalleReparacion_SelectionChanged;
 
@@ -86,7 +85,6 @@ namespace TallerElectronico.Desktop
 
             btnNuevo.Enabled = !detalleSeleccionado;
             btnEditar.Enabled = detalleSeleccionado;
-            btnEliminar.Enabled = detalleSeleccionado;
         }
 
         private void RegistrarEventos(Control control)
@@ -95,7 +93,7 @@ namespace TallerElectronico.Desktop
 
             foreach (Control hijo in control.Controls)
             {
-                if (hijo == btnNuevo || hijo == btnEditar || hijo == btnEliminar || hijo == txtBuscar)
+                if (hijo == btnNuevo || hijo == btnEditar || hijo == txtBuscar)
                     continue;
 
                 RegistrarEventos(hijo);
@@ -122,7 +120,6 @@ namespace TallerElectronico.Desktop
 
             btnNuevo.Enabled = true;
             btnEditar.Enabled = false;
-            btnEliminar.Enabled = false;
         }
 
         private int? ObtenerDetalleSeleccionado()
@@ -160,31 +157,12 @@ namespace TallerElectronico.Desktop
             int? DetalleReparacionId = ObtenerDetalleSeleccionado();
             if (!DetalleReparacionId.HasValue) return;
 
-            //using (FrmEditDetalleReparacion frm = new FrmEditDetalleReparacion(DetalleReparacionId.Value))
-            //{
-            //    if (frm.ShowDialog(this) == DialogResult.OK)
-            //    {
-            //        CargarDetallesReparacion();
-            //    }
-            //}
-        }
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            int? productoId = ObtenerDetalleSeleccionado();
-            if (!productoId.HasValue) return;
-
-            DialogResult confirm = MessageBox.Show($"¿Seguro que desea eliminar el detalle de reparación?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (confirm != DialogResult.Yes) return;
-
-            try
+            using (FrmEditDetalleReparacion frm = new FrmEditDetalleReparacion(DetalleReparacionId.Value))
             {
-                _detalleReparacionBL.Delete(productoId.Value);
-                MessageBox.Show("El detalle de reparación se eliminó correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarDetallesReparacion();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudo eliminar el detalle de reparación: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                {
+                    CargarDetallesReparacion();
+                }
             }
         }
 
