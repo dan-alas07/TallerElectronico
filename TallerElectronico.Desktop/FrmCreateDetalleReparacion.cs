@@ -112,17 +112,49 @@ namespace TallerElectronico.Desktop
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            int reparacionId = cmbReparacion.SelectedValue != null ? Convert.ToInt32(cmbReparacion.SelectedValue) : 0;
+            int productoId = cmbProducto.SelectedValue != null ? Convert.ToInt32(cmbProducto.SelectedValue) : 0;
+            int cantidad = (int)nudCantidad.Value;
+
+            if (reparacionId <= 0)
+            {
+                MessageBox.Show("Debe seleccionar una reparación válida.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (productoId <= 0)
+            {
+                MessageBox.Show("Debe seleccionar un producto o repuesto.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cantidad <= 0)
+            {
+                MessageBox.Show("La cantidad a utilizar debe ser mayor a 0.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var productoSeleccionado = _productoBL.SelectById(productoId);
+            if (productoSeleccionado == null)
+            {
+                MessageBox.Show("El producto seleccionado no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (cantidad > productoSeleccionado.CantidadStock)
+            {
+                MessageBox.Show($"Stock insuficiente. Existencia disponible: {productoSeleccionado.CantidadStock} unidades.",
+                                "Stock Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DialogResult confirm = MessageBox.Show("¿Desea agregar este repuesto o insumo al detalle de la reparación?",
-                "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question
-            );
+                "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirm != DialogResult.Yes) return;
 
             try
             {
-                int reparacionId = cmbReparacion.SelectedValue != null ? Convert.ToInt32(cmbReparacion.SelectedValue) : 0;
-                int productoId = cmbProducto.SelectedValue != null ? Convert.ToInt32(cmbProducto.SelectedValue) : 0;
-                int cantidad = (int)nudCantidad.Value;
                 decimal.TryParse(txtPrecioUnitario.Text.Trim(), out decimal precioUnitario);
                 DateTime fechaUso = dtpFechaUso.Value;
 
@@ -142,13 +174,7 @@ namespace TallerElectronico.Desktop
 
                 if (nuevoDetalle != null && nuevoDetalle.DetalleReparacionId > 0)
                 {
-                    MessageBox.Show(
-                        "El repuesto o insumo ha sido registrado exitosamente.",
-                        "Éxito",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
-
+                    MessageBox.Show("El repuesto o insumo ha sido registrado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }

@@ -87,8 +87,8 @@ namespace TallerElectronico.Desktop
 
             if (cantidad > 0 && precio > 0)
             {
-                decimal subtotal = cantidad * precio;
-                txtSubtotal.Text = subtotal.ToString("0.00");
+                decimal subtotal = cantidad * precio; // Corregida la multiplicación
+                txtSubtotal.Text = subtotal.ToString("N2");
             }
             else
             {
@@ -98,6 +98,32 @@ namespace TallerElectronico.Desktop
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            int cantidadNueva = (int)nudCantidad.Value;
+
+            if (cantidadNueva <= 0)
+            {
+                MessageBox.Show("La cantidad a utilizar debe ser mayor a 0.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var producto = _productoBL.SelectById(_detalleActual.ProductoId);
+            if (producto == null)
+            {
+                MessageBox.Show("No se encontró la información del producto asociado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Stock en BD + lo que este detalle ya tenía reservado
+            int stockMaximoPermitido = producto.CantidadStock + _detalleActual.CantidadUtilizada;
+
+            if (cantidadNueva > stockMaximoPermitido)
+            {
+                MessageBox.Show($"Stock insuficiente. Solo dispone de un máximo de {stockMaximoPermitido} unidades " +
+                                $"(Existencia en estante: {producto.CantidadStock}, ya asignadas a este detalle: {_detalleActual.CantidadUtilizada}).",
+                                "Stock Insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DialogResult confirm = MessageBox.Show("¿Desea guardar los cambios realizados en este detalle de reparación?", "Confirmar Edición",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question
             );
@@ -106,7 +132,6 @@ namespace TallerElectronico.Desktop
 
             try
             {
-                int cantidad = (int)nudCantidad.Value;
                 decimal.TryParse(txtPrecio.Text.Trim(), out decimal precioHistorico);
 
                 DetalleReparacion detalleModificado = new DetalleReparacion
@@ -114,7 +139,7 @@ namespace TallerElectronico.Desktop
                     DetalleReparacionId = _detalleReparacionId,
                     ReparacionId = _detalleActual.ReparacionId,
                     ProductoId = _detalleActual.ProductoId,
-                    CantidadUtilizada = cantidad,
+                    CantidadUtilizada = cantidadNueva,
                     PrecioUnitarioHistorico = precioHistorico,
                     FechaUso = dtpFechaUso.Value,
 
