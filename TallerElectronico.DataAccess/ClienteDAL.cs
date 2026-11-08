@@ -30,7 +30,13 @@ namespace TallerElectronico.DataAccess
                                  .ThenBy(c => c.Apellido)
                                  .ToList();
 
-                clientes.ForEach(c => c.Estado = TransformarEstadoParaUI(c.Estado));
+                clientes.ForEach(c =>
+                {
+                    c.Estado = TransformarEstadoParaUI(c.Estado);
+                    c.DUI = string.IsNullOrWhiteSpace(c.DUI) || c.DUI == "No posee" ? "No posee" : c.DUI;
+                    c.CarnetExtranjero = string.IsNullOrWhiteSpace(c.CarnetExtranjero) || c.CarnetExtranjero == "No posee" ? "No posee" : c.CarnetExtranjero;
+                });
+
                 return clientes;
             }
         }
@@ -46,6 +52,8 @@ namespace TallerElectronico.DataAccess
                 if (cliente != null)
                 {
                     cliente.Estado = TransformarEstadoParaUI(cliente.Estado);
+                    cliente.DUI = string.IsNullOrWhiteSpace(cliente.DUI) || cliente.DUI == "No posee" ? "No posee" : cliente.DUI;
+                    cliente.CarnetExtranjero = string.IsNullOrWhiteSpace(cliente.CarnetExtranjero) || cliente.CarnetExtranjero == "No posee" ? "No posee" : cliente.CarnetExtranjero;
                 }
 
                 return cliente;
@@ -160,7 +168,12 @@ namespace TallerElectronico.DataAccess
                                  .ThenBy(c => c.Apellido)
                                  .ToList();
 
-                lista.ForEach(c => c.Estado = TransformarEstadoParaUI(c.Estado));
+                lista.ForEach(c =>
+                {
+                    c.Estado = TransformarEstadoParaUI(c.Estado);
+                    c.DUI = string.IsNullOrWhiteSpace(c.DUI) || c.DUI == "No posee" ? "No posee" : c.DUI;
+                    c.CarnetExtranjero = string.IsNullOrWhiteSpace(c.CarnetExtranjero) || c.CarnetExtranjero == "No posee" ? "No posee" : c.CarnetExtranjero;
+                });
                 return lista;
             }
         }

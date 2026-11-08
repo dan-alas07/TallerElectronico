@@ -83,9 +83,9 @@
             this.lblCodigo.Location = new System.Drawing.Point(45, 103);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(156, 23);
+            this.lblCodigo.Size = new System.Drawing.Size(120, 23);
             this.lblCodigo.TabIndex = 13;
-            this.lblCodigo.Text = "Código de cliente:";
+            this.lblCodigo.Text = "Identificador:";
             // 
             // txtCodigo
             // 
@@ -97,7 +97,7 @@
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
-            this.txtCodigo.Size = new System.Drawing.Size(157, 30);
+            this.txtCodigo.Size = new System.Drawing.Size(385, 30);
             this.txtCodigo.TabIndex = 15;
             this.txtCodigo.TabStop = false;
             // 
@@ -203,7 +203,7 @@
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNombre.Location = new System.Drawing.Point(503, 134);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNombre.MaxLength = 50;
+            this.txtNombre.MaxLength = 100;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(368, 30);
             this.txtNombre.TabIndex = 12;
@@ -214,7 +214,7 @@
             this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtApellido.Location = new System.Drawing.Point(51, 225);
             this.txtApellido.Margin = new System.Windows.Forms.Padding(4);
-            this.txtApellido.MaxLength = 50;
+            this.txtApellido.MaxLength = 100;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(385, 30);
             this.txtApellido.TabIndex = 14;
@@ -312,7 +312,7 @@
             this.txtCarnet.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtCarnet.Location = new System.Drawing.Point(51, 400);
             this.txtCarnet.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCarnet.MaxLength = 9;
+            this.txtCarnet.MaxLength = 20;
             this.txtCarnet.Name = "txtCarnet";
             this.txtCarnet.Size = new System.Drawing.Size(385, 30);
             this.txtCarnet.TabIndex = 33;
@@ -344,13 +344,15 @@
             // cmbTipoDocumento
             // 
             this.cmbTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoDocumento.Enabled = false;
             this.cmbTipoDocumento.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbTipoDocumento.FormattingEnabled = true;
             this.cmbTipoDocumento.Items.AddRange(new object[] {
             "DUI",
-            "Carnet Extranjero"});
+            "CarnetExtranjero"});
             this.cmbTipoDocumento.Location = new System.Drawing.Point(503, 306);
             this.cmbTipoDocumento.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbTipoDocumento.MaxLength = 20;
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
             this.cmbTipoDocumento.Size = new System.Drawing.Size(368, 31);
             this.cmbTipoDocumento.TabIndex = 56;

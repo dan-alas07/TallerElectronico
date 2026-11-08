@@ -54,7 +54,7 @@ namespace TallerElectronico.Desktop
                 txtCarnet.Enabled = false;
                 txtCarnet.Clear();
             }
-            else if (seleccion == "Carnet Extranjero")
+            else if (seleccion == "CarnetExtranjero")
             {
                 txtCarnet.Enabled = true;
                 mtxtDUI.Enabled = false;
@@ -98,7 +98,7 @@ namespace TallerElectronico.Desktop
                 {
                     mtxtDUI.Text = cliente.DUI;
                 }
-                else if (cliente.TipoDocumento == "Carnet Extranjero")
+                else if (cliente.TipoDocumento == "CarnetExtranjero")
                 {
                     txtCarnet.Text = cliente.CarnetExtranjero;
                 }
@@ -135,7 +135,7 @@ namespace TallerElectronico.Desktop
                 {
                     duiValor = string.IsNullOrWhiteSpace(mtxtDUI.Text) || !mtxtDUI.MaskCompleted ? null : mtxtDUI.Text.Trim();
                 }
-                else if (tipoDoc == "Carnet Extranjero")
+                else if (tipoDoc == "CarnetExtranjero")
                 {
                     carnetValor = string.IsNullOrWhiteSpace(txtCarnet.Text) ? null : txtCarnet.Text.Trim();
                 }
