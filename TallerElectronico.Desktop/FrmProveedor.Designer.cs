@@ -140,7 +140,7 @@
             this.dgvProveedor.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(252)))));
             this.dgvProveedor.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvProveedor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProveedor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvProveedor.BackgroundColor = System.Drawing.Color.White;
             this.dgvProveedor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProveedor.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -197,6 +197,7 @@
             this.ColumnCode.MinimumWidth = 6;
             this.ColumnCode.Name = "ColumnCode";
             this.ColumnCode.ReadOnly = true;
+            this.ColumnCode.Width = 95;
             // 
             // ColumnName
             // 
@@ -206,6 +207,7 @@
             this.ColumnName.MinimumWidth = 6;
             this.ColumnName.Name = "ColumnName";
             this.ColumnName.ReadOnly = true;
+            this.ColumnName.Width = 104;
             // 
             // ColumnType
             // 
@@ -215,6 +217,7 @@
             this.ColumnType.MinimumWidth = 6;
             this.ColumnType.Name = "ColumnType";
             this.ColumnType.ReadOnly = true;
+            this.ColumnType.Width = 77;
             // 
             // ColumnTelephone
             // 
@@ -224,6 +227,7 @@
             this.ColumnTelephone.MinimumWidth = 6;
             this.ColumnTelephone.Name = "ColumnTelephone";
             this.ColumnTelephone.ReadOnly = true;
+            this.ColumnTelephone.Width = 107;
             // 
             // ColumnEmail
             // 
@@ -233,6 +237,7 @@
             this.ColumnEmail.MinimumWidth = 6;
             this.ColumnEmail.Name = "ColumnEmail";
             this.ColumnEmail.ReadOnly = true;
+            this.ColumnEmail.Width = 97;
             // 
             // ColumnAddress
             // 
@@ -242,6 +247,7 @@
             this.ColumnAddress.MinimumWidth = 6;
             this.ColumnAddress.Name = "ColumnAddress";
             this.ColumnAddress.ReadOnly = true;
+            this.ColumnAddress.Width = 111;
             // 
             // ColumnDUI
             // 
@@ -250,6 +256,7 @@
             this.ColumnDUI.MinimumWidth = 6;
             this.ColumnDUI.Name = "ColumnDUI";
             this.ColumnDUI.ReadOnly = true;
+            this.ColumnDUI.Width = 73;
             // 
             // ColumnNIT
             // 
@@ -258,6 +265,7 @@
             this.ColumnNIT.MinimumWidth = 6;
             this.ColumnNIT.Name = "ColumnNIT";
             this.ColumnNIT.ReadOnly = true;
+            this.ColumnNIT.Width = 72;
             // 
             // ColumnNRC
             // 
@@ -266,6 +274,7 @@
             this.ColumnNRC.MinimumWidth = 6;
             this.ColumnNRC.Name = "ColumnNRC";
             this.ColumnNRC.ReadOnly = true;
+            this.ColumnNRC.Width = 77;
             // 
             // ColumnStatus
             // 
@@ -274,6 +283,7 @@
             this.ColumnStatus.MinimumWidth = 6;
             this.ColumnStatus.Name = "ColumnStatus";
             this.ColumnStatus.ReadOnly = true;
+            this.ColumnStatus.Width = 93;
             // 
             // label6
             // 
@@ -302,6 +312,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1528, 554);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtBuscar);
