@@ -4,26 +4,27 @@ namespace TallerElectronico.Entities
 {
     public class ReparacionDTO
     {
-        // Identificador primario
+        // Identificador 
         public int ReparacionId { get; set; }
         public string CodigoSeguimiento { get; set; }
 
-        // Campos propios necesarios para listados y vistas
+        // Campos para listados y vistas
         public string Modelo { get; set; }
         public DateTime FechaIngreso { get; set; }
         public DateTime? FechaEntrega { get; set; }
         public decimal CostoManoObra { get; set; }
         public decimal TotalReparacion { get; set; }
 
-        // Textos resueltos mediante JOINs (para evitar navegación diferida en la UI)
-        public string EstadoNombre { get; set; }        // EstadoReparacion.Nombre
-        public string TipoEquipoNombre { get; set; }    // TipoEquipo.Nombre
-        public string MarcaNombre { get; set; }         // Marca.Nombre
-        public string ClienteNombre { get; set; }       // Cliente.Nombre + " " + Cliente.Apellido
-        public string TecnicoNombre { get; set; }       // Empleado.Nombre + " " + Empleado.Apellido (o "Sin Asignar")
+        // JOIN
+        public string EstadoNombre { get; set; }    
+        public string TipoEquipoNombre { get; set; }  
+        public string MarcaNombre { get; set; }   
+        public string ClienteNombre { get; set; } 
+        public string Correo { get; set; }     
+        public string TecnicoNombre { get; set; }    
 
-        // Propiedad combinada útil para la grilla compacta de Inicio
-        public string EquipoCompleto { get; set; }      // TipoEquipo + " " + Marca + " " + Modelo
+        // Propiedad combinada para el pdf
+        public string EquipoCompleto { get; set; }   
     }
 
     public class KpiDashboardDTO

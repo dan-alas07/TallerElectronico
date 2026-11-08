@@ -25,16 +25,16 @@ namespace TallerElectronico.DataAccess
                         CostoManoObra = r.CostoManoObra,
                         TotalReparacion = r.TotalReparacion ?? 0.00m,
 
-                        // Uniones (JOINs)
                         EstadoNombre = r.EstadoReparacion.Nombre,
                         TipoEquipoNombre = r.TipoEquipo.Nombre,
                         MarcaNombre = r.Marca.Nombre,
                         ClienteNombre = r.Cliente.Nombre + " " + r.Cliente.Apellido,
+                        Correo = r.Cliente.Correo,
                         TecnicoNombre = r.Usuario != null && r.Usuario.Empleado != null
                             ? r.Usuario.Empleado.Nombre + " " + r.Usuario.Empleado.Apellido
                             : "Sin Asignar",
 
-                        // Concatenado para la grilla
+                        // Concatenado para el pdf
                         EquipoCompleto = r.TipoEquipo.Nombre + " " + r.Marca.Nombre + " " + r.Modelo
                     })
                     .ToList();
@@ -82,7 +82,7 @@ namespace TallerElectronico.DataAccess
                                     .Include(r => r.TipoEquipo)
                                     .Include(r => r.Marca)
                                     .Include(r => r.EstadoReparacion)
-                                    .Include(r => r.Usuario) // Técnico asignado
+                                    .Include(r => r.Usuario) 
                                     .FirstOrDefault(r => r.CodigoSeguimiento == codigoSeguimiento);
             }
         }
@@ -206,6 +206,7 @@ namespace TallerElectronico.DataAccess
                         TipoEquipoNombre = r.TipoEquipo.Nombre,
                         MarcaNombre = r.Marca.Nombre,
                         ClienteNombre = r.Cliente.Nombre + " " + r.Cliente.Apellido,
+                        Correo = r.Cliente.Correo,
                         TecnicoNombre = r.Usuario != null && r.Usuario.Empleado != null ? r.Usuario.Empleado.Nombre + " " + r.Usuario.Empleado.Apellido : "Sin Asignar",
 
                         EquipoCompleto = r.TipoEquipo.Nombre + " " + r.Marca.Nombre + " " + r.Modelo

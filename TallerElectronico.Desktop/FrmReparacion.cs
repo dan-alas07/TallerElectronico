@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using TallerElectronico.BusinessLogic;
+using TallerElectronico.Desktop.Reportes;
 using TallerElectronico.Entities;
 
 namespace TallerElectronico.Desktop
@@ -92,7 +93,8 @@ namespace TallerElectronico.Desktop
 
             foreach (Control hijo in control.Controls)
             {
-                if (hijo == btnNuevo || hijo == btnEditar || hijo == btnAnular || hijo == txtBuscar)
+                // se agregan los botones para que los tome como eventos
+                if (hijo == btnNuevo || hijo == btnEditar || hijo == btnAnular || hijo == btnImprimir || hijo == txtBuscar)
                     continue;
 
                 RegistrarEventos(hijo);
@@ -204,7 +206,56 @@ namespace TallerElectronico.Desktop
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
+            ReparacionDTO seleccion = ObtenerReparacionSeleccionada();
+            if (seleccion == null) return;
 
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Documento PDF (*.pdf)|*.pdf";
+                sfd.FileName = $"Orden_Reparacion_{seleccion.CodigoSeguimiento}.pdf";
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        //Generar PDF
+                        ReportesPdf.GenerarPDF(sfd.FileName, seleccion);
+
+                        //Enviar Correo al cliente
+                        if (!string.IsNullOrWhiteSpace(seleccion.Correo))
+                        {
+                            DialogResult enviar = MessageBox.Show(
+                                $"¿Deseas enviar este reporte PDF por correo a {seleccion.Correo}?",
+                                "Enviar Correo",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question
+                            );
+
+                            if (enviar == DialogResult.Yes)
+                            {
+                                Cursor = Cursors.WaitCursor;
+                                CorreoPdf.EnviarOrdenPDF(sfd.FileName, seleccion);
+                                Cursor = Cursors.Default;
+
+                                MessageBox.Show("El correo fue enviado al cliente.",
+                                                "Correo Enviado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("El reporte PDF fue generado, pero el cliente no posee correo registrado para el envío automático.",
+                                            "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Cursor = Cursors.Default;
+                        MessageBox.Show($"Ocurrió un error: {ex.Message}",
+                                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }

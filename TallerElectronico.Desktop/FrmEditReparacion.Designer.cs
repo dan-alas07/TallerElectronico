@@ -39,8 +39,6 @@
             this.lblCostoManoObra = new System.Windows.Forms.Label();
             this.txtDiagnosticoFinal = new System.Windows.Forms.TextBox();
             this.lblDiagnosticoFinal = new System.Windows.Forms.Label();
-            this.txtUsuarioModificacion = new System.Windows.Forms.TextBox();
-            this.lblUsuarioModificacion = new System.Windows.Forms.Label();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.lblEstado = new System.Windows.Forms.Label();
             this.cmbTecnico = new System.Windows.Forms.ComboBox();
@@ -112,8 +110,6 @@
             this.pnlCard.Controls.Add(this.lblCostoManoObra);
             this.pnlCard.Controls.Add(this.txtDiagnosticoFinal);
             this.pnlCard.Controls.Add(this.lblDiagnosticoFinal);
-            this.pnlCard.Controls.Add(this.txtUsuarioModificacion);
-            this.pnlCard.Controls.Add(this.lblUsuarioModificacion);
             this.pnlCard.Controls.Add(this.cmbEstado);
             this.pnlCard.Controls.Add(this.lblEstado);
             this.pnlCard.Controls.Add(this.cmbTecnico);
@@ -146,7 +142,6 @@
             this.dtpFechaEntrega.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaEntrega.Location = new System.Drawing.Point(570, 331);
             this.dtpFechaEntrega.Name = "dtpFechaEntrega";
-            this.dtpFechaEntrega.ShowCheckBox = true;
             this.dtpFechaEntrega.Size = new System.Drawing.Size(248, 24);
             this.dtpFechaEntrega.TabIndex = 29;
             // 
@@ -207,6 +202,7 @@
             // 
             // txtDiagnosticoFinal
             // 
+            this.txtDiagnosticoFinal.BackColor = System.Drawing.Color.White;
             this.txtDiagnosticoFinal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDiagnosticoFinal.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtDiagnosticoFinal.Location = new System.Drawing.Point(22, 269);
@@ -227,27 +223,6 @@
             this.lblDiagnosticoFinal.Size = new System.Drawing.Size(100, 15);
             this.lblDiagnosticoFinal.TabIndex = 22;
             this.lblDiagnosticoFinal.Text = "Diagnóstico Final";
-            // 
-            // txtUsuarioModificacion
-            // 
-            this.txtUsuarioModificacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUsuarioModificacion.Enabled = false;
-            this.txtUsuarioModificacion.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.txtUsuarioModificacion.Location = new System.Drawing.Point(570, 220);
-            this.txtUsuarioModificacion.Name = "txtUsuarioModificacion";
-            this.txtUsuarioModificacion.Size = new System.Drawing.Size(248, 24);
-            this.txtUsuarioModificacion.TabIndex = 21;
-            // 
-            // lblUsuarioModificacion
-            // 
-            this.lblUsuarioModificacion.AutoSize = true;
-            this.lblUsuarioModificacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblUsuarioModificacion.Location = new System.Drawing.Point(570, 202);
-            this.lblUsuarioModificacion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblUsuarioModificacion.Name = "lblUsuarioModificacion";
-            this.lblUsuarioModificacion.Size = new System.Drawing.Size(123, 15);
-            this.lblUsuarioModificacion.TabIndex = 20;
-            this.lblUsuarioModificacion.Text = "Usuario Modificación";
             // 
             // cmbEstado
             // 
@@ -295,6 +270,7 @@
             // 
             this.txtDiagnosticoInicial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.txtDiagnosticoInicial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDiagnosticoInicial.Enabled = false;
             this.txtDiagnosticoInicial.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtDiagnosticoInicial.Location = new System.Drawing.Point(22, 161);
             this.txtDiagnosticoInicial.Multiline = true;
@@ -317,12 +293,11 @@
             // 
             // txtModelo
             // 
-            this.txtModelo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
+            this.txtModelo.BackColor = System.Drawing.Color.White;
             this.txtModelo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtModelo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtModelo.Location = new System.Drawing.Point(570, 112);
             this.txtModelo.Name = "txtModelo";
-            this.txtModelo.ReadOnly = true;
             this.txtModelo.Size = new System.Drawing.Size(248, 24);
             this.txtModelo.TabIndex = 13;
             // 
@@ -333,13 +308,14 @@
             this.lblModelo.Location = new System.Drawing.Point(570, 93);
             this.lblModelo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblModelo.Name = "lblModelo";
-            this.lblModelo.Size = new System.Drawing.Size(49, 15);
+            this.lblModelo.Size = new System.Drawing.Size(57, 15);
             this.lblModelo.TabIndex = 12;
-            this.lblModelo.Text = "Modelo";
+            this.lblModelo.Text = "Modelo *";
             // 
             // cmbMarca
             // 
             this.cmbMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMarca.Enabled = false;
             this.cmbMarca.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cmbMarca.FormattingEnabled = true;
             this.cmbMarca.Location = new System.Drawing.Point(296, 112);
@@ -361,6 +337,7 @@
             // cmbTipoEquipo
             // 
             this.cmbTipoEquipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoEquipo.Enabled = false;
             this.cmbTipoEquipo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cmbTipoEquipo.FormattingEnabled = true;
             this.cmbTipoEquipo.Location = new System.Drawing.Point(22, 112);
@@ -383,6 +360,7 @@
             // 
             this.txtFechaIngreso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.txtFechaIngreso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFechaIngreso.Enabled = false;
             this.txtFechaIngreso.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtFechaIngreso.Location = new System.Drawing.Point(570, 63);
             this.txtFechaIngreso.Name = "txtFechaIngreso";
@@ -404,6 +382,7 @@
             // cmbCliente
             // 
             this.cmbCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCliente.Enabled = false;
             this.cmbCliente.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cmbCliente.FormattingEnabled = true;
             this.cmbCliente.Location = new System.Drawing.Point(296, 63);
@@ -426,6 +405,7 @@
             // 
             this.txtCodigoSeguimiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.txtCodigoSeguimiento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCodigoSeguimiento.Enabled = false;
             this.txtCodigoSeguimiento.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtCodigoSeguimiento.Location = new System.Drawing.Point(22, 63);
             this.txtCodigoSeguimiento.Name = "txtCodigoSeguimiento";
@@ -529,8 +509,6 @@
         private System.Windows.Forms.ComboBox cmbTecnico;
         private System.Windows.Forms.Label lblEstado;
         private System.Windows.Forms.ComboBox cmbEstado;
-        private System.Windows.Forms.Label lblUsuarioModificacion;
-        private System.Windows.Forms.TextBox txtUsuarioModificacion;
         private System.Windows.Forms.Label lblDiagnosticoFinal;
         private System.Windows.Forms.TextBox txtDiagnosticoFinal;
         private System.Windows.Forms.Label lblCostoManoObra;

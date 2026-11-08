@@ -11,9 +11,8 @@ namespace TallerElectronico.Desktop
         private readonly ClienteBL _clienteBL = new ClienteBL();
         private readonly TipoEquipoBL _tipoEquipoBL = new TipoEquipoBL();
         private readonly MarcaBL _marcaBL = new MarcaBL();
+        private readonly UsuarioBL _usuarioBL = new UsuarioBL();
         private readonly EstadoReparacionBL _estadoReparacionBL = new EstadoReparacionBL();
-
-        private static readonly Random generador = new Random();
 
         public FrmCreateReparacion()
         {
@@ -22,71 +21,62 @@ namespace TallerElectronico.Desktop
 
         private void FrmCreateReparacion_Load(object sender, EventArgs e)
         {
-            CargarDatosIniciales();
+            CargarCombos();
+            GenerarCodigoSeguimiento();
 
-            if (SesionUsuario.EstaAutenticado)
-            {
-                txtUsuarioCreacion.Text = SesionUsuario.NombreEmpleado;
-            }
-
-            txtCodigoSeguimiento.Text = GenerarCodigoSeguimiento();
+            // Asigna la fecha y hora actual
+            dtpFechaIngreso.Value = DateTime.Now;
         }
 
-        private void CargarDatosIniciales()
+        private void CargarCombos()
         {
             try
             {
-                // Se definen DisplayMember y ValueMember ANTES de asignar el DataSource
+                //Cliente
                 cmbCliente.DisplayMember = "Nombre";
                 cmbCliente.ValueMember = "ClienteId";
                 cmbCliente.DataSource = _clienteBL.SelectAll();
                 cmbCliente.SelectedIndex = -1;
 
+                //TipoEquipo
                 cmbTipoEquipo.DisplayMember = "Nombre";
                 cmbTipoEquipo.ValueMember = "TipoEquipoId";
                 cmbTipoEquipo.DataSource = _tipoEquipoBL.SelectAll();
                 cmbTipoEquipo.SelectedIndex = -1;
 
+                // Marca
                 cmbMarca.DisplayMember = "Nombre";
                 cmbMarca.ValueMember = "MarcaId";
                 cmbMarca.DataSource = _marcaBL.SelectAll();
                 cmbMarca.SelectedIndex = -1;
 
+                //Técnico / UsuarioDTO
+                cmbTecnico.DisplayMember = "EmpleadoNombre";
+                cmbTecnico.ValueMember = "Id";
+                cmbTecnico.DataSource = _usuarioBL.SelectAll();
+                cmbTecnico.SelectedIndex = -1;
+
+                //EstadoReparacion
                 cmbEstado.DisplayMember = "Nombre";
                 cmbEstado.ValueMember = "EstadoReparacionId";
                 cmbEstado.DataSource = _estadoReparacionBL.SelectAll();
-                cmbEstado.SelectedValue = 1; // ID 1: Estado inicial ("Ingresado")
-                cmbEstado.Enabled = false;
+                cmbEstado.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar los catálogos iniciales: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar los catálogos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private string GenerarCodigoSeguimiento()
+        private void GenerarCodigoSeguimiento()
         {
-            string codigo = "";
-            int intentos = 0;
-
-            while (intentos < 10)
-            {
-                codigo = "REP-" + generador.Next(10000, 99999);
-
-                if (_reparacionBL.SelectByTrackingCode(codigo) == null)
-                {
-                    return codigo;
-                }
-
-                intentos++;
-            }
-
-            return null; 
+            string codigo = "REP-" + DateTime.Now.ToString("yyyyMMddHHmmss");
+            txtCodigoSeguimiento.Text = codigo;
         }
 
         private void btnGenerarCodigo_Click(object sender, EventArgs e)
         {
-            txtCodigoSeguimiento.Text = GenerarCodigoSeguimiento();
+            GenerarCodigoSeguimiento();
         }
 
         private void txtCostoManoObra_KeyPress(object sender, KeyPressEventArgs e)
@@ -104,9 +94,46 @@ namespace TallerElectronico.Desktop
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            // Validaciones básicas
+            if (cmbCliente.SelectedValue == null)
+            {
+                MessageBox.Show("Selecciona un cliente.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cmbTipoEquipo.SelectedValue == null)
+            {
+                MessageBox.Show("Selecciona un tipo de equipo.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cmbMarca.SelectedValue == null)
+            {
+                MessageBox.Show("Selecciona una marca.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtModelo.Text))
+            {
+                MessageBox.Show("Ingresa el modelo del equipo.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtDiagnosticoInicial.Text))
+            {
+                MessageBox.Show("Ingresa el diagnóstico inicial.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cmbEstado.SelectedValue == null)
+            {
+                MessageBox.Show("Selecciona un estado inicial.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DialogResult confirm = MessageBox.Show(
-                "¿Desea registrar esta nueva recepción de reparación?",
-                "Confirmar",
+                "¿Desea registrar la nueva recepción de reparación?",
+                "Confirmar Registro",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );
@@ -115,40 +142,48 @@ namespace TallerElectronico.Desktop
 
             try
             {
-                int clienteId = cmbCliente.SelectedValue != null ? Convert.ToInt32(cmbCliente.SelectedValue) : 0;
-                int tipoEquipoId = cmbTipoEquipo.SelectedValue != null ? Convert.ToInt32(cmbTipoEquipo.SelectedValue) : 0;
-                int marcaId = cmbMarca.SelectedValue != null ? Convert.ToInt32(cmbMarca.SelectedValue) : 0;
-                int estadoId = cmbEstado.SelectedValue != null ? Convert.ToInt32(cmbEstado.SelectedValue) : 1;
-
                 decimal.TryParse(txtCostoManoObra.Text.Trim(), out decimal costoManoObra);
-
-                Reparacion reparacion = new Reparacion
+                decimal? totalReparacion = null;
+                if (decimal.TryParse(txtTotalReparacion.Text.Trim(), out decimal totalParsed))
                 {
-                    CodigoSeguimiento = string.IsNullOrWhiteSpace(txtCodigoSeguimiento.Text) ? null : txtCodigoSeguimiento.Text.Trim(),
-                    ClienteId = clienteId,
-                    TipoEquipoId = tipoEquipoId,
-                    MarcaId = marcaId,
+                    totalReparacion = totalParsed;
+                }
+
+                // Extraccióndel técnico
+                int? tecnicoId = null;
+                if (cmbTecnico.SelectedValue is int idTecnico)
+                {
+                    tecnicoId = idTecnico;
+                }
+                else if (cmbTecnico.SelectedValue is UsuarioDTO usuario)
+                {
+                    tecnicoId = usuario.Id;
+                }
+
+                Reparacion nuevaReparacion = new Reparacion
+                {
+                    CodigoSeguimiento = txtCodigoSeguimiento.Text.Trim(),
+                    ClienteId = Convert.ToInt32(cmbCliente.SelectedValue),
+                    TipoEquipoId = Convert.ToInt32(cmbTipoEquipo.SelectedValue),
+                    MarcaId = Convert.ToInt32(cmbMarca.SelectedValue),
                     Modelo = txtModelo.Text.Trim(),
                     DiagnosticoInicial = txtDiagnosticoInicial.Text.Trim(),
-                    EstadoReparacionId = estadoId,
-                    FechaIngreso = DateTime.Now,
+                    DiagnosticoFinal = string.IsNullOrWhiteSpace(txtDiagnosticoFinal.Text) ? null : txtDiagnosticoFinal.Text.Trim(),
+                    TecnicoAsignadoId = tecnicoId,
+                    EstadoReparacionId = Convert.ToInt32(cmbEstado.SelectedValue),
                     CostoManoObra = costoManoObra,
-                    UsuarioCreacionId = SesionUsuario.UsuarioId,
-
-                    TecnicoAsignadoId = null,
-                    DiagnosticoFinal = null,
-                    FechaEntrega = null,
-                    TotalReparacion = null,
-                    FechaModificacion = null,
-                    UsuarioModificacionId = null
+                    TotalReparacion = totalReparacion,
+                    FechaIngreso = dtpFechaIngreso.Value, // Toma el valor del DateTimePicker
+                    FechaEntrega = dtpFechaEntrega.Checked ? dtpFechaEntrega.Value : (DateTime?)null,
+                    UsuarioCreacionId = SesionUsuario.UsuarioId // Se obtiene del usuario logeado
                 };
 
-                Reparacion nuevaReparacion = _reparacionBL.Insert(reparacion);
+                Reparacion resultado = _reparacionBL.Insert(nuevaReparacion);
 
-                if (nuevaReparacion != null && nuevaReparacion.ReparacionId > 0)
+                if (resultado != null)
                 {
                     MessageBox.Show(
-                        "La reparación ha sido registrada correctamente.",
+                        "La recepción de equipo ha sido registrada exitosamente.",
                         "Éxito",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information
@@ -162,13 +197,9 @@ namespace TallerElectronico.Desktop
             {
                 MessageBox.Show(ex.Message, "Validación de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            catch (InvalidOperationException ex)
-            {
-                MessageBox.Show(ex.Message, "Regla de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocurrió un error inesperado al crear la reparación: " + ex.Message, "Error del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrió un error inesperado al guardar la recepción: " + ex.Message, "Error del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

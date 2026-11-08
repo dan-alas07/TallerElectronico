@@ -25,41 +25,47 @@ namespace TallerElectronico.Desktop
 
         private void FrmEditReparacion_Load(object sender, EventArgs e)
         {
+            OcultarUsuarioModificacion();
             CargarCombos();
             CargarReparacion();
+        }
 
-            if (SesionUsuario.EstaAutenticado)
-            {
-                txtUsuarioModificacion.Text = SesionUsuario.NombreEmpleado;
-            }
+        private void OcultarUsuarioModificacion()
+        {
+            // Oculta el control de usuario a nivel visual si existe en el formulario
+            Control[] txtUser = Controls.Find("txtUsuarioModificacion", true);
+            if (txtUser.Length > 0) txtUser[0].Visible = false;
+
+            Control[] lblUser = Controls.Find("lblUsuarioModificacion", true);
+            if (lblUser.Length > 0) lblUser[0].Visible = false;
         }
 
         private void CargarCombos()
         {
             try
             {
-                // 1. Cliente 
-                cmbCliente.DisplayMember = "Nombre"; 
+                //Cliente
+                cmbCliente.DisplayMember = "Nombre";
                 cmbCliente.ValueMember = "ClienteId";
                 cmbCliente.DataSource = _clienteBL.SelectAll();
 
-                // 2. TipoEquipo
+                // TipoEquipo
                 cmbTipoEquipo.DisplayMember = "Nombre";
                 cmbTipoEquipo.ValueMember = "TipoEquipoId";
                 cmbTipoEquipo.DataSource = _tipoEquipoBL.SelectAll();
 
-                // 3. Marca
+                //Marca
                 cmbMarca.DisplayMember = "Nombre";
                 cmbMarca.ValueMember = "MarcaId";
                 cmbMarca.DataSource = _marcaBL.SelectAll();
 
-                // 4. Técnico / Usuario (Propiedades exactas de UsuarioDTO)
+                // Técnico / UsuarioDTO
                 cmbTecnico.DisplayMember = "EmpleadoNombre";
                 cmbTecnico.ValueMember = "Id";
                 cmbTecnico.DataSource = _usuarioBL.SelectAll();
                 cmbTecnico.SelectedIndex = -1;
 
-                // 5. EstadoReparacion
+                //EstadoReparacion
                 cmbEstado.DisplayMember = "Nombre";
                 cmbEstado.ValueMember = "EstadoReparacionId";
                 cmbEstado.DataSource = _estadoReparacionBL.SelectAll();
@@ -85,24 +91,33 @@ namespace TallerElectronico.Desktop
 
                 txtCodigoSeguimiento.Text = _reparacionActual.CodigoSeguimiento;
                 txtCodigoSeguimiento.ReadOnly = true;
+                txtCodigoSeguimiento.Enabled = false;
 
+                Control[] txtFecha = Controls.Find("txtFechaIngreso", true);
+                if (txtFecha.Length > 0 && txtFecha[0] is TextBox tbIngreso)
+                {
+                    tbIngreso.Text = _reparacionActual.FechaIngreso.ToString("dd/MM/yyyy HH:mm");
+                    tbIngreso.ReadOnly = true;
+                    tbIngreso.Enabled = false;
+                }
+                else
+                {
+                    Control[] dtpFecha = Controls.Find("dtpFechaIngreso", true);
+                    if (dtpFecha.Length > 0 && dtpFecha[0] is DateTimePicker dtpIngreso)
+                    {
+                        dtpIngreso.Value = _reparacionActual.FechaIngreso;
+                        dtpIngreso.Enabled = false;
+                    }
+                }
+
+                // Cargar resto de campos de la recepción
                 cmbCliente.SelectedValue = _reparacionActual.ClienteId;
-                cmbCliente.Enabled = false;
-
                 cmbTipoEquipo.SelectedValue = _reparacionActual.TipoEquipoId;
-                cmbTipoEquipo.Enabled = false;
-
                 cmbMarca.SelectedValue = _reparacionActual.MarcaId;
-                cmbMarca.Enabled = false;
-
                 txtModelo.Text = _reparacionActual.Modelo;
-                txtModelo.ReadOnly = true;
-
                 txtDiagnosticoInicial.Text = _reparacionActual.DiagnosticoInicial;
-                txtDiagnosticoInicial.ReadOnly = true;
 
-                txtFechaIngreso.Text = _reparacionActual.FechaIngreso.ToString("dd/MM/yyyy HH:mm");
-
+                // Técnico Asignado
                 if (_reparacionActual.TecnicoAsignadoId.HasValue)
                 {
                     cmbTecnico.SelectedValue = _reparacionActual.TecnicoAsignadoId.Value;
@@ -135,6 +150,11 @@ namespace TallerElectronico.Desktop
             }
         }
 
+        private void txtCostoManoObra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            txtMonto_KeyPress(sender, e);
+        }
+
         private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -161,8 +181,8 @@ namespace TallerElectronico.Desktop
 
             try
             {
+                // Extracción del ID del técnico
                 int? tecnicoId = null;
-
                 if (cmbTecnico.SelectedValue is int idInt)
                 {
                     tecnicoId = idInt;
@@ -170,10 +190,6 @@ namespace TallerElectronico.Desktop
                 else if (cmbTecnico.SelectedValue is UsuarioDTO usuario)
                 {
                     tecnicoId = usuario.Id;
-                }
-                else if (cmbTecnico.SelectedValue != null && int.TryParse(cmbTecnico.SelectedValue.ToString(), out int parsedId))
-                {
-                    tecnicoId = parsedId;
                 }
 
                 // Extracción del Estado ID
@@ -197,7 +213,7 @@ namespace TallerElectronico.Desktop
 
                 DateTime? fechaEntrega = dtpFechaEntrega.Checked ? dtpFechaEntrega.Value : (DateTime?)null;
 
-                // Actualización de propiedades en la entidad
+                // Actualización de propiedades
                 _reparacionActual.TecnicoAsignadoId = tecnicoId;
                 _reparacionActual.EstadoReparacionId = estadoId;
                 _reparacionActual.DiagnosticoFinal = string.IsNullOrWhiteSpace(txtDiagnosticoFinal.Text) ? null : txtDiagnosticoFinal.Text.Trim();
@@ -205,7 +221,7 @@ namespace TallerElectronico.Desktop
                 _reparacionActual.TotalReparacion = totalReparacion;
                 _reparacionActual.FechaEntrega = fechaEntrega;
 
-                // Auditoría
+                // Auditoría interna 
                 _reparacionActual.FechaModificacion = DateTime.Now;
                 _reparacionActual.UsuarioModificacionId = SesionUsuario.UsuarioId;
 
@@ -243,6 +259,5 @@ namespace TallerElectronico.Desktop
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-
     }
 }

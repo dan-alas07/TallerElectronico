@@ -1,5 +1,4 @@
-﻿
-namespace TallerElectronico.Desktop
+﻿namespace TallerElectronico.Desktop
 {
     partial class FrmEmpleado
     {
@@ -18,10 +17,10 @@ namespace TallerElectronico.Desktop
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridView dgvEmpleado;
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dgvEmpleado = new System.Windows.Forms.DataGridView();
             this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,21 +37,20 @@ namespace TallerElectronico.Desktop
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
-            dgvEmpleado = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(dgvEmpleado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleado)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvEmpleado
             // 
-            dgvEmpleado.AllowUserToAddRows = false;
-            dgvEmpleado.AllowUserToDeleteRows = false;
-            dgvEmpleado.AllowUserToResizeColumns = false;
-            dgvEmpleado.AllowUserToResizeRows = false;
+            this.dgvEmpleado.AllowUserToAddRows = false;
+            this.dgvEmpleado.AllowUserToDeleteRows = false;
+            this.dgvEmpleado.AllowUserToResizeColumns = false;
+            this.dgvEmpleado.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(252)))));
-            dgvEmpleado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dgvEmpleado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dgvEmpleado.BackgroundColor = System.Drawing.Color.White;
-            dgvEmpleado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvEmpleado.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvEmpleado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvEmpleado.BackgroundColor = System.Drawing.Color.White;
+            this.dgvEmpleado.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -60,10 +58,10 @@ namespace TallerElectronico.Desktop
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgvEmpleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dgvEmpleado.ColumnHeadersHeight = 42;
-            dgvEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvEmpleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvEmpleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvEmpleado.ColumnHeadersHeight = 42;
+            this.dgvEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvEmpleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnCode,
             this.ColumnName,
             this.ColumnLastName,
@@ -81,19 +79,19 @@ namespace TallerElectronico.Desktop
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            dgvEmpleado.DefaultCellStyle = dataGridViewCellStyle3;
-            dgvEmpleado.EnableHeadersVisualStyles = false;
-            dgvEmpleado.GridColor = System.Drawing.Color.White;
-            dgvEmpleado.Location = new System.Drawing.Point(38, 269);
-            dgvEmpleado.MultiSelect = false;
-            dgvEmpleado.Name = "dgvEmpleado";
-            dgvEmpleado.ReadOnly = true;
-            dgvEmpleado.RowHeadersVisible = false;
-            dgvEmpleado.RowHeadersWidth = 51;
-            dgvEmpleado.RowTemplate.Height = 36;
-            dgvEmpleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dgvEmpleado.Size = new System.Drawing.Size(1080, 215);
-            dgvEmpleado.TabIndex = 1;
+            this.dgvEmpleado.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvEmpleado.EnableHeadersVisualStyles = false;
+            this.dgvEmpleado.GridColor = System.Drawing.Color.White;
+            this.dgvEmpleado.Location = new System.Drawing.Point(38, 269);
+            this.dgvEmpleado.MultiSelect = false;
+            this.dgvEmpleado.Name = "dgvEmpleado";
+            this.dgvEmpleado.ReadOnly = true;
+            this.dgvEmpleado.RowHeadersVisible = false;
+            this.dgvEmpleado.RowHeadersWidth = 51;
+            this.dgvEmpleado.RowTemplate.Height = 36;
+            this.dgvEmpleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvEmpleado.Size = new System.Drawing.Size(1080, 215);
+            this.dgvEmpleado.TabIndex = 1;
             // 
             // ColumnCode
             // 
@@ -287,18 +285,20 @@ namespace TallerElectronico.Desktop
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(dgvEmpleado);
+            this.Controls.Add(this.dgvEmpleado);
             this.Name = "FrmEmpleado";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Empleados";
             this.Load += new System.EventHandler(this.FrmEmpleado_Load);
-            ((System.ComponentModel.ISupportInitialize)(dgvEmpleado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
+        private System.Windows.Forms.DataGridView dgvEmpleado;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnEliminar;
