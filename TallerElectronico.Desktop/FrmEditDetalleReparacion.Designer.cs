@@ -43,15 +43,14 @@
             this.txtSubtotal = new System.Windows.Forms.TextBox();
             this.dtpFechaUso = new System.Windows.Forms.DateTimePicker();
             this.lblCodigo = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.nudCantidadStock = new System.Windows.Forms.NumericUpDown();
-            this.txtUsuarioModificacion = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadStock)).BeginInit();
+            this.txtCodigoDetalle = new System.Windows.Forms.TextBox();
+            this.nudCantidad = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbProducto
             // 
+            this.cmbProducto.Enabled = false;
             this.cmbProducto.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProducto.FormattingEnabled = true;
             this.cmbProducto.Location = new System.Drawing.Point(59, 329);
@@ -67,9 +66,9 @@
             this.lblTitulo.Location = new System.Drawing.Point(50, 38);
             this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(486, 52);
+            this.lblTitulo.Size = new System.Drawing.Size(529, 52);
             this.lblTitulo.TabIndex = 34;
-            this.lblTitulo.Text = "Editar Detalle Reparación";
+            this.lblTitulo.Text = "Editar detalle de reparación";
             // 
             // lblReparacion
             // 
@@ -146,6 +145,7 @@
             // txtPrecio
             // 
             this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPrecio.Enabled = false;
             this.txtPrecio.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtPrecio.Location = new System.Drawing.Point(510, 165);
             this.txtPrecio.Margin = new System.Windows.Forms.Padding(4);
@@ -171,6 +171,7 @@
             this.btnGuardar.TabIndex = 44;
             this.btnGuardar.Text = "Guardar cambios";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
@@ -190,9 +191,11 @@
             this.btnCancelar.TabIndex = 45;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // cmbReparacion
             // 
+            this.cmbReparacion.Enabled = false;
             this.cmbReparacion.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbReparacion.FormattingEnabled = true;
             this.cmbReparacion.Location = new System.Drawing.Point(59, 247);
@@ -203,6 +206,7 @@
             // txtSubtotal
             // 
             this.txtSubtotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSubtotal.Enabled = false;
             this.txtSubtotal.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSubtotal.Location = new System.Drawing.Point(510, 247);
             this.txtSubtotal.Margin = new System.Windows.Forms.Padding(4);
@@ -230,76 +234,52 @@
             this.lblCodigo.Location = new System.Drawing.Point(55, 130);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(158, 23);
+            this.lblCodigo.Size = new System.Drawing.Size(120, 23);
             this.lblCodigo.TabIndex = 52;
-            this.lblCodigo.Text = "Código de detalle:";
+            this.lblCodigo.Text = "Identificador:";
             // 
-            // txtCodigo
+            // txtCodigoDetalle
             // 
-            this.txtCodigo.BackColor = System.Drawing.Color.White;
-            this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCodigo.Enabled = false;
-            this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtCodigo.Location = new System.Drawing.Point(59, 165);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.ReadOnly = true;
-            this.txtCodigo.Size = new System.Drawing.Size(386, 30);
-            this.txtCodigo.TabIndex = 53;
-            this.txtCodigo.TabStop = false;
+            this.txtCodigoDetalle.BackColor = System.Drawing.Color.White;
+            this.txtCodigoDetalle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCodigoDetalle.Enabled = false;
+            this.txtCodigoDetalle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtCodigoDetalle.Location = new System.Drawing.Point(59, 165);
+            this.txtCodigoDetalle.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigoDetalle.Name = "txtCodigoDetalle";
+            this.txtCodigoDetalle.ReadOnly = true;
+            this.txtCodigoDetalle.Size = new System.Drawing.Size(386, 30);
+            this.txtCodigoDetalle.TabIndex = 53;
+            this.txtCodigoDetalle.TabStop = false;
             // 
-            // nudCantidadStock
+            // nudCantidad
             // 
-            this.nudCantidadStock.Location = new System.Drawing.Point(60, 427);
-            this.nudCantidadStock.Minimum = new decimal(new int[] {
+            this.nudCantidad.Location = new System.Drawing.Point(60, 427);
+            this.nudCantidad.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.nudCantidadStock.Name = "nudCantidadStock";
-            this.nudCantidadStock.ReadOnly = true;
-            this.nudCantidadStock.Size = new System.Drawing.Size(385, 22);
-            this.nudCantidadStock.TabIndex = 76;
-            this.nudCantidadStock.Value = new decimal(new int[] {
+            this.nudCantidad.Name = "nudCantidad";
+            this.nudCantidad.ReadOnly = true;
+            this.nudCantidad.Size = new System.Drawing.Size(385, 22);
+            this.nudCantidad.TabIndex = 76;
+            this.nudCantidad.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            // 
-            // txtUsuarioModificacion
-            // 
-            this.txtUsuarioModificacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUsuarioModificacion.Enabled = false;
-            this.txtUsuarioModificacion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtUsuarioModificacion.Location = new System.Drawing.Point(510, 419);
-            this.txtUsuarioModificacion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtUsuarioModificacion.MaxLength = 50;
-            this.txtUsuarioModificacion.Name = "txtUsuarioModificacion";
-            this.txtUsuarioModificacion.Size = new System.Drawing.Size(386, 30);
-            this.txtUsuarioModificacion.TabIndex = 85;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.label1.Location = new System.Drawing.Point(506, 392);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 23);
-            this.label1.TabIndex = 86;
-            this.label1.Text = "Usuario Modificacion:";
+            this.nudCantidad.ValueChanged += new System.EventHandler(this.nudCantidad_ValueChanged);
             // 
             // FrmEditDetalleReparacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(960, 615);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtUsuarioModificacion);
-            this.Controls.Add(this.nudCantidadStock);
+            this.Controls.Add(this.nudCantidad);
             this.Controls.Add(this.lblCodigo);
-            this.Controls.Add(this.txtCodigo);
+            this.Controls.Add(this.txtCodigoDetalle);
             this.Controls.Add(this.dtpFechaUso);
             this.Controls.Add(this.txtSubtotal);
             this.Controls.Add(this.cmbReparacion);
@@ -316,9 +296,10 @@
             this.Controls.Add(this.btnCancelar);
             this.Name = "FrmEditDetalleReparacion";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.Load += new System.EventHandler(this.FrmEditDetalleReparacion_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadStock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,9 +322,7 @@
         private System.Windows.Forms.TextBox txtSubtotal;
         private System.Windows.Forms.DateTimePicker dtpFechaUso;
         private System.Windows.Forms.Label lblCodigo;
-        private System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.NumericUpDown nudCantidadStock;
-        private System.Windows.Forms.TextBox txtUsuarioModificacion;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCodigoDetalle;
+        private System.Windows.Forms.NumericUpDown nudCantidad;
     }
 }

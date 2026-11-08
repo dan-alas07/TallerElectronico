@@ -29,6 +29,7 @@ namespace TallerElectronico.Desktop
 
             btnNuevo.Enabled = true;
             btnEditar.Enabled = false;
+            btnEliminar.Enabled = false;
 
             dgvDetalleReparacion.SelectionChanged += dgvDetalleReparacion_SelectionChanged;
 
@@ -63,7 +64,7 @@ namespace TallerElectronico.Desktop
                 }
                 else
                 {
-                    //dgvDetalleReparacion.DataSource = _detalleReparacionBL.Search(criterio);
+                    dgvDetalleReparacion.DataSource = _detalleReparacionBL.Search(criterio);
                 }
             }
             catch (Exception ex)
@@ -85,6 +86,7 @@ namespace TallerElectronico.Desktop
 
             btnNuevo.Enabled = !detalleSeleccionado;
             btnEditar.Enabled = detalleSeleccionado;
+            btnEliminar.Enabled = detalleSeleccionado;
         }
 
         private void RegistrarEventos(Control control)
@@ -93,7 +95,7 @@ namespace TallerElectronico.Desktop
 
             foreach (Control hijo in control.Controls)
             {
-                if (hijo == btnNuevo || hijo == btnEditar || hijo == txtBuscar)
+                if (hijo == btnNuevo || hijo == btnEditar || hijo == btnEliminar || hijo == txtBuscar)
                     continue;
 
                 RegistrarEventos(hijo);
@@ -120,6 +122,7 @@ namespace TallerElectronico.Desktop
 
             btnNuevo.Enabled = true;
             btnEditar.Enabled = false;
+            btnEliminar.Enabled = false;
         }
 
         private int? ObtenerDetalleSeleccionado()
@@ -143,13 +146,13 @@ namespace TallerElectronico.Desktop
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            //using (FrmCreateDetalleReparacion frm = new FrmCreateDetalleReparacion())
-            //{
-            //    if (frm.ShowDialog(this) == DialogResult.OK)
-            //    {
-            //        CargarDetallesReparacion();
-            //    }
-            //}
+            using (FrmCreateDetalleReparacion frm = new FrmCreateDetalleReparacion())
+            {
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                {
+                    CargarDetallesReparacion();
+                }
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -177,6 +180,46 @@ namespace TallerElectronico.Desktop
         {
             _timerBusqueda.Stop();
             CargarDetallesReparacion(); // Llama a la DAL cuando el usuario pausó el tipeo
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int? detalleReparacionId = ObtenerDetalleSeleccionado();
+            if (!detalleReparacionId.HasValue) return;
+
+            DialogResult confirm = MessageBox.Show("¿Está seguro de que desea eliminar este repuesto/insumo del detalle?\n\nEsta acción no se puede deshacer.",
+                "Confirmar Eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm != DialogResult.Yes) return;
+
+            try
+            {
+
+                if (_detalleReparacionBL.Delete(detalleReparacionId.Value))
+                {
+                    MessageBox.Show("El detalle de reparación ha sido eliminado exitosamente.", "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    CargarDetallesReparacion();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar el registro. Intente nuevamente.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Validación de Datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Regla de Negocio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error inesperado al eliminar el detalle: " + ex.Message, "Error del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
