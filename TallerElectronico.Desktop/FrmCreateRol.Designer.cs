@@ -206,9 +206,9 @@
             this.lblCodigo.Location = new System.Drawing.Point(40, 71);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(58, 20);
+            this.lblCodigo.Size = new System.Drawing.Size(99, 20);
             this.lblCodigo.TabIndex = 2;
-            this.lblCodigo.Text = "Código";
+            this.lblCodigo.Text = "Identificador";
             // 
             // pnlLinea
             // 

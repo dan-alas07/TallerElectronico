@@ -39,8 +39,6 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.pnlLinea = new System.Windows.Forms.Panel();
-            this.txtUsuarioCreacion = new System.Windows.Forms.TextBox();
-            this.lblUsuarioCreacionId = new System.Windows.Forms.Label();
             this.cmbProveedor = new System.Windows.Forms.ComboBox();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.txtPrecioUnitario = new System.Windows.Forms.TextBox();
@@ -77,7 +75,7 @@
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNombre.Location = new System.Drawing.Point(80, 310);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNombre.MaxLength = 50;
+            this.txtNombre.MaxLength = 100;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(333, 30);
             this.txtNombre.TabIndex = 74;
@@ -88,7 +86,7 @@
             this.txtDescripcion.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtDescripcion.Location = new System.Drawing.Point(80, 459);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDescripcion.MaxLength = 200;
+            this.txtDescripcion.MaxLength = 250;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(719, 30);
             this.txtDescripcion.TabIndex = 70;
@@ -157,6 +155,7 @@
             // 
             this.txtCodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtCodigo.Location = new System.Drawing.Point(80, 157);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
@@ -175,42 +174,18 @@
             this.lblCodigo.Location = new System.Drawing.Point(80, 132);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(58, 20);
+            this.lblCodigo.Size = new System.Drawing.Size(99, 20);
             this.lblCodigo.TabIndex = 67;
-            this.lblCodigo.Text = "Código";
+            this.lblCodigo.Text = "Identificador";
             // 
             // pnlLinea
             // 
             this.pnlLinea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(235)))), ((int)(((byte)(242)))));
-            this.pnlLinea.Location = new System.Drawing.Point(80, 208);
+            this.pnlLinea.Location = new System.Drawing.Point(79, 283);
             this.pnlLinea.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLinea.Name = "pnlLinea";
             this.pnlLinea.Size = new System.Drawing.Size(720, 1);
             this.pnlLinea.TabIndex = 66;
-            // 
-            // txtUsuarioCreacion
-            // 
-            this.txtUsuarioCreacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUsuarioCreacion.Enabled = false;
-            this.txtUsuarioCreacion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtUsuarioCreacion.Location = new System.Drawing.Point(467, 385);
-            this.txtUsuarioCreacion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtUsuarioCreacion.MaxLength = 50;
-            this.txtUsuarioCreacion.Name = "txtUsuarioCreacion";
-            this.txtUsuarioCreacion.Size = new System.Drawing.Size(333, 30);
-            this.txtUsuarioCreacion.TabIndex = 83;
-            // 
-            // lblUsuarioCreacionId
-            // 
-            this.lblUsuarioCreacionId.AutoSize = true;
-            this.lblUsuarioCreacionId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblUsuarioCreacionId.ForeColor = System.Drawing.Color.Black;
-            this.lblUsuarioCreacionId.Location = new System.Drawing.Point(467, 361);
-            this.lblUsuarioCreacionId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblUsuarioCreacionId.Name = "lblUsuarioCreacionId";
-            this.lblUsuarioCreacionId.Size = new System.Drawing.Size(138, 20);
-            this.lblUsuarioCreacionId.TabIndex = 82;
-            this.lblUsuarioCreacionId.Text = "Usuario Creación *";
             // 
             // cmbProveedor
             // 
@@ -220,7 +195,7 @@
             this.cmbProveedor.Items.AddRange(new object[] {
             "Persona Natural",
             "Persona Jurídica"});
-            this.cmbProveedor.Location = new System.Drawing.Point(467, 233);
+            this.cmbProveedor.Location = new System.Drawing.Point(466, 308);
             this.cmbProveedor.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProveedor.Name = "cmbProveedor";
             this.cmbProveedor.Size = new System.Drawing.Size(333, 31);
@@ -234,7 +209,7 @@
             this.cmbEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cmbEstado.Location = new System.Drawing.Point(467, 309);
+            this.cmbEstado.Location = new System.Drawing.Point(466, 384);
             this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(333, 31);
@@ -244,7 +219,7 @@
             // 
             this.txtPrecioUnitario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecioUnitario.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtPrecioUnitario.Location = new System.Drawing.Point(467, 157);
+            this.txtPrecioUnitario.Location = new System.Drawing.Point(466, 232);
             this.txtPrecioUnitario.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrecioUnitario.MaxLength = 10;
             this.txtPrecioUnitario.Name = "txtPrecioUnitario";
@@ -257,7 +232,7 @@
             this.lblPrecioUnitario.AutoSize = true;
             this.lblPrecioUnitario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblPrecioUnitario.ForeColor = System.Drawing.Color.Black;
-            this.lblPrecioUnitario.Location = new System.Drawing.Point(467, 132);
+            this.lblPrecioUnitario.Location = new System.Drawing.Point(466, 207);
             this.lblPrecioUnitario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecioUnitario.Name = "lblPrecioUnitario";
             this.lblPrecioUnitario.Size = new System.Drawing.Size(124, 20);
@@ -269,7 +244,7 @@
             this.lblProveedorId.AutoSize = true;
             this.lblProveedorId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblProveedorId.ForeColor = System.Drawing.Color.Black;
-            this.lblProveedorId.Location = new System.Drawing.Point(467, 209);
+            this.lblProveedorId.Location = new System.Drawing.Point(466, 284);
             this.lblProveedorId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProveedorId.Name = "lblProveedorId";
             this.lblProveedorId.Size = new System.Drawing.Size(92, 20);
@@ -281,7 +256,7 @@
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblEstado.ForeColor = System.Drawing.Color.Black;
-            this.lblEstado.Location = new System.Drawing.Point(467, 284);
+            this.lblEstado.Location = new System.Drawing.Point(466, 359);
             this.lblEstado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(56, 20);
@@ -345,8 +320,6 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.txtUsuarioCreacion);
-            this.Controls.Add(this.lblUsuarioCreacionId);
             this.Controls.Add(this.cmbProveedor);
             this.Controls.Add(this.cmbEstado);
             this.Controls.Add(this.txtPrecioUnitario);
@@ -387,8 +360,6 @@
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.Panel pnlLinea;
-        private System.Windows.Forms.TextBox txtUsuarioCreacion;
-        private System.Windows.Forms.Label lblUsuarioCreacionId;
         private System.Windows.Forms.ComboBox cmbProveedor;
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.TextBox txtPrecioUnitario;

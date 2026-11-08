@@ -20,6 +20,7 @@ namespace TallerElectronico.Desktop
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProducto = new System.Windows.Forms.DataGridView();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -71,15 +72,15 @@ namespace TallerElectronico.Desktop
             this.Column1,
             this.ColumnProve,
             this.ColumnStatus});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProducto.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProducto.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProducto.EnableHeadersVisualStyles = false;
             this.dgvProducto.GridColor = System.Drawing.Color.White;
             this.dgvProducto.Location = new System.Drawing.Point(51, 331);
@@ -201,7 +202,7 @@ namespace TallerElectronico.Desktop
             // ColumnCode
             // 
             this.ColumnCode.DataPropertyName = "ProductoId";
-            this.ColumnCode.HeaderText = "Código";
+            this.ColumnCode.HeaderText = "Identificador";
             this.ColumnCode.MinimumWidth = 6;
             this.ColumnCode.Name = "ColumnCode";
             this.ColumnCode.ReadOnly = true;
@@ -216,7 +217,7 @@ namespace TallerElectronico.Desktop
             this.ColumnCodeProduct.MinimumWidth = 6;
             this.ColumnCodeProduct.Name = "ColumnCodeProduct";
             this.ColumnCodeProduct.ReadOnly = true;
-            this.ColumnCodeProduct.Width = 150;
+            this.ColumnCodeProduct.Width = 125;
             // 
             // ColumnNombre
             // 
@@ -226,7 +227,7 @@ namespace TallerElectronico.Desktop
             this.ColumnNombre.MinimumWidth = 6;
             this.ColumnNombre.Name = "ColumnNombre";
             this.ColumnNombre.ReadOnly = true;
-            this.ColumnNombre.Width = 150;
+            this.ColumnNombre.Width = 175;
             // 
             // ColumnAddress
             // 
@@ -236,7 +237,7 @@ namespace TallerElectronico.Desktop
             this.ColumnAddress.MinimumWidth = 6;
             this.ColumnAddress.Name = "ColumnAddress";
             this.ColumnAddress.ReadOnly = true;
-            this.ColumnAddress.Width = 150;
+            this.ColumnAddress.Width = 275;
             // 
             // ColumnStock
             // 
@@ -246,11 +247,13 @@ namespace TallerElectronico.Desktop
             this.ColumnStock.MinimumWidth = 6;
             this.ColumnStock.Name = "ColumnStock";
             this.ColumnStock.ReadOnly = true;
-            this.ColumnStock.Width = 125;
             // 
             // Column1
             // 
             this.Column1.DataPropertyName = "PrecioUnitario";
+            dataGridViewCellStyle3.Format = "$#,##0.00";
+            dataGridViewCellStyle3.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column1.HeaderText = "Precio Unitario";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
@@ -265,7 +268,7 @@ namespace TallerElectronico.Desktop
             this.ColumnProve.MinimumWidth = 6;
             this.ColumnProve.Name = "ColumnProve";
             this.ColumnProve.ReadOnly = true;
-            this.ColumnProve.Width = 200;
+            this.ColumnProve.Width = 150;
             // 
             // ColumnStatus
             // 
@@ -275,7 +278,6 @@ namespace TallerElectronico.Desktop
             this.ColumnStatus.MinimumWidth = 6;
             this.ColumnStatus.Name = "ColumnStatus";
             this.ColumnStatus.ReadOnly = true;
-            this.ColumnStatus.Width = 125;
             // 
             // FrmProducto
             // 

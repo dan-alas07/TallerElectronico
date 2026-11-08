@@ -18,11 +18,6 @@ namespace TallerElectronico.Desktop
         private void FrmCreateProducto_Load(object sender, EventArgs e)
         {
             CargarDatosProducto();
-
-            if (SesionUsuario.EstaAutenticado)
-            {
-                txtUsuarioCreacion.Text = SesionUsuario.NombreEmpleado;
-            }
         }
 
         private void CargarDatosProducto()
