@@ -31,6 +31,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.pnlCard = new System.Windows.Forms.Panel();
+            this.mtxtDUI = new System.Windows.Forms.MaskedTextBox();
+            this.mtxtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.txtNIT = new System.Windows.Forms.TextBox();
@@ -54,8 +56,6 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.mtxtTelefono = new System.Windows.Forms.MaskedTextBox();
-            this.mtxtDUI = new System.Windows.Forms.MaskedTextBox();
             this.pnlCard.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
@@ -129,6 +129,30 @@
             this.pnlCard.TabIndex = 4;
             this.pnlCard.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCentral_Paint);
             // 
+            // mtxtDUI
+            // 
+            this.mtxtDUI.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.mtxtDUI.HidePromptOnLeave = true;
+            this.mtxtDUI.Location = new System.Drawing.Point(40, 249);
+            this.mtxtDUI.Mask = "00000000-0";
+            this.mtxtDUI.Name = "mtxtDUI";
+            this.mtxtDUI.PromptChar = ' ';
+            this.mtxtDUI.Size = new System.Drawing.Size(333, 29);
+            this.mtxtDUI.TabIndex = 61;
+            this.mtxtDUI.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtxtDUI_MaskInputRejected);
+            // 
+            // mtxtTelefono
+            // 
+            this.mtxtTelefono.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.mtxtTelefono.HidePromptOnLeave = true;
+            this.mtxtTelefono.Location = new System.Drawing.Point(427, 249);
+            this.mtxtTelefono.Mask = "0000-0000";
+            this.mtxtTelefono.Name = "mtxtTelefono";
+            this.mtxtTelefono.PromptChar = ' ';
+            this.mtxtTelefono.Size = new System.Drawing.Size(333, 29);
+            this.mtxtTelefono.TabIndex = 53;
+            this.mtxtTelefono.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtxtTelefono_MaskInputRejected);
+            // 
             // cmbTipo
             // 
             this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -186,7 +210,7 @@
             this.txtNRC.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNRC.Location = new System.Drawing.Point(40, 396);
             this.txtNRC.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNRC.MaxLength = 9;
+            this.txtNRC.MaxLength = 20;
             this.txtNRC.Name = "txtNRC";
             this.txtNRC.Size = new System.Drawing.Size(333, 30);
             this.txtNRC.TabIndex = 14;
@@ -324,6 +348,7 @@
             // 
             this.txtCodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtCodigo.Location = new System.Drawing.Point(40, 96);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
@@ -402,30 +427,6 @@
             this.lblTitulo.Size = new System.Drawing.Size(263, 41);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Nuevo Proveedor";
-            // 
-            // mtxtTelefono
-            // 
-            this.mtxtTelefono.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.mtxtTelefono.HidePromptOnLeave = true;
-            this.mtxtTelefono.Location = new System.Drawing.Point(427, 249);
-            this.mtxtTelefono.Mask = "0000-0000";
-            this.mtxtTelefono.Name = "mtxtTelefono";
-            this.mtxtTelefono.PromptChar = ' ';
-            this.mtxtTelefono.Size = new System.Drawing.Size(333, 29);
-            this.mtxtTelefono.TabIndex = 53;
-            this.mtxtTelefono.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtxtTelefono_MaskInputRejected);
-            // 
-            // mtxtDUI
-            // 
-            this.mtxtDUI.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.mtxtDUI.HidePromptOnLeave = true;
-            this.mtxtDUI.Location = new System.Drawing.Point(40, 249);
-            this.mtxtDUI.Mask = "00000000-0";
-            this.mtxtDUI.Name = "mtxtDUI";
-            this.mtxtDUI.PromptChar = ' ';
-            this.mtxtDUI.Size = new System.Drawing.Size(333, 29);
-            this.mtxtDUI.TabIndex = 61;
-            this.mtxtDUI.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtxtDUI_MaskInputRejected);
             // 
             // FrmCreateProveedor
             // 

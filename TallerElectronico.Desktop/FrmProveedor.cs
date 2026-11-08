@@ -27,6 +27,7 @@ namespace TallerElectronico.Desktop
             btnEliminar.Enabled = false;
 
             dgvProveedor.SelectionChanged += dgvProveedor_SelectionChanged;
+            dgvProveedor.CellFormatting += dgvProveedor_CellFormatting;
 
             // Configurar el temporizador (300 milisegundos de espera)
             _timerBusqueda.Interval = 300;
@@ -199,6 +200,20 @@ namespace TallerElectronico.Desktop
         {
             _timerBusqueda.Stop();
             CargarProveedores(); // Llama a la DAL cuando el usuario pausó el tipeo
+        }
+
+        private void dgvProveedor_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            string columna = dgvProveedor.Columns[e.ColumnIndex].DataPropertyName;
+
+            if (columna == "DUI" || columna == "NIT" || columna == "NRC")
+            {
+                if (e.Value == null || string.IsNullOrWhiteSpace(e.Value.ToString()))
+                {
+                    e.Value = "No posee";
+                    e.FormattingApplied = true;
+                }
+            }
         }
     }
 }
