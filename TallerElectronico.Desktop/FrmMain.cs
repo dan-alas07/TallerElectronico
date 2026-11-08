@@ -1,24 +1,55 @@
 ﻿using System;
 using System.Windows.Forms;
+using TallerElectronico.Entities; // Necesario para acceder a SesionUsuario
 
 namespace TallerElectronico.Desktop
 {
     public partial class FrmMain : Form
     {
         private Form formularioActual;
+        private bool cerrandoSesion = false;
 
         public FrmMain()
         {
             InitializeComponent();
+
+            // Aplica la visibilidad de los botones según el rol del usuario autenticado
+            AplicarPermisosPorRol();
 
             this.FormClosed += FrmMain_FormClosed;
 
             OpenFrm(new FrmInicio());
         }
 
+        private void AplicarPermisosPorRol()
+        {
+            // Módulos exclusivos de Administrador (Seguridad y Catálogos Maestros)
+            btnEmpleado.Visible = SesionUsuario.EsAdmin;
+            btnRol.Visible = SesionUsuario.EsAdmin;
+            btnUsuario.Visible = SesionUsuario.EsAdmin;
+            btnProveedor.Visible = SesionUsuario.EsAdmin;
+            btnEquipo.Visible = SesionUsuario.EsAdmin;
+            btnMarca.Visible = SesionUsuario.EsAdmin;
+            btnEstadoReparacion.Visible = SesionUsuario.EsAdmin;
+
+            // Módulos asignados por roles específicos
+            btnCliente.Visible = SesionUsuario.TieneRol("Administrador", "Recepcionista");
+            btnProducto.Visible = SesionUsuario.TieneRol("Administrador", "Tecnico");
+            btnDetalleReparacion.Visible = SesionUsuario.TieneRol("Administrador", "Tecnico");
+
+            // Módulos compartidos por todos los roles
+            btnMain.Visible = true;
+            btnReparacion.Visible = true;
+            btnSalir.Visible = true;
+        }
+
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            // Solo cierra toda la aplicación si no se trata de un cambio/cierre de sesión
+            if (!cerrandoSesion)
+            {
+                Application.Exit();
+            }
         }
 
         private void OpenFrm(Form formulario)
@@ -31,7 +62,6 @@ namespace TallerElectronico.Desktop
                     return;
                 }
 
-                // Cierra y destruye el formulario previo
                 if (formularioActual != null)
                 {
                     formularioActual.Close();
@@ -53,11 +83,8 @@ namespace TallerElectronico.Desktop
             catch (Exception ex)
             {
                 formulario?.Dispose();
-                MessageBox.Show(
-                    "No se pudo abrir el formulario.\n\n" + ex.Message,
-                    "Error al abrir módulo",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
+                MessageBox.Show("No se pudo abrir el formulario.\n\n" + ex.Message, "Error al abrir módulo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error
                 );
             }
         }
@@ -76,6 +103,7 @@ namespace TallerElectronico.Desktop
         {
             OpenFrm(new FrmCliente());
         }
+
         private void btnEquipo_Click(object sender, EventArgs e)
         {
             OpenFrm(new FrmEquipo());
@@ -121,27 +149,21 @@ namespace TallerElectronico.Desktop
             OpenFrm(new FrmRol());
         }
 
-        private void pnlContainer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            DialogResult confirmacion = MessageBox.Show(
-                "¿Está seguro de que desea cerrar la sesión y salir al inicio?",
-                "Confirmar salida",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
+            DialogResult confirmacion = MessageBox.Show("¿Está seguro de que desea cerrar la sesión y volver al inicio?",
+                "Confirmar salida", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    if (confirmacion == DialogResult.Yes)
-                    {
-                        FrmLogin login = new FrmLogin();
-                        login.Show();
+            if (confirmacion == DialogResult.Yes)
+            {
+                cerrandoSesion = true;
+                SesionUsuario.CerrarSesion();
 
-                        this.Close();
-                    }
+                FrmLogin login = new FrmLogin();
+                login.Show();
+
+                this.Close();
+            }
         }
     }
 }

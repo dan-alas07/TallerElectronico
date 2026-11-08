@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace TallerElectronico.Entities
 {
@@ -12,6 +13,23 @@ namespace TallerElectronico.Entities
         public static int? RolId { get; private set; }
         public static string RolNombre { get; private set; }
         public static bool EstaAutenticado { get; private set; }
+
+        // Propiedades booleanas
+        public static bool EsAdmin => string.Equals(RolNombre, "Administrador", StringComparison.OrdinalIgnoreCase);
+
+        public static bool EsTecnico => string.Equals(RolNombre, "Técnico", StringComparison.OrdinalIgnoreCase) ||
+                                        string.Equals(RolNombre, "Tecnico", StringComparison.OrdinalIgnoreCase);
+
+        public static bool EsRecepcionista => string.Equals(RolNombre, "Recepcionista", StringComparison.OrdinalIgnoreCase);
+
+        // Método de soporte para evaluar múltiples roles a la vez
+        public static bool TieneRol(params string[] roles)
+        {
+            if (string.IsNullOrWhiteSpace(RolNombre) || roles == null)
+                return false;
+
+            return roles.Any(r => string.Equals(r, RolNombre, StringComparison.OrdinalIgnoreCase));
+        }
 
         public static void IniciarSesion(Usuario usuario)
         {
