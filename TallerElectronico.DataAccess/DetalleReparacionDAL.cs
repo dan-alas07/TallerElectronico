@@ -124,6 +124,8 @@ namespace TallerElectronico.DataAccess
                     detalleExistente.CantidadUtilizada = detalleReparacionModificado.CantidadUtilizada;
                     detalleExistente.PrecioUnitarioHistorico = detalleReparacionModificado.PrecioUnitarioHistorico;
 
+                    detalleExistente.FechaUso = detalleReparacionModificado.FechaUso;
+
                     detalleExistente.FechaModificacion = DateTime.Now;
                     detalleExistente.UsuarioModificacionId = detalleReparacionModificado.UsuarioModificacionId;
 
@@ -133,5 +135,64 @@ namespace TallerElectronico.DataAccess
                 return detalleExistente;
             }
         }
+
+        public bool Delete(int idDetalleReparacion)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                var detalle = db.DetalleReparacion.Find(idDetalleReparacion);
+
+                if (detalle != null)
+                {
+                    db.DetalleReparacion.Remove(detalle);
+                    return db.SaveChanges() > 0;
+                }
+
+                return false;
+            }
+        }
+
+        public List<DetalleReparacionDTO> Search(string criterio)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                var query = db.DetalleReparacion.AsNoTracking().AsQueryable();
+
+                if (!string.IsNullOrWhiteSpace(criterio))
+                {
+                    criterio = criterio.Trim();
+
+                    query = query.Where(d =>
+                        (d.Reparacion != null && d.Reparacion.CodigoSeguimiento.Contains(criterio)) ||
+                        (d.Producto != null && d.Producto.Nombre.Contains(criterio))
+                    );
+                }
+
+                return query.OrderByDescending(d => d.FechaUso)
+                    .Select(d => new DetalleReparacionDTO
+                    {
+                        DetalleReparacionId = d.DetalleReparacionId,
+                        ReparacionId = d.ReparacionId,
+                        ProductoId = d.ProductoId,
+                        CantidadUtilizada = d.CantidadUtilizada,
+                        PrecioUnitarioHistorico = d.PrecioUnitarioHistorico,
+                        Subtotal = d.CantidadUtilizada * d.PrecioUnitarioHistorico,
+                        FechaUso = d.FechaUso,
+
+                        UsuarioCreacionId = d.UsuarioCreacionId,
+                        FechaModificacion = d.FechaModificacion,
+                        UsuarioModificacionId = d.UsuarioModificacionId,
+
+                        ReparacionCodigo = d.Reparacion != null ? d.Reparacion.CodigoSeguimiento : "Sin Código",
+                        ProductoNombre = d.Producto != null ? d.Producto.Nombre : "Producto Desconocido",
+
+                        UsuarioCreacionNombre = d.Usuario != null ? (d.Usuario.Empleado != null
+                                ? d.Usuario.Empleado.Nombre + " " + d.Usuario.Empleado.Apellido
+                                : d.Usuario.Nombre) : "Sin Usuario"
+                    })
+                    .ToList();
+            }
+        }
     }
+    
 }

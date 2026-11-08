@@ -24,11 +24,6 @@ namespace TallerElectronico.Desktop
         private void FrmEditProducto_Load(object sender, EventArgs e)
         {
             CargarDatosProducto();
-
-            if (SesionUsuario.EstaAutenticado)
-            {
-                txtUsuarioCreacion.Text = SesionUsuario.NombreEmpleado;
-            }
         }
 
         private void CargarDatosProducto()

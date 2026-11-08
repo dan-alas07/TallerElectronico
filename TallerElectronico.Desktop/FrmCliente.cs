@@ -176,8 +176,9 @@ namespace TallerElectronico.Desktop
             if (!clienteId.HasValue) return;
 
             string nombre = Convert.ToString(dgvCliente.SelectedRows[0].Cells["ColumnName"].Value);
+            string apellido = Convert.ToString(dgvCliente.SelectedRows[0].Cells["ColumnLastName"].Value);
 
-            DialogResult confirm = MessageBox.Show($"¿Seguro que desea eliminar al cliente {nombre}?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult confirm = MessageBox.Show($"¿Seguro que desea eliminar al cliente {nombre} {apellido}?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirm != DialogResult.Yes) return;
 
             try

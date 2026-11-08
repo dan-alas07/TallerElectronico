@@ -98,5 +98,22 @@ namespace TallerElectronico.BusinessLogic
 
             return _detalleReparacionDal.Update(detalleReparacionModificado);
         }
+
+        public bool Delete(int idDetalleReparacion)
+        {
+            if (idDetalleReparacion <= 0)
+                throw new ArgumentException("El ID de detalle de reparación no es válido.");
+
+            var detalleExistente = _detalleReparacionDal.SelectById(idDetalleReparacion);
+            if (detalleExistente == null)
+                throw new InvalidOperationException($"El detalle de reparación con ID {idDetalleReparacion} no existe o ya fue eliminado.");
+
+            return _detalleReparacionDal.Delete(idDetalleReparacion);
+        }
+
+        public List<DetalleReparacionDTO> Search(string criterio)
+        {
+            return _detalleReparacionDal.Search(criterio);
+        }
     }
 }

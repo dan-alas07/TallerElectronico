@@ -31,8 +31,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.pnlCard = new System.Windows.Forms.Panel();
-            this.txtUsuarioCreacion = new System.Windows.Forms.TextBox();
-            this.lblUsuarioCreacionId = new System.Windows.Forms.Label();
+            this.nudCantidadStock = new System.Windows.Forms.NumericUpDown();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.cmbProveedor = new System.Windows.Forms.ComboBox();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
@@ -54,10 +53,9 @@
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnGenerarCodigo = new System.Windows.Forms.Button();
-            this.nudCantidadStock = new System.Windows.Forms.NumericUpDown();
             this.pnlCard.SuspendLayout();
-            this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidadStock)).BeginInit();
+            this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -101,8 +99,6 @@
             // 
             this.pnlCard.BackColor = System.Drawing.Color.White;
             this.pnlCard.Controls.Add(this.nudCantidadStock);
-            this.pnlCard.Controls.Add(this.txtUsuarioCreacion);
-            this.pnlCard.Controls.Add(this.lblUsuarioCreacionId);
             this.pnlCard.Controls.Add(this.txtNombre);
             this.pnlCard.Controls.Add(this.cmbProveedor);
             this.pnlCard.Controls.Add(this.cmbEstado);
@@ -126,29 +122,23 @@
             this.pnlCard.Size = new System.Drawing.Size(800, 523);
             this.pnlCard.TabIndex = 4;
             // 
-            // txtUsuarioCreacion
+            // nudCantidadStock
             // 
-            this.txtUsuarioCreacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUsuarioCreacion.Enabled = false;
-            this.txtUsuarioCreacion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtUsuarioCreacion.Location = new System.Drawing.Point(426, 324);
-            this.txtUsuarioCreacion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtUsuarioCreacion.MaxLength = 50;
-            this.txtUsuarioCreacion.Name = "txtUsuarioCreacion";
-            this.txtUsuarioCreacion.Size = new System.Drawing.Size(333, 30);
-            this.txtUsuarioCreacion.TabIndex = 63;
-            // 
-            // lblUsuarioCreacionId
-            // 
-            this.lblUsuarioCreacionId.AutoSize = true;
-            this.lblUsuarioCreacionId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblUsuarioCreacionId.ForeColor = System.Drawing.Color.Black;
-            this.lblUsuarioCreacionId.Location = new System.Drawing.Point(426, 300);
-            this.lblUsuarioCreacionId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblUsuarioCreacionId.Name = "lblUsuarioCreacionId";
-            this.lblUsuarioCreacionId.Size = new System.Drawing.Size(138, 20);
-            this.lblUsuarioCreacionId.TabIndex = 62;
-            this.lblUsuarioCreacionId.Text = "Usuario Creación *";
+            this.nudCantidadStock.Location = new System.Drawing.Point(40, 332);
+            this.nudCantidadStock.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudCantidadStock.Name = "nudCantidadStock";
+            this.nudCantidadStock.ReadOnly = true;
+            this.nudCantidadStock.Size = new System.Drawing.Size(333, 22);
+            this.nudCantidadStock.TabIndex = 64;
+            this.nudCantidadStock.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // txtNombre
             // 
@@ -156,7 +146,7 @@
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNombre.Location = new System.Drawing.Point(40, 249);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNombre.MaxLength = 50;
+            this.txtNombre.MaxLength = 100;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(333, 30);
             this.txtNombre.TabIndex = 61;
@@ -169,7 +159,7 @@
             this.cmbProveedor.Items.AddRange(new object[] {
             "Persona Natural",
             "Persona Jurídica"});
-            this.cmbProveedor.Location = new System.Drawing.Point(426, 172);
+            this.cmbProveedor.Location = new System.Drawing.Point(426, 249);
             this.cmbProveedor.Margin = new System.Windows.Forms.Padding(4);
             this.cmbProveedor.Name = "cmbProveedor";
             this.cmbProveedor.Size = new System.Drawing.Size(333, 31);
@@ -183,7 +173,7 @@
             this.cmbEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cmbEstado.Location = new System.Drawing.Point(426, 248);
+            this.cmbEstado.Location = new System.Drawing.Point(426, 325);
             this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(333, 31);
@@ -193,7 +183,7 @@
             // 
             this.txtPrecioUnitario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecioUnitario.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtPrecioUnitario.Location = new System.Drawing.Point(426, 96);
+            this.txtPrecioUnitario.Location = new System.Drawing.Point(426, 173);
             this.txtPrecioUnitario.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrecioUnitario.MaxLength = 10;
             this.txtPrecioUnitario.Name = "txtPrecioUnitario";
@@ -206,7 +196,7 @@
             this.lblPrecioUnitario.AutoSize = true;
             this.lblPrecioUnitario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblPrecioUnitario.ForeColor = System.Drawing.Color.Black;
-            this.lblPrecioUnitario.Location = new System.Drawing.Point(426, 71);
+            this.lblPrecioUnitario.Location = new System.Drawing.Point(426, 148);
             this.lblPrecioUnitario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecioUnitario.Name = "lblPrecioUnitario";
             this.lblPrecioUnitario.Size = new System.Drawing.Size(124, 20);
@@ -219,7 +209,7 @@
             this.txtDescripcion.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtDescripcion.Location = new System.Drawing.Point(40, 398);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDescripcion.MaxLength = 200;
+            this.txtDescripcion.MaxLength = 250;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(719, 30);
             this.txtDescripcion.TabIndex = 7;
@@ -265,7 +255,7 @@
             this.lblProveedorId.AutoSize = true;
             this.lblProveedorId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblProveedorId.ForeColor = System.Drawing.Color.Black;
-            this.lblProveedorId.Location = new System.Drawing.Point(426, 148);
+            this.lblProveedorId.Location = new System.Drawing.Point(426, 225);
             this.lblProveedorId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProveedorId.Name = "lblProveedorId";
             this.lblProveedorId.Size = new System.Drawing.Size(92, 20);
@@ -301,7 +291,7 @@
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblEstado.ForeColor = System.Drawing.Color.Black;
-            this.lblEstado.Location = new System.Drawing.Point(426, 223);
+            this.lblEstado.Location = new System.Drawing.Point(426, 300);
             this.lblEstado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(56, 20);
@@ -312,6 +302,7 @@
             // 
             this.txtCodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtCodigo.Location = new System.Drawing.Point(40, 96);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
@@ -330,9 +321,9 @@
             this.lblCodigo.Location = new System.Drawing.Point(40, 71);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(58, 20);
+            this.lblCodigo.Size = new System.Drawing.Size(99, 20);
             this.lblCodigo.TabIndex = 2;
-            this.lblCodigo.Text = "Código";
+            this.lblCodigo.Text = "Identificador";
             // 
             // pnlLinea
             // 
@@ -405,28 +396,11 @@
             this.btnGenerarCodigo.UseVisualStyleBackColor = false;
             this.btnGenerarCodigo.Click += new System.EventHandler(this.btnGenerarCodigo_Click);
             // 
-            // nudCantidadStock
-            // 
-            this.nudCantidadStock.Location = new System.Drawing.Point(40, 332);
-            this.nudCantidadStock.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudCantidadStock.Name = "nudCantidadStock";
-            this.nudCantidadStock.ReadOnly = true;
-            this.nudCantidadStock.Size = new System.Drawing.Size(333, 22);
-            this.nudCantidadStock.TabIndex = 64;
-            this.nudCantidadStock.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // FrmCreateProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(880, 793);
             this.Controls.Add(this.btnGenerarCodigo);
             this.Controls.Add(this.pnlHeader);
@@ -439,9 +413,9 @@
             this.Load += new System.EventHandler(this.FrmCreateProducto_Load);
             this.pnlCard.ResumeLayout(false);
             this.pnlCard.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadStock)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadStock)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -471,9 +445,7 @@
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.ComboBox cmbProveedor;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Label lblUsuarioCreacionId;
         private System.Windows.Forms.Button btnGenerarCodigo;
-        private System.Windows.Forms.TextBox txtUsuarioCreacion;
         private System.Windows.Forms.NumericUpDown nudCantidadStock;
     }
 }

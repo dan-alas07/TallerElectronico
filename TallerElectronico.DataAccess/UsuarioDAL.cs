@@ -8,6 +8,10 @@ namespace TallerElectronico.DataAccess
 {
     public class UsuarioDAL
     {
+        private string TransformarEstadoParaUI(string estado)
+        {
+            return estado == "A" ? "Activo" : "Inactivo";
+        }
         public Usuario SelectByUsername(string username)
         {
             using (var db = new TallerElectronicoEntities())
@@ -41,21 +45,29 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                return db.Usuario
-                         .AsNoTracking()
-                         .Where(u => u.UsuarioId == idUsuario && u.Estado == "A")
+                var usuario = db.Usuario
+                        .AsNoTracking()
+                         .Where(u => u.UsuarioId == idUsuario)
                          .Select(u => new UsuarioDTO
                          {
                              Id = u.UsuarioId,
                              Nombre = u.Nombre,
-                             Clave = string.Empty, 
+                             Clave = string.Empty,
                              EmpleadoId = u.EmpleadoId,
                              RolId = u.RolId,
-                             EmpleadoNombre = u.Empleado != null ? u.Empleado.Nombre + " " + u.Empleado.Apellido : "Sin Asignar",
+                             EmpleadoNombre = u.Empleado != null
+                                 ? u.Empleado.Nombre + " " + u.Empleado.Apellido
+                                 : "Sin Asignar",
                              RolNombre = u.Rol != null ? u.Rol.Nombre : "Sin Rol",
                              Estado = u.Estado
                          })
                          .FirstOrDefault();
+                if (usuario != null)
+                {
+                    usuario.Estado = TransformarEstadoParaUI(usuario.Estado);
+                }
+
+                return usuario;
             }
         }
 
@@ -118,9 +130,8 @@ namespace TallerElectronico.DataAccess
         {
             using (var db = new TallerElectronicoEntities())
             {
-                var query = db.Usuario
-                              .AsNoTracking()
-                              .Where(u => u.Estado == "A");
+                IQueryable<Usuario>  query = db.Usuario
+                              .AsNoTracking();
 
                 if (!string.IsNullOrWhiteSpace(criterio))
                 {
@@ -129,21 +140,30 @@ namespace TallerElectronico.DataAccess
                     bool esNumero = int.TryParse(criterio, out idBusqueda);
 
                     query = query.Where(u =>
-                                    (esNumero && u.UsuarioId == idBusqueda) ||
-                                    (u.Nombre != null && u.Nombre.ToLower().Contains(criterio)) ||
-                                    (u.Empleado != null && (u.Empleado.Nombre + " " + u.Empleado.Apellido).ToLower().Contains(criterio)) ||
-                                    (u.Rol != null && u.Rol.Nombre.ToLower().Contains(criterio)));
+                        (esNumero && u.UsuarioId == idBusqueda) ||
+                        (u.Nombre != null && u.Nombre.Contains(criterio)) ||
+                        (u.Empleado != null && u.Empleado.Nombre.Contains(criterio)) ||
+                        (u.Empleado != null && u.Empleado.Apellido.Contains(criterio)) ||
+                        (u.Rol != null && u.Rol.Nombre.Contains(criterio))
+                    );
                 }
 
-                return query.Select(u => new UsuarioDTO
-                {
-                    Id = u.UsuarioId,
-                    Nombre = u.Nombre,
-                    Clave = string.Empty,
-                    EmpleadoNombre = u.Empleado != null ? u.Empleado.Nombre + " " + u.Empleado.Apellido : "Sin Asignar",
-                    RolNombre = u.Rol != null ? u.Rol.Nombre : "Sin Rol",
-                    Estado = u.Estado == "A" ? "Activo" : "Inactivo"
-                }).ToList();
+                var lista = query.OrderBy(u => u.Nombre)
+                                 .Select(u => new UsuarioDTO
+                                 {
+                                     Id = u.UsuarioId,
+                                     Nombre = u.Nombre,
+                                     Clave = string.Empty,
+                                     EmpleadoNombre = u.Empleado != null
+                                 ? u.Empleado.Nombre + " " + u.Empleado.Apellido
+                                 : "Sin Asignar",
+                                     RolNombre = u.Rol != null ? u.Rol.Nombre : "Sin Rol",
+                                     Estado = u.Estado
+                                 })
+                                 .ToList();
+
+                lista.ForEach(u => u.Estado = TransformarEstadoParaUI(u.Estado));
+                return lista;
             }
         }
     }

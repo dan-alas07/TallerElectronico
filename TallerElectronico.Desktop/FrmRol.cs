@@ -30,7 +30,6 @@ namespace TallerElectronico.Desktop
 
             btnNuevo.Enabled = true;
             btnEditar.Enabled = false;
-            btnEliminar.Enabled = false;
 
             dgvRol.SelectionChanged += dgvMarca_SelectionChanged;
 
@@ -86,7 +85,6 @@ namespace TallerElectronico.Desktop
 
             btnNuevo.Enabled = !rolSeleccionada;
             btnEditar.Enabled = rolSeleccionada;
-            btnEliminar.Enabled = rolSeleccionada;
         }
 
         private void RegistrarEventos(Control control)
@@ -95,7 +93,7 @@ namespace TallerElectronico.Desktop
 
             foreach (Control hijo in control.Controls)
             {
-                if (hijo == btnNuevo || hijo == btnEditar || hijo == btnEliminar || hijo == txtBuscar)
+                if (hijo == btnNuevo || hijo == btnEditar || hijo == txtBuscar)
                     continue;
 
                 RegistrarEventos(hijo);
@@ -122,7 +120,6 @@ namespace TallerElectronico.Desktop
 
             btnNuevo.Enabled = true;
             btnEditar.Enabled = false;
-            btnEliminar.Enabled = false;
         }
 
         private int? ObtenerMarcaSeleccionada()
@@ -168,27 +165,6 @@ namespace TallerElectronico.Desktop
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            int? rolId = ObtenerMarcaSeleccionada();
-            if (!rolId.HasValue) return;
-
-            string nombre = Convert.ToString(dgvRol.SelectedRows[0].Cells["ColumnName"].Value);
-
-            DialogResult confirm = MessageBox.Show($"¿Seguro que desea eliminar el rol {nombre}?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (confirm != DialogResult.Yes) return;
-
-            try
-            {
-                _rolBL.Delete(rolId.Value);
-                MessageBox.Show("El rol se eliminó correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarRoles();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudo eliminar el rol: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
             // Reinicia el reloj a cada tecla. Solo cuando te detengas 300ms se consultará a la DAL

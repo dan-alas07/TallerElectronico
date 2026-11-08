@@ -173,9 +173,10 @@
             this.cmbTipoDocumento.FormattingEnabled = true;
             this.cmbTipoDocumento.Items.AddRange(new object[] {
             "DUI",
-            "Carnet Extranjero"});
+            "CarnetExtranjero"});
             this.cmbTipoDocumento.Location = new System.Drawing.Point(40, 324);
             this.cmbTipoDocumento.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbTipoDocumento.MaxLength = 20;
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
             this.cmbTipoDocumento.Size = new System.Drawing.Size(333, 31);
             this.cmbTipoDocumento.TabIndex = 34;
@@ -257,7 +258,7 @@
             this.txtCarnet.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtCarnet.Location = new System.Drawing.Point(40, 401);
             this.txtCarnet.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCarnet.MaxLength = 200;
+            this.txtCarnet.MaxLength = 20;
             this.txtCarnet.Name = "txtCarnet";
             this.txtCarnet.Size = new System.Drawing.Size(333, 30);
             this.txtCarnet.TabIndex = 7;
@@ -304,7 +305,7 @@
             this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtApellido.Location = new System.Drawing.Point(427, 172);
             this.txtApellido.Margin = new System.Windows.Forms.Padding(4);
-            this.txtApellido.MaxLength = 50;
+            this.txtApellido.MaxLength = 100;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(333, 30);
             this.txtApellido.TabIndex = 2;
@@ -327,7 +328,7 @@
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNombre.Location = new System.Drawing.Point(40, 172);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNombre.MaxLength = 50;
+            this.txtNombre.MaxLength = 100;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(333, 30);
             this.txtNombre.TabIndex = 1;
@@ -367,9 +368,9 @@
             this.lblCodigo.Location = new System.Drawing.Point(40, 71);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(58, 20);
+            this.lblCodigo.Size = new System.Drawing.Size(99, 20);
             this.lblCodigo.TabIndex = 2;
-            this.lblCodigo.Text = "Código";
+            this.lblCodigo.Text = "Identificador";
             // 
             // pnlLinea
             // 
@@ -433,6 +434,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(880, 697);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);

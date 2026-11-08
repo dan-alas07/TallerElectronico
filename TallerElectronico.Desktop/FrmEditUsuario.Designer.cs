@@ -65,9 +65,9 @@
             this.lblCodigo.Location = new System.Drawing.Point(55, 114);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(161, 23);
+            this.lblCodigo.Size = new System.Drawing.Size(207, 23);
             this.lblCodigo.TabIndex = 13;
-            this.lblCodigo.Text = "Código de usuario:";
+            this.lblCodigo.Text = "Identificador de usuario:";
             // 
             // txtCodigo
             // 
@@ -158,7 +158,7 @@
             // 
             this.txtClave.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtClave.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtClave.Location = new System.Drawing.Point(512, 226);
+            this.txtClave.Location = new System.Drawing.Point(511, 226);
             this.txtClave.Margin = new System.Windows.Forms.Padding(4);
             this.txtClave.MaxLength = 50;
             this.txtClave.Name = "txtClave";
@@ -234,6 +234,7 @@
             // 
             // cmbEmpleado
             // 
+            this.cmbEmpleado.Enabled = false;
             this.cmbEmpleado.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbEmpleado.FormattingEnabled = true;
             this.cmbEmpleado.Location = new System.Drawing.Point(59, 318);
