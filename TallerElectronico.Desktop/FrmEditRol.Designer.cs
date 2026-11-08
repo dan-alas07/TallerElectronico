@@ -59,9 +59,9 @@
             this.lblCodigo.Location = new System.Drawing.Point(47, 130);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(125, 23);
+            this.lblCodigo.Size = new System.Drawing.Size(120, 23);
             this.lblCodigo.TabIndex = 13;
-            this.lblCodigo.Text = "Código de rol:";
+            this.lblCodigo.Text = "Identificador:";
             // 
             // txtCodigo
             // 
@@ -154,6 +154,7 @@
             // cmbEstado
             // 
             this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstado.Enabled = false;
             this.cmbEstado.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
@@ -161,6 +162,7 @@
             "Inactivo"});
             this.cmbEstado.Location = new System.Drawing.Point(484, 247);
             this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbEstado.MaxLength = 50;
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(388, 31);
             this.cmbEstado.TabIndex = 32;
