@@ -47,7 +47,7 @@ namespace TallerElectronico.DataAccess
             {
                 var usuario = db.Usuario
                         .AsNoTracking()
-                         .Where(u => u.UsuarioId == idUsuario && u.Estado == "A")
+                         .Where(u => u.UsuarioId == idUsuario)
                          .Select(u => new UsuarioDTO
                          {
                              Id = u.UsuarioId,
