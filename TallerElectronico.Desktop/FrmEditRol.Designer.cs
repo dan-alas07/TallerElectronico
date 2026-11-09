@@ -59,9 +59,9 @@
             this.lblCodigo.Location = new System.Drawing.Point(47, 130);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(120, 23);
+            this.lblCodigo.Size = new System.Drawing.Size(73, 23);
             this.lblCodigo.TabIndex = 13;
-            this.lblCodigo.Text = "Identificador:";
+            this.lblCodigo.Text = "Código:";
             // 
             // txtCodigo
             // 
@@ -186,6 +186,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmEditRol";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmEditRol_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

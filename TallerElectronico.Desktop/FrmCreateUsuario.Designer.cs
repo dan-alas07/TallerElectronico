@@ -62,7 +62,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(667, 481);
+            this.btnCancelar.Location = new System.Drawing.Point(667, 492);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(173, 52);
@@ -80,7 +80,7 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(480, 481);
+            this.btnGuardar.Location = new System.Drawing.Point(477, 492);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(173, 52);
@@ -106,7 +106,7 @@
             this.pnlCard.Controls.Add(this.lblCodigo);
             this.pnlCard.Controls.Add(this.pnlLinea);
             this.pnlCard.Controls.Add(this.lblSeccion);
-            this.pnlCard.Location = new System.Drawing.Point(40, 117);
+            this.pnlCard.Location = new System.Drawing.Point(40, 127);
             this.pnlCard.Margin = new System.Windows.Forms.Padding(4);
             this.pnlCard.Name = "pnlCard";
             this.pnlCard.Size = new System.Drawing.Size(800, 331);
@@ -323,7 +323,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 548);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(880, 566);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.pnlCard);
@@ -331,6 +332,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCreateUsuario";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmCreateUsuario_Load);
             this.pnlCard.ResumeLayout(false);
             this.pnlCard.PerformLayout();

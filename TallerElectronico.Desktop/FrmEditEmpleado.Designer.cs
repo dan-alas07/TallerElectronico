@@ -93,7 +93,7 @@
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtCodigo.Location = new System.Drawing.Point(51, 139);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(157, 30);
@@ -201,7 +201,7 @@
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNombre.Location = new System.Drawing.Point(51, 217);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(386, 30);
@@ -212,7 +212,7 @@
             this.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtApellido.Location = new System.Drawing.Point(504, 217);
-            this.txtApellido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(4);
             this.txtApellido.MaxLength = 50;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(399, 30);
@@ -223,7 +223,7 @@
             this.txtCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCorreo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtCorreo.Location = new System.Drawing.Point(51, 401);
-            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCorreo.MaxLength = 100;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(386, 30);
@@ -234,7 +234,7 @@
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDireccion.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtDireccion.Location = new System.Drawing.Point(504, 401);
-            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDireccion.MaxLength = 255;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(399, 30);
@@ -246,7 +246,7 @@
             this.dtpFechaContratacion.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dtpFechaContratacion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaContratacion.Location = new System.Drawing.Point(51, 494);
-            this.dtpFechaContratacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFechaContratacion.Margin = new System.Windows.Forms.Padding(4);
             this.dtpFechaContratacion.Name = "dtpFechaContratacion";
             this.dtpFechaContratacion.Size = new System.Drawing.Size(385, 30);
             this.dtpFechaContratacion.TabIndex = 6;
@@ -260,7 +260,7 @@
             "Activo",
             "Inactivo"});
             this.cmbEstado.Location = new System.Drawing.Point(504, 494);
-            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(399, 31);
             this.cmbEstado.TabIndex = 7;
@@ -276,7 +276,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(504, 549);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(193, 52);
             this.btnGuardar.TabIndex = 8;
@@ -296,7 +296,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(711, 549);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(193, 52);
             this.btnCancelar.TabIndex = 9;
@@ -358,12 +358,12 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnCancelar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmEditEmpleado";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmEditEmpleado_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCentral_Paint);
             this.ResumeLayout(false);

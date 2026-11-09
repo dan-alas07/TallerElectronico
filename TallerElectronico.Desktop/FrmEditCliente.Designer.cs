@@ -392,7 +392,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FrmEditCliente";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmEditCliente_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCentral_Paint);
             this.ResumeLayout(false);

@@ -443,6 +443,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmCreateCliente";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmCreateCliente_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();

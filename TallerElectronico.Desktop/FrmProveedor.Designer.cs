@@ -186,7 +186,7 @@
             this.dgvProveedor.RowHeadersWidth = 51;
             this.dgvProveedor.RowTemplate.Height = 36;
             this.dgvProveedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProveedor.Size = new System.Drawing.Size(1440, 265);
+            this.dgvProveedor.Size = new System.Drawing.Size(1445, 380);
             this.dgvProveedor.TabIndex = 39;
             // 
             // ColumnCode
@@ -313,7 +313,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1528, 554);
+            this.ClientSize = new System.Drawing.Size(1528, 698);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label8);
