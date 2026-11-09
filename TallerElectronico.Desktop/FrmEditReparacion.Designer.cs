@@ -58,9 +58,7 @@
             this.txtCodigoSeguimiento = new System.Windows.Forms.TextBox();
             this.lblCodigoSeguimiento = new System.Windows.Forms.Label();
             this.pnlLinea = new System.Windows.Forms.Panel();
-            this.lblSeccion = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.lblSubtitulo = new System.Windows.Forms.Label();
             this.pnlCard.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,7 +99,7 @@
             // 
             // pnlCard
             // 
-            this.pnlCard.BackColor = System.Drawing.Color.White;
+            this.pnlCard.BackColor = System.Drawing.Color.Transparent;
             this.pnlCard.Controls.Add(this.dtpFechaEntrega);
             this.pnlCard.Controls.Add(this.lblFechaEntrega);
             this.pnlCard.Controls.Add(this.txtTotalReparacion);
@@ -129,7 +127,6 @@
             this.pnlCard.Controls.Add(this.txtCodigoSeguimiento);
             this.pnlCard.Controls.Add(this.lblCodigoSeguimiento);
             this.pnlCard.Controls.Add(this.pnlLinea);
-            this.pnlCard.Controls.Add(this.lblSeccion);
             this.pnlCard.Location = new System.Drawing.Point(30, 77);
             this.pnlCard.Name = "pnlCard";
             this.pnlCard.Size = new System.Drawing.Size(840, 374);
@@ -270,7 +267,6 @@
             // 
             this.txtDiagnosticoInicial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.txtDiagnosticoInicial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDiagnosticoInicial.Enabled = false;
             this.txtDiagnosticoInicial.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtDiagnosticoInicial.Location = new System.Drawing.Point(22, 161);
             this.txtDiagnosticoInicial.Multiline = true;
@@ -315,7 +311,6 @@
             // cmbMarca
             // 
             this.cmbMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMarca.Enabled = false;
             this.cmbMarca.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cmbMarca.FormattingEnabled = true;
             this.cmbMarca.Location = new System.Drawing.Point(296, 112);
@@ -337,7 +332,6 @@
             // cmbTipoEquipo
             // 
             this.cmbTipoEquipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTipoEquipo.Enabled = false;
             this.cmbTipoEquipo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cmbTipoEquipo.FormattingEnabled = true;
             this.cmbTipoEquipo.Location = new System.Drawing.Point(22, 112);
@@ -382,7 +376,6 @@
             // cmbCliente
             // 
             this.cmbCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCliente.Enabled = false;
             this.cmbCliente.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cmbCliente.FormattingEnabled = true;
             this.cmbCliente.Location = new System.Drawing.Point(296, 63);
@@ -432,45 +425,23 @@
             this.pnlLinea.Size = new System.Drawing.Size(795, 1);
             this.pnlLinea.TabIndex = 1;
             // 
-            // lblSeccion
-            // 
-            this.lblSeccion.AutoSize = true;
-            this.lblSeccion.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblSeccion.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lblSeccion.Location = new System.Drawing.Point(22, 12);
-            this.lblSeccion.Name = "lblSeccion";
-            this.lblSeccion.Size = new System.Drawing.Size(252, 20);
-            this.lblSeccion.TabIndex = 0;
-            this.lblSeccion.Text = "Detalles de la Orden de Reparación";
-            // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblTitulo.ForeColor = System.Drawing.Color.Black;
-            this.lblTitulo.Location = new System.Drawing.Point(25, 9);
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 23.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            this.lblTitulo.Location = new System.Drawing.Point(25, 22);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(331, 30);
+            this.lblTitulo.Size = new System.Drawing.Size(276, 42);
             this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Gestión y Cierre de Reparación";
-            // 
-            // lblSubtitulo
-            // 
-            this.lblSubtitulo.AutoSize = true;
-            this.lblSubtitulo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            this.lblSubtitulo.ForeColor = System.Drawing.Color.Black;
-            this.lblSubtitulo.Location = new System.Drawing.Point(27, 39);
-            this.lblSubtitulo.Name = "lblSubtitulo";
-            this.lblSubtitulo.Size = new System.Drawing.Size(409, 17);
-            this.lblSubtitulo.TabIndex = 1;
-            this.lblSubtitulo.Text = "Actualiza el avance técnico, el diagnóstico final y el costo del servicio";
+            this.lblTitulo.Text = "Editar Reparación";
             // 
             // FrmEditReparacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(900, 516);
-            this.Controls.Add(this.lblSubtitulo);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lblTitulo);
@@ -478,7 +449,6 @@
             this.Name = "FrmEditReparacion";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Editar Reparación";
             this.Load += new System.EventHandler(this.FrmEditReparacion_Load);
             this.pnlCard.ResumeLayout(false);
             this.pnlCard.PerformLayout();
@@ -489,7 +459,6 @@
 
         #endregion
         private System.Windows.Forms.Panel pnlCard;
-        private System.Windows.Forms.Label lblSeccion;
         private System.Windows.Forms.Panel pnlLinea;
         private System.Windows.Forms.Label lblCodigoSeguimiento;
         private System.Windows.Forms.TextBox txtCodigoSeguimiento;
@@ -520,6 +489,5 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Label lblSubtitulo;
     }
 }

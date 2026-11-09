@@ -19,7 +19,7 @@ namespace TallerElectronico.Desktop.Reportes
 
             doc.Open();
 
-            //definicion de variables para almacenar los colores
+            // Definición de variables para almacenar los colores
             BaseColor colorNegro = new BaseColor(30, 30, 30);
             BaseColor colorGrisOscuro = new BaseColor(80, 80, 80);
             BaseColor colorGrisLinea = new BaseColor(220, 220, 220);
@@ -41,7 +41,7 @@ namespace TallerElectronico.Desktop.Reportes
             Font fTotalBoldLabel = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 10, colorNegro);
             Font fTotalBoldValue = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 10, colorNegro);
 
-            // encabezado
+            // Encabezado
             PdfPTable tblTop = new PdfPTable(2) { WidthPercentage = 100 };
             tblTop.SetWidths(new float[] { 50f, 50f });
 
@@ -68,7 +68,7 @@ namespace TallerElectronico.Desktop.Reportes
 
             doc.Add(new Paragraph("\n"));
 
-            // datos del cliente
+            // Datos del cliente
             PdfPTable tblCliente = new PdfPTable(2) { WidthPercentage = 100 };
             tblCliente.SetWidths(new float[] { 50f, 50f });
 
@@ -88,7 +88,7 @@ namespace TallerElectronico.Desktop.Reportes
 
             doc.Add(new Paragraph("\n"));
 
-            //tituko y fechas
+            // Título y fechas
             doc.Add(new Paragraph($"Orden de Reparación {rep.CodigoSeguimiento}", fTituloOrden));
             doc.Add(new Paragraph(" "));
 
@@ -115,7 +115,7 @@ namespace TallerElectronico.Desktop.Reportes
 
             doc.Add(new Paragraph("\n"));
 
-            // datos del equipo
+            // Datos del equipo
             PdfPTable tblItems = new PdfPTable(3) { WidthPercentage = 100 };
             tblItems.SetWidths(new float[] { 70f, 15f, 15f });
 
@@ -149,7 +149,7 @@ namespace TallerElectronico.Desktop.Reportes
 
             doc.Add(new Paragraph("\n\n"));
 
-            // detalle
+            // Tabla de detalles y repuestos
             PdfPTable tblDetalles = new PdfPTable(4) { WidthPercentage = 100 };
             tblDetalles.SetWidths(new float[] { 12f, 54f, 17f, 17f });
 
@@ -158,12 +158,25 @@ namespace TallerElectronico.Desktop.Reportes
             tblDetalles.AddCell(CrearHeaderTabla("PRECIO UNIT.", fTableHead, colorNegro, Element.ALIGN_RIGHT));
             tblDetalles.AddCell(CrearHeaderTabla("SUBTOTAL", fTableHead, colorNegro, Element.ALIGN_RIGHT));
 
+            // 1. Mano de Obra
             if (rep.CostoManoObra > 0)
             {
                 tblDetalles.AddCell(CrearCeldaDetalle("1", fTableItemValue, Element.ALIGN_CENTER, colorGrisLinea));
                 tblDetalles.AddCell(CrearCeldaDetalle("Mano de Obra / Servicio Técnico", fTableItemValue, Element.ALIGN_LEFT, colorGrisLinea));
                 tblDetalles.AddCell(CrearCeldaDetalle($"$ {rep.CostoManoObra:N2}", fTableItemValue, Element.ALIGN_RIGHT, colorGrisLinea));
                 tblDetalles.AddCell(CrearCeldaDetalle($"$ {rep.CostoManoObra:N2}", fTableItemValue, Element.ALIGN_RIGHT, colorGrisLinea));
+            }
+
+            // 2. Lista dinámica de productos y repuestos utilizados
+            if (rep.Detalles != null && rep.Detalles.Count > 0)
+            {
+                foreach (var det in rep.Detalles)
+                {
+                    tblDetalles.AddCell(CrearCeldaDetalle(det.CantidadUtilizada.ToString(), fTableItemValue, Element.ALIGN_CENTER, colorGrisLinea));
+                    tblDetalles.AddCell(CrearCeldaDetalle(det.ProductoNombre, fTableItemValue, Element.ALIGN_LEFT, colorGrisLinea));
+                    tblDetalles.AddCell(CrearCeldaDetalle($"$ {det.PrecioUnitarioHistorico:N2}", fTableItemValue, Element.ALIGN_RIGHT, colorGrisLinea));
+                    tblDetalles.AddCell(CrearCeldaDetalle($"$ {det.Subtotal:N2}", fTableItemValue, Element.ALIGN_RIGHT, colorGrisLinea));
+                }
             }
 
             doc.Add(tblDetalles);
@@ -180,7 +193,7 @@ namespace TallerElectronico.Desktop.Reportes
 
             doc.Add(new Paragraph("\n"));
 
-            // total
+            // Total
             PdfPTable tblTotales = new PdfPTable(3) { WidthPercentage = 100 };
             tblTotales.SetWidths(new float[] { 45f, 30f, 25f });
 
@@ -190,7 +203,7 @@ namespace TallerElectronico.Desktop.Reportes
 
             doc.Add(new Paragraph("\n\n"));
 
-            // seccion de notas
+            // Sección de notas
             Paragraph pNota1 = new Paragraph($"Código de seguimiento para consulta: {rep.CodigoSeguimiento}", fMetaValor);
             Paragraph pNota2 = new Paragraph("Garantía del servicio: 30 días a partir de la fecha de entrega.", fTableItemSub);
 
@@ -200,7 +213,7 @@ namespace TallerElectronico.Desktop.Reportes
             doc.Close();
         }
 
-        //metodos
+        //metodos auxiliares
         private static PdfPCell CrearHeaderTabla(string texto, Font fHead, BaseColor colorNegro, int alineacion)
         {
             return new PdfPCell(new Phrase(texto, fHead))

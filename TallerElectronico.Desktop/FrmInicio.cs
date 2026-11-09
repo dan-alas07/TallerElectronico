@@ -69,9 +69,46 @@ namespace TallerElectronico.Desktop
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private ReparacionDTO ObtenerReparacionSeleccionada()
         {
+            if (dgvReparaciones.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecciona una reparación de la lista.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
 
+            if (dgvReparaciones.SelectedRows[0].DataBoundItem is ReparacionDTO dto)
+            {
+                return dto;
+            }
+
+            MessageBox.Show("No se pudo obtener la información de la reparación seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return null;
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            using (FrmCreateReparacion frm = new FrmCreateReparacion())
+            {
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                {
+                    CargarDashboard();
+                }
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            ReparacionDTO seleccion = ObtenerReparacionSeleccionada();
+            if (seleccion == null) return;
+
+            using (FrmEditReparacion frm = new FrmEditReparacion(seleccion.ReparacionId))
+            {
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                {
+                    CargarDashboard();
+                }
+            }
         }
     }
 }

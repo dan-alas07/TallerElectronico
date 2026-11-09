@@ -28,14 +28,28 @@ namespace TallerElectronico.DataAccess
                         EstadoNombre = r.EstadoReparacion.Nombre,
                         TipoEquipoNombre = r.TipoEquipo.Nombre,
                         MarcaNombre = r.Marca.Nombre,
-                        ClienteNombre = r.Cliente.Nombre + " " + r.Cliente.Apellido,
+                        ClienteNombre = r.Cliente.Nombre,
+                        ClienteApellido = r.Cliente.Apellido,
                         Correo = r.Cliente.Correo,
                         TecnicoNombre = r.Usuario != null && r.Usuario.Empleado != null
                             ? r.Usuario.Empleado.Nombre + " " + r.Usuario.Empleado.Apellido
                             : "Sin Asignar",
 
                         // Concatenado para el pdf
-                        EquipoCompleto = r.TipoEquipo.Nombre + " " + r.Marca.Nombre + " " + r.Modelo
+                        EquipoCompleto = r.TipoEquipo.Nombre + " " + r.Marca.Nombre + " " + r.Modelo,
+
+                        // Mapeo de detalles y repuestos utilizados
+                        Detalles = r.DetalleReparacion.Select(d => new DetalleReparacionDTO
+                        {
+                            DetalleReparacionId = d.DetalleReparacionId,
+                            ReparacionId = d.ReparacionId,
+                            ProductoId = d.ProductoId,
+                            CantidadUtilizada = d.CantidadUtilizada,
+                            PrecioUnitarioHistorico = d.PrecioUnitarioHistorico,
+                            Subtotal = d.Subtotal ?? 0.00m,
+                            FechaUso = d.FechaUso,
+                            ProductoNombre = d.Producto != null ? d.Producto.Nombre : ""
+                        }).ToList()
                     })
                     .ToList();
             }
@@ -82,7 +96,7 @@ namespace TallerElectronico.DataAccess
                                     .Include(r => r.TipoEquipo)
                                     .Include(r => r.Marca)
                                     .Include(r => r.EstadoReparacion)
-                                    .Include(r => r.Usuario) 
+                                    .Include(r => r.Usuario)
                                     .FirstOrDefault(r => r.CodigoSeguimiento == codigoSeguimiento);
             }
         }
@@ -205,11 +219,73 @@ namespace TallerElectronico.DataAccess
                         EstadoNombre = r.EstadoReparacion.Nombre,
                         TipoEquipoNombre = r.TipoEquipo.Nombre,
                         MarcaNombre = r.Marca.Nombre,
-                        ClienteNombre = r.Cliente.Nombre + " " + r.Cliente.Apellido,
+                        ClienteNombre = r.Cliente.Nombre,
+                        ClienteApellido = r.Cliente.Apellido,
                         Correo = r.Cliente.Correo,
                         TecnicoNombre = r.Usuario != null && r.Usuario.Empleado != null ? r.Usuario.Empleado.Nombre + " " + r.Usuario.Empleado.Apellido : "Sin Asignar",
 
-                        EquipoCompleto = r.TipoEquipo.Nombre + " " + r.Marca.Nombre + " " + r.Modelo
+                        EquipoCompleto = r.TipoEquipo.Nombre + " " + r.Marca.Nombre + " " + r.Modelo,
+
+                        // Mapeo de detalles y repuestos utilizados
+                        Detalles = r.DetalleReparacion.Select(d => new DetalleReparacionDTO
+                        {
+                            DetalleReparacionId = d.DetalleReparacionId,
+                            ReparacionId = d.ReparacionId,
+                            ProductoId = d.ProductoId,
+                            CantidadUtilizada = d.CantidadUtilizada,
+                            PrecioUnitarioHistorico = d.PrecioUnitarioHistorico,
+                            Subtotal = d.Subtotal ?? 0.00m,
+                            FechaUso = d.FechaUso,
+                            ProductoNombre = d.Producto != null ? d.Producto.Nombre : ""
+                        }).ToList()
+                    }).ToList();
+            }
+        }
+
+        public List<ReparacionDTO> SelectByFecha(DateTime fechaInicio, DateTime fechaFin)
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                // Ajustar la fecha final al último segundo del día (23:59:59)
+                DateTime inicio = fechaInicio.Date;
+                DateTime fin = fechaFin.Date.AddDays(1).AddTicks(-1);
+
+                return db.Reparacion.AsNoTracking()
+                    .Where(r => r.FechaIngreso >= inicio && r.FechaIngreso <= fin && r.EstadoReparacion.Nombre != "Cancelado")
+                    .OrderByDescending(r => r.FechaIngreso)
+                    .Select(r => new ReparacionDTO
+                    {
+                        ReparacionId = r.ReparacionId,
+                        CodigoSeguimiento = r.CodigoSeguimiento,
+                        Modelo = r.Modelo,
+                        FechaIngreso = r.FechaIngreso,
+                        FechaEntrega = r.FechaEntrega,
+                        CostoManoObra = r.CostoManoObra,
+                        TotalReparacion = r.TotalReparacion ?? 0.00m,
+
+                        EstadoNombre = r.EstadoReparacion.Nombre,
+                        TipoEquipoNombre = r.TipoEquipo.Nombre,
+                        MarcaNombre = r.Marca.Nombre,
+                        ClienteNombre = r.Cliente.Nombre,
+                        ClienteApellido = r.Cliente.Apellido,
+                        Correo = r.Cliente.Correo,
+                        TecnicoNombre = r.Usuario != null && r.Usuario.Empleado != null
+                            ? r.Usuario.Empleado.Nombre + " " + r.Usuario.Empleado.Apellido
+                            : "Sin Asignar",
+
+                        EquipoCompleto = r.TipoEquipo.Nombre + " " + r.Marca.Nombre + " " + r.Modelo,
+
+                        Detalles = r.DetalleReparacion.Select(d => new DetalleReparacionDTO
+                        {
+                            DetalleReparacionId = d.DetalleReparacionId,
+                            ReparacionId = d.ReparacionId,
+                            ProductoId = d.ProductoId,
+                            CantidadUtilizada = d.CantidadUtilizada,
+                            PrecioUnitarioHistorico = d.PrecioUnitarioHistorico,
+                            Subtotal = d.Subtotal ?? 0.00m,
+                            FechaUso = d.FechaUso,
+                            ProductoNombre = d.Producto != null ? d.Producto.Nombre : ""
+                        }).ToList()
                     }).ToList();
             }
         }

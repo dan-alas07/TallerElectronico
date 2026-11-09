@@ -54,7 +54,7 @@
     <Compile Include="Cliente.cs">
       <DependentUpon>TallerElectronicoModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DestalleReparacionDTO.cs" />
+    <Compile Include="DetalleReparacionDTO.cs" />
     <Compile Include="DetalleReparacion.cs">
       <DependentUpon>TallerElectronicoModel.tt</DependentUpon>
     </Compile>

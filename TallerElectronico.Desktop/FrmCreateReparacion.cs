@@ -32,13 +32,15 @@ namespace TallerElectronico.Desktop
         {
             try
             {
-                //Cliente
-                cmbCliente.DisplayMember = "Nombre";
+                // Cliente: formato concatenado (Nombre + Apellido)
                 cmbCliente.ValueMember = "ClienteId";
+                cmbCliente.FormattingEnabled = true;
+                cmbCliente.Format -= cmbCliente_Format;
+                cmbCliente.Format += cmbCliente_Format;
                 cmbCliente.DataSource = _clienteBL.SelectAll();
                 cmbCliente.SelectedIndex = -1;
 
-                //TipoEquipo
+                // TipoEquipo
                 cmbTipoEquipo.DisplayMember = "Nombre";
                 cmbTipoEquipo.ValueMember = "TipoEquipoId";
                 cmbTipoEquipo.DataSource = _tipoEquipoBL.SelectAll();
@@ -50,13 +52,13 @@ namespace TallerElectronico.Desktop
                 cmbMarca.DataSource = _marcaBL.SelectAll();
                 cmbMarca.SelectedIndex = -1;
 
-                //Técnico / UsuarioDTO
+                // Técnico / UsuarioDTO
                 cmbTecnico.DisplayMember = "EmpleadoNombre";
                 cmbTecnico.ValueMember = "Id";
                 cmbTecnico.DataSource = _usuarioBL.SelectAll();
                 cmbTecnico.SelectedIndex = -1;
 
-                //EstadoReparacion
+                // EstadoReparacion
                 cmbEstado.DisplayMember = "Nombre";
                 cmbEstado.ValueMember = "EstadoReparacionId";
                 cmbEstado.DataSource = _estadoReparacionBL.SelectAll();
@@ -65,6 +67,14 @@ namespace TallerElectronico.Desktop
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar los catálogos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbCliente_Format(object sender, ListControlConvertEventArgs e)
+        {
+            if (e.ListItem is Cliente c)
+            {
+                e.Value = $"{c.Nombre} {c.Apellido}";
             }
         }
 
@@ -149,7 +159,7 @@ namespace TallerElectronico.Desktop
                     totalReparacion = totalParsed;
                 }
 
-                // Extraccióndel técnico
+                // Extracción del técnico
                 int? tecnicoId = null;
                 if (cmbTecnico.SelectedValue is int idTecnico)
                 {
@@ -173,9 +183,9 @@ namespace TallerElectronico.Desktop
                     EstadoReparacionId = Convert.ToInt32(cmbEstado.SelectedValue),
                     CostoManoObra = costoManoObra,
                     TotalReparacion = totalReparacion,
-                    FechaIngreso = dtpFechaIngreso.Value, // Toma el valor del DateTimePicker
+                    FechaIngreso = dtpFechaIngreso.Value,
                     FechaEntrega = dtpFechaEntrega.Checked ? dtpFechaEntrega.Value : (DateTime?)null,
-                    UsuarioCreacionId = SesionUsuario.UsuarioId // Se obtiene del usuario logeado
+                    UsuarioCreacionId = SesionUsuario.UsuarioId
                 };
 
                 Reparacion resultado = _reparacionBL.Insert(nuevaReparacion);
