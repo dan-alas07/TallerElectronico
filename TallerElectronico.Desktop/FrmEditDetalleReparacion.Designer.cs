@@ -254,6 +254,7 @@
             // 
             // nudCantidad
             // 
+            this.nudCantidad.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.nudCantidad.Location = new System.Drawing.Point(60, 427);
             this.nudCantidad.Minimum = new decimal(new int[] {
             1,
@@ -262,7 +263,7 @@
             0});
             this.nudCantidad.Name = "nudCantidad";
             this.nudCantidad.ReadOnly = true;
-            this.nudCantidad.Size = new System.Drawing.Size(385, 22);
+            this.nudCantidad.Size = new System.Drawing.Size(385, 30);
             this.nudCantidad.TabIndex = 76;
             this.nudCantidad.Value = new decimal(new int[] {
             1,
@@ -294,6 +295,8 @@
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnCancelar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FrmEditDetalleReparacion";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
