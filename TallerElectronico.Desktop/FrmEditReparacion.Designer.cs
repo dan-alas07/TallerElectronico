@@ -75,7 +75,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(987, 592);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(173, 46);
             this.btnCancelar.TabIndex = 3;
@@ -93,7 +93,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.Location = new System.Drawing.Point(787, 592);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(173, 46);
             this.btnGuardar.TabIndex = 2;
@@ -133,7 +133,7 @@
             this.pnlCard.Controls.Add(this.pnlLinea);
             this.pnlCard.Controls.Add(this.lblSeccion);
             this.pnlCard.Location = new System.Drawing.Point(40, 102);
-            this.pnlCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlCard.Margin = new System.Windows.Forms.Padding(4);
             this.pnlCard.Name = "pnlCard";
             this.pnlCard.Size = new System.Drawing.Size(1120, 460);
             this.pnlCard.TabIndex = 1;
@@ -144,7 +144,7 @@
             this.dtpFechaEntrega.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.dtpFechaEntrega.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaEntrega.Location = new System.Drawing.Point(760, 407);
-            this.dtpFechaEntrega.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpFechaEntrega.Margin = new System.Windows.Forms.Padding(4);
             this.dtpFechaEntrega.Name = "dtpFechaEntrega";
             this.dtpFechaEntrega.Size = new System.Drawing.Size(329, 29);
             this.dtpFechaEntrega.TabIndex = 29;
@@ -164,7 +164,7 @@
             this.txtTotalReparacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotalReparacion.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtTotalReparacion.Location = new System.Drawing.Point(395, 407);
-            this.txtTotalReparacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTotalReparacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotalReparacion.MaxLength = 10;
             this.txtTotalReparacion.Name = "txtTotalReparacion";
             this.txtTotalReparacion.Size = new System.Drawing.Size(330, 29);
@@ -186,7 +186,7 @@
             this.txtCostoManoObra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCostoManoObra.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtCostoManoObra.Location = new System.Drawing.Point(29, 407);
-            this.txtCostoManoObra.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCostoManoObra.Margin = new System.Windows.Forms.Padding(4);
             this.txtCostoManoObra.MaxLength = 10;
             this.txtCostoManoObra.Name = "txtCostoManoObra";
             this.txtCostoManoObra.Size = new System.Drawing.Size(330, 29);
@@ -209,7 +209,7 @@
             this.txtDiagnosticoFinal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDiagnosticoFinal.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtDiagnosticoFinal.Location = new System.Drawing.Point(29, 331);
-            this.txtDiagnosticoFinal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDiagnosticoFinal.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiagnosticoFinal.MaxLength = 300;
             this.txtDiagnosticoFinal.Multiline = true;
             this.txtDiagnosticoFinal.Name = "txtDiagnosticoFinal";
@@ -233,7 +233,7 @@
             this.cmbEstado.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Location = new System.Drawing.Point(395, 271);
-            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(329, 29);
             this.cmbEstado.TabIndex = 19;
@@ -254,7 +254,7 @@
             this.cmbTecnico.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cmbTecnico.FormattingEnabled = true;
             this.cmbTecnico.Location = new System.Drawing.Point(29, 271);
-            this.cmbTecnico.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbTecnico.Margin = new System.Windows.Forms.Padding(4);
             this.cmbTecnico.Name = "cmbTecnico";
             this.cmbTecnico.Size = new System.Drawing.Size(329, 29);
             this.cmbTecnico.TabIndex = 17;
@@ -276,7 +276,7 @@
             this.txtDiagnosticoInicial.Enabled = false;
             this.txtDiagnosticoInicial.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtDiagnosticoInicial.Location = new System.Drawing.Point(29, 198);
-            this.txtDiagnosticoInicial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDiagnosticoInicial.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiagnosticoInicial.Multiline = true;
             this.txtDiagnosticoInicial.Name = "txtDiagnosticoInicial";
             this.txtDiagnosticoInicial.ReadOnly = true;
@@ -300,7 +300,7 @@
             this.txtModelo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtModelo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtModelo.Location = new System.Drawing.Point(760, 138);
-            this.txtModelo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtModelo.Margin = new System.Windows.Forms.Padding(4);
             this.txtModelo.Name = "txtModelo";
             this.txtModelo.Size = new System.Drawing.Size(330, 29);
             this.txtModelo.TabIndex = 13;
@@ -322,7 +322,7 @@
             this.cmbMarca.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cmbMarca.FormattingEnabled = true;
             this.cmbMarca.Location = new System.Drawing.Point(395, 138);
-            this.cmbMarca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbMarca.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMarca.Name = "cmbMarca";
             this.cmbMarca.Size = new System.Drawing.Size(329, 29);
             this.cmbMarca.TabIndex = 11;
@@ -344,7 +344,7 @@
             this.cmbTipoEquipo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cmbTipoEquipo.FormattingEnabled = true;
             this.cmbTipoEquipo.Location = new System.Drawing.Point(29, 138);
-            this.cmbTipoEquipo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbTipoEquipo.Margin = new System.Windows.Forms.Padding(4);
             this.cmbTipoEquipo.Name = "cmbTipoEquipo";
             this.cmbTipoEquipo.Size = new System.Drawing.Size(329, 29);
             this.cmbTipoEquipo.TabIndex = 9;
@@ -366,7 +366,7 @@
             this.txtFechaIngreso.Enabled = false;
             this.txtFechaIngreso.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtFechaIngreso.Location = new System.Drawing.Point(760, 78);
-            this.txtFechaIngreso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFechaIngreso.Margin = new System.Windows.Forms.Padding(4);
             this.txtFechaIngreso.Name = "txtFechaIngreso";
             this.txtFechaIngreso.ReadOnly = true;
             this.txtFechaIngreso.Size = new System.Drawing.Size(330, 29);
@@ -389,7 +389,7 @@
             this.cmbCliente.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.cmbCliente.FormattingEnabled = true;
             this.cmbCliente.Location = new System.Drawing.Point(395, 78);
-            this.cmbCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCliente.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCliente.Name = "cmbCliente";
             this.cmbCliente.Size = new System.Drawing.Size(329, 29);
             this.cmbCliente.TabIndex = 5;
@@ -411,7 +411,7 @@
             this.txtCodigoSeguimiento.Enabled = false;
             this.txtCodigoSeguimiento.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtCodigoSeguimiento.Location = new System.Drawing.Point(29, 78);
-            this.txtCodigoSeguimiento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigoSeguimiento.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigoSeguimiento.Name = "txtCodigoSeguimiento";
             this.txtCodigoSeguimiento.ReadOnly = true;
             this.txtCodigoSeguimiento.Size = new System.Drawing.Size(330, 29);
@@ -431,7 +431,7 @@
             // 
             this.pnlLinea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(235)))), ((int)(((byte)(242)))));
             this.pnlLinea.Location = new System.Drawing.Point(29, 46);
-            this.pnlLinea.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlLinea.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLinea.Name = "pnlLinea";
             this.pnlLinea.Size = new System.Drawing.Size(1060, 1);
             this.pnlLinea.TabIndex = 1;
@@ -483,7 +483,9 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.pnlCard);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "FrmEditReparacion";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
