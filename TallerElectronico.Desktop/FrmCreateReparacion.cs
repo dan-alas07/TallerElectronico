@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows.Forms;
 using TallerElectronico.BusinessLogic;
 using TallerElectronico.Entities;
@@ -17,6 +18,11 @@ namespace TallerElectronico.Desktop
         public FrmCreateReparacion()
         {
             InitializeComponent();
+
+            txtTotalReparacion.ReadOnly = true;
+            txtTotalReparacion.TabStop = false;
+
+            txtCostoManoObra.TextChanged += txtCostoManoObra_TextChanged;
         }
 
         private void FrmCreateReparacion_Load(object sender, EventArgs e)
@@ -24,8 +30,19 @@ namespace TallerElectronico.Desktop
             CargarCombos();
             GenerarCodigoSeguimiento();
 
-            // Asigna la fecha y hora actual
             dtpFechaIngreso.Value = DateTime.Now;
+        }
+
+        private void txtCostoManoObra_TextChanged(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(txtCostoManoObra.Text.Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out decimal costoManoObra))
+            {
+                txtTotalReparacion.Text = costoManoObra.ToString("0.00", CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                txtTotalReparacion.Text = "0.00";
+            }
         }
 
         private void CargarCombos()
@@ -104,7 +121,6 @@ namespace TallerElectronico.Desktop
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            // Validaciones básicas
             if (cmbCliente.SelectedValue == null)
             {
                 MessageBox.Show("Selecciona un cliente.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -141,25 +157,18 @@ namespace TallerElectronico.Desktop
                 return;
             }
 
-            DialogResult confirm = MessageBox.Show(
-                "¿Desea registrar la nueva recepción de reparación?",
-                "Confirmar Registro",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
+            DialogResult confirm = MessageBox.Show("¿Desea registrar la nueva recepción de reparación?", "Confirmar Registro",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question
             );
 
             if (confirm != DialogResult.Yes) return;
 
             try
             {
-                decimal.TryParse(txtCostoManoObra.Text.Trim(), out decimal costoManoObra);
-                decimal? totalReparacion = null;
-                if (decimal.TryParse(txtTotalReparacion.Text.Trim(), out decimal totalParsed))
-                {
-                    totalReparacion = totalParsed;
-                }
+                decimal.TryParse(txtCostoManoObra.Text.Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out decimal costoManoObra);
 
-                // Extracción del técnico
+                decimal totalReparacion = costoManoObra;
+
                 int? tecnicoId = null;
                 if (cmbTecnico.SelectedValue is int idTecnico)
                 {
