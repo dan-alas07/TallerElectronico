@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lblBuscar = new System.Windows.Forms.Label();
@@ -63,20 +62,18 @@
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtBuscar.Location = new System.Drawing.Point(38, 160);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBuscar.Location = new System.Drawing.Point(28, 130);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(477, 32);
+            this.txtBuscar.Size = new System.Drawing.Size(358, 27);
             this.txtBuscar.TabIndex = 46;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // lblBuscar
             // 
             this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Location = new System.Drawing.Point(36, 137);
-            this.lblBuscar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBuscar.Location = new System.Drawing.Point(27, 111);
             this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(52, 16);
+            this.lblBuscar.Size = new System.Drawing.Size(43, 13);
             this.lblBuscar.TabIndex = 45;
             this.lblBuscar.Text = "Buscar:";
             // 
@@ -84,10 +81,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(32, 103);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(24, 84);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(500, 25);
+            this.label8.Size = new System.Drawing.Size(407, 20);
             this.label8.TabIndex = 44;
             this.label8.Text = "Consulta, registra, edita o cancela reparaciones del taller";
             // 
@@ -104,7 +100,7 @@
             this.btnEditar.Location = new System.Drawing.Point(205, 4);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(193, 52);
+            this.btnEditar.Size = new System.Drawing.Size(145, 42);
             this.btnEditar.TabIndex = 43;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
@@ -120,10 +116,9 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(526, 161);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscar.Location = new System.Drawing.Point(394, 131);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(100, 28);
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 47;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
@@ -141,7 +136,7 @@
             this.btnNuevo.Location = new System.Drawing.Point(4, 4);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(193, 52);
+            this.btnNuevo.Size = new System.Drawing.Size(145, 42);
             this.btnNuevo.TabIndex = 41;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
@@ -152,10 +147,9 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblTitle.Location = new System.Drawing.Point(22, 34);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitle.Location = new System.Drawing.Point(16, 28);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(509, 62);
+            this.lblTitle.Size = new System.Drawing.Size(404, 50);
             this.lblTitle.TabIndex = 40;
             this.lblTitle.Text = "Gestión de reparación";
             // 
@@ -193,19 +187,18 @@
             this.ColumnEntryDate,
             this.ColumnDeliveryDate,
             this.ColumnTotalCost});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReparaciones.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReparaciones.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvReparaciones.EnableHeadersVisualStyles = false;
             this.dgvReparaciones.GridColor = System.Drawing.Color.White;
-            this.dgvReparaciones.Location = new System.Drawing.Point(25, 312);
-            this.dgvReparaciones.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvReparaciones.Location = new System.Drawing.Point(19, 254);
             this.dgvReparaciones.MultiSelect = false;
             this.dgvReparaciones.Name = "dgvReparaciones";
             this.dgvReparaciones.ReadOnly = true;
@@ -213,7 +206,7 @@
             this.dgvReparaciones.RowHeadersWidth = 51;
             this.dgvReparaciones.RowTemplate.Height = 36;
             this.dgvReparaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReparaciones.Size = new System.Drawing.Size(1440, 265);
+            this.dgvReparaciones.Size = new System.Drawing.Size(1080, 215);
             this.dgvReparaciones.TabIndex = 39;
             // 
             // ColumnTrackingCode
@@ -235,7 +228,7 @@
             // 
             // ColumnClientCode
             // 
-            this.ColumnClientCode.DataPropertyName = "ClienteNombre";
+            this.ColumnClientCode.DataPropertyName = "ClienteNombreCompleto";
             this.ColumnClientCode.FillWeight = 85F;
             this.ColumnClientCode.HeaderText = "Cliente";
             this.ColumnClientCode.MinimumWidth = 6;
@@ -298,8 +291,6 @@
             // ColumnTotalCost
             // 
             this.ColumnTotalCost.DataPropertyName = "TotalReparacion";
-            dataGridViewCellStyle3.Format = "$#,##0.00";
-            this.ColumnTotalCost.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnTotalCost.HeaderText = "Total";
             this.ColumnTotalCost.MinimumWidth = 6;
             this.ColumnTotalCost.Name = "ColumnTotalCost";
@@ -355,7 +346,7 @@
             // 
             // FrmReparacion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1486, 631);
@@ -367,7 +358,6 @@
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.dgvReparaciones);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmReparacion";
             this.ShowIcon = false;
             this.Load += new System.EventHandler(this.FrmReparacion_Load);

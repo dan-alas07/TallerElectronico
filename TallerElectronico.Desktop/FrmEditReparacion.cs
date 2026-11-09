@@ -44,9 +44,11 @@ namespace TallerElectronico.Desktop
         {
             try
             {
-                //Cliente
-                cmbCliente.DisplayMember = "Nombre";
+                // Cliente: formato concatenado (Nombre + Apellido)
                 cmbCliente.ValueMember = "ClienteId";
+                cmbCliente.FormattingEnabled = true;
+                cmbCliente.Format -= cmbCliente_Format;
+                cmbCliente.Format += cmbCliente_Format;
                 cmbCliente.DataSource = _clienteBL.SelectAll();
 
                 // TipoEquipo
@@ -54,7 +56,7 @@ namespace TallerElectronico.Desktop
                 cmbTipoEquipo.ValueMember = "TipoEquipoId";
                 cmbTipoEquipo.DataSource = _tipoEquipoBL.SelectAll();
 
-                //Marca
+                // Marca
                 cmbMarca.DisplayMember = "Nombre";
                 cmbMarca.ValueMember = "MarcaId";
                 cmbMarca.DataSource = _marcaBL.SelectAll();
@@ -65,7 +67,7 @@ namespace TallerElectronico.Desktop
                 cmbTecnico.DataSource = _usuarioBL.SelectAll();
                 cmbTecnico.SelectedIndex = -1;
 
-                //EstadoReparacion
+                // EstadoReparacion
                 cmbEstado.DisplayMember = "Nombre";
                 cmbEstado.ValueMember = "EstadoReparacionId";
                 cmbEstado.DataSource = _estadoReparacionBL.SelectAll();
@@ -73,6 +75,14 @@ namespace TallerElectronico.Desktop
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar los catálogos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbCliente_Format(object sender, ListControlConvertEventArgs e)
+        {
+            if (e.ListItem is Cliente c)
+            {
+                e.Value = $"{c.Nombre} {c.Apellido}";
             }
         }
 
