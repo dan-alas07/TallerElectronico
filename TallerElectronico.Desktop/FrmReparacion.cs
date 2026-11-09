@@ -13,10 +13,13 @@ namespace TallerElectronico.Desktop
         private readonly ReparacionBL _reparacionBL = new ReparacionBL();
         private bool cargandoReparaciones = false;
         private readonly Timer _timerBusqueda = new Timer();
+        private readonly bool _esTecnico = false;
 
         public FrmReparacion()
         {
             InitializeComponent();
+
+            _esTecnico = SesionUsuario.RolNombre != null && SesionUsuario.RolNombre.Trim().Equals("Tecnico", StringComparison.OrdinalIgnoreCase);
 
             RegistrarEventos(this);
 
@@ -28,11 +31,22 @@ namespace TallerElectronico.Desktop
             btnEditar.Enabled = false;
             btnAnular.Enabled = false;
 
+            AplicarPermisosRol();
+
             dgvReparaciones.SelectionChanged += dgvReparaciones_SelectionChanged;
 
             // Configurar el temporizador para la búsqueda (300 ms de espera tras tipear)
             _timerBusqueda.Interval = 300;
             _timerBusqueda.Tick += TimerBusqueda_Tick;
+        }
+
+        private void AplicarPermisosRol()
+        {
+            if (_esTecnico)
+            {
+                btnNuevo.Visible = false;
+                btnAnular.Visible = false;
+            }
         }
 
         private void FrmReparacion_Load(object sender, EventArgs e)

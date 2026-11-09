@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TallerElectronico.BusinessLogic;
+using TallerElectronico.Entities;
 
 namespace TallerElectronico.Desktop
 {
@@ -16,16 +17,20 @@ namespace TallerElectronico.Desktop
         private readonly ClienteBL _clienteBL = new ClienteBL();
         private bool cargandoClientes = false;
         private readonly Timer _timerBusqueda = new Timer();
+        private readonly bool _esRecepcionista = false;
 
         public FrmCliente()
         {
             InitializeComponent();
 
+            _esRecepcionista = SesionUsuario.RolNombre != null && SesionUsuario.RolNombre.Trim().Equals("Recepcionista", StringComparison.OrdinalIgnoreCase);
             RegistrarEventos(this);
 
             dgvCliente.AutoGenerateColumns = false;
             dgvCliente.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCliente.MultiSelect = false;
+
+            AplicarPermisosRol();
 
             btnNuevo.Enabled = true;
             btnEditar.Enabled = false;
@@ -36,6 +41,14 @@ namespace TallerElectronico.Desktop
             // Configurar el temporizador (300 milisegundos de espera)
             _timerBusqueda.Interval = 300;
             _timerBusqueda.Tick += TimerBusqueda_Tick;
+        }
+
+        private void AplicarPermisosRol()
+        {
+            if (_esRecepcionista)
+            {
+                btnEliminar.Visible = false;
+            }
         }
 
         private void FrmCliente_Load(object sender, EventArgs e)
