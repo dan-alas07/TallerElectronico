@@ -164,6 +164,7 @@
             // txtTotalReparacion
             // 
             this.txtTotalReparacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTotalReparacion.Enabled = false;
             this.txtTotalReparacion.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtTotalReparacion.Location = new System.Drawing.Point(296, 331);
             this.txtTotalReparacion.MaxLength = 10;

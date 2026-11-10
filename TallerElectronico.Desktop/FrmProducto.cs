@@ -11,6 +11,7 @@ namespace TallerElectronico.Desktop
         private readonly ProductoBL _productoBL = new ProductoBL();
         private bool cargandoProductos = false;
         private readonly Timer _timerBusqueda = new Timer();
+        private readonly bool _esTecnico = false;
 
         public FrmProducto()
         {
@@ -18,12 +19,17 @@ namespace TallerElectronico.Desktop
 
             RegistrarEventos(this);
 
+            // Validacion de Rol 
+            _esTecnico = SesionUsuario.RolNombre != null && SesionUsuario.RolNombre.Trim().Equals("Tecnico", StringComparison.OrdinalIgnoreCase);
+
             dgvProducto.AutoGenerateColumns = false;
             dgvProducto.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProducto.MultiSelect = false;
 
-            // Mapeo explicito de DataPropertyName a ProductoDTO para evitar que se vacie la grilla
+            // Mapeo explicito de DataPropertyName a ProductoDTO para evitar que se vacie
             MapearColumnasDTO();
+
+            AplicarPermisosRol();
 
             btnNuevo.Enabled = true;
             btnEditar.Enabled = false;
@@ -34,6 +40,17 @@ namespace TallerElectronico.Desktop
             // Configurar el temporizador (300 milisegundos de espera)
             _timerBusqueda.Interval = 300;
             _timerBusqueda.Tick += TimerBusqueda_Tick;
+        }
+
+        private void AplicarPermisosRol()
+        {
+            if (_esTecnico)
+            {
+                if (flpBotonesProductos != null)
+                {
+                    flpBotonesProductos.Visible = false;
+                }
+            }
         }
 
         private void MapearColumnasDTO()

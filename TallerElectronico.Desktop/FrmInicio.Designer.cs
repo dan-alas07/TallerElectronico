@@ -48,7 +48,6 @@
             this.lbl5 = new System.Windows.Forms.Label();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.dgvReparaciones = new System.Windows.Forms.DataGridView();
             this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +55,7 @@
             this.ColumnCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlKpiAbiertas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlKpiListas.SuspendLayout();
@@ -63,6 +63,7 @@
             this.pnlKpiReparadas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReparaciones)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -70,10 +71,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.label1.Location = new System.Drawing.Point(20, 21);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(27, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(298, 50);
+            this.label1.Size = new System.Drawing.Size(376, 62);
             this.label1.TabIndex = 0;
             this.label1.Text = "Taller / Ordenes";
             // 
@@ -81,10 +81,9 @@
             // 
             this.lblBienvenido.AutoSize = true;
             this.lblBienvenido.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBienvenido.Location = new System.Drawing.Point(30, 93);
-            this.lblBienvenido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBienvenido.Location = new System.Drawing.Point(40, 114);
             this.lblBienvenido.Name = "lblBienvenido";
-            this.lblBienvenido.Size = new System.Drawing.Size(199, 25);
+            this.lblBienvenido.Size = new System.Drawing.Size(241, 31);
             this.lblBienvenido.TabIndex = 1;
             this.lblBienvenido.Text = "Bienvenido/a: Admin";
             // 
@@ -94,21 +93,21 @@
             this.pnlKpiAbiertas.Controls.Add(this.pictureBox1);
             this.pnlKpiAbiertas.Controls.Add(this.lblKpiAbiertas);
             this.pnlKpiAbiertas.Controls.Add(this.lbl3);
-            this.pnlKpiAbiertas.Location = new System.Drawing.Point(36, 146);
-            this.pnlKpiAbiertas.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlKpiAbiertas.Location = new System.Drawing.Point(48, 180);
+            this.pnlKpiAbiertas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlKpiAbiertas.Name = "pnlKpiAbiertas";
-            this.pnlKpiAbiertas.Padding = new System.Windows.Forms.Padding(8);
-            this.pnlKpiAbiertas.Size = new System.Drawing.Size(280, 122);
+            this.pnlKpiAbiertas.Padding = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.pnlKpiAbiertas.Size = new System.Drawing.Size(373, 150);
             this.pnlKpiAbiertas.TabIndex = 2;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(193, 18);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(257, 22);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(71, 89);
+            this.pictureBox1.Size = new System.Drawing.Size(95, 110);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -118,10 +117,9 @@
             this.lblKpiAbiertas.AutoSize = true;
             this.lblKpiAbiertas.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblKpiAbiertas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblKpiAbiertas.Location = new System.Drawing.Point(66, 37);
-            this.lblKpiAbiertas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblKpiAbiertas.Location = new System.Drawing.Point(88, 46);
             this.lblKpiAbiertas.Name = "lblKpiAbiertas";
-            this.lblKpiAbiertas.Size = new System.Drawing.Size(56, 65);
+            this.lblKpiAbiertas.Size = new System.Drawing.Size(70, 81);
             this.lblKpiAbiertas.TabIndex = 1;
             this.lblKpiAbiertas.Text = "0";
             // 
@@ -129,10 +127,9 @@
             // 
             this.lbl3.AutoSize = true;
             this.lbl3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl3.Location = new System.Drawing.Point(14, 18);
-            this.lbl3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl3.Location = new System.Drawing.Point(19, 22);
             this.lbl3.Name = "lbl3";
-            this.lbl3.Size = new System.Drawing.Size(161, 21);
+            this.lbl3.Size = new System.Drawing.Size(203, 28);
             this.lbl3.TabIndex = 0;
             this.lbl3.Text = "ÓRDENES ABIERTAS";
             // 
@@ -142,21 +139,21 @@
             this.pnlKpiListas.Controls.Add(this.pictureBox2);
             this.pnlKpiListas.Controls.Add(this.lblKpiListas);
             this.pnlKpiListas.Controls.Add(this.lbl4);
-            this.pnlKpiListas.Location = new System.Drawing.Point(341, 146);
-            this.pnlKpiListas.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlKpiListas.Location = new System.Drawing.Point(455, 180);
+            this.pnlKpiListas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlKpiListas.Name = "pnlKpiListas";
-            this.pnlKpiListas.Padding = new System.Windows.Forms.Padding(8);
-            this.pnlKpiListas.Size = new System.Drawing.Size(280, 122);
+            this.pnlKpiListas.Padding = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.pnlKpiListas.Size = new System.Drawing.Size(373, 150);
             this.pnlKpiListas.TabIndex = 3;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.InitialImage = null;
-            this.pictureBox2.Location = new System.Drawing.Point(192, 18);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(256, 22);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(71, 89);
+            this.pictureBox2.Size = new System.Drawing.Size(95, 110);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
@@ -166,10 +163,9 @@
             this.lblKpiListas.AutoSize = true;
             this.lblKpiListas.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblKpiListas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblKpiListas.Location = new System.Drawing.Point(62, 37);
-            this.lblKpiListas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblKpiListas.Location = new System.Drawing.Point(83, 46);
             this.lblKpiListas.Name = "lblKpiListas";
-            this.lblKpiListas.Size = new System.Drawing.Size(56, 65);
+            this.lblKpiListas.Size = new System.Drawing.Size(70, 81);
             this.lblKpiListas.TabIndex = 3;
             this.lblKpiListas.Text = "0";
             // 
@@ -177,10 +173,9 @@
             // 
             this.lbl4.AutoSize = true;
             this.lbl4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl4.Location = new System.Drawing.Point(20, 15);
-            this.lbl4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl4.Location = new System.Drawing.Point(27, 18);
             this.lbl4.Name = "lbl4";
-            this.lbl4.Size = new System.Drawing.Size(138, 21);
+            this.lbl4.Size = new System.Drawing.Size(173, 28);
             this.lbl4.TabIndex = 2;
             this.lbl4.Text = "ÓRDENES LISTAS";
             // 
@@ -190,21 +185,21 @@
             this.pnlKpiReparadas.Controls.Add(this.pictureBox3);
             this.pnlKpiReparadas.Controls.Add(this.lblKpiEntregadas);
             this.pnlKpiReparadas.Controls.Add(this.lbl5);
-            this.pnlKpiReparadas.Location = new System.Drawing.Point(646, 146);
-            this.pnlKpiReparadas.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlKpiReparadas.Location = new System.Drawing.Point(861, 180);
+            this.pnlKpiReparadas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlKpiReparadas.Name = "pnlKpiReparadas";
-            this.pnlKpiReparadas.Padding = new System.Windows.Forms.Padding(8);
-            this.pnlKpiReparadas.Size = new System.Drawing.Size(280, 122);
+            this.pnlKpiReparadas.Padding = new System.Windows.Forms.Padding(11, 10, 11, 10);
+            this.pnlKpiReparadas.Size = new System.Drawing.Size(373, 150);
             this.pnlKpiReparadas.TabIndex = 4;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.InitialImage = null;
-            this.pictureBox3.Location = new System.Drawing.Point(200, 18);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Location = new System.Drawing.Point(267, 22);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(71, 89);
+            this.pictureBox3.Size = new System.Drawing.Size(95, 110);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 4;
             this.pictureBox3.TabStop = false;
@@ -214,10 +209,9 @@
             this.lblKpiEntregadas.AutoSize = true;
             this.lblKpiEntregadas.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblKpiEntregadas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblKpiEntregadas.Location = new System.Drawing.Point(76, 37);
-            this.lblKpiEntregadas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblKpiEntregadas.Location = new System.Drawing.Point(101, 46);
             this.lblKpiEntregadas.Name = "lblKpiEntregadas";
-            this.lblKpiEntregadas.Size = new System.Drawing.Size(56, 65);
+            this.lblKpiEntregadas.Size = new System.Drawing.Size(70, 81);
             this.lblKpiEntregadas.TabIndex = 3;
             this.lblKpiEntregadas.Text = "0";
             // 
@@ -225,10 +219,9 @@
             // 
             this.lbl5.AutoSize = true;
             this.lbl5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl5.Location = new System.Drawing.Point(14, 15);
-            this.lbl5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl5.Location = new System.Drawing.Point(19, 18);
             this.lbl5.Name = "lbl5";
-            this.lbl5.Size = new System.Drawing.Size(192, 21);
+            this.lbl5.Size = new System.Drawing.Size(241, 28);
             this.lbl5.TabIndex = 2;
             this.lbl5.Text = "ÓRDENES ENTREGADAS";
             // 
@@ -242,9 +235,10 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(32, 312);
+            this.btnNuevo.Location = new System.Drawing.Point(4, 4);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(156, 45);
+            this.btnNuevo.Size = new System.Drawing.Size(208, 55);
             this.btnNuevo.TabIndex = 51;
             this.btnNuevo.Text = "Nueva Reparación";
             this.btnNuevo.UseVisualStyleBackColor = false;
@@ -260,30 +254,14 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(199, 312);
+            this.btnEditar.Location = new System.Drawing.Point(220, 4);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(156, 45);
+            this.btnEditar.Size = new System.Drawing.Size(208, 55);
             this.btnEditar.TabIndex = 52;
             this.btnEditar.Text = "Editar Reparación";
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.DarkGray;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(365, 312);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(156, 45);
-            this.button1.TabIndex = 53;
-            this.button1.Text = "Ver Reparación";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // dgvReparaciones
             // 
@@ -326,7 +304,8 @@
             this.dgvReparaciones.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvReparaciones.EnableHeadersVisualStyles = false;
             this.dgvReparaciones.GridColor = System.Drawing.Color.White;
-            this.dgvReparaciones.Location = new System.Drawing.Point(34, 384);
+            this.dgvReparaciones.Location = new System.Drawing.Point(45, 473);
+            this.dgvReparaciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvReparaciones.MultiSelect = false;
             this.dgvReparaciones.Name = "dgvReparaciones";
             this.dgvReparaciones.ReadOnly = true;
@@ -334,7 +313,7 @@
             this.dgvReparaciones.RowHeadersWidth = 51;
             this.dgvReparaciones.RowTemplate.Height = 36;
             this.dgvReparaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReparaciones.Size = new System.Drawing.Size(997, 215);
+            this.dgvReparaciones.Size = new System.Drawing.Size(1329, 265);
             this.dgvReparaciones.TabIndex = 54;
             // 
             // ColumnCode
@@ -391,21 +370,29 @@
             this.ColumnTotal.Name = "ColumnTotal";
             this.ColumnTotal.ReadOnly = true;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btnNuevo);
+            this.flowLayoutPanel1.Controls.Add(this.btnEditar);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(48, 364);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(445, 69);
+            this.flowLayoutPanel1.TabIndex = 55;
+            // 
             // FrmInicio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1028, 609);
+            this.ClientSize = new System.Drawing.Size(1371, 750);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.dgvReparaciones);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnEditar);
-            this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.pnlKpiReparadas);
             this.Controls.Add(this.pnlKpiListas);
             this.Controls.Add(this.pnlKpiAbiertas);
             this.Controls.Add(this.lblBienvenido);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmInicio";
             this.ShowIcon = false;
             this.Load += new System.EventHandler(this.FrmInicio_Load);
@@ -419,6 +406,7 @@
             this.pnlKpiReparadas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReparaciones)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -439,7 +427,6 @@
         private System.Windows.Forms.Label lbl5;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgvReparaciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
@@ -450,5 +437,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
