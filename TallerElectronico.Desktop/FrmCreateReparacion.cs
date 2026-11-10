@@ -21,11 +21,16 @@ namespace TallerElectronico.Desktop
 
         private void FrmCreateReparacion_Load(object sender, EventArgs e)
         {
-            CargarCombos();
-            GenerarCodigoSeguimiento();
+            // Bloquea la edición manual del código de seguimiento
+            txtCodigoSeguimiento.ReadOnly = true;
 
-            // Asigna la fecha y hora actual
+            CargarCombos();
+
+            // Asigna la fecha y hora actual de ingreso
             dtpFechaIngreso.Value = DateTime.Now;
+
+            // Genera el código automáticamente con la fecha y hora detallada
+            GenerarCodigoSeguimiento();
         }
 
         private void CargarCombos()
@@ -80,13 +85,9 @@ namespace TallerElectronico.Desktop
 
         private void GenerarCodigoSeguimiento()
         {
+
             string codigo = "REP-" + DateTime.Now.ToString("yyyyMMddHHmmss");
             txtCodigoSeguimiento.Text = codigo;
-        }
-
-        private void btnGenerarCodigo_Click(object sender, EventArgs e)
-        {
-            GenerarCodigoSeguimiento();
         }
 
         private void txtCostoManoObra_KeyPress(object sender, KeyPressEventArgs e)

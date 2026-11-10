@@ -164,6 +164,14 @@ namespace TallerElectronico.DataAccess
             }
         }
 
+        public int ObtenerUltimoId()
+        {
+            using (var db = new TallerElectronicoEntities())
+            {
+                return db.Producto.Max(p => (int?)p.ProductoId) ?? 0;
+            }
+        }
+
         public List<ProductoDTO> Search(string criterio)
         {
             using (var db = new TallerElectronicoEntities())

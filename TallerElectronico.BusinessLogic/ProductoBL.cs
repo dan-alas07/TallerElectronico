@@ -174,5 +174,14 @@ namespace TallerElectronico.BusinessLogic
 
             return _productoDal.Delete(idProducto, idUsuarioModificacion);
         }
+        public string ObtenerSiguienteCodigo()
+        {
+            // Obtiene el último ProductoId
+            int ultimoId = _productoDal.ObtenerUltimoId();
+            int siguienteId = ultimoId + 1;
+
+            // formato
+            return $"PROD-{siguienteId:D3}";
+        }
     }
 }

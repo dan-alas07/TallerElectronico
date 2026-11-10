@@ -17,7 +17,13 @@ namespace TallerElectronico.Desktop
 
         private void FrmCreateProducto_Load(object sender, EventArgs e)
         {
+            txtCodigo.ReadOnly = true;
+            txtCodigoProducto.ReadOnly = true;
+
+            txtCodigo.Text = "Automático";
+
             CargarDatosProducto();
+            GenerarCodigoProducto();
         }
 
         private void CargarDatosProducto()
@@ -29,57 +35,54 @@ namespace TallerElectronico.Desktop
                 cmbProveedor.ValueMember = "ProveedorId";
                 cmbProveedor.SelectedIndex = -1;
 
-                cmbEstado.SelectedIndex = 0; // "A" (Activo) por defecto
+                cmbEstado.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar los datos iniciales del producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void GenerarCodigoProducto()
+        {
+            try
+            {
+                // Llamada a la capa DAL
+                txtCodigoProducto.Text = _productoBL.ObtenerSiguienteCodigo();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar el código del producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void txtPrecioUnitario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Permite números (0-9) y teclas de control (como Borrar/Backspace)
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
-                e.Handled = true; // Cancela la tecla presionada (no la escribe)
+                e.Handled = true;
             }
 
-            // Permite solo un punto decimal
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
-                e.Handled = true; // Cancela si ya existe un punto en el texto
+                e.Handled = true;
             }
-        }
-
-
-        private static Random generador = new Random();
-
-        private string GenerarCodigo()
-        {
-            string codigo = "";
-            int intentos = 0;
-
-            while (intentos < 10)
-            {
-                codigo = "P-" + generador.Next(1000, 9999);
-
-                if (_productoBL.SelectByCodigo(codigo) == null)
-                {
-                    return codigo;
-                }
-
-                intentos++;
-            }
-
-            throw new Exception("No se pudo generar un código único");
-        }
-        private void btnGenerarCodigo_Click(object sender, EventArgs e)
-        {
-            txtCodigoProducto.Text = GenerarCodigo();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                MessageBox.Show("Ingresa el nombre del producto.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cmbProveedor.SelectedValue == null)
+            {
+                MessageBox.Show("Selecciona un proveedor.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             DialogResult confirm = MessageBox.Show(
                 "¿Desea guardar este nuevo producto?",
                 "Confirmar",

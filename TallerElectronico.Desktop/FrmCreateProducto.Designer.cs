@@ -52,7 +52,6 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnGenerarCodigo = new System.Windows.Forms.Button();
             this.pnlCard.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidadStock)).BeginInit();
             this.pnlHeader.SuspendLayout();
@@ -68,10 +67,9 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(657, 703);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelar.Location = new System.Drawing.Point(493, 571);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(173, 52);
+            this.btnCancelar.Size = new System.Drawing.Size(130, 42);
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -86,10 +84,9 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(466, 703);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGuardar.Location = new System.Drawing.Point(350, 571);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(173, 52);
+            this.btnGuardar.Size = new System.Drawing.Size(130, 42);
             this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -116,15 +113,15 @@
             this.pnlCard.Controls.Add(this.lblCodigo);
             this.pnlCard.Controls.Add(this.pnlLinea);
             this.pnlCard.Controls.Add(this.lblSeccion);
-            this.pnlCard.Location = new System.Drawing.Point(40, 146);
-            this.pnlCard.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlCard.Location = new System.Drawing.Point(30, 119);
             this.pnlCard.Name = "pnlCard";
-            this.pnlCard.Size = new System.Drawing.Size(800, 523);
+            this.pnlCard.Size = new System.Drawing.Size(600, 425);
             this.pnlCard.TabIndex = 4;
             // 
             // nudCantidadStock
             // 
-            this.nudCantidadStock.Location = new System.Drawing.Point(40, 332);
+            this.nudCantidadStock.Location = new System.Drawing.Point(30, 270);
+            this.nudCantidadStock.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nudCantidadStock.Minimum = new decimal(new int[] {
             1,
             0,
@@ -132,7 +129,7 @@
             0});
             this.nudCantidadStock.Name = "nudCantidadStock";
             this.nudCantidadStock.ReadOnly = true;
-            this.nudCantidadStock.Size = new System.Drawing.Size(333, 22);
+            this.nudCantidadStock.Size = new System.Drawing.Size(250, 20);
             this.nudCantidadStock.TabIndex = 64;
             this.nudCantidadStock.Value = new decimal(new int[] {
             1,
@@ -144,11 +141,10 @@
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtNombre.Location = new System.Drawing.Point(40, 249);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombre.Location = new System.Drawing.Point(30, 202);
             this.txtNombre.MaxLength = 100;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(333, 30);
+            this.txtNombre.Size = new System.Drawing.Size(250, 25);
             this.txtNombre.TabIndex = 61;
             // 
             // cmbProveedor
@@ -159,10 +155,9 @@
             this.cmbProveedor.Items.AddRange(new object[] {
             "Persona Natural",
             "Persona Jurídica"});
-            this.cmbProveedor.Location = new System.Drawing.Point(426, 249);
-            this.cmbProveedor.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbProveedor.Location = new System.Drawing.Point(320, 202);
             this.cmbProveedor.Name = "cmbProveedor";
-            this.cmbProveedor.Size = new System.Drawing.Size(333, 31);
+            this.cmbProveedor.Size = new System.Drawing.Size(251, 25);
             this.cmbProveedor.TabIndex = 60;
             // 
             // cmbEstado
@@ -173,21 +168,19 @@
             this.cmbEstado.Items.AddRange(new object[] {
             "Activo",
             "Inactivo"});
-            this.cmbEstado.Location = new System.Drawing.Point(426, 325);
-            this.cmbEstado.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbEstado.Location = new System.Drawing.Point(320, 264);
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(333, 31);
+            this.cmbEstado.Size = new System.Drawing.Size(251, 25);
             this.cmbEstado.TabIndex = 50;
             // 
             // txtPrecioUnitario
             // 
             this.txtPrecioUnitario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecioUnitario.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtPrecioUnitario.Location = new System.Drawing.Point(426, 173);
-            this.txtPrecioUnitario.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPrecioUnitario.Location = new System.Drawing.Point(320, 141);
             this.txtPrecioUnitario.MaxLength = 10;
             this.txtPrecioUnitario.Name = "txtPrecioUnitario";
-            this.txtPrecioUnitario.Size = new System.Drawing.Size(333, 30);
+            this.txtPrecioUnitario.Size = new System.Drawing.Size(250, 25);
             this.txtPrecioUnitario.TabIndex = 17;
             this.txtPrecioUnitario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioUnitario_KeyPress);
             // 
@@ -196,10 +189,9 @@
             this.lblPrecioUnitario.AutoSize = true;
             this.lblPrecioUnitario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblPrecioUnitario.ForeColor = System.Drawing.Color.Black;
-            this.lblPrecioUnitario.Location = new System.Drawing.Point(426, 148);
-            this.lblPrecioUnitario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPrecioUnitario.Location = new System.Drawing.Point(320, 120);
             this.lblPrecioUnitario.Name = "lblPrecioUnitario";
-            this.lblPrecioUnitario.Size = new System.Drawing.Size(124, 20);
+            this.lblPrecioUnitario.Size = new System.Drawing.Size(98, 15);
             this.lblPrecioUnitario.TabIndex = 18;
             this.lblPrecioUnitario.Text = "Precio Unitario *";
             // 
@@ -207,11 +199,10 @@
             // 
             this.txtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescripcion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtDescripcion.Location = new System.Drawing.Point(40, 398);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescripcion.Location = new System.Drawing.Point(30, 323);
             this.txtDescripcion.MaxLength = 250;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(719, 30);
+            this.txtDescripcion.Size = new System.Drawing.Size(540, 25);
             this.txtDescripcion.TabIndex = 7;
             // 
             // lblDescripcion
@@ -219,10 +210,9 @@
             this.lblDescripcion.AutoSize = true;
             this.lblDescripcion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblDescripcion.ForeColor = System.Drawing.Color.Black;
-            this.lblDescripcion.Location = new System.Drawing.Point(40, 374);
-            this.lblDescripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDescripcion.Location = new System.Drawing.Point(30, 304);
             this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(101, 20);
+            this.lblDescripcion.Size = new System.Drawing.Size(80, 15);
             this.lblDescripcion.TabIndex = 10;
             this.lblDescripcion.Text = "Descripción *";
             // 
@@ -231,10 +221,9 @@
             this.lblCantidadStock.AutoSize = true;
             this.lblCantidadStock.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblCantidadStock.ForeColor = System.Drawing.Color.Black;
-            this.lblCantidadStock.Location = new System.Drawing.Point(40, 300);
-            this.lblCantidadStock.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCantidadStock.Location = new System.Drawing.Point(30, 244);
             this.lblCantidadStock.Name = "lblCantidadStock";
-            this.lblCantidadStock.Size = new System.Drawing.Size(82, 20);
+            this.lblCantidadStock.Size = new System.Drawing.Size(63, 15);
             this.lblCantidadStock.TabIndex = 8;
             this.lblCantidadStock.Text = "Cantidad *";
             // 
@@ -243,10 +232,9 @@
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblNombre.ForeColor = System.Drawing.Color.Black;
-            this.lblNombre.Location = new System.Drawing.Point(40, 224);
-            this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombre.Location = new System.Drawing.Point(30, 182);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(78, 20);
+            this.lblNombre.Size = new System.Drawing.Size(61, 15);
             this.lblNombre.TabIndex = 6;
             this.lblNombre.Text = "Nombre *";
             // 
@@ -255,10 +243,9 @@
             this.lblProveedorId.AutoSize = true;
             this.lblProveedorId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblProveedorId.ForeColor = System.Drawing.Color.Black;
-            this.lblProveedorId.Location = new System.Drawing.Point(426, 225);
-            this.lblProveedorId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblProveedorId.Location = new System.Drawing.Point(320, 183);
             this.lblProveedorId.Name = "lblProveedorId";
-            this.lblProveedorId.Size = new System.Drawing.Size(92, 20);
+            this.lblProveedorId.Size = new System.Drawing.Size(74, 15);
             this.lblProveedorId.TabIndex = 5;
             this.lblProveedorId.Text = "Proveedor *";
             // 
@@ -267,11 +254,10 @@
             this.txtCodigoProducto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCodigoProducto.Enabled = false;
             this.txtCodigoProducto.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtCodigoProducto.Location = new System.Drawing.Point(40, 172);
-            this.txtCodigoProducto.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigoProducto.Location = new System.Drawing.Point(30, 140);
             this.txtCodigoProducto.MaxLength = 50;
             this.txtCodigoProducto.Name = "txtCodigoProducto";
-            this.txtCodigoProducto.Size = new System.Drawing.Size(333, 30);
+            this.txtCodigoProducto.Size = new System.Drawing.Size(250, 25);
             this.txtCodigoProducto.TabIndex = 1;
             // 
             // lblCodigoProducto
@@ -279,10 +265,9 @@
             this.lblCodigoProducto.AutoSize = true;
             this.lblCodigoProducto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblCodigoProducto.ForeColor = System.Drawing.Color.Black;
-            this.lblCodigoProducto.Location = new System.Drawing.Point(40, 148);
-            this.lblCodigoProducto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCodigoProducto.Location = new System.Drawing.Point(30, 120);
             this.lblCodigoProducto.Name = "lblCodigoProducto";
-            this.lblCodigoProducto.Size = new System.Drawing.Size(137, 20);
+            this.lblCodigoProducto.Size = new System.Drawing.Size(107, 15);
             this.lblCodigoProducto.TabIndex = 4;
             this.lblCodigoProducto.Text = "Código Producto *";
             // 
@@ -291,10 +276,9 @@
             this.lblEstado.AutoSize = true;
             this.lblEstado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblEstado.ForeColor = System.Drawing.Color.Black;
-            this.lblEstado.Location = new System.Drawing.Point(426, 300);
-            this.lblEstado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEstado.Location = new System.Drawing.Point(320, 244);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(56, 20);
+            this.lblEstado.Size = new System.Drawing.Size(43, 15);
             this.lblEstado.TabIndex = 3;
             this.lblEstado.Text = "Estado";
             // 
@@ -304,11 +288,10 @@
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtCodigo.Location = new System.Drawing.Point(40, 96);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCodigo.Location = new System.Drawing.Point(30, 78);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ReadOnly = true;
-            this.txtCodigo.Size = new System.Drawing.Size(333, 30);
+            this.txtCodigo.Size = new System.Drawing.Size(250, 25);
             this.txtCodigo.TabIndex = 11;
             this.txtCodigo.TabStop = false;
             this.txtCodigo.Text = "Automático";
@@ -318,20 +301,18 @@
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblCodigo.ForeColor = System.Drawing.Color.Black;
-            this.lblCodigo.Location = new System.Drawing.Point(40, 71);
-            this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCodigo.Location = new System.Drawing.Point(30, 58);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(99, 20);
+            this.lblCodigo.Size = new System.Drawing.Size(79, 15);
             this.lblCodigo.TabIndex = 2;
             this.lblCodigo.Text = "Identificador";
             // 
             // pnlLinea
             // 
             this.pnlLinea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(235)))), ((int)(((byte)(242)))));
-            this.pnlLinea.Location = new System.Drawing.Point(40, 52);
-            this.pnlLinea.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlLinea.Location = new System.Drawing.Point(30, 42);
             this.pnlLinea.Name = "pnlLinea";
-            this.pnlLinea.Size = new System.Drawing.Size(720, 1);
+            this.pnlLinea.Size = new System.Drawing.Size(540, 1);
             this.pnlLinea.TabIndex = 1;
             // 
             // lblSeccion
@@ -339,10 +320,9 @@
             this.lblSeccion.AutoSize = true;
             this.lblSeccion.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblSeccion.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.lblSeccion.Location = new System.Drawing.Point(40, 17);
-            this.lblSeccion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSeccion.Location = new System.Drawing.Point(30, 14);
             this.lblSeccion.Name = "lblSeccion";
-            this.lblSeccion.Size = new System.Drawing.Size(243, 25);
+            this.lblSeccion.Size = new System.Drawing.Size(188, 20);
             this.lblSeccion.TabIndex = 0;
             this.lblSeccion.Text = "Información del producto";
             // 
@@ -353,9 +333,8 @@
             this.pnlHeader.Controls.Add(this.lblTitulo);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(880, 101);
+            this.pnlHeader.Size = new System.Drawing.Size(660, 82);
             this.pnlHeader.TabIndex = 7;
             // 
             // lblSubtitulo
@@ -363,10 +342,9 @@
             this.lblSubtitulo.AutoSize = true;
             this.lblSubtitulo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblSubtitulo.ForeColor = System.Drawing.Color.White;
-            this.lblSubtitulo.Location = new System.Drawing.Point(40, 53);
-            this.lblSubtitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSubtitulo.Location = new System.Drawing.Point(30, 43);
             this.lblSubtitulo.Name = "lblSubtitulo";
-            this.lblSubtitulo.Size = new System.Drawing.Size(407, 21);
+            this.lblSubtitulo.Size = new System.Drawing.Size(349, 17);
             this.lblSubtitulo.TabIndex = 1;
             this.lblSubtitulo.Text = "Completa los datos necesarios para registrar un producto";
             // 
@@ -375,40 +353,23 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(37, 12);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitulo.Location = new System.Drawing.Point(28, 10);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(247, 41);
+            this.lblTitulo.Size = new System.Drawing.Size(202, 32);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Nuevo Producto";
             // 
-            // btnGenerarCodigo
-            // 
-            this.btnGenerarCodigo.BackColor = System.Drawing.Color.Orange;
-            this.btnGenerarCodigo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGenerarCodigo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnGenerarCodigo.ForeColor = System.Drawing.Color.White;
-            this.btnGenerarCodigo.Location = new System.Drawing.Point(273, 703);
-            this.btnGenerarCodigo.Name = "btnGenerarCodigo";
-            this.btnGenerarCodigo.Size = new System.Drawing.Size(174, 52);
-            this.btnGenerarCodigo.TabIndex = 15;
-            this.btnGenerarCodigo.Text = "Generar Código";
-            this.btnGenerarCodigo.UseVisualStyleBackColor = false;
-            this.btnGenerarCodigo.Click += new System.EventHandler(this.btnGenerarCodigo_Click);
-            // 
             // FrmCreateProducto
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(880, 793);
-            this.Controls.Add(this.btnGenerarCodigo);
+            this.ClientSize = new System.Drawing.Size(660, 609);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.pnlCard);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "FrmCreateProducto";
             this.ShowIcon = false;
@@ -448,7 +409,6 @@
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.ComboBox cmbProveedor;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Button btnGenerarCodigo;
         private System.Windows.Forms.NumericUpDown nudCantidadStock;
     }
 }
