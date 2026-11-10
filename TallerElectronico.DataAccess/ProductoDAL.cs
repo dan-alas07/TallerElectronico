@@ -49,7 +49,7 @@ namespace TallerElectronico.DataAccess
             using (var db = new TallerElectronicoEntities())
             {
                 var query = db.Producto
-                              .AsNoTracking()
+                              .AsNoTracking();
 
                 return MapearAProductoDTO(query).ToList();
             }

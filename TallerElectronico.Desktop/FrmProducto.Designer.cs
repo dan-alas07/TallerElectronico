@@ -212,6 +212,8 @@ namespace TallerElectronico.Desktop
             this.ColumnCode.HeaderText = "Identificador";
             this.ColumnCode.Name = "ColumnCode";
             this.ColumnCode.ReadOnly = true;
+            this.ColumnCode.Width = 125;
+            this.ColumnCodeProduct.MinimumWidth = 100;
             // 
             // ColumnCodeProduct
             // 
