@@ -25,7 +25,6 @@ namespace TallerElectronico.DataAccess
             {
                 var lista = db.Marca
                               .AsNoTracking()
-                              .OrderBy(m => m.Nombre)
                               .ToList();
 
                 lista.ForEach(m => m.Estado = TransformarEstadoParaUI(m.Estado));

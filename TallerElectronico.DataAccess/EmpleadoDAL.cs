@@ -25,8 +25,6 @@ namespace TallerElectronico.DataAccess
             {
                 var empleados = db.Empleado
                                   .AsNoTracking()
-                                  .OrderBy(e => e.Nombre)
-                                  .ThenBy(e => e.Apellido)
                                   .ToList();
 
                 empleados.ForEach(e => e.Estado = TransformarEstadoParaUI(e.Estado));

@@ -50,7 +50,6 @@ namespace TallerElectronico.DataAccess
             {
                 var query = db.Producto
                               .AsNoTracking()
-                              .OrderBy(p => p.Nombre);
 
                 return MapearAProductoDTO(query).ToList();
             }

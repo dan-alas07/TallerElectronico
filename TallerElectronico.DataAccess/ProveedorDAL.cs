@@ -40,7 +40,6 @@ namespace TallerElectronico.DataAccess
             {
                 var lista = db.Proveedor
                               .AsNoTracking()
-                              .OrderBy(p => p.Nombre)
                               .ToList();
 
                 lista.ForEach(p =>

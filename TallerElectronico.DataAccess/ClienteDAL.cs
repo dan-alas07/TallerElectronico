@@ -26,8 +26,6 @@ namespace TallerElectronico.DataAccess
             {
                 var clientes = db.Cliente
                                  .AsNoTracking()
-                                 .OrderBy(c => c.Nombre)
-                                 .ThenBy(c => c.Apellido)
                                  .ToList();
 
                 clientes.ForEach(c =>

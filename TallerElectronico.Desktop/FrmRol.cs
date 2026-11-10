@@ -177,5 +177,6 @@ namespace TallerElectronico.Desktop
             _timerBusqueda.Stop();
             CargarRoles(); // Llama a la DAL cuando el usuario pausó el tipeo
         }
+
     }
 }
