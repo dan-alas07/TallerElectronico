@@ -37,8 +37,6 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgvProveedor = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +47,8 @@
             this.ColumnNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnNRC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedor)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,9 +56,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label8.Location = new System.Drawing.Point(23, 93);
+            this.label8.Location = new System.Drawing.Point(31, 114);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(395, 21);
+            this.label8.Size = new System.Drawing.Size(497, 28);
             this.label8.TabIndex = 44;
             this.label8.Text = "Consulta, registra, edita o elimina proveedores del taller";
             // 
@@ -72,9 +73,10 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(178, 183);
+            this.btnEditar.Location = new System.Drawing.Point(237, 225);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(145, 42);
+            this.btnEditar.Size = new System.Drawing.Size(193, 52);
             this.btnEditar.TabIndex = 43;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
@@ -90,9 +92,10 @@
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(329, 183);
+            this.btnEliminar.Location = new System.Drawing.Point(439, 225);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(145, 42);
+            this.btnEliminar.Size = new System.Drawing.Size(193, 52);
             this.btnEliminar.TabIndex = 42;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -108,9 +111,10 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(27, 183);
+            this.btnNuevo.Location = new System.Drawing.Point(36, 225);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(145, 42);
+            this.btnNuevo.Size = new System.Drawing.Size(193, 52);
             this.btnNuevo.TabIndex = 41;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
@@ -121,9 +125,10 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblTitle.Location = new System.Drawing.Point(19, 26);
+            this.lblTitle.Location = new System.Drawing.Point(25, 32);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(435, 50);
+            this.lblTitle.Size = new System.Drawing.Size(549, 62);
             this.lblTitle.TabIndex = 40;
             this.lblTitle.Text = "Gestión de proveedores";
             // 
@@ -172,7 +177,8 @@
             this.dgvProveedor.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProveedor.EnableHeadersVisualStyles = false;
             this.dgvProveedor.GridColor = System.Drawing.Color.White;
-            this.dgvProveedor.Location = new System.Drawing.Point(27, 248);
+            this.dgvProveedor.Location = new System.Drawing.Point(36, 305);
+            this.dgvProveedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvProveedor.MultiSelect = false;
             this.dgvProveedor.Name = "dgvProveedor";
             this.dgvProveedor.ReadOnly = true;
@@ -180,39 +186,17 @@
             this.dgvProveedor.RowHeadersWidth = 51;
             this.dgvProveedor.RowTemplate.Height = 36;
             this.dgvProveedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProveedor.Size = new System.Drawing.Size(1084, 309);
+            this.dgvProveedor.Size = new System.Drawing.Size(1594, 380);
             this.dgvProveedor.TabIndex = 39;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(23, 134);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(85, 21);
-            this.label6.TabIndex = 46;
-            this.label6.Text = "Buscador:";
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.BackColor = System.Drawing.Color.White;
-            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtBuscar.Location = new System.Drawing.Point(116, 134);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(358, 27);
-            this.txtBuscar.TabIndex = 45;
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // ColumnCode
             // 
             this.ColumnCode.DataPropertyName = "ProveedorId";
             this.ColumnCode.HeaderText = "Identificador";
+            this.ColumnCode.MinimumWidth = 6;
             this.ColumnCode.Name = "ColumnCode";
             this.ColumnCode.ReadOnly = true;
-            this.ColumnCode.Width = 112;
+            this.ColumnCode.Width = 136;
             // 
             // ColumnName
             // 
@@ -222,7 +206,7 @@
             this.ColumnName.MinimumWidth = 6;
             this.ColumnName.Name = "ColumnName";
             this.ColumnName.ReadOnly = true;
-            this.ColumnName.Width = 86;
+            this.ColumnName.Width = 104;
             // 
             // ColumnType
             // 
@@ -232,7 +216,7 @@
             this.ColumnType.MinimumWidth = 6;
             this.ColumnType.Name = "ColumnType";
             this.ColumnType.ReadOnly = true;
-            this.ColumnType.Width = 64;
+            this.ColumnType.Width = 77;
             // 
             // ColumnTelephone
             // 
@@ -242,7 +226,7 @@
             this.ColumnTelephone.MinimumWidth = 6;
             this.ColumnTelephone.Name = "ColumnTelephone";
             this.ColumnTelephone.ReadOnly = true;
-            this.ColumnTelephone.Width = 89;
+            this.ColumnTelephone.Width = 107;
             // 
             // ColumnEmail
             // 
@@ -252,7 +236,7 @@
             this.ColumnEmail.MinimumWidth = 6;
             this.ColumnEmail.Name = "ColumnEmail";
             this.ColumnEmail.ReadOnly = true;
-            this.ColumnEmail.Width = 81;
+            this.ColumnEmail.Width = 97;
             // 
             // ColumnAddress
             // 
@@ -262,7 +246,7 @@
             this.ColumnAddress.MinimumWidth = 6;
             this.ColumnAddress.Name = "ColumnAddress";
             this.ColumnAddress.ReadOnly = true;
-            this.ColumnAddress.Width = 93;
+            this.ColumnAddress.Width = 111;
             // 
             // ColumnDUI
             // 
@@ -271,7 +255,7 @@
             this.ColumnDUI.MinimumWidth = 6;
             this.ColumnDUI.Name = "ColumnDUI";
             this.ColumnDUI.ReadOnly = true;
-            this.ColumnDUI.Width = 62;
+            this.ColumnDUI.Width = 73;
             // 
             // ColumnNIT
             // 
@@ -280,7 +264,7 @@
             this.ColumnNIT.MinimumWidth = 6;
             this.ColumnNIT.Name = "ColumnNIT";
             this.ColumnNIT.ReadOnly = true;
-            this.ColumnNIT.Width = 60;
+            this.ColumnNIT.Width = 72;
             // 
             // ColumnNRC
             // 
@@ -289,7 +273,7 @@
             this.ColumnNRC.MinimumWidth = 6;
             this.ColumnNRC.Name = "ColumnNRC";
             this.ColumnNRC.ReadOnly = true;
-            this.ColumnNRC.Width = 64;
+            this.ColumnNRC.Width = 77;
             // 
             // ColumnStatus
             // 
@@ -298,14 +282,37 @@
             this.ColumnStatus.MinimumWidth = 6;
             this.ColumnStatus.Name = "ColumnStatus";
             this.ColumnStatus.ReadOnly = true;
-            this.ColumnStatus.Width = 76;
+            this.ColumnStatus.Width = 93;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(31, 165);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(105, 28);
+            this.label6.TabIndex = 46;
+            this.label6.Text = "Buscador:";
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.BackColor = System.Drawing.Color.White;
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtBuscar.Location = new System.Drawing.Point(155, 165);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(477, 32);
+            this.txtBuscar.TabIndex = 45;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // FrmProveedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1028, 567);
+            this.ClientSize = new System.Drawing.Size(1476, 698);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.label8);
@@ -314,6 +321,7 @@
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.dgvProveedor);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmProveedor";
             this.ShowIcon = false;
             this.Load += new System.EventHandler(this.FrmProveedor_Load);

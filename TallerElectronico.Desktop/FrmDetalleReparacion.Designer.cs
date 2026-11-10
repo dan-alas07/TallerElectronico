@@ -40,8 +40,6 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgvDetalleReparacion = new System.Windows.Forms.DataGridView();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnRepairCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +47,8 @@
             this.ColumnUnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSubtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnUseDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleReparacion)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -59,18 +59,20 @@
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtBuscar.Location = new System.Drawing.Point(28, 141);
+            this.txtBuscar.Location = new System.Drawing.Point(37, 174);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(358, 27);
+            this.txtBuscar.Size = new System.Drawing.Size(477, 32);
             this.txtBuscar.TabIndex = 55;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // lblBuscar
             // 
             this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Location = new System.Drawing.Point(26, 124);
+            this.lblBuscar.Location = new System.Drawing.Point(35, 153);
+            this.lblBuscar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBuscar.Name = "lblBuscar";
-            this.lblBuscar.Size = new System.Drawing.Size(43, 13);
+            this.lblBuscar.Size = new System.Drawing.Size(52, 16);
             this.lblBuscar.TabIndex = 54;
             this.lblBuscar.Text = "Buscar:";
             // 
@@ -78,9 +80,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label8.Location = new System.Drawing.Point(23, 89);
+            this.label8.Location = new System.Drawing.Point(31, 110);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(474, 21);
+            this.label8.Size = new System.Drawing.Size(595, 28);
             this.label8.TabIndex = 53;
             this.label8.Text = "Consulta, registra, edita y elimina detalles de reparaciones del taller";
             // 
@@ -94,9 +97,10 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(154, 3);
+            this.btnEditar.Location = new System.Drawing.Point(205, 4);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(145, 42);
+            this.btnEditar.Size = new System.Drawing.Size(193, 52);
             this.btnEditar.TabIndex = 52;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
@@ -112,9 +116,10 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(3, 3);
+            this.btnNuevo.Location = new System.Drawing.Point(4, 4);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(145, 42);
+            this.btnNuevo.Size = new System.Drawing.Size(193, 52);
             this.btnNuevo.TabIndex = 50;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
@@ -125,9 +130,10 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblTitle.Location = new System.Drawing.Point(19, 27);
+            this.lblTitle.Location = new System.Drawing.Point(25, 33);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(602, 50);
+            this.lblTitle.Size = new System.Drawing.Size(758, 62);
             this.lblTitle.TabIndex = 49;
             this.lblTitle.Text = "Gestión de detalles de reparación";
             // 
@@ -172,7 +178,8 @@
             this.dgvDetalleReparacion.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDetalleReparacion.EnableHeadersVisualStyles = false;
             this.dgvDetalleReparacion.GridColor = System.Drawing.Color.White;
-            this.dgvDetalleReparacion.Location = new System.Drawing.Point(30, 258);
+            this.dgvDetalleReparacion.Location = new System.Drawing.Point(40, 318);
+            this.dgvDetalleReparacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvDetalleReparacion.MultiSelect = false;
             this.dgvDetalleReparacion.Name = "dgvDetalleReparacion";
             this.dgvDetalleReparacion.ReadOnly = true;
@@ -180,44 +187,16 @@
             this.dgvDetalleReparacion.RowHeadersWidth = 51;
             this.dgvDetalleReparacion.RowTemplate.Height = 36;
             this.dgvDetalleReparacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetalleReparacion.Size = new System.Drawing.Size(1231, 282);
+            this.dgvDetalleReparacion.Size = new System.Drawing.Size(1479, 347);
             this.dgvDetalleReparacion.TabIndex = 48;
             this.dgvDetalleReparacion.SelectionChanged += new System.EventHandler(this.dgvDetalleReparacion_SelectionChanged);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.BackColor = System.Drawing.Color.DarkGray;
-            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
-            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(305, 3);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(145, 42);
-            this.btnEliminar.TabIndex = 57;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.btnNuevo);
-            this.flowLayoutPanel1.Controls.Add(this.btnEditar);
-            this.flowLayoutPanel1.Controls.Add(this.btnEliminar);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(27, 187);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(457, 50);
-            this.flowLayoutPanel1.TabIndex = 58;
             // 
             // ColumnCode
             // 
             this.ColumnCode.DataPropertyName = "DetalleReparacionId";
             this.ColumnCode.FillWeight = 5.826476F;
             this.ColumnCode.HeaderText = "Identificador";
+            this.ColumnCode.MinimumWidth = 6;
             this.ColumnCode.Name = "ColumnCode";
             this.ColumnCode.ReadOnly = true;
             this.ColumnCode.Width = 90;
@@ -286,18 +265,49 @@
             this.ColumnUseDate.ReadOnly = true;
             this.ColumnUseDate.Width = 200;
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.DarkGray;
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.btnEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(78)))), ((int)(((byte)(216)))));
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(406, 4);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(193, 52);
+            this.btnEliminar.TabIndex = 57;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btnNuevo);
+            this.flowLayoutPanel1.Controls.Add(this.btnEditar);
+            this.flowLayoutPanel1.Controls.Add(this.btnEliminar);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(36, 230);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(609, 62);
+            this.flowLayoutPanel1.TabIndex = 58;
+            // 
             // FrmDetalleReparacion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1028, 565);
+            this.ClientSize = new System.Drawing.Size(1685, 695);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lblBuscar);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.dgvDetalleReparacion);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmDetalleReparacion";
             this.ShowIcon = false;
             this.Load += new System.EventHandler(this.FrmDetalleReparacion_Load);

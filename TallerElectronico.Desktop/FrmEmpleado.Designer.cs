@@ -45,9 +45,10 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblTitle.Location = new System.Drawing.Point(19, 30);
+            this.lblTitle.Location = new System.Drawing.Point(25, 37);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(407, 50);
+            this.lblTitle.Size = new System.Drawing.Size(513, 62);
             this.lblTitle.TabIndex = 2;
             this.lblTitle.Text = "Gestión de Empleados";
             // 
@@ -61,9 +62,10 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(27, 202);
+            this.btnNuevo.Location = new System.Drawing.Point(36, 249);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(145, 42);
+            this.btnNuevo.Size = new System.Drawing.Size(193, 52);
             this.btnNuevo.TabIndex = 3;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
@@ -79,9 +81,10 @@
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(328, 202);
+            this.btnEliminar.Location = new System.Drawing.Point(437, 249);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(145, 42);
+            this.btnEliminar.Size = new System.Drawing.Size(193, 52);
             this.btnEliminar.TabIndex = 8;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -97,9 +100,10 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(178, 202);
+            this.btnEditar.Location = new System.Drawing.Point(237, 249);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(145, 42);
+            this.btnEditar.Size = new System.Drawing.Size(193, 52);
             this.btnEditar.TabIndex = 9;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
@@ -109,9 +113,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label8.Location = new System.Drawing.Point(23, 92);
+            this.label8.Location = new System.Drawing.Point(31, 113);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(384, 21);
+            this.label8.Size = new System.Drawing.Size(483, 28);
             this.label8.TabIndex = 26;
             this.label8.Text = "Consulta, registra, edita o elimina empleados del taller";
             // 
@@ -119,10 +124,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(23, 145);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(31, 178);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(85, 21);
+            this.label6.Size = new System.Drawing.Size(105, 28);
             this.label6.TabIndex = 48;
             this.label6.Text = "Buscador:";
             // 
@@ -132,9 +136,10 @@
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtBuscar.Location = new System.Drawing.Point(127, 146);
+            this.txtBuscar.Location = new System.Drawing.Point(169, 180);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(358, 27);
+            this.txtBuscar.Size = new System.Drawing.Size(477, 32);
             this.txtBuscar.TabIndex = 47;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
@@ -181,7 +186,8 @@
             this.dgvEmpleado.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvEmpleado.EnableHeadersVisualStyles = false;
             this.dgvEmpleado.GridColor = System.Drawing.Color.White;
-            this.dgvEmpleado.Location = new System.Drawing.Point(27, 266);
+            this.dgvEmpleado.Location = new System.Drawing.Point(36, 327);
+            this.dgvEmpleado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvEmpleado.MultiSelect = false;
             this.dgvEmpleado.Name = "dgvEmpleado";
             this.dgvEmpleado.ReadOnly = true;
@@ -189,15 +195,17 @@
             this.dgvEmpleado.RowHeadersWidth = 51;
             this.dgvEmpleado.RowTemplate.Height = 36;
             this.dgvEmpleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmpleado.Size = new System.Drawing.Size(989, 344);
+            this.dgvEmpleado.Size = new System.Drawing.Size(1383, 423);
             this.dgvEmpleado.TabIndex = 49;
             // 
             // ColumnCode
             // 
             this.ColumnCode.DataPropertyName = "EmpleadoId";
             this.ColumnCode.HeaderText = "Identificador";
+            this.ColumnCode.MinimumWidth = 6;
             this.ColumnCode.Name = "ColumnCode";
             this.ColumnCode.ReadOnly = true;
+            this.ColumnCode.Width = 125;
             // 
             // ColumnName
             // 
@@ -281,10 +289,10 @@
             // 
             // FrmEmpleado
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1028, 609);
+            this.ClientSize = new System.Drawing.Size(1549, 750);
             this.Controls.Add(this.dgvEmpleado);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtBuscar);
@@ -293,6 +301,7 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.lblTitle);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmEmpleado";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

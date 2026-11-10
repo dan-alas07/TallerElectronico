@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInicio));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.lblBienvenido = new System.Windows.Forms.Label();
@@ -49,13 +50,13 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.dgvReparaciones = new System.Windows.Forms.DataGridView();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnEquipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnResponsable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlKpiAbiertas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlKpiListas.SuspendLayout();
@@ -293,15 +294,15 @@
             this.ColumnCliente,
             this.ColumnResponsable,
             this.ColumnTotal});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReparaciones.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReparaciones.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvReparaciones.EnableHeadersVisualStyles = false;
             this.dgvReparaciones.GridColor = System.Drawing.Color.White;
             this.dgvReparaciones.Location = new System.Drawing.Point(45, 473);
@@ -315,6 +316,15 @@
             this.dgvReparaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvReparaciones.Size = new System.Drawing.Size(1329, 311);
             this.dgvReparaciones.TabIndex = 54;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btnNuevo);
+            this.flowLayoutPanel1.Controls.Add(this.btnEditar);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(48, 364);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(449, 69);
+            this.flowLayoutPanel1.TabIndex = 55;
             // 
             // ColumnCode
             // 
@@ -364,20 +374,13 @@
             // ColumnTotal
             // 
             this.ColumnTotal.DataPropertyName = "TotalReparacion";
+            dataGridViewCellStyle3.Format = "$#,##0.00";
+            this.ColumnTotal.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnTotal.FillWeight = 85F;
             this.ColumnTotal.HeaderText = "Total";
             this.ColumnTotal.MinimumWidth = 6;
             this.ColumnTotal.Name = "ColumnTotal";
             this.ColumnTotal.ReadOnly = true;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.btnNuevo);
-            this.flowLayoutPanel1.Controls.Add(this.btnEditar);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(48, 364);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(449, 69);
-            this.flowLayoutPanel1.TabIndex = 55;
             // 
             // FrmInicio
             // 
@@ -428,15 +431,15 @@
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.DataGridView dgvReparaciones;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEquipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnResponsable;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTotal;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
