@@ -37,7 +37,8 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgvProveedor = new System.Windows.Forms.DataGridView();
-            this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,19 +48,17 @@
             this.ColumnNIT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnNRC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedor)).BeginInit();
             this.SuspendLayout();
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(22, 73);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label8.Location = new System.Drawing.Point(31, 114);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(489, 25);
+            this.label8.Size = new System.Drawing.Size(497, 28);
             this.label8.TabIndex = 44;
             this.label8.Text = "Consulta, registra, edita o elimina proveedores del taller";
             // 
@@ -73,7 +72,7 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.White;
-            this.btnEditar.Location = new System.Drawing.Point(227, 233);
+            this.btnEditar.Location = new System.Drawing.Point(238, 225);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(193, 52);
@@ -92,7 +91,7 @@
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(428, 233);
+            this.btnEliminar.Location = new System.Drawing.Point(439, 225);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(193, 52);
@@ -111,7 +110,7 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(25, 233);
+            this.btnNuevo.Location = new System.Drawing.Point(36, 225);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(193, 52);
@@ -125,12 +124,12 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblTitle.Location = new System.Drawing.Point(16, 11);
+            this.lblTitle.Location = new System.Drawing.Point(25, 32);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(503, 62);
+            this.lblTitle.Size = new System.Drawing.Size(549, 62);
             this.lblTitle.TabIndex = 40;
-            this.lblTitle.Text = "Gestión de Proveedor";
+            this.lblTitle.Text = "Gestión de proveedores";
             // 
             // dgvProveedor
             // 
@@ -156,7 +155,6 @@
             this.dgvProveedor.ColumnHeadersHeight = 42;
             this.dgvProveedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProveedor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnCode,
             this.ColumnName,
             this.ColumnType,
             this.ColumnTelephone,
@@ -177,7 +175,7 @@
             this.dgvProveedor.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProveedor.EnableHeadersVisualStyles = false;
             this.dgvProveedor.GridColor = System.Drawing.Color.White;
-            this.dgvProveedor.Location = new System.Drawing.Point(25, 305);
+            this.dgvProveedor.Location = new System.Drawing.Point(36, 305);
             this.dgvProveedor.Margin = new System.Windows.Forms.Padding(4);
             this.dgvProveedor.MultiSelect = false;
             this.dgvProveedor.Name = "dgvProveedor";
@@ -189,15 +187,28 @@
             this.dgvProveedor.Size = new System.Drawing.Size(1445, 380);
             this.dgvProveedor.TabIndex = 39;
             // 
-            // ColumnCode
+            // label6
             // 
-            this.ColumnCode.DataPropertyName = "ProveedorId";
-            this.ColumnCode.FillWeight = 65F;
-            this.ColumnCode.HeaderText = "Código";
-            this.ColumnCode.MinimumWidth = 6;
-            this.ColumnCode.Name = "ColumnCode";
-            this.ColumnCode.ReadOnly = true;
-            this.ColumnCode.Width = 95;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(31, 165);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(105, 28);
+            this.label6.TabIndex = 46;
+            this.label6.Text = "Buscador:";
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.BackColor = System.Drawing.Color.White;
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtBuscar.Location = new System.Drawing.Point(154, 165);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(477, 32);
+            this.txtBuscar.TabIndex = 45;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // ColumnName
             // 
@@ -285,29 +296,6 @@
             this.ColumnStatus.ReadOnly = true;
             this.ColumnStatus.Width = 93;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(20, 154);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(105, 28);
-            this.label6.TabIndex = 46;
-            this.label6.Text = "Buscador:";
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.BackColor = System.Drawing.Color.White;
-            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtBuscar.Location = new System.Drawing.Point(141, 150);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(477, 32);
-            this.txtBuscar.TabIndex = 45;
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-            // 
             // FrmProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -339,7 +327,8 @@
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.DataGridView dgvProveedor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnType;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTelephone;
@@ -349,7 +338,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNIT;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNRC;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtBuscar;
     }
 }

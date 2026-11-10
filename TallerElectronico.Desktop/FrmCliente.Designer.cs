@@ -38,7 +38,8 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgvCliente = new System.Windows.Forms.DataGridView();
-            this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnTelefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,8 +49,6 @@
             this.ColumnForeignCard = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnRegisterDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label6 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +59,7 @@
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtBuscar.Location = new System.Drawing.Point(161, 153);
+            this.txtBuscar.Location = new System.Drawing.Point(160, 169);
             this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(477, 32);
@@ -70,11 +69,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(40, 97);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label8.Location = new System.Drawing.Point(31, 111);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(446, 25);
+            this.label8.Size = new System.Drawing.Size(452, 28);
             this.label8.TabIndex = 35;
             this.label8.Text = "Consulta, registra, edita o elimina clientes del taller";
             // 
@@ -140,12 +139,12 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblTitle.Location = new System.Drawing.Point(33, 19);
+            this.lblTitle.Location = new System.Drawing.Point(25, 34);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(425, 62);
+            this.lblTitle.Size = new System.Drawing.Size(440, 62);
             this.lblTitle.TabIndex = 31;
-            this.lblTitle.Text = "Gestión de Cliente";
+            this.lblTitle.Text = "Gestión de clientes";
             // 
             // dgvCliente
             // 
@@ -170,7 +169,6 @@
             this.dgvCliente.ColumnHeadersHeight = 42;
             this.dgvCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnCode,
             this.ColumnName,
             this.ColumnLastName,
             this.ColumnTelefono,
@@ -191,7 +189,7 @@
             this.dgvCliente.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCliente.EnableHeadersVisualStyles = false;
             this.dgvCliente.GridColor = System.Drawing.Color.White;
-            this.dgvCliente.Location = new System.Drawing.Point(43, 306);
+            this.dgvCliente.Location = new System.Drawing.Point(40, 303);
             this.dgvCliente.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCliente.MultiSelect = false;
             this.dgvCliente.Name = "dgvCliente";
@@ -200,18 +198,28 @@
             this.dgvCliente.RowHeadersWidth = 51;
             this.dgvCliente.RowTemplate.Height = 36;
             this.dgvCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCliente.Size = new System.Drawing.Size(1492, 424);
+            this.dgvCliente.Size = new System.Drawing.Size(1368, 424);
             this.dgvCliente.TabIndex = 30;
             // 
-            // ColumnCode
+            // label6
             // 
-            this.ColumnCode.DataPropertyName = "ClienteId";
-            this.ColumnCode.FillWeight = 625F;
-            this.ColumnCode.HeaderText = "Identificador";
-            this.ColumnCode.MinimumWidth = 6;
-            this.ColumnCode.Name = "ColumnCode";
-            this.ColumnCode.ReadOnly = true;
-            this.ColumnCode.Width = 125;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(31, 169);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(105, 28);
+            this.label6.TabIndex = 38;
+            this.label6.Text = "Buscador:";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btnNuevo);
+            this.flowLayoutPanel1.Controls.Add(this.btnEditar);
+            this.flowLayoutPanel1.Controls.Add(this.btnEliminar);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(36, 222);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(609, 62);
+            this.flowLayoutPanel1.TabIndex = 39;
             // 
             // ColumnName
             // 
@@ -303,26 +311,6 @@
             this.ColumnStatus.ReadOnly = true;
             this.ColumnStatus.Width = 85;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(40, 156);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(105, 28);
-            this.label6.TabIndex = 38;
-            this.label6.Text = "Buscador:";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.btnNuevo);
-            this.flowLayoutPanel1.Controls.Add(this.btnEditar);
-            this.flowLayoutPanel1.Controls.Add(this.btnEliminar);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(45, 216);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(609, 62);
-            this.flowLayoutPanel1.TabIndex = 39;
-            // 
             // FrmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -356,7 +344,7 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.DataGridView dgvCliente;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnLastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTelefono;
@@ -366,6 +354,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnForeignCard;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnRegisterDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

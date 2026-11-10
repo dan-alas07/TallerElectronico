@@ -18,19 +18,11 @@ namespace TallerElectronico.Desktop
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvProducto = new System.Windows.Forms.DataGridView();
-            this.ColumnCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCodeProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnProve = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -39,6 +31,13 @@ namespace TallerElectronico.Desktop
             this.label6 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.flpBotonesProductos = new System.Windows.Forms.FlowLayoutPanel();
+            this.ColumnCodeProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnProve = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducto)).BeginInit();
             this.flpBotonesProductos.SuspendLayout();
             this.SuspendLayout();
@@ -49,24 +48,23 @@ namespace TallerElectronico.Desktop
             this.dgvProducto.AllowUserToDeleteRows = false;
             this.dgvProducto.AllowUserToResizeColumns = false;
             this.dgvProducto.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(252)))));
-            this.dgvProducto.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(248)))), ((int)(((byte)(252)))));
+            this.dgvProducto.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvProducto.BackgroundColor = System.Drawing.Color.White;
             this.dgvProducto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProducto.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvProducto.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvProducto.ColumnHeadersHeight = 42;
             this.dgvProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProducto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnCode,
             this.ColumnCodeProduct,
             this.ColumnNombre,
             this.ColumnAddress,
@@ -74,18 +72,18 @@ namespace TallerElectronico.Desktop
             this.Column1,
             this.ColumnProve,
             this.ColumnStatus});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProducto.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(55)))), ((int)(((byte)(72)))));
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(234)))), ((int)(((byte)(254)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProducto.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvProducto.EnableHeadersVisualStyles = false;
             this.dgvProducto.GridColor = System.Drawing.Color.White;
-            this.dgvProducto.Location = new System.Drawing.Point(51, 319);
+            this.dgvProducto.Location = new System.Drawing.Point(36, 323);
             this.dgvProducto.Margin = new System.Windows.Forms.Padding(4);
             this.dgvProducto.MultiSelect = false;
             this.dgvProducto.Name = "dgvProducto";
@@ -95,102 +93,20 @@ namespace TallerElectronico.Desktop
             this.dgvProducto.RowTemplate.Height = 36;
             this.dgvProducto.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvProducto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducto.Size = new System.Drawing.Size(1692, 290);
+            this.dgvProducto.Size = new System.Drawing.Size(1692, 369);
             this.dgvProducto.TabIndex = 1;
-            // 
-            // ColumnCode
-            // 
-            this.ColumnCode.DataPropertyName = "ProductoId";
-            this.ColumnCode.HeaderText = "Identificador";
-            this.ColumnCode.MinimumWidth = 6;
-            this.ColumnCode.Name = "ColumnCode";
-            this.ColumnCode.ReadOnly = true;
-            this.ColumnCode.Width = 125;
-            // 
-            // ColumnCodeProduct
-            // 
-            this.ColumnCodeProduct.DataPropertyName = "Codigo";
-            this.ColumnCodeProduct.FillWeight = 2.030894F;
-            this.ColumnCodeProduct.HeaderText = "Código Producto";
-            this.ColumnCodeProduct.MaxInputLength = 154;
-            this.ColumnCodeProduct.MinimumWidth = 6;
-            this.ColumnCodeProduct.Name = "ColumnCodeProduct";
-            this.ColumnCodeProduct.ReadOnly = true;
-            this.ColumnCodeProduct.Width = 125;
-            // 
-            // ColumnNombre
-            // 
-            this.ColumnNombre.DataPropertyName = "Nombre";
-            this.ColumnNombre.FillWeight = 0.7266592F;
-            this.ColumnNombre.HeaderText = "Nombre";
-            this.ColumnNombre.MinimumWidth = 6;
-            this.ColumnNombre.Name = "ColumnNombre";
-            this.ColumnNombre.ReadOnly = true;
-            this.ColumnNombre.Width = 175;
-            // 
-            // ColumnAddress
-            // 
-            this.ColumnAddress.DataPropertyName = "Descripcion";
-            this.ColumnAddress.FillWeight = 0.7266592F;
-            this.ColumnAddress.HeaderText = "Descripción";
-            this.ColumnAddress.MinimumWidth = 6;
-            this.ColumnAddress.Name = "ColumnAddress";
-            this.ColumnAddress.ReadOnly = true;
-            this.ColumnAddress.Width = 275;
-            // 
-            // ColumnStock
-            // 
-            this.ColumnStock.DataPropertyName = "CantidadStock";
-            this.ColumnStock.FillWeight = 0.7266592F;
-            this.ColumnStock.HeaderText = "Cantidad";
-            this.ColumnStock.MinimumWidth = 6;
-            this.ColumnStock.Name = "ColumnStock";
-            this.ColumnStock.ReadOnly = true;
-            this.ColumnStock.Width = 125;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "PrecioUnitario";
-            dataGridViewCellStyle3.Format = "$#,##0.00";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column1.HeaderText = "Precio Unitario";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 125;
-            // 
-            // ColumnProve
-            // 
-            this.ColumnProve.DataPropertyName = "ProveedorNombre";
-            this.ColumnProve.FillWeight = 1.068616F;
-            this.ColumnProve.HeaderText = "Proveedor";
-            this.ColumnProve.MinimumWidth = 6;
-            this.ColumnProve.Name = "ColumnProve";
-            this.ColumnProve.ReadOnly = true;
-            this.ColumnProve.Width = 150;
-            // 
-            // ColumnStatus
-            // 
-            this.ColumnStatus.DataPropertyName = "Estado";
-            this.ColumnStatus.FillWeight = 0.6411699F;
-            this.ColumnStatus.HeaderText = "Estado";
-            this.ColumnStatus.MinimumWidth = 6;
-            this.ColumnStatus.Name = "ColumnStatus";
-            this.ColumnStatus.ReadOnly = true;
-            this.ColumnStatus.Width = 125;
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblTitle.Location = new System.Drawing.Point(40, 37);
+            this.lblTitle.Location = new System.Drawing.Point(25, 34);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(499, 62);
             this.lblTitle.TabIndex = 2;
-            this.lblTitle.Text = "Gestión de Productos";
+            this.lblTitle.Text = "Gestión de productos";
             // 
             // btnNuevo
             // 
@@ -252,11 +168,11 @@ namespace TallerElectronico.Desktop
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(48, 117);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label8.Location = new System.Drawing.Point(31, 111);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(466, 25);
+            this.label8.Size = new System.Drawing.Size(477, 28);
             this.label8.TabIndex = 26;
             this.label8.Text = "Consulta, registra, edita o elimina productos del taller";
             // 
@@ -264,7 +180,7 @@ namespace TallerElectronico.Desktop
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(48, 179);
+            this.label6.Location = new System.Drawing.Point(31, 169);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(105, 28);
             this.label6.TabIndex = 48;
@@ -276,7 +192,7 @@ namespace TallerElectronico.Desktop
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtBuscar.Location = new System.Drawing.Point(169, 178);
+            this.txtBuscar.Location = new System.Drawing.Point(154, 169);
             this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(477, 32);
@@ -288,10 +204,83 @@ namespace TallerElectronico.Desktop
             this.flpBotonesProductos.Controls.Add(this.btnNuevo);
             this.flpBotonesProductos.Controls.Add(this.btnEditar);
             this.flpBotonesProductos.Controls.Add(this.btnEliminar);
-            this.flpBotonesProductos.Location = new System.Drawing.Point(51, 239);
+            this.flpBotonesProductos.Location = new System.Drawing.Point(36, 237);
             this.flpBotonesProductos.Name = "flpBotonesProductos";
             this.flpBotonesProductos.Size = new System.Drawing.Size(609, 62);
             this.flpBotonesProductos.TabIndex = 49;
+            // 
+            // ColumnCodeProduct
+            // 
+            this.ColumnCodeProduct.DataPropertyName = "Codigo";
+            this.ColumnCodeProduct.FillWeight = 2.030894F;
+            this.ColumnCodeProduct.HeaderText = "Código Producto";
+            this.ColumnCodeProduct.MaxInputLength = 154;
+            this.ColumnCodeProduct.MinimumWidth = 6;
+            this.ColumnCodeProduct.Name = "ColumnCodeProduct";
+            this.ColumnCodeProduct.ReadOnly = true;
+            this.ColumnCodeProduct.Width = 125;
+            // 
+            // ColumnNombre
+            // 
+            this.ColumnNombre.DataPropertyName = "Nombre";
+            this.ColumnNombre.FillWeight = 0.7266592F;
+            this.ColumnNombre.HeaderText = "Nombre";
+            this.ColumnNombre.MinimumWidth = 6;
+            this.ColumnNombre.Name = "ColumnNombre";
+            this.ColumnNombre.ReadOnly = true;
+            this.ColumnNombre.Width = 175;
+            // 
+            // ColumnAddress
+            // 
+            this.ColumnAddress.DataPropertyName = "Descripcion";
+            this.ColumnAddress.FillWeight = 0.7266592F;
+            this.ColumnAddress.HeaderText = "Descripción";
+            this.ColumnAddress.MinimumWidth = 6;
+            this.ColumnAddress.Name = "ColumnAddress";
+            this.ColumnAddress.ReadOnly = true;
+            this.ColumnAddress.Width = 275;
+            // 
+            // ColumnStock
+            // 
+            this.ColumnStock.DataPropertyName = "CantidadStock";
+            this.ColumnStock.FillWeight = 0.7266592F;
+            this.ColumnStock.HeaderText = "Cantidad";
+            this.ColumnStock.MinimumWidth = 6;
+            this.ColumnStock.Name = "ColumnStock";
+            this.ColumnStock.ReadOnly = true;
+            this.ColumnStock.Width = 125;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "PrecioUnitario";
+            dataGridViewCellStyle7.Format = "$#,##0.00";
+            dataGridViewCellStyle7.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Column1.HeaderText = "Precio Unitario";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 125;
+            // 
+            // ColumnProve
+            // 
+            this.ColumnProve.DataPropertyName = "ProveedorNombre";
+            this.ColumnProve.FillWeight = 1.068616F;
+            this.ColumnProve.HeaderText = "Proveedor";
+            this.ColumnProve.MinimumWidth = 6;
+            this.ColumnProve.Name = "ColumnProve";
+            this.ColumnProve.ReadOnly = true;
+            this.ColumnProve.Width = 150;
+            // 
+            // ColumnStatus
+            // 
+            this.ColumnStatus.DataPropertyName = "Estado";
+            this.ColumnStatus.FillWeight = 0.6411699F;
+            this.ColumnStatus.HeaderText = "Estado";
+            this.ColumnStatus.MinimumWidth = 6;
+            this.ColumnStatus.Name = "ColumnStatus";
+            this.ColumnStatus.ReadOnly = true;
+            this.ColumnStatus.Width = 125;
             // 
             // FrmProducto
             // 
@@ -327,7 +316,7 @@ namespace TallerElectronico.Desktop
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtBuscar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCode;
+        private System.Windows.Forms.FlowLayoutPanel flpBotonesProductos;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCodeProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAddress;
@@ -335,6 +324,5 @@ namespace TallerElectronico.Desktop
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnProve;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
-        private System.Windows.Forms.FlowLayoutPanel flpBotonesProductos;
     }
 }

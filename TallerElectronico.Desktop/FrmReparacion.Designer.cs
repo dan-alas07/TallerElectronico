@@ -35,7 +35,6 @@
             this.lblBuscar = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.dgvReparaciones = new System.Windows.Forms.DataGridView();
@@ -62,8 +61,8 @@
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtBuscar.Location = new System.Drawing.Point(37, 160);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscar.Location = new System.Drawing.Point(36, 171);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(477, 32);
             this.txtBuscar.TabIndex = 46;
@@ -72,23 +71,25 @@
             // lblBuscar
             // 
             this.lblBuscar.AutoSize = true;
-            this.lblBuscar.Location = new System.Drawing.Point(36, 137);
+            this.lblBuscar.Location = new System.Drawing.Point(33, 151);
             this.lblBuscar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBuscar.Name = "lblBuscar";
             this.lblBuscar.Size = new System.Drawing.Size(52, 16);
             this.lblBuscar.TabIndex = 45;
             this.lblBuscar.Text = "Buscar:";
+            this.lblBuscar.Click += new System.EventHandler(this.lblBuscar_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(32, 103);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label8.Location = new System.Drawing.Point(31, 108);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(500, 25);
+            this.label8.Size = new System.Drawing.Size(499, 28);
             this.label8.TabIndex = 44;
             this.label8.Text = "Consulta, registra, edita o cancela reparaciones del taller";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // btnEditar
             // 
@@ -101,31 +102,13 @@
             this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.White;
             this.btnEditar.Location = new System.Drawing.Point(208, 5);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(5);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(193, 52);
             this.btnEditar.TabIndex = 43;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.btnBuscar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(78)))), ((int)(((byte)(120)))));
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(525, 161);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(100, 28);
-            this.btnBuscar.TabIndex = 47;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = false;
             // 
             // btnNuevo
             // 
@@ -138,7 +121,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
             this.btnNuevo.Location = new System.Drawing.Point(5, 5);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(5);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(193, 52);
             this.btnNuevo.TabIndex = 41;
@@ -151,12 +134,13 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(58)))), ((int)(((byte)(95)))));
-            this.lblTitle.Location = new System.Drawing.Point(21, 34);
+            this.lblTitle.Location = new System.Drawing.Point(25, 34);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(509, 62);
+            this.lblTitle.Size = new System.Drawing.Size(555, 62);
             this.lblTitle.TabIndex = 40;
-            this.lblTitle.Text = "Gestión de reparación";
+            this.lblTitle.Text = "Gestión de reparaciones";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // dgvReparaciones
             // 
@@ -203,8 +187,8 @@
             this.dgvReparaciones.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvReparaciones.EnableHeadersVisualStyles = false;
             this.dgvReparaciones.GridColor = System.Drawing.Color.White;
-            this.dgvReparaciones.Location = new System.Drawing.Point(25, 307);
-            this.dgvReparaciones.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvReparaciones.Location = new System.Drawing.Point(36, 310);
+            this.dgvReparaciones.Margin = new System.Windows.Forms.Padding(4);
             this.dgvReparaciones.MultiSelect = false;
             this.dgvReparaciones.Name = "dgvReparaciones";
             this.dgvReparaciones.ReadOnly = true;
@@ -212,8 +196,9 @@
             this.dgvReparaciones.RowHeadersWidth = 51;
             this.dgvReparaciones.RowTemplate.Height = 36;
             this.dgvReparaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReparaciones.Size = new System.Drawing.Size(1440, 265);
+            this.dgvReparaciones.Size = new System.Drawing.Size(1440, 421);
             this.dgvReparaciones.TabIndex = 39;
+            this.dgvReparaciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReparaciones_CellContentClick);
             // 
             // ColumnTrackingCode
             // 
@@ -313,7 +298,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.Color.Black;
             this.btnImprimir.Location = new System.Drawing.Point(1254, 220);
-            this.btnImprimir.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnImprimir.Margin = new System.Windows.Forms.Padding(5);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(211, 51);
             this.btnImprimir.TabIndex = 48;
@@ -332,7 +317,7 @@
             this.btnAnular.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnAnular.ForeColor = System.Drawing.Color.White;
             this.btnAnular.Location = new System.Drawing.Point(411, 5);
-            this.btnAnular.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnAnular.Margin = new System.Windows.Forms.Padding(5);
             this.btnAnular.Name = "btnAnular";
             this.btnAnular.Size = new System.Drawing.Size(214, 52);
             this.btnAnular.TabIndex = 42;
@@ -345,11 +330,12 @@
             this.flowLayoutPanel1.Controls.Add(this.btnNuevo);
             this.flowLayoutPanel1.Controls.Add(this.btnEditar);
             this.flowLayoutPanel1.Controls.Add(this.btnAnular);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(25, 215);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(36, 220);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(635, 70);
             this.flowLayoutPanel1.TabIndex = 49;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // FrmReparacion
             // 
@@ -362,10 +348,9 @@
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lblBuscar);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.dgvReparaciones);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmReparacion";
             this.ShowIcon = false;
             this.Load += new System.EventHandler(this.FrmReparacion_Load);
@@ -382,7 +367,6 @@
         private System.Windows.Forms.Label lblBuscar;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.DataGridView dgvReparaciones;

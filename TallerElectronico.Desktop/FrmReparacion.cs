@@ -271,5 +271,30 @@ namespace TallerElectronico.Desktop
                 }
             }
         }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dgvReparaciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
